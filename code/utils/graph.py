@@ -14,7 +14,7 @@ import numpy as np
 import enum 
 
 # creating enumerations using class 
-class Type(enum.Enum): 
+class Type(enum.IntEnum): 
     tiny = 0
     sequential = 1
     aggregate = 2

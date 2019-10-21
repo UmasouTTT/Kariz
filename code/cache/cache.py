@@ -17,7 +17,7 @@ PREFETCH = 0
 CACHE = 1
 
 class Cache:
-    def __init__(self, size=100):
+    def __init__(self, size=100, replacement='KARIZ'):
         global _cache
         self.num_workers = 1
         self.placement_policy = 0
@@ -26,10 +26,12 @@ class Cache:
         self.free_space = size
         self.used_space = 0
         self.lrr = 0
+        self.pg_table={}
+        self.pg_latest_worker = -1
         self.mrd_table_by_name = {}
         self.mrd_table_bydistance = []
         self.block_size = 1#1048576 # 1024*1024 or 1M
-        
+        self.cache_replacement = replacement
         # create workers
         self.workers = {}
         self.workers_index = []
@@ -50,6 +52,12 @@ class Cache:
         printstr += '} \n Worker: ' 
         wid = self.get_worker()
         printstr += str(self.workers[wid])
+        
+        if self.cache_replacement == 'PG':
+            printstr += "\n\t PG Table: "
+            for f in self.pg_table:
+                printstr += ('{' + f + ':' + str(self.pg_table[f]) +  '},')
+        printstr += '}'
         return printstr
     
     def unpin_files(self, pdata):
@@ -173,6 +181,40 @@ class Cache:
                 del self.global_status[r]
             else:
                 self.global_status[r].size = revertible[r]['osize']    
+
+    def prefetch_file(self, f, size, score=0):
+        evicted = []
+        revertible = {}
+        if f in self.global_status:
+            e = self.global_status[f]
+            wid = self.get_worker() #e.parent_id
+            if e.size < size:
+                old_size = e.size
+                e, evf, pstatus = self.workers[wid].kariz_cache_file(f, size, score) #ce: cached entry
+                evicted.extend(evf)
+                if pstatus != status.SUCCESS:
+                    self.clean_up(revertible)
+                    return status.UNABLE_TO_CACHE
+                revertible[e.name] = {'osize': old_size, 'nsize': e.size}
+        else:
+            wid = self.get_worker()
+            e, evf, pstatus = self.workers[wid].kariz_cache_file(f, size, score) #ce: cached entry
+            evicted.extend(evf)
+            if pstatus != status.SUCCESS:
+                self.clean_up(revertible)
+                return status.UNABLE_TO_CACHE
+            revertible[e.name] = {'osize': 0, 'nsize': e.size}
+        self.global_status[f] = e
+            
+        #self.workers[wid].pin_file(f, e.size)   
+        for ce in evicted:
+            if ce in self.global_status: del self.global_status[ce]
+        if f in self.global_status:
+            e = self.global_status[f]
+            e.touch()
+            e.increment_freq()
+            e.update_pscore(score)
+        return status.SUCCESS
         
     def prefetch_plan(self, data, score):
         evicted = []
@@ -244,6 +286,7 @@ class Cache:
         
     def lru_cache_file(self, fname, size, worker=0):
         wid = self.get_worker()
+        self.pg_latest_worker = wid
         e, evicted, pstatus = self.workers[wid].lru_cache_file(fname, size)
         if not e:
             return
@@ -259,19 +302,72 @@ class Cache:
             return 1
         return int(math.ceil(size/self.block_size))
     
-    def is_plancached(self, data):
+    def lru_is_cached(self, data):
+        cached = 1 if len(data) > 0 else 0
         for fname in data:
             size = self.get_blocks_count(data[fname]['size'])
             if fname not in self.global_status:
-                return 0
+                cached = 0 
                 self.lru_cache_file(fname, size)
+                continue    
+                        
+            e = self.global_status[fname]
+            if e.size < size:
+                cached = 0 
+            self.evict(fname)
+            self.lru_cache_file(fname, size)
+        return cached
+
+    def update_pg_table(self, fname):
+        wid = self.get_worker() # self.pg_latest_worker if self.pg_latest_worker >= 0 else 0
+        pg_fname = self.workers[wid].get_lru_head_fname()
+        if pg_fname not in self.pg_table:
+            self.pg_table[pg_fname] = entry.PGEntry()
+        pge = self.pg_table[pg_fname]
+        pge.update_pg(fname)
+        
+        
+    def pg_is_cached(self, data):
+        cached = 1 if len(data) > 0 else 0
+        
+        for fname in data:
+            size = self.get_blocks_count(data[fname]['size'])
+            self.update_pg_table(fname)
+            if fname not in self.global_status:
+                cached = 0 
+                self.lru_cache_file(fname, size)
+                continue    
+                        
+            e = self.global_status[fname]
+            if e.size < size:
+                cached = 0 
+            self.evict(fname)
+            self.lru_cache_file(fname, size)
+        
+        if fname in self.pg_table:
+            pfile = self.pg_table[fname].get_next_object()
+            if self.prefetch_file(pfile, size) == status.SUCCESS:
+                self.lru_cache_file(fname, size)        
+        return cached        
+        
+    def is_plancached(self, data):
+        if self.cache_replacement == 'LRU':
+            return self.lru_is_cached(data)
+        elif self.cache_replacement == 'PG':
+            return self.pg_is_cached(data)
+        
+        for fname in data:
+            size = self.get_blocks_count(data[fname]['size'])
+            if fname not in self.global_status:
+                if self.cache_replacement == 'LRU':
+                    self.lru_cache_file(fname, size)
                 return 0    
                         
             e = self.global_status[fname]
             if e.size < size:
-                return 0
-                self.evict(fname)
-                self.lru_cache_file(fname, size)
+                if self.cache_replacement == 'LRU':
+                    self.evict(fname)
+                    self.lru_cache_file(fname, size)
                 return 0
         return 1
         

@@ -48,6 +48,8 @@ class Worker:
         worker_str += '}'
         return worker_str
 
+    def get_lru_head_fname(self):
+        return self.lru_head.name if self.lru_head else '' 
 
 
     ###### General functionality #################################    

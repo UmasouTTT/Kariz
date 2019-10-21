@@ -33,7 +33,7 @@ def gang_schedule_helper(g, stage_to_be_executed = -1, priority = 0, timesUsed =
     priority = 1
     requester.notify_stage_start(g, stage_to_be_executed)
     time.sleep(debug_sleep)
-    cached_inpus = {}
+    cached_inputs = {}
     if g.plans_container:
         cache_plans = g.plans_container.get_stage_cache_plans(stage_to_be_executed)
         for p in cache_plans:
@@ -43,14 +43,28 @@ def gang_schedule_helper(g, stage_to_be_executed = -1, priority = 0, timesUsed =
                 break
             print(Fore.LIGHTGREEN_EX,'\tPlan: ', plan, ' is cached', Style.RESET_ALL)
             for f in plan.data:
-                cached_inpus[f] = cached_inpus[f] if f in cached_inpus and plan.data[f]['size'] < cached_inpus[f] else plan.data[f]['size']
+                cached_inputs[f] = cached_inputs[f] if f in cached_inputs and plan.data[f]['size'] < cached_inputs[f] else plan.data[f]['size']
             g.update_runtime(plan)
 
     stage_runtime = g.stages[stage_to_be_executed].get_runtime()
+
+    potential_useless = []
+    for j in g.stages[stage_to_be_executed].jobs:
+        for f in j.inputs: 
+            if f in cached_inputs:
+                if j.runtime_remote <= stage_runtime: 
+                    potential_useless.append(f)
+                elif f in potential_useless:
+                    potential_useless.remove(f)
+    effective_cached_inputs = copy.deepcopy(cached_inputs)
+    for f in potential_useless:
+        del effective_cached_inputs[f]
+    
+    
     count = 1
     start = time.time()
     start_t = start
-    dataset_stats.append({'stage': stage_to_be_executed, 'inputs' : g.stages[stage_to_be_executed].stage_inputs, 'cached_inputs': cached_inpus})
+    dataset_stats.append({'stage': stage_to_be_executed, 'inputs' : g.stages[stage_to_be_executed].stage_inputs, 'cached_inputs': cached_inputs})
     timesUsed.append(stage_runtime)
         
     print(Fore.LIGHTMAGENTA_EX, "\tSchedule stage ", stage_to_be_executed, " for execution. Estimated runtime: ", stage_runtime, ', elapsed time: ', elapsed_time, Style.RESET_ALL)
@@ -76,7 +90,8 @@ def gang_scheduler(g):
     priority = 1
     requester.notify_stage_start(g, stage_to_be_executed)
     time.sleep(debug_sleep)
-    cached_inpus = {}
+    cached_inputs = {}
+    
     if g.plans_container:
         cache_plans = g.plans_container.get_stage_cache_plans(stage_to_be_executed)
         for p in cache_plans:
@@ -86,14 +101,27 @@ def gang_scheduler(g):
                 break
             print(Fore.LIGHTGREEN_EX,'\tPlan: ', plan, ' is cached', Style.RESET_ALL)
             for f in plan.data:
-                cached_inpus[f] = cached_inpus[f] if f in cached_inpus and plan.data[f]['size'] < cached_inpus[f] else plan.data[f]['size']             
+                cached_inputs[f] = cached_inputs[f] if f in cached_inputs and plan.data[f]['size'] < cached_inputs[f] else plan.data[f]['size']             
             g.update_runtime(plan)
     
     stage_runtime = g.stages[stage_to_be_executed].get_runtime()
+    potential_useless = []
+    for j in g.stages[stage_to_be_executed].jobs:
+        for f in j.inputs: 
+            if f in cached_inputs:
+                if j.runtime_remote <= stage_runtime: 
+                    potential_useless.append(f)
+                elif f in potential_useless:
+                    potential_useless.remove(f)
+    effective_cached_inputs = copy.deepcopy(cached_inputs)
+    for f in potential_useless:
+        del effective_cached_inputs[f]
+    
+    
     count = 1
     start = time.time()
     start_t = start
-    dataset_stats.append({'stage': stage_to_be_executed, 'inputs' : g.stages[stage_to_be_executed].stage_inputs, 'cached_inputs': cached_inpus})    
+    dataset_stats.append({'stage': stage_to_be_executed, 'inputs' : g.stages[stage_to_be_executed].stage_inputs, 'cached_inputs': cached_inputs, 'effective_cached_inputs': effective_cached_inputs})    
     timesUsed.append(stage_runtime)
     elapsed_time = stage_runtime
     print(Fore.LIGHTMAGENTA_EX, "\tSchedule stage ", stage_to_be_executed, " for execution. Estimated runtime: ", stage_runtime, ', elapsed time: ', elapsed_time, Style.RESET_ALL)
@@ -102,5 +130,5 @@ def gang_scheduler(g):
     end = time.time()
     print(Fore.LIGHTGREEN_EX, "Total time", sum(timesUsed), Style.RESET_ALL)
     requester.complete(g)
-    requester.clear_cache();
+#    requester.clear_cache();
     return sum(timesUsed), timesUsed, dataset_stats

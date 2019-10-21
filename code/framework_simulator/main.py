@@ -19,7 +19,12 @@ def test_sequential():
 def test_concurrent():
     workload = wkl.Workload()
     workload.start_multiple_dags_workload()
- 
+
+def test_vshistory():
+    workload = wkl.Workload()
+    workload.start_1seqworkload_vshistory()
+
+test_vshistory()
 #test_sequential()
 #test_concurrent()
-test_misestimation()
+#test_misestimation()

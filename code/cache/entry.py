@@ -1,11 +1,35 @@
 #!/usr/bin/python
 
 import time
+import operator
 
 KARIZ = 0
 MRD = 1
 CP = 2
 
+
+class PGEntry:
+    def __init__(self):
+        self.pg_nodes = {} # next: count
+        self.total_access = 0
+    
+    def touch(self):
+        self.total_access += 1
+    
+    def __str__(self):
+        printstr = '{'
+        for f in self.pg_nodes:
+            printstr += (f + ':' + str(self.pg_nodes[f]) + ',')
+        printstr += '}'
+        return printstr
+    
+    def get_next_object(self):
+        return max(self.pg_nodes.items(), key=operator.itemgetter(1))[0]
+    
+    def update_pg(self, f):
+        if f not in self.pg_nodes:
+            self.pg_nodes[f] = 0    
+        self.pg_nodes[f]+=1
 
 class Entry:
     """Cache Entry DataClass"""

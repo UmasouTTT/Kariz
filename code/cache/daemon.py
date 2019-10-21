@@ -19,7 +19,7 @@ g_cache = None
 
 def start_cache():
     global g_cache
-    cache = ds.Cache(550)
+    cache = ds.Cache(2500,replacement='PG')
     g_cache = cache
     return cache
 
@@ -51,7 +51,7 @@ def prefetch_plan(data):
 def is_plancached(data):
     res = g_cache.is_plancached(data['data'])
     status = 'is in cache' if res == 1 else 'is not cached'
-    print(Fore.BLUE, '\n Kariz: plan ', str(data['data']), status, str(g_cache), Style.RESET_ALL)
+    print(Fore.LIGHTCYAN_EX, '\n Kariz: plan ', str(data['data']), status, str(g_cache), Style.RESET_ALL)
     return {'cached': res}
 
 def cache_file(file):

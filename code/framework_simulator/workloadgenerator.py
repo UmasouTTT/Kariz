@@ -40,19 +40,21 @@ import pandas as pd
 import random 
 import pigsimulator as pigsim
 import math
-import logging
 import threading
 import time
+import utils.inputs as inputs
+import tpc
 import colorama
 from colorama import Fore, Style
+
 
 class Workload: 
     def __init__(self):
         self.avg_ndags_p30s = 5
-        self.interval = 5 # The resolution is seconds
-        self.overall_sim_time = 30 # 1hours, the resolution is in seconds
+        self.interval = 30 # The resolution is seconds
+        self.overall_sim_time = 3600 # 1hours, the resolution is in seconds
         self.n_intervals = self.overall_sim_time//self.interval
-        self.n_dags_p30s = sp.poisson.rvs(mu=self.avg_ndags_p30s, size=self.n_intervals)
+        self.n_dags_p30s = sp.poisson.rvs(mu=self.avg_ndags_p30s, size=self.n_intervals)        
         self.priority = 1
         self.elapsed_time = 0
         self.fname = '../plans/dags_pool.csv'
@@ -129,7 +131,6 @@ class Workload:
                 
         self.statistic_df = pd.DataFrame(data=df_data,columns=df_header)
 
-        
     def select_dags(self):
         index = self.elapsed_time//self.interval
         n_dags_inpool = len(self.dags)
@@ -140,8 +141,7 @@ class Workload:
               'submitted DAGs:', submitted_dags_indexes)
         submitted_dags = [self.dags[i] for i in submitted_dags_indexes]
         return submitted_dags
-        
-    
+            
     def schedule_timer(self):
         s = sched.scheduler(time.time, time.sleep)
         self.select_dags()
@@ -204,6 +204,36 @@ class Workload:
         with open('misestimation_result.json', 'w') as dumpf:    
             json.dump(stats, dumpf)
 
+    def start_1seqworkload_vshistory(self):
+        stats = {"Kariz": {}, "LRU": {}, "LRU+PG": {}, "MIN+MRD": {}, "MIN+CP": {}}
+        try:
+            with open('historybasedapproaches.json', 'r') as dumpf:
+                stats = json.load(dumpf)
+        except FileNotFoundError:
+                print(Fore.YELLOW, "historybasedapproaches.json is not available", Style.RESET_ALL)
+        
+        runtimes = stats["LRU+PG"]
+        print('Experiment: Compare with history-based approaches, \n\t Replacement: LRU, Prefetch: PG, \n\t\t number of DAGs in the workload: ', len(self.dags))
+        for dag_id in self.dags:
+            if not dag_id.startswith('AQ'): continue 
+            dag = self.dags[dag_id]
+            dag.name = dag_id
+            if dag_id not in runtimes:
+                runtimes[dag_id] = {}
+            
+            print(Fore.GREEN, '\nProcess:', dag_id, Style.RESET_ALL)
+            dag.reset()
+            runtime, rtl, dataset_inputs = pigsim.start_pig_simulator(dag)    
+            runtimes[dag_id] = {'Cache': 'LRU+PG', 'DAG_id': dag_id, 'Runtime': runtime,
+                                      'runtime list': rtl, 'datasets': dataset_inputs, 'type': dag.category}
+
+
+        print(Fore.GREEN, "Lets parse the LRU results", Style.RESET_ALL)
+        
+        with open('historybasedapproaches.json', 'w') as dumpf:
+            json.dump(stats, dumpf)
+
+
     
     def start_single_dag_coldcache_seqworkload(self):
         stats = {"Kariz": {}, "RCP": {}, "PC": {}, "MRD": {}}
@@ -239,25 +269,33 @@ class Workload:
             
         return 0
 
-    def select_tpch_dags(self):
-        tpch8 = self.statistic_df[self.statistic_df['name'] == 'PigLatin:Q22.pig']
-        dag_id = tpch8.iloc[0]['DagId']
+    def start_multiple_dags_static_sample_workload(self):
+        threads = []
+        tdags = [['AQ6', 'AQ8', 'AQ7', 'AQ3', 'AQ15'], ['AQ1', 'AQ2', 'AQ7'], ['AQ2', 'AQ12', 'AQ13', 'AQ16']]
+        tdags = [['AQ6', 'AQ8', 'AQ7', 'AQ3', 'AQ15'], ['AQ1', 'AQ2', 'AQ7'], ['AQ2', 'AQ12', 'AQ13', 'AQ16']]
         
-        runtime = tpch8['runtime'].tolist()
-        tpch8_dag = self.dags_byid[dag_id]
-        #tpch8_dag.add_edge(6, 9, 0)
-        for i in range(min(len(runtime), tpch8_dag.V)):
-            tpch8_dag.static_runtime(i, runtime[i], runtime[i]//3)
+        for i in range(len(tdags)):
+            x = threading.Thread(target=pigsim.start_pig_simulator, args=(tdags[i],))
+            threads.append(x)
+            x.start()
             
-            for ins in range(len(tpch8_dag.inputSize[i])):
-                tpch8_dag.inputSize[i][ins] = math.ceil(tpch8_dag.inputSize[i][ins]//(1024*1024)) 
-        print(tpch8_dag.timeValue)
-        print(tpch8_dag.cachedtimeValue)
-        print(tpch8_dag.edges)
-        print(tpch8_dag.inputSize)
-        print(tpch8_dag.inputs)        
-        return tpch8_dag
+        for th in threads:
+            th.join()
+            
+        return 0
+
+    def synthetic_static_sample_workload(self):
+        poisson_output = '''5  3  4  5  5  4  1  2  6  6  8  5  2  4  6  3  9  7  4  8  3  5  9  5  6  9  4  5  5  2  3  5  5  4  9  1  3  2  4  2  2  7  3  4  6  1  4  8  2  3  5  7  3  7  7  5  4  7  4  7  3  7  3  5  1  2  8  1  6  6  2  7  8  5  6  6  3  2  6  6  6  10  3  4  6  5  6  9  4  4  5  4  5  6  2  8  4  4  4  9  5  2  6  8  4  2  4  11  4  9  4  5  8  8  5  2  6  5  5  6'''
+        
+        self.n_dags_p30s = list(map(int, poisson_output.split('  ')))        
+        
+        graphs = [0]*len(self.n_dags_p30s)
+        for i, ng in enumerate(self.n_dags_p30s):
+            graphs[i] = [] 
+            for x in range(0, ng):
+                gid = random.choice(list(tpc.graphs_dict))
+                graphs[i].append(gid)
+                
+        return graphs
 
         
-    
-

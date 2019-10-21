@@ -695,5 +695,17 @@ q18a.set_misestimated_jobs(np.array([0, 1, 1, 0, 1, 0]))
 graphs.append(q18a)
 graphs_dict['AQ18'] = q18a
 
+q18a = gr.Graph(3, type=gr.Type.aggregate)
+q18a.add_edge(0, 2, 0)
+q18a.add_edge(1, 2, 0)
+q18a.static_runtime(0, 400, 240)
+q18a.static_runtime(1, 420, 320)
+q18a.static_runtime(2, 200, 100)
+q18a.config_inputs(0, {'a19': inputs['a19']})
+q18a.config_inputs(1, {'b19': inputs['b19']})
+q18a.config_inputs(2, {'c19': inputs['c19']})
+q18a.set_misestimated_jobs(np.array([0, 1, 1, 0, 1, 0]))
+graphs.append(q18a)
+graphs_dict['AQ18'] = q18a
 
 
