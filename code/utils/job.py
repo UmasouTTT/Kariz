@@ -27,6 +27,7 @@ class Job:
         self.out_degree = 0
         self.parents = {} # parent : distance
         self.children = {}
+        self.op = 'NOP'
         
     def reset(self):
         self.est_runtime_cache = self.runtime_cache
@@ -85,6 +86,9 @@ class Job:
         self.est_runtime_cache = self.runtime_cache = random.randint(_min, self.est_runtime_remote)
         self.runtime_partial_cached = self.est_runtime_remote
         self.final_runtime = self.est_runtime_remote
+    
+    def config_operation(self, op):
+        self.op = op
         
     def static_runtime(self, runtime_remote, runtime_cache):
         self.est_runtime_remote = self.runtime_remote = runtime_remote

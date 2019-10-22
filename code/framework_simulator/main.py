@@ -24,7 +24,12 @@ def test_vshistory():
     workload = wkl.Workload()
     workload.start_1seqworkload_vshistory()
 
-test_vshistory()
+def test_d3n():
+    workload = wkl.Workload()
+    workload.d3n_sequential_workload()
+
+
+test_d3n()
 #test_sequential()
 #test_concurrent()
 #test_misestimation()

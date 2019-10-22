@@ -75,6 +75,9 @@ class Graph:
     def set_misestimation_error(self, mse_factor):
         self.mse_factor = mse_factor;
     
+    def config_operation(self, jid, op):
+        self.jobs[jid].config_operation(op)
+    
     # Randomly assign time value to each node
     def random_runtime(self):
         for i in range(0, self.n_vertices):
@@ -229,7 +232,7 @@ class Graph:
                     if t_imprv_tmp > t_imprv:
                         t_imprv = t_imprv_tmp
             j['job'].final_runtime = j['job'].runtime_remote - t_imprv #j['improvement']
-            #j['job'].est_runtime_remote = j['job'].runtime_remote - j['improvement']
+    
 
 
 def str_to_graph(raw_execplan, objectstore):

@@ -39,6 +39,7 @@ import pandas as pd
 #import estimator.predictor as pred
 import random 
 import pigsimulator as pigsim
+import pigemulator as pigemu
 import math
 import threading
 import time
@@ -298,4 +299,11 @@ class Workload:
                 
         return graphs
 
+    
+    def d3n_sequential_workload(self):
+        g = tpc.graphs_dict['AQ19']
+        runtime, rtl, dataset_inputs = pigemu.start_pig_emulator(g)
+        
+        
+        
         

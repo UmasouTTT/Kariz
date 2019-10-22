@@ -20,20 +20,16 @@ def evict_object(token, bucket_name, obj_name):
     local_p.wait()
 
 
-
+'''
 bucket_name = 'tstbuck'
 obj_name = 'a181'
 token = get_token()
 print(token)
 prefetch_object(token, bucket_name, obj_name, 0, 1073741824)
 
-
-
-exit()
-
-
 obj_del = 'char2'
 s_off = 0
 e_off = 0
 evict_object(token, bucket_name, obj_del)
 #prefetch_object(token, bucket_name, obj_name, s_off, e_off)
+'''
