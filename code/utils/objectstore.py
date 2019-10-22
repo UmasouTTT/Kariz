@@ -29,9 +29,11 @@ class ObjectStore:
                 calling_format = boto.s3.connection.OrdinaryCallingFormat())
         hdfs_endpoint_url = 'http://kariz-1:50070'
         hdfs_user = 'ubuntu'
+        #fpath = '/root/Kariz/code/utils/'
+        fpath = '/home/mania/Northeastern/MoC/Kariz/code/utils/'
         self.hdfsclient = hdfs.InsecureClient(hdfs_endpoint_url, user=hdfs_user)
-        self.tpch_metadata, self.tpcds_metadata = inputs.prepare_tpc_metadata()
-        self.tpch_runtime, self.tpcds_runtime = inputs.prepare_tpc_runtimes()
+        self.tpch_metadata, self.tpcds_metadata = inputs.prepare_tpc_metadata(fpath)
+        self.tpch_runtime, self.tpcds_runtime = inputs.prepare_tpc_runtimes(fpath)
 
 
     def get_datasetsize_tpc_url(self, url):

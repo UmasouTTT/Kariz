@@ -20,7 +20,7 @@ LRU=5
 INFINITE=6
 
 start_t = 0
-debug_sleep = 5 # second
+debug_sleep = 60 # second
 
 def execute_job(job):
     jname = job.op # get job name
@@ -38,8 +38,10 @@ def execute_dag(g):
 
     if not g.schedule:
         pig.build_stages(g)
-        
+
+    
     for sid in g.stages:
+        time.sleep(60)
         s = g.stages[sid]
         n_jobs = len(s.jobs)
         req.notify_stage_start(g, sid)

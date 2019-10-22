@@ -25,7 +25,7 @@ class Kariz:
             graphstr = self.gq.get()
             if graphstr:
                 g = graph.str_to_graph(graphstr, self.objectstore)
-                self.dag_id = g.dag_id
+                #self.dag_id = g.dag_id
                 self.mirab.add_dag(g)
                 self.gq.task_done()
 
@@ -35,8 +35,8 @@ class Kariz:
             stage_metastr = self.pq.get()
             if stage_metastr:
                 stage_meta = ast.literal_eval(stage_metastr)
-                self.mirab.online_planner(self.dag_id, stage_meta['stage'])
-                #self.mirab.online_planner(stage_meta['id'], stage_meta['stage'])
+                #self.mirab.online_planner(self.dag_id, stage_meta['stage'])
+                self.mirab.online_planner(stage_meta['id'], stage_meta['stage'])
                 self.pq.task_done()
                 
     def dq_worker(self):
@@ -74,7 +74,7 @@ class Kariz:
 
     def new_dag_from_string(self, dag_string):
         print('Lets comment it for now')
-        #self.gq.put(dag_string)
+        self.gq.put(dag_string)
 
     def notify_new_stage_from_string(self, stage_metastr):
         self.pq.put(stage_metastr)
