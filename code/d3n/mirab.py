@@ -6,7 +6,7 @@ import dagplanner as dp
 import utils.requester as requester
 import utils.status as status
 import cache
-import ThreadPool as thp
+import utils.ThreadPool as thp
 import d3n_utils as d3n
 import colorama
 from colorama import Fore, Style
