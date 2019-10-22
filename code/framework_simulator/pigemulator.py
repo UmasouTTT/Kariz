@@ -1,8 +1,6 @@
 #!/usr/bin/python
 # Author: Trevor Nogues, Mania Abdi
 
-#!/usr/bin/python
-# Schedulers abstraction 
 import sched, threading, time
 import utils.requester as req
 import colorama
