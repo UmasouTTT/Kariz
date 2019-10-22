@@ -52,6 +52,7 @@ def notify_planner(new_stage):
     g_kariz.notify_new_stage_from_string(new_stage.decode("utf-8"))
 
 def notify_mirab(new_dag):
+    print(new_dag)
     g_kariz.new_dag_from_string(new_dag.decode("utf-8"))
     g_collector.new_dag_from_string(new_dag.decode("utf-8"))
 

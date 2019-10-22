@@ -23,9 +23,10 @@ start_t = 0
 debug_sleep = 5 # second
 
 def execute_job(job):
-    jname = job.name # get job name
-    fname = 's3a://data/Kariz/' + job.inputs.keys[0]
-    local_p = subprocess.Popen(["/local0/HiBench/bin/workloads/micro/%s/hadoop %s" %(job.op, job.inputs)], shell=True)
+    jname = job.op # get job name
+    iname = 's3a://data/Kariz/' + list(job.inputs.keys())[0]
+    oname = 's3a://data/Kariz/wc' + str(job.runtime_remote)
+    local_p = subprocess.Popen(["/local0/HiBench/bin/workloads/micro/%s/hadoop/run.sh %s %s" %(job.op, iname, oname)], shell=True)
     local_p.wait()
     return 0
 
@@ -43,6 +44,7 @@ def execute_dag(g):
         n_jobs = len(s.jobs)
         req.notify_stage_start(g, sid)
         pool = ThreadPool(n_jobs)
+        print('jobs', s.jobs)
         pool.map(execute_job, s.jobs)
         pool.close()
         pool.join()
@@ -74,4 +76,4 @@ def start_pig_emulator(v):
         v.plans_container = None
 
     time.sleep(5)
-    return execute(v)
+    return execute_dag(v)
