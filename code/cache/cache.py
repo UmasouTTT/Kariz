@@ -65,7 +65,7 @@ class Cache:
             if f in self.global_status:
                 e = self.global_status[f]
                 wid = self.get_worker() #e.parent_id
-                self.workers[wid].unpin_file(e.name)
+                self.workers[wid].unpin_file(e.name, pdata['data'][f]['size'])
         return status.SUCCESS
                 
     def prefetch_mrd(self, pdata):
@@ -161,7 +161,7 @@ class Cache:
             else:
                 wid = self.get_worker()
                 for f2 in data:
-                    self.workers[wid].unpin_file(f2)
+                    self.workers[wid].unpin_file(f2, data[f2]['size'])
                 return status.UNABLE_TO_CACHE
         
         for f in data:

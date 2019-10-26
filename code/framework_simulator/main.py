@@ -28,8 +28,12 @@ def test_d3n():
     workload = wkl.Workload()
     workload.d3n_sequential_workload()
 
-
-test_d3n()
+def test_bw_allocation():
+    workload = wkl.Workload()
+    workload.bw_allocation_workload()
+    
+#test_d3n()
 #test_sequential()
 #test_concurrent()
 #test_misestimation()
+test_bw_allocation()

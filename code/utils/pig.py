@@ -16,7 +16,8 @@ def build_stages(g):
     cur_stage.finish_add_jobs()
     cur_stage.stage_id = 0
     g.stages[0] = cur_stage
-        
+    g.total_runtime += cur_stage.get_runtime()
+    
     for blvl in range(max(blevels), 0, -1):
         csi = max(blevels) - blvl # current stage index
         stg_jobs = blevels[blvl]
@@ -37,6 +38,8 @@ def build_stages(g):
         cur_stage.finish_add_jobs()
         cur_stage.stage_id = csi+1 
         g.stages[csi+1] = cur_stage
+        g.total_runtime += cur_stage.get_runtime()
+        
     g.schedule = stages 
     return g;
 

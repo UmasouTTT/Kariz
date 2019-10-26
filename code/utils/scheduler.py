@@ -17,6 +17,7 @@ from colorama import Fore, Style
 
 start_t = 0
 debug_sleep = 5 # second
+wait_time = 30
 # B-level (PIG) schedule helper 
 def gang_schedule_helper(g, stage_to_be_executed = -1, priority = 0, timesUsed = [], dataset_stats = [], elapsed_time=0):
     s = sched.scheduler(time.time, time.sleep)
@@ -71,7 +72,7 @@ def gang_schedule_helper(g, stage_to_be_executed = -1, priority = 0, timesUsed =
     elapsed_time += stage_runtime
     #currentLevel -= 1
     #timesUsed.append(currentMaxTime)
-    s.enter(15, priority, gang_schedule_helper, argument=(g, stage_to_be_executed, priority, timesUsed, dataset_stats, elapsed_time))
+    s.enter(wait_time, priority, gang_schedule_helper, argument=(g, stage_to_be_executed, priority, timesUsed, dataset_stats, elapsed_time))
     s.run()
 
 
@@ -125,7 +126,7 @@ def gang_scheduler(g):
     timesUsed.append(stage_runtime)
     elapsed_time = stage_runtime
     print(Fore.LIGHTMAGENTA_EX, "\tSchedule stage ", stage_to_be_executed, " for execution. Estimated runtime: ", stage_runtime, ', elapsed time: ', elapsed_time, Style.RESET_ALL)
-    s.enter(15, priority, gang_schedule_helper, argument=(g, stage_to_be_executed, priority, timesUsed, dataset_stats, elapsed_time))
+    s.enter(wait_time, priority, gang_schedule_helper, argument=(g, stage_to_be_executed, priority, timesUsed, dataset_stats, elapsed_time))
     s.run()
     end = time.time()
     print(Fore.LIGHTGREEN_EX, "Total time", sum(timesUsed), Style.RESET_ALL)

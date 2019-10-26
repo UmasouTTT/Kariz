@@ -24,6 +24,7 @@ class Worker:
         self.id = uuid.uuid1()
         self.size = size
         self.status = {}
+        self.pinned_files = {}
         
         self.used_space = 0 # the amount of cache that is currently used by both pinned and unpinned files
         self.free_space = size # size - self.used_space 
@@ -66,33 +67,36 @@ class Worker:
         ''' if you already pinned fname you don't need to take any action'''
         if fname not in self.status:
             return status.FILE_NOT_FOUND 
-        
+
         e = self.status[fname]
         if e.size < size:
             return status.NOT_ENOUGH_TO_PIN 
-        if e.pin == 0:
+        
+        cur_pinned_size = self.pinned_files[fname] if fname in self.pinned_files else 0
+        if cur_pinned_size < size:
+            self.pinned_files[fname] = size;
             e.pin = 1
-            self.pinned_space += e.size
-            self.unpinned_space = self.size - self.pinned_space
-        else:
-            diff = size - e.size
-            self.pinned_space += diff
-            self.unpinned_space = self.size - self.pinned_space
             
+        self.pinned_space = sum(self.pinned_files.values())  
+        self.unpinned_space = self.size - self.pinned_space
+                    
         return status.SUCCESS
         
         
-    def unpin_file(self, fname, size=0):
-        if fname not in self.status:
+    def unpin_file(self, fname, size):
+        if fname not in self.status or fname not in self.pinned_files:
             return status.FILE_NOT_FOUND
+        
+        if size < self.pinned_files[fname]: 
+            return status.FILE_IS_BUSY
+        
         e = self.status[fname]
-        if e.pin > 0:
-            if size >= e.size:
-                e.pin = 0
-            e.pscore = 0
-            e.freq = 0
-            self.pinned_space -= size
-            self.unpinned_space = self.size - self.pinned_space
+        e.pin = 0
+        e.pscore = 0
+        
+        del self.pinned_files[fname]
+        self.pinned_spac = sum(self.pinned_files.values())  
+        self.unpinned_space = self.size - self.pinned_space
             
     
     def evict_file(self, fname):

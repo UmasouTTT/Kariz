@@ -32,6 +32,7 @@ class DAGPlanner:
             print(Fore.LIGHTMAGENTA_EX, 'Mirab unpin completed stage --> DAG: ', self.g.dag_id, 
                   'stage: ' , stage_id  -1, 'data in plan:', p.data, Style.RESET_ALL) 
             requester.uppined_datasets(p.data)
+        del self.pinned_plans[stage_id -1]
             
     
     def update_statistics(self, stage_id, data):

@@ -38,7 +38,7 @@ def start_pig_simulator(v):
     else: 
         v.plans_container = None
 
-    time.sleep(5)
+    time.sleep(v.queue_time)
     return sched.gang_scheduler(v)
 
 '''

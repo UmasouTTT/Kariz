@@ -259,9 +259,10 @@ class Workload:
     
     def start_multiple_dags_workload(self):
         threads = []
-        tdags = self.dags
+        #tdags = self.dags
+        tdags = ['AQ20', 'AQ21']
         for i in range(len(tdags)):
-            x = threading.Thread(target=pigsim.start_pig_simulator, args=(tdags[i],))
+            x = threading.Thread(target=pigsim.start_pig_simulator, args=(tpc.graphs_dict[tdags[i]],))
             threads.append(x)
             x.start()
             
@@ -304,6 +305,18 @@ class Workload:
         g = tpc.graphs_dict['AQ19']
         runtime, rtl, dataset_inputs = pigemu.start_pig_emulator(g)
         
-        
-        
+    
+    def bw_allocation_workload(self):
+        runtimes = {}
+        dags = ['AQ26', 'AQ27', 'AQ25']
+        prev_runtime = 0
+        for dag_id in dags:
+            if not dag_id.startswith('AQ'): continue 
+            print('Process ', dag_id)
+            dag = tpc.graphs_dict[dag_id]
+            dag.start_time = prev_runtime
+            runtime, rtl, dataset_inputs = pigsim.start_pig_simulator(dag)
+            prev_runtime = runtime
+            runtimes[dag_id] = {'Cache': 'Kariz', 'DAG_id': dag_id, 'Runtime': runtime, 'runtime list': rtl, 'datasets': dataset_inputs}
+        print(Fore.GREEN, runtimes[dag_id], Style.RESET_ALL)        
         

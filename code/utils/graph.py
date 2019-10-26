@@ -41,6 +41,9 @@ class Graph:
         self.stages = {}
         self.name = 'graph'
         self.category = type
+        self.submit_time = 0
+        self.queue_time = 10 # 10 second from now; should be configurable
+        self.total_runtime = 0 
 
     def reset(self):
         for j in self.jobs:
@@ -57,7 +60,11 @@ class Graph:
             graph_str += ','
         graph_str = graph_str[:-1]
         graph_str = graph_str  + '], "uuid": "' + str(self.dag_id) 
-        graph_str = graph_str  + '", "n_vertices" : ' + str(self.n_vertices) + ', "mse_factor" : ' + str(self.mse_factor) + ', "name" : "' + str(self.name) + '"}'  
+        graph_str = graph_str  + '", "n_vertices" : ' + str(self.n_vertices)
+        graph_str = graph_str  +  ', "mse_factor" : ' + str(self.mse_factor)
+        graph_str = graph_str  +  ', "name" : "' + str(self.name) 
+        graph_str = graph_str  +  '", "submit_time" : ' + str(self.submit_time) + ', "queue_time" : ' + str(self.queue_time)
+        graph_str = graph_str  +  ', "total_runtime" : ' + str(self.total_runtime) + '}'  
         return graph_str
 
     def add_new_job(self, value):
@@ -333,6 +340,9 @@ def jsonstr_to_graph(raw_execplan):
     g.dag_id = raw_dag['uuid']
     g.mse_factor = raw_dag['mse_factor']
     g.name = raw_dag['name']
+    g.submit_time = raw_dag['submit_time']
+    g.queue_time = raw_dag['queue_time']
+    #g.total_runtime = raw_dag['total_runtime'] 
     for j in jobs:
         g.jobs[j['id']].id = j['id']
         g.jobs[j['id']].static_runtime(j['runtime_remote'], j['runtime_cache'])

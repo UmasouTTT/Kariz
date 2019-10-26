@@ -9,7 +9,9 @@ import os
 import ast
 
 import utils.graph as graph
-import plans.kariz.mirab as mq
+import mirab as mq
+import roundrobin as rr
+import sjf  
 
 
 
@@ -61,7 +63,8 @@ class Kariz:
         self.dt.start()
         
         self.objectstore = None
-        self.mirab = mq.Mirab() # Mirab logic 
+        #self.mirab = mq.Mirab() # Mirab logic
+        self.mirab = rr.RoundRobin(bandwidth=1200) 
         _kariz = self # mirab daemon instance 
 
     def new_dag_from_string(self, dag_string):
