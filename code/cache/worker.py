@@ -65,6 +65,7 @@ class Worker:
     
     def pin_file(self, fname, size):
         ''' if you already pinned fname you don't need to take any action'''
+        revertible = {}
         if fname not in self.status:
             return status.FILE_NOT_FOUND 
 
@@ -74,20 +75,25 @@ class Worker:
         
         cur_pinned_size = self.pinned_files[fname] if fname in self.pinned_files else 0
         if cur_pinned_size < size:
+            revertible = {'osize': cur_pinned_size, 'newsize': size}
             self.pinned_files[fname] = size;
             e.pin = 1
             
         self.pinned_space = sum(self.pinned_files.values())  
         self.unpinned_space = self.size - self.pinned_space
                     
-        return status.SUCCESS
+        return status.SUCCESS, revertible
         
         
     def unpin_file(self, fname, size):
         if fname not in self.status or fname not in self.pinned_files:
+            self.pinned_space = sum(self.pinned_files.values())  
+            self.unpinned_space = self.size - self.pinned_space
             return status.FILE_NOT_FOUND
         
-        if size < self.pinned_files[fname]: 
+        if size < self.pinned_files[fname]:
+            self.pinned_space = sum(self.pinned_files.values())  
+            self.unpinned_space = self.size - self.pinned_space 
             return status.FILE_IS_BUSY
         
         e = self.status[fname]
@@ -95,7 +101,7 @@ class Worker:
         e.pscore = 0
         
         del self.pinned_files[fname]
-        self.pinned_spac = sum(self.pinned_files.values())  
+        self.pinned_space = sum(self.pinned_files.values())  
         self.unpinned_space = self.size - self.pinned_space
             
     
@@ -325,7 +331,7 @@ class Worker:
         if diff <= 0:
             return
 
-        self.unpin_file(fname, diff)
+        #self.unpin_file(fname, diff)
         if not oldsize:
             self.evict_file(fname)
             return

@@ -893,5 +893,3 @@ q27a.config_inputs(6, {'d20': inputs['d20']})
 q27a.config_inputs(7, {'d': inputs['d']})
 graphs.append(q27a)
 graphs_dict['AQ27'] = q27a
-
-

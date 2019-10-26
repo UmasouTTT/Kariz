@@ -157,11 +157,13 @@ class Cache:
                     for f2 in data:
                         self.workers[wid].unpin_file(f2, data[f2]['size'])
                     return status.UNABLE_TO_CACHE
-                self.workers[wid].pin_file(f, e.size)
+                _status, revertables[e.name] = self.workers[wid].pin_file(f, e.size)
             else:
                 wid = self.get_worker()
-                for f2 in data:
+                for f2 in revertables:
                     self.workers[wid].unpin_file(f2, data[f2]['size'])
+                    if revertables[f2]['osize'] > 0:
+                        self.workers[wid].pin_file(f2, revertables[f2]['osize'])
                 return status.UNABLE_TO_CACHE
         
         for f in data:
@@ -178,9 +180,11 @@ class Cache:
         for r in revertible:
             self.workers[wid].kariz_revert_status(r, revertible[r]['osize'])
             if not revertible[r]['osize']:
-                del self.global_status[r]
+                if r in self.global_status:
+                    del self.global_status[r]
             else:
-                self.global_status[r].size = revertible[r]['osize']    
+                if r in self.global_status:
+                    self.global_status[r].size = revertible[r]['osize']    
 
     def prefetch_file(self, f, size, score=0):
         evicted = []
@@ -245,6 +249,11 @@ class Cache:
             #self.workers[wid].pin_file(f, e.size)   
             for ce in evicted:
                 if ce in self.global_status: del self.global_status[ce]
+        for f in data:
+            if f not in self.global_status:
+                self.clean_up(revertible)
+                return status.UNABLE_TO_CACHE
+                            
         for f in data:
             if f in self.global_status:
                 e = self.global_status[f]
