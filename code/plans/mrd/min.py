@@ -13,7 +13,8 @@ from colorama import Fore, Style
 class MinPlanner(Planner):
     def __init__(self, bandwidth=1200):
         super().__init__(bandwidth)
-        fpath = '/home/mania/Northeastern/MoC/Kariz/code/plans/mrd/'
+        #fpath = '/home/mania/Northeastern/MoC/Kariz/code/plans/mrd/'
+        fpath = '/root/Kariz/code/plans/mrd/'
         self.min_table = self.read_min_table(fpath)
         self.cur_dag_index = 0
         self.dags = {}
