@@ -17,7 +17,7 @@ PREFETCH = 0
 CACHE = 1
 
 class Cache:
-    def __init__(self, size=100, replacement='KARIZ'):
+    def __init__(self, size=100, replacement='MRD'):
         global _cache
         self.num_workers = 1
         self.placement_policy = 0
@@ -69,27 +69,26 @@ class Cache:
         return status.SUCCESS
                 
     def prefetch_mrd(self, pdata):
-        for distance in pdata:
-            sdistance = pdata[distance]
-            for filesmeta in sdistance:
-                for f in filesmeta:
-                    if f in self.global_status:
-                        e = self.global_status[f]
-                        wid = e.parent_id
-                        e.mrd_distance = distance
-                        self.global_status[f] = e     
-                    else:        
-                        data_sz = filesmeta[f]
-                        wid = self.get_mrd_worker(data_sz)
-                        e, evf, estatus = self.workers[wid].mrd_cache_file(f, filesmeta[f], distance)
-                        if estatus == status.SUCCESS:
-                            e.mrd_distance = distance
-                            self.global_status[f] = e
-                            if evf:
-                                for ev in evf:
-                                    self.mrd_table_bydistance.remove(ev)
-                                    del self.global_status[ev.name]
-                    
+        distance = pdata['distance']
+        filesmeta = pdata['data']
+        for f in filesmeta:
+            if f in self.global_status:
+                e = self.global_status[f]
+                wid = e.parent_id
+                e.mrd_distance = distance
+                self.global_status[f] = e     
+            else:        
+                data_sz = filesmeta[f]
+                wid = self.get_mrd_worker(data_sz)
+                e, evf, estatus = self.workers[wid].mrd_cache_file(f, filesmeta[f]['size'], distance)
+                if estatus == status.SUCCESS:
+                    e.mrd_distance = distance
+                    self.global_status[f] = e
+                    if evf:
+                        for ev in evf:
+                            self.mrd_table_bydistance.remove(ev)
+                            del self.global_status[ev.name]
+            
         self.update_mrd_table()
         print('MRD Prefetch plan:', pdata, ', global status:', self.global_status)
         return status.SUCCESS

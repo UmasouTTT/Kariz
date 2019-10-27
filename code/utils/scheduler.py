@@ -25,14 +25,10 @@ def gang_schedule_helper(g, stage_to_be_executed = -1, priority = 0, timesUsed =
     currentIndex = 0
     stage_index = stage_to_be_executed + 1
     if stage_index not in g.stages:
-        print(Fore.RED, 'I should notify end of DAG', Style.RESET_ALL)
         return
 
     requester.notify_stage_start(g, stage_index)
-    stage_to_be_executed += 1
-    currentIndex = 0
-    priority = 1
-    requester.notify_stage_start(g, stage_to_be_executed)
+    stage_to_be_executed = stage_index
     time.sleep(debug_sleep)
     cached_inputs = {}
     if g.plans_container:

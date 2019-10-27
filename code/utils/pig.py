@@ -156,100 +156,35 @@ def build_cp_priorities(g):
 
 
 
-def build_mrd_priorities_helper(g, s, plans_container): # s stands for stage
+def build_mrd_stage_priorities_helper(g, s, plans_container): # s stands for stage
     priority = 1;
     plans_container.add_stage(s) 
     
     for j in s.jobs:
         p = plan.Plan()
         p.priority = priority
+        p.dag_id = g.dag_id
+        p.stage_id = s.stage_id
         p.size = 0 
         for f in j.inputs:
             p.data[f] = {'size': j.inputs[f], 'score': -1}
             p.size += j.inputs[f]
         p.jobs.append({'job': j, 
-                       'improvement': j.original_runtime - j.cached_runtime})
+                       'improvement': j.est_runtime_remote - j.est_runtime_cache})
         plans_container.add_cache_plan(p, s)
         priority = priority + 1
     return
 
 def build_mrd_priorities(g):
-    blevels, orderednodes = g.bLevel()
-    cur_blevel = max(blevels)
-    csi = max(blevels) - cur_blevel # current stage index
-    cur_stage = plan.Stage(csi)
+    if not g.stages:
+        build_stages(g)
+
     plans_container = plan.PlansContainer(g)
-    
-    # build priority plans for stage 
-    ci = 0 # current index
-    while ci < len(blevels):    
-        if blevels[ci] != cur_blevel:
-            cur_stage.finish_add_jobs()
-            build_mrd_priorities_helper(g, cur_stage, plans_container)
-            g.stages[csi] = cur_stage
-            # prepare new stage
-            cur_blevel = cur_blevel - 1
-            csi = max(blevels) - cur_blevel 
-            cur_stage = plan.Stage(csi)
-        
-        # build the job
-        j = plan.Job(csi)
-        j.id = orderednodes[ci]
-        j.original_runtime = g.timeValue[orderednodes[ci]]
-        j.improved_runtime = g.timeValue[orderednodes[ci]]
-        j.cached_runtime = g.cachedtimeValue[orderednodes[ci]]
-        # FIXME add inputs as well
-        inputs = g.inputs[orderednodes[ci]]
-        inputSize = g.inputSize[orderednodes[ci]]
-        for i in range(0, len(inputs)):
-            j.inputs[inputs[i]] = inputSize[i]
-        
-        cur_stage.add_job(j)
-        ci = ci + 1
+    for s in g.stages:
+        stage = g.stages[s]
+        build_mrd_stage_priorities_helper(g, stage, plans_container)
 
-    cur_stage.finish_add_jobs()
-    build_mrd_priorities_helper(g, cur_stage, plans_container)
-    g.stages[csi] = cur_stage
-    return plans_container
-
-
-def build_stages2(g):
-    blevels, orderednodes = g.bLevel()
-    cur_blevel = max(blevels)
-    csi = max(blevels) - cur_blevel # current stage index
-    cur_stage = plan.Stage(csi)
-    
-    # build priority plans for stage 
-    ci = 0 # current index
-    while ci < len(blevels):    
-        if blevels[ci] != cur_blevel:
-            cur_stage.finish_add_jobs()
-            g.stages[csi] = cur_stage 
-            # prepare new stage
-            cur_blevel = cur_blevel - 1
-            csi = max(blevels) - cur_blevel 
-            cur_stage = plan.Stage(csi)
-        
-        # build the job
-        j = plan.Job(csi)
-        j.id = orderednodes[ci]
-        j.original_runtime = g.timeValue[orderednodes[ci]]
-        j.improved_runtime = g.timeValue[orderednodes[ci]]
-        j.cached_runtime = g.cachedtimeValue[orderednodes[ci]]
-        # FIXME add inputs as well
-        inputs = g.inputs[orderednodes[ci]]
-        inputSize = g.inputSize[orderednodes[ci]]
-        for i in range(0, len(inputs)):
-            j.inputs[inputs[i]] = inputSize[i]
-        
-        
-        cur_stage.add_job(j)
-        ci = ci + 1
-
-    cur_stage.finish_add_jobs()
-    g.stages[csi] = cur_stage
-    return g;
-
+    return plans_container;
 
 
 def build_lru_priorities(g):

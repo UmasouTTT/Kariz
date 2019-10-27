@@ -11,7 +11,7 @@ import ast
 import utils.graph as graph
 import mirab as mq
 import roundrobin as rr
-import sjf  
+import sjf
 
 
 

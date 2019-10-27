@@ -2,7 +2,6 @@
 import json
 
 from utils.graph import *
-import dagplanner as dp
 import time
 import utils.requester as requester
 import utils.status as status
@@ -35,7 +34,6 @@ class Planner:
         self.bw_snapshot = []
         
     def add_dag(self, g):
-        self.dag_planners[g.dag_id] = dp.DAGPlanner(g)
         t_extend = (g.total_runtime + g.queue_time) - self.est_runtime
         if t_extend > 0:
             for t in range(0, t_extend):
@@ -59,9 +57,7 @@ class Planner:
     def roll_back(self):
         self.bw_planner = self.bw_snapshot
 
-    def update_planned_bandwidth(self, plan):
-        return 0 
-        
+       
     def markas_pinned_datasets(self, dag_id, plan):
         if dag_id not in self.dag_planners: return None
         self.dag_planners[dag_id].markas_pinned_datasets(plan)

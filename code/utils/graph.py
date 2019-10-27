@@ -23,7 +23,7 @@ class Type(enum.IntEnum):
 
 #Class to represent a graph 
 class Graph: 
-    def __init__(self, n_vertices = 0, type = Type.complex):
+    def __init__(self, n_vertices = 0, type = Type.complex, name='graph'):
         self.dag_id = uuid.uuid1()
         self.n_vertices = n_vertices 
         self.jobs = {}
@@ -39,7 +39,7 @@ class Graph:
         self.mse_factor = 0
         self.plans_container = None
         self.stages = {}
-        self.name = 'graph'
+        self.name = name
         self.category = type
         self.submit_time = 0
         self.queue_time = 10 # 10 second from now; should be configurable
