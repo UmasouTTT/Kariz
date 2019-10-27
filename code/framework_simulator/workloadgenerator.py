@@ -315,8 +315,8 @@ class Workload:
                 print(Fore.YELLOW, "bandwidthsensitivity.json is not available", Style.RESET_ALL)
 
         runtimes = stats["Kariz"]
-        #dags = ['AQ26', 'AQ27', 'AQ25']
-        dags = tpc.graphs_dict
+        dags = ['AQ26', 'AQ27', 'AQ25']
+        #dags = tpc.graphs_dict
         prev_runtime = 0
         bandwidth = 1200
         for dag_id in dags:

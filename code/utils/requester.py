@@ -42,23 +42,22 @@ def uppined_datasets(data):
     reply = json.loads(requests.post(url, headers=headers, json=_data).text)
     return reply['cached']
     
-def cache_mrd_plan(data):
-    if data is None:
-        return None
+def cache_mrd_plan(plan):
+    if not len(plan.data): return None
     path = "/cachemrd"
     url = cache_url + path
     headers = {'Content-type': 'application/json'}
-    _data = {'data': data}
+    _data = {'data': plan.data, 'distance': plan.distance}
     reply = json.loads(requests.post(url, headers=headers, json=_data).text)
     return reply['cached']
 
-def prefetch_mrd_plan(data):
-    if data is None:
-        return None
+def prefetch_mrd_plan(plan):
+    if not len(plan.data): return None
     path = "/prefetchmrd"
     url = cache_url + path
     headers = {'Content-type': 'application/json'}
-    reply = json.loads(requests.post(url, headers=headers, json=data).text)
+    _data = {'data': plan.data, 'distance': plan.distance}
+    reply = json.loads(requests.post(url, headers=headers, json=_data).text)
     return reply['cached']
 
 

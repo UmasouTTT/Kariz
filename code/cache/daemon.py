@@ -30,10 +30,17 @@ def cache_status():
     return 0
 
 def cache_mrd(data):
-    return {'cached': g_cache.cache_mrd(data['data'])}
+    res = g_cache.cache_mrd(data)
+    status = 'cached' if res == 0 else 'is not satisfied'
+    print(Fore.MAGENTA, '\n MRD: cache request for ', str(data), status, str(g_cache), Style.RESET_ALL)
+    print(Style.RESET_ALL)
+    return {'cached': res}
 
 def prefetch_mrd(data):
-    return {'cached': g_cache.prefetch_mrd(data)}
+    res = g_cache.prefetch_mrd(data)
+    status = 'prefetched' if res == 0 else 'is not satisfied'
+    print(Fore.GREEN, '\n MRD: prefetch request: ', str(data), status, str(g_cache), Style.RESET_ALL)
+    return {'cached': res}
 
 def cache_plan(data):
     res = g_cache.cache_plan(data['data'], data['score'])

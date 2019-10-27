@@ -288,6 +288,7 @@ class PlansContainer:
         cache_plan = []
         if stage in self.cp_by_stage:
             for pp in self.cp_by_stage[stage]:
+                if len(self.cp_by_stage[stage][pp].data) == 0: continue
                 cache_plan.append(self.cp_by_stage[stage][pp])
         return cache_plan
     

@@ -825,7 +825,7 @@ graphs.append(q24a)
 graphs_dict['AQ24'] = q24a
 
 
-q25a = gr.Graph(6, type=gr.Type.aggregate)
+q25a = gr.Graph(6, type=gr.Type.aggregate, name='AQ25')
 q25a.add_edge(0, 1, 0)
 q25a.add_edge(1, 2, 0)
 q25a.add_edge(2, 3, 0)
@@ -847,7 +847,7 @@ graphs.append(q25a)
 graphs_dict['AQ25'] = q25a
 
 
-q26a = gr.Graph(4, type=gr.Type.aggregate)
+q26a = gr.Graph(4, type=gr.Type.aggregate, name='AQ26')
 q26a.add_edge(0, 3, 0)
 q26a.add_edge(1, 3, 0)
 q26a.add_edge(2, 3, 0)
@@ -863,7 +863,7 @@ graphs_dict['AQ26'] = q26a
 
 
 
-q27a = gr.Graph(9, type=gr.Type.aggregate)
+q27a = gr.Graph(9, type=gr.Type.aggregate, name='AQ27')
 q27a.add_edge(0, 3, 0)
 q27a.add_edge(1, 3, 0)
 q27a.add_edge(1, 4, 0)
