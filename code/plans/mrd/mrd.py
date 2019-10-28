@@ -56,7 +56,7 @@ class MRD:
         
         self.objectstore = None
         
-        self.min = min.MinPlanner(bandwidth=1200) 
+        self.min = min.MinPlanner(bandwidth=30) 
         _mrd = self # mirab daemon instance 
 
     def new_dag_from_string(self, dag_string):

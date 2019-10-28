@@ -307,18 +307,19 @@ class Workload:
         
     
     def bw_allocation_workload(self):
-        stats = {"Kariz": {}, "MRD": {}, "CP": {}, "RCP": {}}
+        stats = {"Kariz": {}, "MRD": {}, "CP": {}, "NoCache": {}}
         try:
             with open('bandwidthsensitivity.json', 'r') as dumpf:
                 stats = json.load(dumpf)
         except FileNotFoundError:
                 print(Fore.YELLOW, "bandwidthsensitivity.json is not available", Style.RESET_ALL)
 
-        runtimes = stats["MRD"]
+        runtimes = stats["NoCache"]
         #dags = ['AQ26', 'AQ27', 'AQ25']
         dags = tpc.graphs_dict
         prev_runtime = 0
-        bandwidth = 1200
+        #bandwidth = [30, 150, 300, 600, 1200]
+        bandwidth = 30
         for dag_id in dags:
             if dag_id not in runtimes:
                 runtimes[dag_id] = {}
@@ -330,6 +331,7 @@ class Workload:
             runtime, rtl, dataset_inputs = pigsim.start_pig_simulator(dag)
             prev_runtime = runtime
             runtimes[dag_id][bandwidth] = {'Cache': 'MRD', 'DAG_id': dag_id, 'Runtime': runtime, 'runtime list': rtl, 'datasets': dataset_inputs, 'bandwidth':bandwidth}
+
         
         print(Fore.GREEN, runtimes, Style.RESET_ALL)    
         with open('bandwidthsensitivity.json', 'w') as dumpf:

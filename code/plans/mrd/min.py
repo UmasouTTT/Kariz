@@ -34,6 +34,7 @@ class MinPlanner(Planner):
         plans = []
         #if len(self.min_table) > 0:
         #    dag_id = self.dags[self.min_table.pop(0)['dag_name']]
+        if dag_id not in self.dag_planners: return 
         plans.extend(self.dag_planners[dag_id].get_next_plans(stage_id))
     
         while len(plans) > 0:

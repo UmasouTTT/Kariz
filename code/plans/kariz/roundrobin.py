@@ -3,7 +3,7 @@ import json
 
 from utils.graph import *
 import dagplanner as dp
-from planner import *
+from plans.planner import *
 import utils.requester as requester
 import utils.status as status
 import colorama
