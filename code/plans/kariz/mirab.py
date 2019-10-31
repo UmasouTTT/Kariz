@@ -15,7 +15,7 @@ class Mirab:
         self.share_scores = {}
         self.dag_planners = {}
         self.alpha = 0.5
-        self.available_bandwidth = 1200 # 10Gbps = 1.2 GBps = 1200 MBps
+        self.available_bandwidth = 600 # 10Gbps = 1.2 GBps = 1200 MBps
         self.cache_block_size = 1 # 1MBype 
                 
     def add_dag(self, g):

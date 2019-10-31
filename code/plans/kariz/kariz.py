@@ -63,8 +63,8 @@ class Kariz:
         self.dt.start()
         
         self.objectstore = None
-        #self.mirab = mq.Mirab() # Mirab logic
-        self.mirab = rr.RoundRobin(bandwidth=30) 
+        self.mirab = mq.Mirab() # Mirab logic
+        #self.mirab = rr.RoundRobin(bandwidth=30) 
         _kariz = self # mirab daemon instance 
 
     def new_dag_from_string(self, dag_string):
