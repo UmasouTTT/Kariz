@@ -19,7 +19,7 @@ g_cache = None
 
 def start_cache():
     global g_cache
-    cache = ds.Cache(2560,replacement='LRU')
+    cache = ds.Cache(2560,replacement='KARIZ')
     g_cache = cache
     return cache
 
