@@ -17,7 +17,7 @@ PREFETCH = 0
 CACHE = 1
 
 class Cache:
-    def __init__(self, size=100, replacement='MRD'):
+    def __init__(self, size=2500, replacement='LRU'):
         global _cache
         self.num_workers = 1
         self.placement_policy = 0
