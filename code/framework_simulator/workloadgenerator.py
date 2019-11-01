@@ -213,7 +213,7 @@ class Workload:
         except FileNotFoundError:
                 print(Fore.YELLOW, "historybasedapproaches.json is not available", Style.RESET_ALL)
         
-        runtimes = stats["MIN+MRD"]
+        runtimes = stats["Kariz"]
         print('Experiment: Compare with history-based approaches, \n\t Replacement: LRU, Prefetch: PG, \n\t\t number of DAGs in the workload: ', len(self.dags))
         for dag_id in self.dags:
             if not dag_id.startswith('AQ'): continue 
@@ -225,7 +225,7 @@ class Workload:
             print(Fore.GREEN, '\nProcess:', dag_id, Style.RESET_ALL)
             dag.reset()
             runtime, rtl, dataset_inputs = pigsim.start_pig_simulator(dag)    
-            runtimes[dag_id] = {'Cache': 'MIN+MRD', 'DAG_id': dag_id, 'Runtime': runtime,
+            runtimes[dag_id] = {'Cache': 'Kariz', 'DAG_id': dag_id, 'Runtime': runtime,
                                       'runtime list': rtl, 'datasets': dataset_inputs, 'type': dag.category}
 
 
