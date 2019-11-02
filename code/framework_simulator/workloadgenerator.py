@@ -331,6 +331,7 @@ class Workload:
             runtime, rtl, dataset_inputs = pigsim.start_pig_simulator(dag)
             prev_runtime = runtime
             runtimes[dag_id][bandwidth] = {'Cache': 'MRD', 'DAG_id': dag_id, 'Runtime': runtime, 'runtime list': rtl, 'datasets': dataset_inputs, 'bandwidth':bandwidth}
+            print(runtimes[dag_id][bandwidth])
 
         
         print(Fore.GREEN, runtimes, Style.RESET_ALL)    
