@@ -36,5 +36,5 @@ def test_bw_allocation():
 #test_sequential()
 #test_concurrent()
 #test_misestimation()
-#test_bw_allocation()
-test_vshistory()
+test_bw_allocation()
+#test_vshistory()
