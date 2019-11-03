@@ -314,12 +314,12 @@ class Workload:
         except FileNotFoundError:
                 print(Fore.YELLOW, "bandwidthsensitivity.json is not available", Style.RESET_ALL)
 
-        runtimes = stats["MRD"]
+        runtimes = stats["Kariz"]
         #dags = ['AQ26', 'AQ27', 'AQ25']
         dags = tpc.graphs_dict
         prev_runtime = 0
         #bandwidth = [30, 150, 300, 600, 1200]
-        bandwidth = 1200
+        bandwidth = 30
         for dag_id in dags:
             if dag_id not in runtimes:
                 runtimes[dag_id] = {}
@@ -330,7 +330,7 @@ class Workload:
             dag.submit_time = prev_runtime
             runtime, rtl, dataset_inputs = pigsim.start_pig_simulator(dag)
             prev_runtime = runtime
-            runtimes[dag_id][bandwidth] = {'Cache': 'MRD', 'DAG_id': dag_id, 'Runtime': runtime, 'runtime list': rtl, 'datasets': dataset_inputs, 'bandwidth':bandwidth}
+            runtimes[dag_id][bandwidth] = {'Cache': 'Kariz', 'DAG_id': dag_id, 'Runtime': runtime, 'runtime list': rtl, 'datasets': dataset_inputs, 'bandwidth':bandwidth}
             print(runtimes[dag_id][bandwidth])
 
         
