@@ -314,12 +314,12 @@ class Workload:
         except FileNotFoundError:
                 print(Fore.YELLOW, "bandwidthsensitivity.json is not available", Style.RESET_ALL)
 
-        runtimes = stats["NoCache"]
+        runtimes = stats["MRD"]
         #dags = ['AQ26', 'AQ27', 'AQ25']
         dags = tpc.graphs_dict
         prev_runtime = 0
         #bandwidth = [30, 150, 300, 600, 1200]
-        bandwidth = 30
+        bandwidth = 1200
         for dag_id in dags:
             if dag_id not in runtimes:
                 runtimes[dag_id] = {}
