@@ -319,7 +319,7 @@ class Workload:
         dags = tpc.graphs_dict
         prev_runtime = 0
         #bandwidth = [30, 150, 300, 600, 1200]
-        bandwidth = 30
+        bandwidth = 1200
         for dag_id in dags:
             if dag_id not in runtimes:
                 runtimes[dag_id] = {}
