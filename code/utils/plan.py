@@ -26,7 +26,8 @@ class Stage:
     
     def update_inputs(self, j):
         for f in j.inputs:
-            self.stage_inputs[f] = self.stage_inputs[f] if f in self.stage_inputs and self.stage_inputs[f] > j.inputs[f] else j.inputs[f] 
+            if f in self.stage_inputs:
+                self.stage_inputs[f] = self.stage_inputs[f] if f in self.stage_inputs and self.stage_inputs[f] > j.inputs[f] else j.inputs[f]
     
     def add_job(self, j):      
         self.jobs.append(j)
@@ -41,21 +42,14 @@ class Stage:
 
     def update_longest_jobs(self):
         toyjob = job.Job()
-        self.longest_job = toyjob
-        self.longest_jobs = []
-        self.second_job = toyjob
-        self.second_jobs = []
-        
         for j in self.jobs:
             if j.longer_than(self.longest_job):
-                self.second_job = self.longest_job
                 self.longest_job = j
             elif j.longer_than(self.second_job) and not j.concurrent_with(self.longest_job):
                 self.second_job = j
         if self.longest_job.concurrent_with(self.second_job):
-            # find the second longest job
             self.second_job = toyjob
-            self.second_jobs = []                
+            self.second_jobs = []
             
         self.finish_add_jobs()
             
@@ -102,7 +96,7 @@ class Stage:
                 continue
             
             scale_factor =  (t_imprv_old + t_imprv)/(e.est_runtime_remote - e.est_runtime_cache)
-            #input_scale = lambda input_size: math.ceil((input_size*(t_imprv_old + t_imprv))/(e.est_runtime_remote - e.est_runtime_cache)) 
+
             # FIXME: prepare inputs, this should represent the actual strides 
             for i in e.inputs:
                 cached_size = math.ceil(e.inputs[i]*scale_factor)
@@ -288,7 +282,6 @@ class PlansContainer:
         cache_plan = []
         if stage in self.cp_by_stage:
             for pp in self.cp_by_stage[stage]:
-                if len(self.cp_by_stage[stage][pp].data) == 0: continue
                 cache_plan.append(self.cp_by_stage[stage][pp])
         return cache_plan
     
@@ -321,4 +314,3 @@ class PlansContainer:
             plans.sort(reverse=True)
         return plans
 
-    

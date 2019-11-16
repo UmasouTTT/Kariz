@@ -21,15 +21,15 @@ class ObjectStore:
         #Kaizen
         access_key = "4c3da79d02bb4a2e8f04495bff5203b2"
         secret_key = "b7bd5b4abcd34ca8a94e93e8b76527f4"
-        s3a_endpoint_url="https://kzn-swift.massopen.cloud"
+        s3a_endpoint_url="https://127.0.0.1:8000"
         is_secure = False
         self.s3client = boto3.client(service_name='s3', aws_access_key_id=access_key, aws_secret_access_key=secret_key,
                     endpoint_url=s3a_endpoint_url)
         self.s3conn = boto.connect_s3(aws_access_key_id=access_key, aws_secret_access_key=secret_key, host=s3a_endpoint_url, 
                 calling_format = boto.s3.connection.OrdinaryCallingFormat())
-        hdfs_endpoint_url = 'http://kariz-1:50070'
+        hdfs_endpoint_url = 'http://10.0.0.9:50070'
         hdfs_user = 'ubuntu'
-        fpath = '/root/Kariz/code/utils/'
+        fpath = '/home/centos/ceph-prefetching/Kariz/code/utils/'
         #fpath = '/home/mania/Northeastern/MoC/Kariz/code/utils/'
         self.hdfsclient = hdfs.InsecureClient(hdfs_endpoint_url, user=hdfs_user)
         self.tpch_metadata, self.tpcds_metadata = inputs.prepare_tpc_metadata(fpath)

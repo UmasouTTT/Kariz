@@ -31,10 +31,13 @@ def test_d3n():
 def test_bw_allocation():
     workload = wkl.Workload()
     workload.bw_allocation_workload()
-    
+def test_spark():
+    workload = wkl.Workload()
+    workload.own_test()    
 #test_d3n()
 #test_sequential()
 #test_concurrent()
 #test_misestimation()
-test_bw_allocation()
+#test_bw_allocation()
 #test_vshistory()
+test_spark

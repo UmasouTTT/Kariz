@@ -1,18 +1,19 @@
 '''
 Created on Sep 13, 2019
-
 @author: mania
 '''
 import estimator.collector as collector
 import utils.objectstore as objs
 import pandas as pd
 import utils.hadoop as hadoop
+import utils.graph as Graph
+import spark_longest_path
 
 
 def test_collector_alluxio():
     raw_execplan = '''DAG:'92af9f31-1238-4e1d-b517-605c4f8f2730'
 #--------------------------------------------------
-# Map Reduce Plan                                  
+# Map Reduce Plan
 #--------------------------------------------------
 MapReduce node: {scope-106
 Map Plan: {
@@ -56,7 +57,6 @@ StatusGroup: Local Rearrange[tuple]{tuple}(false) - scope-61
 {{{{{{Project[bytearray][6] - scope-8
 {{{{{Constant(1998-09-02) - scope-10
 {{{{LineItems: Load(alluxio://kariz-1:19998/tpch-4G/lineitem:PigStorage('|')) - scope-6}
-
 Reduce Plan: {
 Store(hdfs://kariz-1:9000/tmp/temp661924923/tmp-398745305:org.apache.pig.impl.io.InterStorage) - scope-107
 {PriceSummary: New For Each(false,false,false,false,false,false,false,false,false,false)[bag] - scope-101
@@ -88,11 +88,8 @@ Store(hdfs://kariz-1:9000/tmp/temp661924923/tmp-398745305:org.apache.pig.impl.io
 {{POUserFunc(org.apache.pig.builtin.COUNT)[long] - scope-99
 {{{Project[bag][1] - scope-98
 {{StatusGroup: Package(Packager)[tuple]{tuple} - scope-60}
-
 Global sort: {false}
-
 }
-
 MapReduce node: {scope-109
 Map Plan: {
 SortedSummary: Local Rearrange[tuple]{chararray}(false) - scope-114
@@ -101,7 +98,6 @@ SortedSummary: Local Rearrange[tuple]{chararray}(false) - scope-114
 {{Project[bytearray][0] - scope-110
 {{Project[bytearray][1] - scope-111
 {{Load(hdfs://kariz-1:9000/tmp/temp661924923/tmp-398745305:org.apache.pig.impl.builtin.RandomSampleLoader('org.apache.pig.impl.io.InterStorage','100')) - scope-108}
-
 Reduce Plan: {
 Store(hdfs://kariz-1:9000/tmp/temp661924923/tmp-174642847:org.apache.pig.impl.io.InterStorage) - scope-124
 {New For Each(false)[tuple] - scope-123
@@ -114,28 +110,21 @@ Store(hdfs://kariz-1:9000/tmp/temp661924923/tmp-174642847:org.apache.pig.impl.io
 {{{{Project[bytearray][1] - scope-118
 {{{{Project[bag][1] - scope-116
 {{{Package(Packager)[tuple]{chararray} - scope-115}
-
 Global sort: {false}
-
 }
-
 MapReduce node: {scope-126
 Map Plan: {
 SortedSummary: Local Rearrange[tuple]{tuple}(false) - scope-127
 {Project[bytearray][0] - scope-102
 {Project[bytearray][1] - scope-103
 {Load(hdfs://kariz-1:9000/tmp/temp661924923/tmp-398745305:org.apache.pig.impl.io.InterStorage) - scope-125}
-
 Reduce Plan: {
 SortedSummary: Store(/tpch-4G/Q1out:org.apache.pig.builtin.PigStorage) - scope-105
 {New For Each(true)[tuple] - scope-130
 {{Project[bag][1] - scope-129
 {{Package(LitePackager)[tuple]{tuple} - scope-128}
-
 Global sort: {true}
-
 Quantile file: {hdfs://kariz-1:9000/tmp/temp661924923/tmp-174642847}
-
 }
 '''
     col = collector.Collector()
@@ -147,7 +136,7 @@ Quantile file: {hdfs://kariz-1:9000/tmp/temp661924923/tmp-174642847}
 
 
 def test_collector():
-    collector = collector.Collector()
+    my_collector = collector.Collector()
     raw_execplan = '''
     DAG:'eaf51b30-f457-4bc7-97a7-c3462698cd73'
     #--------------------------------------------------
@@ -168,14 +157,46 @@ def test_collector():
     {{{Project[bytearray][4] - scope-97
     {{{Project[bytearray][5] - scope-99
     {{{a: Load(/pigmix1/pigmix_power_users:PigStorage('')) - scope-88}
-    
     Global sort: {false}
-    
     }
     '''
     objstore = objs.ObjectStore()
-    collector.objectstore = objstore
-    g = Graph.pigstr_to_graph(raw_execplan);
+    my_collector.objectstore = objstore
+    g = Graph.pigstr_to_graph(raw_execplan,objstore);
+    print(str(g))
+
+
+def test_spark_collector():
+    my_collector = collector.Collector()
+#     raw_execplan = '''
+# (8) ShuffledRDD[5] at reduceByKey at ScalaWordCount.scala:48 []
+#  +-(8) MapPartitionsRDD[4] at map at ScalaWordCount.scala:46 []
+#     |  MapPartitionsRDD[3] at flatMap at ScalaWordCount.scala:44 []
+#     |  MapPartitionsRDD[2] at map at IOCommon.scala:44 []
+#     |  MapPartitionsRDD[1] at sequenceFile at IOCommon.scala:44 []
+#     |  hdfs://sandbox.hortonworks.com:8020/HiBench/Wordcount/Input HadoopRDD[0] at sequenceFile at IOCommon.scala:44 []
+#     '''
+    raw_execplan = '''
+(8) PythonRDD[12] at collect at /Users/joe/Desktop/Spark_Source/spark/bin/wordcount.py:39 []
+ |  MapPartitionsRDD[11] at mapPartitions at PythonRDD.scala:133 []
+ |  ShuffledRDD[10] at partitionBy at NativeMethodAccessorImpl.java:0 []
+ +-(8) PairwiseRDD[9] at reduceByKey at /Users/joe/Desktop/Spark_Source/spark/bin/wordcount.py:31 []
+    |  PythonRDD[8] at reduceByKey at /Users/joe/Desktop/Spark_Source/spark/bin/wordcount.py:31 []
+    |  UnionRDD[7] at union at NativeMethodAccessorImpl.java:0 []
+    |  UnionRDD[4] at union at NativeMethodAccessorImpl.java:0 []
+    |  input1/*.txt MapPartitionsRDD[1] at textFile at NativeMethodAccessorImpl.java:0 []
+    |  input1/*.txt HadoopRDD[0] at textFile at NativeMethodAccessorImpl.java:0 []
+    |  input2/*.txt MapPartitionsRDD[3] at textFile at NativeMethodAccessorImpl.java:0 []
+    |  input2/*.txt HadoopRDD[2] at textFile at NativeMethodAccessorImpl.java:0 []
+    |  input3/*.txt MapPartitionsRDD[6] at textFile at NativeMethodAccessorImpl.java:0 []
+    |  input3/*.txt HadoopRDD[5] at textFile at NativeMethodAccessorImpl.java:0 []
+    '''
+
+
+    #objstore = objs.ObjectStore()
+    #my_collector.objectstore = objstore
+    g = Graph.sparkstr_to_graph(raw_execplan)
+    spark_longest_path.Graph(g).findAllPaths()
     print(str(g))
 
 
@@ -183,7 +204,7 @@ def test_collector2():
     collector = collector.Collector()
     raw_execplan = '''DAG:'261c8b72-1aa1-4d05-b11c-9a04c6f2a58b'
 #--------------------------------------------------
-# Map Reduce Plan                                  
+# Map Reduce Plan
 #--------------------------------------------------
 MapReduce node: {scope-192
 Map Plan: {
@@ -214,18 +235,14 @@ Union[tuple] - scope-193
 {{{Cast[chararray] - scope-28
 {{{{Project[bytearray][3] - scope-27
 {{{Nation: Load(s3a://data/tpch-2G/nation:PigStorage('|')) - scope-17}
-
 Reduce Plan: {
 Store(hdfs://kariz-1:9000/tmp/temp-111918155/tmp-2090231785:org.apache.pig.impl.io.InterStorage) - scope-194
 {FR_N: New For Each(true,true)[tuple] - scope-41
 {{Project[bag][1] - scope-39
 {{Project[bag][2] - scope-40
 {{FR_N: Package(Packager)[tuple]{int} - scope-34}
-
 Global sort: {false}
-
 }
-
 MapReduce node: {scope-198
 Map Plan: {
 Union[tuple] - scope-199
@@ -250,18 +267,14 @@ Union[tuple] - scope-199
 {{{Cast[chararray] - scope-62
 {{{{Project[bytearray][6] - scope-61
 {{{Supplier: Load(s3a://data/tpch-2G/supplier:PigStorage('|')) - scope-42}
-
 Reduce Plan: {
 Store(hdfs://kariz-1:9000/tmp/temp-111918155/tmp-1814521436:org.apache.pig.impl.io.InterStorage) - scope-200
 {FR_N_S: New For Each(true,true)[tuple] - scope-75
 {{Project[bag][1] - scope-73
 {{Project[bag][2] - scope-74
 {{FR_N_S: Package(Packager)[tuple]{int} - scope-68}
-
 Global sort: {false}
-
 }
-
 MapReduce node: {scope-204
 Map Plan: {
 Union[tuple] - scope-205
@@ -282,18 +295,14 @@ Union[tuple] - scope-205
 {{{Cast[chararray] - scope-90
 {{{{Project[bytearray][4] - scope-89
 {{{Partsupp: Load(s3a://data/tpch-2G/partsupp:PigStorage('|')) - scope-76}
-
 Reduce Plan: {
 Store(hdfs://kariz-1:9000/tmp/temp-111918155/tmp608016270:org.apache.pig.impl.io.InterStorage) - scope-206
 {FR_N_S_PS: New For Each(true,true)[tuple] - scope-103
 {{Project[bag][1] - scope-101
 {{Project[bag][2] - scope-102
 {{FR_N_S_PS: Package(Packager)[tuple]{long} - scope-96}
-
 Global sort: {false}
-
 }
-
 MapReduce node: {scope-210
 Map Plan: {
 Union[tuple] - scope-211
@@ -330,24 +339,19 @@ Union[tuple] - scope-211
 {{{{Cast[chararray] - scope-130
 {{{{{Project[bytearray][8] - scope-129
 {{{{Part: Load(s3a://data/tpch-2G/part:PigStorage('|')) - scope-104}
-
 Reduce Plan: {
 Store(hdfs://kariz-1:9000/tmp/temp-111918155/tmp-465527780:org.apache.pig.impl.io.InterStorage) - scope-212
 {FR_N_S_PS_FP: New For Each(true,true)[tuple] - scope-151
 {{Project[bag][1] - scope-149
 {{Project[bag][2] - scope-150
 {{FR_N_S_PS_FP: Package(Packager)[tuple]{long} - scope-144}
-
 Global sort: {false}
-
 }
-
 MapReduce node: {scope-214
 Map Plan: {
 G1: Local Rearrange[tuple]{long}(false) - scope-154
 {Project[long][14] - scope-155
 {Load(hdfs://kariz-1:9000/tmp/temp-111918155/tmp-465527780:org.apache.pig.impl.io.InterStorage) - scope-213}
-
 Reduce Plan: {
 Store(hdfs://kariz-1:9000/tmp/temp-111918155/tmp-136970874:org.apache.pig.impl.io.InterStorage) - scope-215
 {RawResults: New For Each(false,false,false,false,false,false,false,false)[bag] - scope-183
@@ -369,11 +373,8 @@ Store(hdfs://kariz-1:9000/tmp/temp-111918155/tmp-136970874:org.apache.pig.impl.i
 {{{{{Project[bag][17] - scope-159
 {{{{{{Project[bag][1] - scope-158
 {{{{G1: Package(Packager)[tuple]{long} - scope-153}
-
 Global sort: {false}
-
 }
-
 MapReduce node: {scope-217
 Map Plan: {
 SortedMinimumCostSupplier: Local Rearrange[tuple]{chararray}(false) - scope-224
@@ -384,7 +385,6 @@ SortedMinimumCostSupplier: Local Rearrange[tuple]{chararray}(false) - scope-224
 {{Project[chararray][1] - scope-220
 {{Project[long][3] - scope-221
 {{Load(hdfs://kariz-1:9000/tmp/temp-111918155/tmp-136970874:org.apache.pig.impl.builtin.RandomSampleLoader('org.apache.pig.impl.io.InterStorage','100')) - scope-216}
-
 Reduce Plan: {
 Store(hdfs://kariz-1:9000/tmp/temp-111918155/tmp-1042434768:org.apache.pig.impl.io.InterStorage) - scope-236
 {New For Each(false)[tuple] - scope-235
@@ -399,11 +399,8 @@ Store(hdfs://kariz-1:9000/tmp/temp-111918155/tmp-1042434768:org.apache.pig.impl.
 {{{{Project[long][3] - scope-230
 {{{{Project[bag][1] - scope-226
 {{{Package(Packager)[tuple]{chararray} - scope-225}
-
 Global sort: {false}
-
 }
-
 MapReduce node: {scope-238
 Map Plan: {
 SortedMinimumCostSupplier: Local Rearrange[tuple]{tuple}(false) - scope-239
@@ -412,7 +409,6 @@ SortedMinimumCostSupplier: Local Rearrange[tuple]{tuple}(false) - scope-239
 {Project[chararray][1] - scope-186
 {Project[long][3] - scope-187
 {Load(hdfs://kariz-1:9000/tmp/temp-111918155/tmp-136970874:org.apache.pig.impl.io.InterStorage) - scope-237}
-
 Combine Plan: {
 Local Rearrange[tuple]{tuple}(false) - scope-244
 {Project[double][0] - scope-184
@@ -423,18 +419,14 @@ Local Rearrange[tuple]{tuple}(false) - scope-244
 {{New For Each(true)[tuple] - scope-242
 {{{Project[bag][1] - scope-241
 {{{Package(LitePackager)[tuple]{tuple} - scope-240}
-
 Reduce Plan: {
 HundredMinimumCostSupplier: Store(/tpch1g/Q2out:PigStorage('|')) - scope-189
 {Limit - scope-248
 {{New For Each(true)[tuple] - scope-247
 {{{Project[bag][1] - scope-246
 {{{Package(LitePackager)[tuple]{tuple} - scope-245}
-
 Global sort: {true}
-
 Quantile file: {hdfs://kariz-1:9000/tmp/temp-111918155/tmp-1042434768}
-
 }
 '''
     objstore = objs.ObjectStore()
@@ -442,7 +434,7 @@ Quantile file: {hdfs://kariz-1:9000/tmp/temp-111918155/tmp-1042434768}
     collector.submit_new_dag(raw_execplan)
 
 def correct_statistics():
-    fname = '../plans/kariz/job_runtime_stats.csv'
+    fname = 'job_runtime_stats.csv'
     with open(fname) as fd:
         data1 = fd.read().split('\n')
         del data1[-1]
@@ -466,9 +458,9 @@ def correct_statistics():
         stats_fn = 'job_runtime_stats.csv'
         runtime_stats_f = open(stats_fn,'a+');
         df.to_csv(stats_fn, header = False, index=False)
-        
+
     # open statistics file name
-    # read it line by lien 
+    # read it line by lien
 
 def statistics_checker():
     fname = 'job_runtime_stats.csv'
@@ -485,8 +477,12 @@ def statistics_checker():
         #df = pd.DataFrame(data=df_data,columns=df_header)
         #for index, row in df.iterrows():
         #    print(row[0])
-        
+
     # open statistics file name
-    # read it line by lien 
-    
-test_collector_alluxio()
+    # read it line by lien
+
+
+if __name__ == "__main__":
+    test_spark_collector()
+    #statistics_checker()
+    #correct_statistics()

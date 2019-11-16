@@ -27,8 +27,8 @@ class Graph:
         self.dag_id = uuid.uuid1()
         self.n_vertices = n_vertices 
         self.jobs = {}
-        for i in range(0, n_vertices):
-            self.jobs[i] = jb.Job(i)
+        #for i in range(0, n_vertices):
+            #self.jobs[i] = jb.Job(i)
         
         self.misestimated_jobs = np.zeros(2*n_vertices)
         
@@ -67,9 +67,8 @@ class Graph:
         graph_str = graph_str  +  ', "total_runtime" : ' + str(self.total_runtime) + '}'  
         return graph_str
 
-    def add_new_job(self, value):
-        self.jobs[self.n_vertices] = jb.Job(self.n_vertices)
-        self.n_vertices+= 1
+    def add_new_job(self, v, name):
+        self.jobs[v] = jb.Job(v, name)
     
     def set_misestimated_jobs(self, mse_jobs):
         for i in range(0, self.n_vertices):
@@ -92,23 +91,26 @@ class Graph:
             
     def static_runtime(self, v, runtime_remote, runtime_cache):
         self.jobs[v].static_runtime(runtime_remote, runtime_cache)
-        
+
+    def get_sum_static_runtime(self, v):
+        return self.jobs[v]    
+    
     def config_ntasks(self, v, n_tasks):
         self.jobs[v].config_ntasks(n_tasks)
         
     def config_inputs(self, v, inputs):
         self.jobs[v].config_inputs(inputs)
 
-    def add_edge(self, src, dest, distance = 0):
+    def add_edge(self, src, dest, distance = 0, src_name = 'Undefined', dest_name = 'Undefined'):
         if src not in self.jobs:
-            self.add_new_job(src)
+            self.add_new_job(src, src_name)
         if dest not in self.jobs:
-            self.add_new_job(dest)
+            self.add_new_job(dest, dest_name)
         self.jobs[src].add_child(dest, distance)
         if src in self.leaves:
             self.leaves.remove(src)
             self.jobs[src].blevel = -1
-            
+
         self.jobs[dest].add_parent(src, distance)
         if dest in self.roots:
             self.roots.remove(dest)
@@ -245,7 +247,7 @@ class Graph:
 def str_to_graph(raw_execplan, objectstore):
     g = None
     if raw_execplan.startswith('DAG'):
-        g = pigstr_to_graph(raw_execplan, objectstore)
+        g = sparkstr_to_graph(raw_execplan, objectstore)
     elif raw_execplan.startswith('ID'):
         g = graph_id_to_graph(raw_execplan, objectstore)
     else:
@@ -265,6 +267,62 @@ def graph_id_to_graph(raw_execplan, objectstore):
               g.jobs[j].inputs[i] = objectstore.tpch_metadata[g_ds][i]
           g.static_runtime(j, objectstore.tpch_runtime[g_id][g_ds][j]['remote'], objectstore.tpch_runtime[g_id][g_ds][j]['cached'])
        return g
+
+def sparkstr_to_graph(raw_execplan, objectstore):
+    ls = raw_execplan.split("\n")
+    vertices= {}
+    functions = []
+    outputs = []
+    outputs_copy = []
+    inputs = []
+    for i in reversed(range(len(ls))):
+        line = ls[i].split(' at ')
+        if len(line) == 3:
+            functions.append(line[1].strip())
+            io = line[0].split(')')[-1].split('|')[-1].strip().split(' ')
+            rddnum = int(io[-1].split('[')[1].split(']')[0])
+            outputs.append((rddnum, io[-1]))
+            outputs_copy.append((rddnum, io[-1]))
+            inputrdd = [item for item in outputs_copy if item[0] < rddnum]  #add all the smaller number rdds to input
+            datasize= 1
+            input={}
+            if len(inputrdd) != 0:
+                for item in inputrdd:
+                    input[item[1]] = datasize
+                    outputs_copy.remove(item) #delete the rdd which has alread assinged as input to a node
+
+            if(len(io)==2):            #add textFile to input
+                input[io[-2]] = datasize
+            inputs.append(input)
+
+    graph = {}
+    for i in range(len(functions)):
+        graph[i]={}
+        graph[i]['output'] = outputs[i][1]
+        graph[i]['inputs']= inputs[i]
+    # print(graph)
+    # print('\n')
+    g = Graph(len(functions))
+    for v in graph:
+        g.add_new_job(v, '"'+functions[v]+'"')
+        g.config_inputs(v, graph[v]['inputs'])
+    for i in range(len(graph)):
+        g.static_runtime(i, random.random()+1, random.random())
+    for v1 in graph:
+        for v2 in graph:
+            # v1_to_v2 =
+            for i in graph[v1]['inputs']:
+                if i in graph[v2]['output']:
+                    # g.add_edge(v2, v1, 1, functions[v2], functions[v1])
+                    _remote = g.get_sum_static_runtime(v1).runtime_remote
+                    _cache = g.get_sum_static_runtime(v1).runtime_cache
+                    g.add_edge(v2, v1, _cache + _remote, functions[v2], functions[v1])
+
+                    # print(g.get_sum_static_runtime(v1).runtime_remote, v1, "=======")
+
+    print(str(g))
+    return g
+
 
 def pigstr_to_graph(raw_execplan, objectstore):
     ls = raw_execplan.split("\n")

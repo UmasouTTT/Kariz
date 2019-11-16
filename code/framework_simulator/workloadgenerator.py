@@ -338,4 +338,40 @@ class Workload:
         with open('bandwidthsensitivity.json', 'w') as dumpf:
             json.dump(stats, dumpf)
 
+def own_test(self):
+        dag = self.test_spark_collector()
+        runtime, rtl, dataset_inputs = pigsim.start_pig_simulator(dag)
+
+    def test_spark_collector(self):
+        # my_collector = collector.Collector()
+        #     raw_execplan = '''
+        # (8) ShuffledRDD[5] at reduceByKey at ScalaWordCount.scala:48 []
+        #  +-(8) MapPartitionsRDD[4] at map at ScalaWordCount.scala:46 []
+        #     |  MapPartitionsRDD[3] at flatMap at ScalaWordCount.scala:44 []
+        #     |  MapPartitionsRDD[2] at map at IOCommon.scala:44 []
+        #     |  MapPartitionsRDD[1] at sequenceFile at IOCommon.scala:44 []
+        #     |  hdfs://sandbox.hortonworks.com:8020/HiBench/Wordcount/Input HadoopRDD[0] at sequenceFile at IOCommon.scala:44 []
+        #     '''
+        raw_execplan = '''
+    (8) PythonRDD[12] at collect at /Users/joe/Desktop/Spark_Source/spark/bin/wordcount.py:39 []
+     |  MapPartitionsRDD[11] at mapPartitions at PythonRDD.scala:133 []
+     |  ShuffledRDD[10] at partitionBy at NativeMethodAccessorImpl.java:0 []
+     +-(8) PairwiseRDD[9] at reduceByKey at /Users/joe/Desktop/Spark_Source/spark/bin/wordcount.py:31 []
+        |  PythonRDD[8] at reduceByKey at /Users/joe/Desktop/Spark_Source/spark/bin/wordcount.py:31 []
+        |  UnionRDD[7] at union at NativeMethodAccessorImpl.java:0 []
+        |  UnionRDD[4] at union at NativeMethodAccessorImpl.java:0 []
+        |  input1/*.txt MapPartitionsRDD[1] at textFile at NativeMethodAccessorImpl.java:0 []
+        |  input1/*.txt HadoopRDD[0] at textFile at NativeMethodAccessorImpl.java:0 []
+        |  input2/*.txt MapPartitionsRDD[3] at textFile at NativeMethodAccessorImpl.java:0 []
+        |  input2/*.txt HadoopRDD[2] at textFile at NativeMethodAccessorImpl.java:0 []
+        |  input3/*.txt MapPartitionsRDD[6] at textFile at NativeMethodAccessorImpl.java:0 []
+        |  input3/*.txt HadoopRDD[5] at textFile at NativeMethodAccessorImpl.java:0 []
+        '''
+
+        # objstore = objs.ObjectStore()
+        # my_collector.objectstore = objstore
+        g = Graph.sparkstr_to_graph(raw_execplan)
+        # spark_longest_path.Graph(g).findAllPaths()
+        # print(str(g))
+        return g
 
