@@ -178,6 +178,7 @@ class Cache:
     def prefetch_plan(self, data, score):
         evicted = []
         revertible = {}
+        token = d3n.get_token()
         for f in data:
             fd = data[f]
             if f in self.global_status:
@@ -186,8 +187,8 @@ class Cache:
                 if e.size < fd['size']:
                 #    old_size = e.size
                 #    #e, evf, pstatus = self.workers[wid].kariz_cache_file(f, fd['size'], score) #ce: cached entry
-                    # FIXME: before sending the request check if you have enought space in the cache 
-                    d3n.prefetch_object('test', f, fd['size'])
+                    # FIXME: before sending the request check if you have enought space in the cache
+                    d3n.prefetch_object(token, 'test', f, 0, fd['size'])
                 #    evicted.extend(evf)
                 #    if pstatus != status.SUCCESS:
                 #        self.clean_up(revertible)
@@ -196,7 +197,7 @@ class Cache:
             else:
                 #wid = self.get_worker()
                 #e, evf, pstatus = self.workers[wid].kariz_cache_file(f, fd['size'], score) #ce: cached entry
-                d3n.prefetch_object('test', f, fd['size'])
+                d3n.prefetch_object(token, 'test', f, 0, fd['size'])
                 #evicted.extend(evf)
                 #if pstatus != status.SUCCESS:
                 #    self.clean_up(revertible)
