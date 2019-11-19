@@ -1,7 +1,7 @@
 from collections import defaultdict
 import estimator.collector as collector
 import utils.job as jb
-import utils.graph
+import utils.graph as graph
 
 class Graph:
     """
@@ -10,7 +10,8 @@ class Graph:
 
     def __init__(self, g):
         self.longestroute=[]
-        self.lonegestlength = 0
+        self.longestlength = 0
+        self.g = g
         self.V = g.n_vertices
         self.nodes = set()
         self.edges = {}
@@ -160,15 +161,13 @@ class Graph:
                 longestRoute = allRoutes[pathLengths.index(longestLen)]
                 print("Longest path starting at node ", s, " ends at node ", longestEnd, " with length ", -1*longestLen)
                 print("The longest route is ", longestRoute)
-                if longestLen > length:
+                if longestLen > self.longestlength:
                     self.longestlength = longestLen
                     self.longestroute = longestRoute.copy()
             else:
                 print("Error: Not a true DAG")
 
-        path = utils.graph(self.longestlength, 4, 'LongestGraph')
-        print(self.longestroute,"\n")
-        print(self.longestlength)
-	#for i in route:
-	 #   path.add_new_job(i, self.g.jobs[id].func_name)
-        #return path
+        path = graph.Graph(len(self.longestroute))
+        for i in self.longestroute:
+            path.add_new_job(i, self.g.jobs.get(i).func_name)
+        return path

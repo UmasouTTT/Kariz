@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #usage: test_boto.py put bucket_name object_name
-# example: python run_boto.py put traces alibaba_clusterdata_v2018/machine_usage.csv 
+# example: python run_boto.py put traces alibaba_clusterdata_v2018/machine_usage.csv
 # example run_boto.py get traces  alibaba_clusterdata_v2018/batch_instance.csv
 
 
@@ -25,11 +25,12 @@ class ObjectStore:
         is_secure = False
         self.s3client = boto3.client(service_name='s3', aws_access_key_id=access_key, aws_secret_access_key=secret_key,
                     endpoint_url=s3a_endpoint_url)
-        self.s3conn = boto.connect_s3(aws_access_key_id=access_key, aws_secret_access_key=secret_key, host=s3a_endpoint_url, 
+        self.s3conn = boto.connect_s3(aws_access_key_id=access_key, aws_secret_access_key=secret_key, host=s3a_endpoint_url,
                 calling_format = boto.s3.connection.OrdinaryCallingFormat())
         hdfs_endpoint_url = 'http://10.0.0.9:50070'
         hdfs_user = 'ubuntu'
-        fpath = '/home/centos/ceph-prefetching/Kariz/code/utils/'
+        #fpath = '/home/centos/ceph-prefetching/Kariz/code/utils/'
+        fpath = '/home/xun/Kariz/code/utils/'
         #fpath = '/home/mania/Northeastern/MoC/Kariz/code/utils/'
         self.hdfsclient = hdfs.InsecureClient(hdfs_endpoint_url, user=hdfs_user)
         self.tpch_metadata, self.tpcds_metadata = inputs.prepare_tpc_metadata(fpath)
@@ -47,7 +48,7 @@ class ObjectStore:
         if dataset_name == 'tpcds':
             return self.tpcds_metadata[dataset_size][obj_name], obj_name
         return dataset_size, url.split('/')[-1]
-        
+
 
     def get_datasetsize_from_url(self, url):
         dataset_size = 0
@@ -55,7 +56,7 @@ class ObjectStore:
             return dataset_size, url.split('/')[-1]
         if 'tpc' in url:
            return self.get_datasetsize_tpc_url(url)
-        
+
         if url.startswith("s3a"):
             dataset_size = self.get_datasetsize_from_s3a_url(url)
         elif url.startswith("alluxio"):
@@ -84,7 +85,7 @@ class ObjectStore:
         bucket_meta = self.s3client.list_objects(Bucket=bucket_name, Prefix=obj_name)['Contents']
         dataset_size = sum(f['Size'] for f in bucket_meta)
         return dataset_size;
-        
+
     def get_datasetsize_from_alluxio_url(self, url):
         dataset_size = 0
         return dataset_size;

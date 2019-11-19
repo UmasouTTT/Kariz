@@ -195,9 +195,13 @@ def test_spark_collector():
 
     objstore = objs.ObjectStore()
     my_collector.objectstore = objstore
-    g = Graph.sparkstr_to_graph(raw_execplan, objectstore)
+    g = Graph.sparkstr_to_graph(raw_execplan, objstore)
     longest_g = spark_longest_path.Graph(g).findAllPaths()
     print(str(g))
+    print("\n\n\n")
+    print(str(longest_g))
+
+
 
 
 def test_collector2():
