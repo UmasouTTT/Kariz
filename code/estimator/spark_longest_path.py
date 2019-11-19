@@ -137,6 +137,8 @@ class Graph:
 
     def findAllPaths(self):
         start, end = self.criticalNodes()
+        length = 0
+        route = []
         for s in start:
             endNodes = []
             allRoutes = []
@@ -158,5 +160,15 @@ class Graph:
                 longestRoute = allRoutes[pathLengths.index(longestLen)]
                 print("Longest path starting at node ", s, " ends at node ", longestEnd, " with length ", -1*longestLen)
                 print("The longest route is ", longestRoute)
+                if longestLen > length:
+                    length = longestLen
+                    route = longestRoute
             else:
                 print("Error: Not a true DAG")
+        
+            path = utils.graph(len(length, 4, 'LongestGraph')
+            for id in route:
+                path.add_new_job(id, self.g.jobs[id].func_name)
+            return path
+
+
