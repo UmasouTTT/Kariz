@@ -172,5 +172,3 @@ class Graph:
 	#for i in route:
 	 #   path.add_new_job(i, self.g.jobs[id].func_name)
         #return path
-
-
