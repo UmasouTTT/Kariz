@@ -162,13 +162,11 @@ class Graph:
                 print("The longest route is ", longestRoute)
                 if longestLen > length:
                     length = longestLen
-                    route = longestRoute
+                    route = longestRoute.copy()
             else:
                 print("Error: Not a true DAG")
-        
-            path = utils.graph(len(length, 4, 'LongestGraph')
-            for id in route:
-                path.add_new_job(id, self.g.jobs[id].func_name)
-            return path
 
-
+        path = utils.graph(len(length, 4, 'LongestGraph')
+        for i in route:
+            path.add_new_job(i, self.g.jobs[id].func_name)
+        return path
