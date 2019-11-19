@@ -7,8 +7,10 @@ class Graph:
     """
     A simple undirected, weighted graph
     """
-
+    
     def __init__(self, g):
+        self.longestroute=[]
+	self.lonegestlength=0
         self.V = g.n_vertices
         self.nodes = set()
         self.edges = {}
@@ -137,8 +139,6 @@ class Graph:
 
     def findAllPaths(self):
         start, end = self.criticalNodes()
-        length = 0
-        route = []
         for s in start:
             endNodes = []
             allRoutes = []
@@ -161,14 +161,16 @@ class Graph:
                 print("Longest path starting at node ", s, " ends at node ", longestEnd, " with length ", -1*longestLen)
                 print("The longest route is ", longestRoute)
                 if longestLen > length:
-                    length = longestLen
-                    route = longestRoute
+                    self.longestlength = longestLen
+                    self.longestroute = longestRoute.copy()
             else:
                 print("Error: Not a true DAG")
         
-            path = utils.graph(len(length, 4, 'LongestGraph')
-            for id in route:
-                path.add_new_job(id, self.g.jobs[id].func_name)
-            return path
+        path = utils.graph(self.longestlength, 4, 'LongestGraph')
+	print(self.longestroute,"\n")
+	print(self.longestlength)
+	#for i in route:
+	 #   path.add_new_job(i, self.g.jobs[id].func_name)
+        #return path
 
 
