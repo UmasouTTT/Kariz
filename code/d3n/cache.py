@@ -5,6 +5,7 @@ import math
 import entry
 import worker as wr
 import utils.status as status
+import d3n_utils as d3n
 
 _cache = None
 
@@ -177,27 +178,31 @@ class Cache:
     def prefetch_plan(self, data, score):
         evicted = []
         revertible = {}
+        token = d3n.get_token()
         for f in data:
             fd = data[f]
             if f in self.global_status:
                 e = self.global_status[f]
                 wid = self.get_worker() #e.parent_id
                 if e.size < fd['size']:
-                    old_size = e.size
-                    e, evf, pstatus = self.workers[wid].kariz_cache_file(f, fd['size'], score) #ce: cached entry
-                    evicted.extend(evf)
-                    if pstatus != status.SUCCESS:
-                        self.clean_up(revertible)
-                        return status.UNABLE_TO_CACHE
-                    revertible[e.name] = {'osize': old_size, 'nsize': e.size}
+                #    old_size = e.size
+                #    #e, evf, pstatus = self.workers[wid].kariz_cache_file(f, fd['size'], score) #ce: cached entry
+                    # FIXME: before sending the request check if you have enought space in the cache
+                    d3n.prefetch_object(token, 'test', f, 0, fd['size'])
+                #    evicted.extend(evf)
+                #    if pstatus != status.SUCCESS:
+                #        self.clean_up(revertible)
+                #        return status.UNABLE_TO_CACHE
+                #    revertible[e.name] = {'osize': old_size, 'nsize': e.size}
             else:
-                wid = self.get_worker()
-                e, evf, pstatus = self.workers[wid].kariz_cache_file(f, fd['size'], score) #ce: cached entry
-                evicted.extend(evf)
-                if pstatus != status.SUCCESS:
-                    self.clean_up(revertible)
-                    return status.UNABLE_TO_CACHE
-                revertible[e.name] = {'osize': 0, 'nsize': e.size}
+                #wid = self.get_worker()
+                #e, evf, pstatus = self.workers[wid].kariz_cache_file(f, fd['size'], score) #ce: cached entry
+                d3n.prefetch_object(token, 'test', f, 0, fd['size'])
+                #evicted.extend(evf)
+                #if pstatus != status.SUCCESS:
+                #    self.clean_up(revertible)
+                #    return status.UNABLE_TO_CACHE
+                #revertible[e.name] = {'osize': 0, 'nsize': e.size}
             self.global_status[f] = e
             
             #self.workers[wid].pin_file(f, e.size)   
