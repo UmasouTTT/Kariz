@@ -28,7 +28,13 @@ class Mirab:
         
                 
     def add_dag(self, g):
-        self.dag_planners[g.dag_id] = dp.DAGPlanner(g)      
+        self.dag_planners[g.dag_id] = dp.DAGPlanner(g)
+        # Call online_planner in a for loop and the stage_id is the
+        # node id in
+
+        number_of_nodes = g.n_vertices
+        for i in range(number_of_nodes):
+            self.online_planner(g.dag_id, i)
         self.fairness_scores[g.dag_id] = 1
     
     def markas_pinned_datasets(self, dag_id, plan):
