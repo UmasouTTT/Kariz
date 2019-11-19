@@ -19,7 +19,7 @@ class DAGPlanner:
         self.current_running_stage = -2
         self.current_processed_stage = -2
         self.cached_plans = []
-        g.plans_container = pig.build_kariz_priorities(g)
+        g.plans_container = start_spark(g) #pig.build_kariz_priorities(g)
     
     def markas_pinned_datasets(self, plan):
         if plan.stage_id not in self.pinned_plans:
