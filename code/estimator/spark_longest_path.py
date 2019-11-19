@@ -7,10 +7,10 @@ class Graph:
     """
     A simple undirected, weighted graph
     """
-    
+
     def __init__(self, g):
         self.longestroute=[]
-	self.lonegestlength=0
+	    self.lonegestlength=0
         self.V = g.n_vertices
         self.nodes = set()
         self.edges = {}
@@ -165,10 +165,10 @@ class Graph:
                     self.longestroute = longestRoute.copy()
             else:
                 print("Error: Not a true DAG")
-        
+
         path = utils.graph(self.longestlength, 4, 'LongestGraph')
-	print(self.longestroute,"\n")
-	print(self.longestlength)
+	    print(self.longestroute,"\n")
+	    print(self.longestlength)
 	#for i in route:
 	 #   path.add_new_job(i, self.g.jobs[id].func_name)
         #return path
