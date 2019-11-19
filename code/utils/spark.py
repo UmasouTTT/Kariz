@@ -13,6 +13,13 @@ import pandas as pd
 
 stage_preplan = {}
 
+
+def start_spark(dag):
+    longest_path_graph = spark_longest_path.findAllPath()
+    pig.build_stages(longest_path_graph)
+    return pig.build_cp_priorities(longest_path_graph)
+
+
 def preplan_stage(g, s):
 
     priority = 1;
