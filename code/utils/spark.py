@@ -8,7 +8,6 @@ import threading
 import os
 import json
 from utils.graph import *
-import tests
 import pandas as pd
 import estimator.spark_longest_path as spark_longest_path
 import utils.pig as pig
