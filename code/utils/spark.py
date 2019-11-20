@@ -10,12 +10,15 @@ import json
 from graph import *
 import tests
 import pandas as pd
+import estimator.spark_longest_path as spark_longest_path
+import utils.pig as pig
+import utils.graph as graph
 
 stage_preplan = {}
 
 
-def start_spark(dag):
-    longest_path_graph = spark_longest_path.findAllPath()
+def start_spark(g):
+    longest_path_graph = spark_longest_path.Graph(g).findAllPaths()
     pig.build_stages(longest_path_graph)
     return pig.build_cp_priorities(longest_path_graph)
 
@@ -30,7 +33,7 @@ def preplan_stage(g, s):
     while t_imprv:
         cp_job = {'job': -1, 'uncr_time' : 0, 'cr_time' : 0}
         cp2_job = {'job': -1, 'uncr_time' : 0, 'cr_time' : 0}
-        
+
         cp_jobs = []
         cp2_jobs = []
         for vx in s:
@@ -40,7 +43,7 @@ def preplan_stage(g, s):
             elif vx['uncr_time'] > cp2_job['uncr_time'] and vx['uncr_time'] != cp_job['uncr_time']:
                 cp2_jobs.append(vx)
                 cp2_job = vx
-            
+
         for vx in s:
             if vx['uncr_time'] == cp_job['uncr_time']:
                 cp_jobs.append(vx)
@@ -50,8 +53,8 @@ def preplan_stage(g, s):
                 cp2_jobs.append(vx)
                 if vx['cr_time'] > cp2_job['cr_time']:
                     cp2_job = vx
-        
-   
+
+
         if cp_job['cr_time'] <= cp2_job['uncr_time']:
             t_imprv = cp_job['uncr_time'] - cp2_job['uncr_time']
             for e in cp_jobs:
@@ -85,11 +88,10 @@ def preplan_dag(g):
             dag_preplan.append({'stage' :  max(blevels) - cur_blevel, 'preplan' : sp})
             cur_blevel = cur_blevel - 1
             cur_stage = []
-            
+
         cur_stage.append({'job': orderednodes[ci], 'uncr_time' : g.timeValue[orderednodes[ci]], 'cr_time' : g.cachedtimeValue[orderednodes[ci]]})
         ci = ci + 1
-        
+
     sp = preplan_stage(g, cur_stage)
     dag_preplan.append({'stage' :  max(blevels) - cur_blevel, 'preplan' : sp})
     return dag_preplan;
-
