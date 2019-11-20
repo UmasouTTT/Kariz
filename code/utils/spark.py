@@ -7,12 +7,12 @@ import csv
 import threading
 import os
 import json
-from graph import *
+from utils.graph import *
 import tests
 import pandas as pd
 import estimator.spark_longest_path as spark_longest_path
 import utils.pig as pig
-import utils.graph as graph
+
 
 stage_preplan = {}
 
