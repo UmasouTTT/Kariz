@@ -284,7 +284,8 @@ def sparkstr_to_graph(raw_execplan, objectstore):
             outputs.append((rddnum, io[-1]))
             outputs_copy.append((rddnum, io[-1]))
             inputrdd = [item for item in outputs_copy if item[0] < rddnum]  #add all the smaller number rdds to input
-            datasize= 1
+            #print('input rdd is: ', io)
+            datasize= 0
             input={}
             if len(inputrdd) != 0:
                 for item in inputrdd:
@@ -292,6 +293,8 @@ def sparkstr_to_graph(raw_execplan, objectstore):
                     outputs_copy.remove(item) #delete the rdd which has alread assinged as input to a node
 
             if(len(io)==2):            #add textFile to input
+                if 's3a' in io[-2]:
+                    datasize = objectstore.s3a_get_dataset_size(io[-2])
                 input[io[-2]] = datasize
             inputs.append(input)
 
@@ -320,7 +323,7 @@ def sparkstr_to_graph(raw_execplan, objectstore):
 
                     # print(g.get_sum_static_runtime(v1).runtime_remote, v1, "=======")
 
-    print(str(g))
+    #print(str(g))
     return g
 
 

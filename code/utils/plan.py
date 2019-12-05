@@ -182,6 +182,7 @@ class Plan:
     def __init__(self, stg_id=-1):
         self.priority = -1 # -1 is the least priority, and 0 means highest priority
         self.orig_stage_id = stg_id # the stage_id of the plan 
+        self.stage_id = stg_id
         self.assigned_stage_id = -1 # the stage_id that the prefetching of the plan should be started within that time frame.
         self.dag_id = -1 # dag_id 
         self.plan_id = uuid.uuid1()
@@ -201,7 +202,7 @@ class Plan:
         self.mrd_distance = 0
 
     def __str__(self):
-        return 'DAG id: ' + str(self.dag_id) + ', stage id: ' + str(self.orig_stage_id) + ', data' +  str(self.data)
+        return 'DAG id: ' + str(self.dag_id) + ', stage id: ' + str(self.stage_id) + ', data' +  str(self.data)
     
     def __lt__(self, other):
         if self.wscore != other.wscore:

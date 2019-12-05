@@ -4,6 +4,7 @@ import utils.plan as plan
 
 def build_stages(g):
     blevels = g.blevel()
+    print(blevels)
     scheduled = [False]*g.n_vertices
     stages = {}
 
@@ -41,6 +42,7 @@ def build_stages(g):
         g.total_runtime += cur_stage.get_runtime()
 
     g.schedule = stages
+    print(g.schedule)
     return g;
 
 def input_scaling(g, j, prefetch_plan):

@@ -168,6 +168,11 @@ class Graph:
                 print("Error: Not a true DAG")
 
         path = graph.Graph(len(self.longestroute))
-        for i in self.longestroute:
-            path.add_new_job(i, self.g.jobs.get(i).func_name)
+        for i in range(len(self.longestroute)):
+            #path.add_new_job(self.longestroute[i], self.g.jobs.get(self.longestroute[i]).func_name)
+            if i < len(self.longestroute) - 1:
+                path.add_edge(self.longestroute[i], self.longestroute[i+1])
+            path.static_runtime(self.longestroute[i], self.g.jobs.get(self.longestroute[i]).runtime_remote,self.g.jobs.get(self.longestroute[i]).runtime_cache)
+            path.config_inputs(self.longestroute[i], self.g.jobs.get(self.longestroute[i]).inputs)
+            runtime_ = self.g.jobs.get(self.longestroute[i]).runtime_remote+self.g.jobs.get(self.longestroute[i]).runtime_cache
         return path

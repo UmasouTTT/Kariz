@@ -61,7 +61,7 @@ class DAGPlanner:
     def get_prefetch_plan_unlimitedbw(self, cur_stg_index = 0):
         prefetch_plans = []
         f_stg_index = len(self.g.stages) - 1
-
+        print('within get_prefetch_plan_unlimitedbw', cur_stg_index)
         if cur_stg_index != f_stg_index:
             if cur_stg_index + 1 in self.g.plans_container.cp_by_stage:
                 plans_in_stage = self.g.plans_container.cp_by_stage[cur_stg_index + 1]
@@ -111,27 +111,5 @@ class DAGPlanner:
         ''' O(nlogn), max n = # of plans in the DAG, is called per stage '''
         plans = []
         plans.extend(self.g.plans_container.get_cache_plans(stage))
-        plans.extend(self.get_prefetch_plans(bandwidth, stage))
-        self.compute_share_plans(plans)
-        plans.sort(reverse=True)
+        plans.extend(self.get_prefetch_plan_unlimitedbw(stage))
         return plans
-
-    def compute_share_plans(self, plans):
-        ''' O(n), max n = # of plans in the DAG, is called per stage '''
-        stage_footprint = {}
-        for p in plans:
-            for f in p.data:
-                if f not in stage_footprint:
-                    stage_footprint[f]= {'size': 0, 'access': 0, 'stages' : []}
-                ''' the reason is that the share data is the smallest
-                 amount data that is shared with everybody'''
-                if p.data[f]['size'] < stage_footprint[f]['size']:
-                    stage_footprint[f]['size'] = p.data[f]['size']
-                if p.stage_id not in stage_footprint[f]['stages']:
-                    stage_footprint[f]['stages'].append(p.stage_id)
-                stage_footprint[f]['access']+=1
-
-        for p in plans:
-            for f in p.data:
-                p.sscore += stage_footprint[f]['access']
-            p.sscore = p.sscore/len(p.data) if len(p.data) > 0 else 0

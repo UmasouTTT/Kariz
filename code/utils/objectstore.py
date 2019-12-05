@@ -15,6 +15,8 @@ import hdfs
 import json
 import random
 import utils.inputs as inputs
+import subprocess
+import math
 
 class ObjectStore:
     def __init__(self):
@@ -36,6 +38,23 @@ class ObjectStore:
         self.tpch_metadata, self.tpcds_metadata = inputs.prepare_tpc_metadata(fpath)
         self.tpch_runtime, self.tpcds_runtime = inputs.prepare_tpc_runtimes(fpath)
 
+
+
+    def s3a_get_dataset_size(self, url):
+        object_size = 0
+        url = url.replace(url.split('/')[-1], '').replace('s3a', 's3')
+        #print('s3a_get_dataset_size', url)
+        p = subprocess.Popen(["s3cmd", "ls", url], stdout=subprocess.PIPE)
+        ls_output = p.communicate()[0].decode("utf-8").split('\n')
+        for o in ls_output:
+           ol = o.split(' ')
+           if len(ol) <= 3: 
+              break
+           ol.remove('')
+           object_size += int(ol[2])
+        #   print(ol)
+        blocksize = 1024*1024 
+        return math.ceil(object_size/blocksize)
 
     def get_datasetsize_tpc_url(self, url):
         dataset_size = 0

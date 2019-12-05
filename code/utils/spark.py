@@ -11,6 +11,7 @@ from utils.graph import *
 import pandas as pd
 import estimator.spark_longest_path as spark_longest_path
 import utils.pig as pig
+from colorama import Fore, Style
 
 
 stage_preplan = {}
@@ -18,6 +19,7 @@ stage_preplan = {}
 
 def start_spark(g):
     longest_path_graph = spark_longest_path.Graph(g).findAllPaths()
+    print(Fore.BLUE, longest_path_graph, Style.RESET_ALL)
     pig.build_stages(longest_path_graph)
     return pig.build_cp_priorities(longest_path_graph)
 

@@ -6,6 +6,8 @@ import entry
 import worker as wr
 import utils.status as status
 import d3n_utils as d3n
+import subprocess
+from entry import Entry
 
 _cache = None
 
@@ -185,35 +187,24 @@ class Cache:
                 e = self.global_status[f]
                 wid = self.get_worker() #e.parent_id
                 if e.size < fd['size']:
-                #    old_size = e.size
-                #    #e, evf, pstatus = self.workers[wid].kariz_cache_file(f, fd['size'], score) #ce: cached entry
-                    # FIXME: before sending the request check if you have enought space in the cache
                     d3n.prefetch_object(token, 'test', f, 0, fd['size'])
-                #    evicted.extend(evf)
-                #    if pstatus != status.SUCCESS:
-                #        self.clean_up(revertible)
-                #        return status.UNABLE_TO_CACHE
-                #    revertible[e.name] = {'osize': old_size, 'nsize': e.size}
             else:
-                #wid = self.get_worker()
-                #e, evf, pstatus = self.workers[wid].kariz_cache_file(f, fd['size'], score) #ce: cached entry
-                d3n.prefetch_object(token, 'test', f, 0, fd['size'])
-                #evicted.extend(evf)
-                #if pstatus != status.SUCCESS:
-                #    self.clean_up(revertible)
-                #    return status.UNABLE_TO_CACHE
-                #revertible[e.name] = {'osize': 0, 'nsize': e.size}
-            self.global_status[f] = e
+                if 's3a' in f: 
+                   bucket_name = f.split('/')[-2]
+                   url = f.replace(f.split('/')[-1], '').replace('s3a', 's3')
+                   p = subprocess.Popen(["s3cmd", "ls", url], stdout=subprocess.PIPE)
+                   ls_output = p.communicate()[0].decode("utf-8").split('\n')
+                   for o in ls_output:
+                      ol = o.split(' ')
+                      if len(ol) <= 3:
+                         break
+                      ol.remove('')
+                      print(ol)
+                      object_name = ol[5].split('/')[-1]
+                      d3n.prefetch_object(token, bucket_name, object_name, 0, int(ol[2]))
+                      e = entry.Entry(name = bucket_name + '/' + object_name,  size=int(ol[2])/(1024*1024))
+                      self.global_status[bucket_name + '/' + object_name] = e
             
-            #self.workers[wid].pin_file(f, e.size)   
-            for ce in evicted:
-                if ce in self.global_status: del self.global_status[ce]
-        for f in data:
-            if f in self.global_status:
-                e = self.global_status[f]
-                e.touch()
-                e.increment_freq()
-                e.update_pscore(score)
         return status.SUCCESS
 
     def evict(self, fname):

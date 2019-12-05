@@ -35,7 +35,6 @@ class Mirab:
         number_of_nodes = g.n_vertices
         for i in range(number_of_nodes):
             self.online_planner(g.dag_id, i)
-        self.fairness_scores[g.dag_id] = 1
     
     def markas_pinned_datasets(self, dag_id, plan):
         if dag_id not in self.dag_planners: return None
@@ -51,12 +50,6 @@ class Mirab:
         del self.dag_planners[dag_id]
 
     def online_planner(self, dag_id, stage_id):
-
-
-        print(dag_id, stage_id)
-        # uppin files from previous stage 
-        self.unpinned_completed_stage(dag_id, stage_id)
-
         plans = self.get_plans(dag_id, stage_id)
         print(plans)
         if plans is None:
@@ -66,31 +59,13 @@ class Mirab:
         while len(plans) > 0:
             plan = plans.pop(0)
             print(Fore.LIGHTYELLOW_EX, "Mirab, process plans of DAG", plan.dag_id, ', stage' , plan.stage_id, Style.RESET_ALL)    
-            if not plan.is_feasible():
-                continue
             if plan.type == 0:
                 if self.cache.cache_plan(plan.data, plan.iscore) != status.SUCCESS:
-                    # for all priority plans larger than this priority on this stage mark them as infeasible
-                    self.update_infeasible(plan)
                     continue
-                self.markas_pinned_datasets(plan.dag_id, plan)
-                if dag_id in self.dag_planners: 
-                    self.dag_planners[dag_id].update_statistics(plan.stage_id, plan.data)
-                self.d3n_conn.add_task(d3n.cache_plan, plan) 
             else:
                 if self.cache.prefetch_plan(plan.data, plan.iscore) != status.SUCCESS:
-                    # for all priority plans larger than this priority on this stage mark them as infeasible
-                    self.update_infeasible(plan)
                     continue
-                for f in plan.data:
-                   self.d3n_conn.add_task(d3n.prefetch_object, f, plan.data[f])
-                self.update_planned_bandwidth(plan)
-                #self.mirab.update_pinned_datasets(plan)
-            # Here Kariz was able to cache the requested plan
-            #print('cached/prefetch plan: ', plan)
             print(Fore.LIGHTGREEN_EX, "\t plan ", plan.data, ' is cached/prefetched: ', plan.type, Style.RESET_ALL)
-            self.update_fairness_score(plan)
-            self.compute_weighted_scores(plans)
             
     def update_planned_bandwidth(self, plan):
         return 0 
@@ -103,11 +78,8 @@ class Mirab:
         
     def get_plans(self, dag_id, stage):
         plans = [] 
-        if len(self.dag_planners) <= 0: return plans
-        available_bw = self.available_bandwidth/len(self.dag_planners) # give every Job a fair share of DAG
         for gid in self.dag_planners:
-                plans.extend(self.dag_planners[gid].get_next_plans(available_bw))
-        if dag_id in self.dag_planners: self.dag_planners[dag_id].current_running_stage = stage
+                plans.extend(self.dag_planners[gid].get_plans(stage=stage))
         return plans
         
     def compute_share_scores(self, plans):
