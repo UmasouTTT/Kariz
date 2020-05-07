@@ -2,5 +2,5 @@
   tasks:
     - name: Copy hadoop yarn-site.xml
       copy:
-        src: /home/ubuntu/opt/hadoop-2.8.4/etc/hadoop/yarn-site.xml 
-        dest: /home/ubuntu/opt/hadoop-2.8.4/etc/hadoop/yarn-site.xml
+        src: "{{ lookup('env','HADOOP_CONF_DIR') }}/yarn-site.xml"
+        dest: "{{ lookup('env','HADOOP_CONF_DIR') }}/yarn-site.xml"

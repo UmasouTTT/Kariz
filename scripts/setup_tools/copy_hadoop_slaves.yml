@@ -2,5 +2,5 @@
   tasks:
     - name: Copy hadoop slaves
       copy:
-        src: /home/ubuntu/opt/hadoop-2.8.4/etc/hadoop/slaves 
-        dest: /home/ubuntu/opt/hadoop-2.8.4/etc/hadoop/slaves
+        src: "{{ lookup('env','HADOOP_HOME') }}/etc/hadoop/slaves"    #/home/ubuntu/opt/hadoop-2.8.4/etc/hadoop/slaves 
+        dest: "{{ lookup('env','HADOOP_HOME') }}/etc/hadoop/slaves"   # /home/ubuntu/opt/hadoop-2.8.4/etc/hadoop/slaves

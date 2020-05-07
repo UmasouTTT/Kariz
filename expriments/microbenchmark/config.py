@@ -1,0 +1,15 @@
+rgw_host='192.168.35.41'
+rgw_port=80
+swift_user = 'testuser:swift'
+swift_key = '7Xqb6gdsCE5Vu0clmk2qL0yjjy1NCNiFuaPlGQvJ'
+bucket_name='data'
+cache_block_size = 4194304 # 4 MB
+reps = 3
+app_name='wordcount'
+dpath = 'HiBench/Wordcount/Input'
+#dpath='HiBench/Dfsioe/Input/io_data/'
+hibench_root='/local0/HiBench'
+hibench_command='bin/workloads/micro/wordcount/hadoop/run.sh'
+#hibench_command="bin/workloads/micro/dfsioe/hadoop/run_read.sh"
+grace_time=30
+report_file="stats.csv"
