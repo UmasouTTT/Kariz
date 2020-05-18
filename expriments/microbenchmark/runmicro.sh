@@ -14,11 +14,11 @@ declare -a strides=(0  4  8  16  24  32  48  64  80  96  112  128 144  160  176 
 # Read the array values with space
 for rep in $(seq 1 $reps); do 
    for stride in "${strides[@]}"; do
-     echo -e "\e[96m Start DFSIO experiment, stride ${stride}, repeat ${rep}\n\e[0m"
-     #./warmup_cache.py ${stride}
+     echo -e "\e[96m Start ${app_name} experiment, stride ${stride}, repeat ${rep}\n\e[0m"
+     ./warmup_cache.py ${stride}
      # warm up cache manually
-     cached_data=`ssh root@neu-3-41 /root/evict_from_cache.py ${stride}`
-     echo -e "\e[96m ${cached_data} \e\n[0m"
+     #cached_data=`ssh root@neu-3-41 /root/evict_from_cache.py ${stride}`
+     #echo -e "\e[96m ${cached_data} \e\n[0m"
 
      cd ${hibench_root} 
      
@@ -42,5 +42,5 @@ for rep in $(seq 1 $reps); do
 done
 
 
-echo "Benchmark is done, gather results from stats.csv"
+echo "Benchmark is done, gather results from ${report_file}"
 

@@ -2,8 +2,8 @@
 import json
 
 from utils.graph import *
-import dagplanner as dp
-from plans.planner import *
+import common.dagplanner as dp
+from common.planner import *
 import utils.requester as requester
 import utils.status as status
 import colorama

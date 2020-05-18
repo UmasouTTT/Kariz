@@ -2,7 +2,7 @@
 import json
 
 from utils.graph import *
-import dagplanner as dp
+import common.dagplanner as dp
 import utils.requester as requester
 import utils.status as status
 import colorama
