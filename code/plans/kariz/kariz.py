@@ -7,24 +7,20 @@ import csv
 import threading
 import os
 import ast
-
 import utils.graph as graph
 import mirab as mq
 import roundrobin as rr
 import sjf
+import framework_simulator.tpc as tpc
 
-
-
-
-import hdfs
-import boto
+from colorama import Fore, Style
 
 _kariz = None
 
 class Kariz:
     def gq_worker(self):
         while True:
-            graphstr = self.gq.get()
+            graphstr = self.gq.get(block=True, timeout=None)
             if graphstr:
                 g = graph.str_to_graph(graphstr, self.objectstore)
                 self.mirab.add_dag(g)
@@ -36,7 +32,7 @@ class Kariz:
             stage_metastr = self.pq.get()
             if stage_metastr:
                 stage_meta = ast.literal_eval(stage_metastr)
-                self.mirab.online_planner(stage_meta['id'], stage_meta['stage'])
+                self.mirab.online_planner(stage_meta['id'], stage_meta['cur_stage'])
                 self.pq.task_done()
                 
     def dq_worker(self):
@@ -49,7 +45,11 @@ class Kariz:
 
     def __init__(self):
         global _kariz
-        # a thread to process the incoming dags 
+
+        graph.load_graph_pools(tpc.load_synthetic_graphs(), tpc.build_tpc_graphpool())
+
+
+        # a thread to process the incoming dags
         self.gq = queue.Queue();
         self.gt = threading.Thread(target=self.gq_worker)
         self.gt.start()
@@ -64,6 +64,7 @@ class Kariz:
         
         self.objectstore = None
         self.mirab = mq.Mirab() # Mirab logic
+
         #self.mirab = rr.RoundRobin(bandwidth=30) 
         _kariz = self # mirab daemon instance 
 
@@ -75,4 +76,7 @@ class Kariz:
         
     def remove_dag(self, dagstr):
         self.dq.put(dagstr)
+
+    def end_of_experiment_alert(self):
+        self.mirab.end_of_experiment_alert()
 

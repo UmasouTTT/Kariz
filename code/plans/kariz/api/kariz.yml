@@ -66,9 +66,9 @@ paths:
         201:
           description: Successfully created person in list
 
-  /completed:
+  /dagcompletion:
     post:
-      operationId: daemon.notify_completed
+      operationId: daemon.notify_dag_completion
       tags:
         - People
       summary: Create a person and add it to the people list
@@ -83,4 +83,14 @@ paths:
       responses:
         201:
           description: Successfully created person in list
- 
+
+  /completed:
+    post:
+      operationId: daemon.notify_experiment_completion
+      tags:
+        - People
+      summary: Create a person and add it to the people list
+      description: Create a new person in the people list
+      responses:
+        201:
+          description: Successfully created person in list

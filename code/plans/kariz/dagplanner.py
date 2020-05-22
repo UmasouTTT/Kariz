@@ -20,7 +20,7 @@ class DAGPlanner:
         self.current_processed_stage = -2
         self.cached_plans = []
         g.plans_container = pig.build_kariz_priorities(g)
-    
+
     def markas_pinned_datasets(self, plan):
         if plan.stage_id not in self.pinned_plans:
             self.pinned_plans[plan.stage_id] = []
@@ -29,8 +29,8 @@ class DAGPlanner:
     def unpinned_completed_stage(self, stage_id):
         if stage_id -1 not in self.pinned_plans: return
         for p in self.pinned_plans[stage_id -1]:
-            print(Fore.LIGHTMAGENTA_EX, 'Mirab unpin completed stage --> DAG: ', self.g.dag_id, 
-                  'stage: ' , stage_id  -1, 'data in plan:', p.data, Style.RESET_ALL) 
+            #print(Fore.LIGHTMAGENTA_EX, 'Mirab unpin completed stage --> DAG: ', self.g.dag_id,
+            #      'stage: ' , stage_id  -1, 'data in plan:', p.data, Style.RESET_ALL)
             requester.uppined_datasets(p.data)
         del self.pinned_plans[stage_id -1]
             

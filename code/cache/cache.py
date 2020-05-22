@@ -161,7 +161,7 @@ class Cache:
                 wid = self.get_worker()
                 for f2 in revertables:
                     self.workers[wid].unpin_file(f2, data[f2]['size'])
-                    if revertables[f2]['osize'] > 0:
+                    if 'osize'in revertables[f2] and revertables[f2]['osize'] > 0:
                         self.workers[wid].pin_file(f2, revertables[f2]['osize'])
                 return status.UNABLE_TO_CACHE
         

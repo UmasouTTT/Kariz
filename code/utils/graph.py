@@ -11,7 +11,9 @@ import utils.plan as plan
 import ast
 import utils.job as jb
 import numpy as np
-import enum 
+import enum
+import copy
+from colorama import Fore, Style
 
 # creating enumerations using class 
 class Type(enum.IntEnum): 
@@ -24,7 +26,8 @@ class Type(enum.IntEnum):
 #Class to represent a graph 
 class Graph: 
     def __init__(self, n_vertices = 0, type = Type.complex, name='graph'):
-        self.dag_id = uuid.uuid1()
+        self.dag_id = 0
+
         self.n_vertices = n_vertices 
         self.jobs = {}
         for i in range(0, n_vertices):
@@ -35,7 +38,9 @@ class Graph:
         self.roots = set(range(0, n_vertices))
         self.leaves = set(range(0, n_vertices))
         self.blevels = {}
-        
+
+        self.g_gt = None;
+
         self.mse_factor = 0
         self.plans_container = None
         self.stages = {}
@@ -239,32 +244,51 @@ class Graph:
                     if t_imprv_tmp > t_imprv:
                         t_imprv = t_imprv_tmp
             j['job'].final_runtime = j['job'].runtime_remote - t_imprv #j['improvement']
-    
-
 
 def str_to_graph(raw_execplan, objectstore):
     g = None
+
     if raw_execplan.startswith('DAG'):
         g = pigstr_to_graph(raw_execplan, objectstore)
     elif raw_execplan.startswith('ID'):
-        g = graph_id_to_graph(raw_execplan, objectstore)
+        g = graph_id_to_graph_id(raw_execplan, objectstore)
     else:
-        g = jsonstr_to_graph(raw_execplan)
+        gjson = ast.literal_eval(raw_execplan)
+        if gjson['type'] == 'synthetic':
+            g = graph_id_to_graph(gjson, objectstore)
+        else:
+            g = jsonstr_to_graph(raw_execplan)
     return g;
-        
-def graph_id_to_graph(raw_execplan, objectstore):
-    import framework_simulator.tpc as tpc  
-    ls = raw_execplan.split(':')
-    g_bench = ls[1]
-    g_id = ls[2]
-    g_ds = ls[3]
-    if g_id in tpc.graphs_dict:
-       g = tpc.graphs_dict[g_id]
-       for j in g.jobs:
-          for i in g.jobs[j].inputs:
-              g.jobs[j].inputs[i] = objectstore.tpch_metadata[g_ds][i]
-          g.static_runtime(j, objectstore.tpch_runtime[g_id][g_ds][j]['remote'], objectstore.tpch_runtime[g_id][g_ds][j]['cached'])
-       return g
+
+gt_graph_pool = {}
+kariz_graph_pool = {}
+
+def load_graph_pools(gt_gp, kariz_gp):
+    global gt_graph_pool
+    global kariz_graph_pool
+    gt_graph_pool = gt_gp
+    kariz_graph_pool = kariz_gp
+
+
+def graph_id_to_graph(g_spec, objectstore):
+    g_name = g_spec['name']
+    if g_name not in gt_graph_pool or g_name not in kariz_graph_pool:
+        raise  NameError("Graph name %s is invalid"%(g_name))
+
+    g_gt = gt_graph_pool[g_name].copy()
+    g_kz = copy.deepcopy(kariz_graph_pool[g_name])
+
+    g_kz.dag_id = g_spec['id']
+    g_kz.name = g_name
+    g_gt.gp.id = g_spec['id']
+    for v in g_gt.vertices():
+        g_kz.static_runtime(v, g_gt.vp.remote_runtime[v], g_gt.vp.cache_runtime[v])
+        g_kz.config_inputs(v, g_gt.vp.inputdir[v])
+    g_kz.queue_time = g_gt.gp.queue_time
+
+    g_kz.g_gt = g_gt
+    return g_kz
+
 
 def pigstr_to_graph(raw_execplan, objectstore):
     ls = raw_execplan.split("\n")

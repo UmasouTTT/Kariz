@@ -9,7 +9,6 @@ import copy
 import random
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import time
 import utils.requester as requester
 import colorama
@@ -68,6 +67,8 @@ def gang_schedule_helper(g, stage_to_be_executed = -1, priority = 0, timesUsed =
     elapsed_time += stage_runtime
     #currentLevel -= 1
     #timesUsed.append(currentMaxTime)
+    
+    wait_time = stage_runtime
     s.enter(wait_time, priority, gang_schedule_helper, argument=(g, stage_to_be_executed, priority, timesUsed, dataset_stats, elapsed_time))
     s.run()
 
@@ -121,6 +122,7 @@ def gang_scheduler(g):
     dataset_stats.append({'stage': stage_to_be_executed, 'inputs' : g.stages[stage_to_be_executed].stage_inputs, 'cached_inputs': cached_inputs, 'effective_cached_inputs': effective_cached_inputs})    
     timesUsed.append(stage_runtime)
     elapsed_time = stage_runtime
+    wait_time = stage_runtime
     print(Fore.LIGHTMAGENTA_EX, "\tSchedule stage ", stage_to_be_executed, " for execution. Estimated runtime: ", stage_runtime, ', elapsed time: ', elapsed_time, Style.RESET_ALL)
     s.enter(wait_time, priority, gang_schedule_helper, argument=(g, stage_to_be_executed, priority, timesUsed, dataset_stats, elapsed_time))
     s.run()
@@ -128,4 +130,4 @@ def gang_scheduler(g):
     print(Fore.LIGHTGREEN_EX, "Total time", sum(timesUsed), Style.RESET_ALL)
     requester.complete(g)
 #    requester.clear_cache();
-    return sum(timesUsed), timesUsed, dataset_stats
+    return sum(timesUsed), timesUsed, dataset_sta

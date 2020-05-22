@@ -6,6 +6,7 @@ import utils.scheduler as sched
 import utils.requester as req
 import utils.pig as pig
 import time
+import scheduler.bsp as bsp
 
 # write a class to build schedule dag in pig
 NOCACHE = 0
@@ -17,29 +18,38 @@ LRU=5
 INFINITE=6
 
 
-def start_pig_simulator(v):
-    cache = KARIZ
-    pig.build_stages(v);
-    # build cache plans
-    req.submit_new_dag(v)
-    req.notify_stage_start(v, -1)
-    if cache == KARIZ:
-        v.plans_container = pig.build_kariz_priorities(v)
-    elif cache == MRD:
-        v.plans_container = pig.build_mrd_priorities(v)
-    elif cache == CP:
-        v.plans_container = pig.build_cp_priorities(v)
-    elif cache == RCP:
-        v.plans_container = pig.build_rcp_priorities(v)
-    elif cache == INFINITE:
-        v.plans_container = pig.build_infinite_priorities(v)
-    elif cache == LRU:
-        v.plans_container = pig.build_lru_priorities(v)
-    else: 
-        v.plans_container = None
+def start_pig_simulator(g):
+    cache = NOCACHE
+    #pig.build_stages(v);
 
-    time.sleep(v.queue_time)
-    return sched.gang_scheduler(v)
+    req.send_new_dag_rpc(req.serialize_synthetic_graph(g))
+    bsp.assign_stages(g)
+
+    time.sleep(g.gp.queue_time)
+    bsp.execute_dag(g)
+
+    req.send_dag_completion_rpc(req.serialize_dag_complete(g))
+    # build cache plans
+    '''
+    req.submit_new_dag(g)
+    req.notify_stage_start(g, -1)
+    if cache == KARIZ:
+        g.plans_container = pig.build_kariz_priorities(g)
+    elif cache == MRD:
+        g.plans_container = pig.build_mrd_priorities(g)
+    elif cache == CP:
+        g.plans_container = pig.build_cp_priorities(g)
+    elif cache == RCP:
+        g.plans_container = pig.build_rcp_priorities(g)
+    elif cache == INFINITE:
+        g.plans_container = pig.build_infinite_priorities(g)
+    elif cache == LRU:
+        g.plans_container = pig.build_lru_priorities(g)
+    else: 
+        g.plans_container = None
+    
+    #return sched.gang_scheduler(g)
+    '''
 
 '''
 # submit one dag to pig

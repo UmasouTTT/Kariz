@@ -8,6 +8,7 @@ import pigsimulator
 import colorama
 from colorama import Fore, Style
 import json
+import threading, time
 
 '''
 from alibaba traces we figure it out that average # of DAGs
@@ -36,7 +37,6 @@ import utils.graph as graph
 import utils.hadoop as hadoop
 import ast
 import pandas as pd
-#import estimator.predictor as pred
 import random 
 import pigsimulator as pigsim
 import pigemulator as pigemu
@@ -60,7 +60,7 @@ class Workload:
         self.elapsed_time = 0
         self.fname = '../plans/dags_pool.csv'
         self.n_datasets = 50
-        self.dags = tpc.graphs_dict
+        self.dags = tpc.build_tpc_graphpool()
         self.dags_byid = {}
         stats_fname = '../plans/job_runtime_stats.csv'
         #self.datasets = self.generate_datasets_pool()
@@ -337,5 +337,34 @@ class Workload:
         print(Fore.GREEN, runtimes, Style.RESET_ALL)    
         with open('bandwidthsensitivity.json', 'w') as dumpf:
             json.dump(stats, dumpf)
-
-
+            
+    
+    def select_dag_randomly(self):
+        return random.choice(list(self.dags.keys()))
+    
+    def submit_dag(self, dag_id):
+        dag = self.dags[dag_id]
+        #runtime, rtl, dataset_inputs = pigsim.start_pig_simulator(dag) 
+        print(Fore.GREEN, dag_id, Style.RESET_ALL)
+    
+    def multidag_scalability_workload(self):
+        WAIT_TIME_SECONDS = 2
+        self.elapsed_time = 0; 
+        self.overall_simulation_time = 60;
+        # initialize a timer that issues submit DAG every two seconds
+        ticker = threading.Event()
+        while self.elapsed_time < self.overall_simulation_time:
+            ticker.wait(WAIT_TIME_SECONDS)
+            self.submit_dag(self.select_dag_randomly())
+            self.elapsed_time += WAIT_TIME_SECONDS;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

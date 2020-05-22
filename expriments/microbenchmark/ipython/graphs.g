@@ -1,0 +1,16 @@
+#t,1
+v,0,wordcount,s3a://data/HiBench/Wordcount/Input-1G
+v,1,wordcount,s3a://data/HiBench/Wordcount/Input-1G-1
+v,2,wordcount,s3a://data/HiBench/Wordcount/Input-1G-2
+e,0,2
+e,1,2
+#t,2
+v,0,wordcount,32G
+v,1,wordcount,32G
+v,2,wordcount,32G
+v,3,wordcount,32G
+v,4,wordcount,32G
+e,0,2
+e,1,2
+e,2,4
+e,3,4

@@ -20,58 +20,7 @@ inputs = {'a': 326, 'b': 250, 'c': 250, 'd' : 100
           , 'wc8G':8000, 'wc3G':3000, 'wc4G': 4000, 'wc5G': 5000
           , 'a20': 80, 'a21': 120, 'b20': 120, 'b21': 160, 'c20': 160, 'c21': 160
           , 'd20': 200, 'd21': 240, 'e20': 100, 'e22': 100, 'd25': 200, 'c26': 240
-          , 'a27': 240}  
+          , 'a27': 240, 'a28': 25*1024, 'b28': 30*1024, 'c28': 40*1024, 'd28': 20*1024}  
 
 
-def prepare_tpc_metadata(fpath):
-   tpch_inputs = {'1G' : {}, '2G' : {}, '4G' : {}, '8G' : {}, '16G' : {},
-               '32G' : {}, '48G' : {}, '64G' : {}, '80G' : {},
-               '100G' : {}, '128G' : {}, '150G' : {}, '200G' : {},
-               '256G' : {}, '300G' : {}}
 
-   tpcds_inputs = {'1G' : {}, '2G' : {}, '4G' : {}, '8G' : {}, '16G' : {},
-               '32G' : {}, '48G' : {}, '64G' : {}, '80G' : {},
-               '100G' : {}, '128G' : {}, '150G' : {}, '200G' : {},
-               '256G' : {}, '300G' : {}}
-
-   df = pd.read_csv(fpath + 'inputs.csv')
-   df['size'] = pd.to_numeric(df['size'])
-   df['n_blocks'] = (df['size']/blocksize).apply(np.ceil).astype(int)
-   working_set_size = df['n_blocks'].sum() # 393GB 
-   for index, row in df.iterrows():
-      dataset_meta = row['name'].split('_')
-      query = dataset_meta[0]
-      ds_sz = dataset_meta[1]
-      input_name = row['name'].replace(query+'_'+ds_sz+'_', '')
-    
-      if query == 'tpcds':
-         tpcds_inputs[ds_sz][input_name] = row['n_blocks']         
-      elif query == 'tpch':
-         tpch_inputs[ds_sz][input_name] = row['n_blocks']
-
-   return tpch_inputs, tpcds_inputs;
-
-
-def prepare_tpc_runtimes(fpath):
-   tpch_runtimes = {}
-   tpcds_runtimes = {}
-   with open(fpath + 'tpchjobs.csv') as csvfile:
-        readCSV = csv.reader(csvfile, delimiter=',')
-        headers = next(readCSV, None)
-        for row in readCSV:
-           query = row[0]
-           dataset = row[4]
-           jobid = int(row[2])
-           rorc = row[6]
-           runtime = int(row[3])
-           if query not in tpch_runtimes:
-              tpch_runtimes[query]={}
-           if dataset not in tpch_runtimes[query]:
-              tpch_runtimes[query][dataset] = {}
-           if jobid not in tpch_runtimes[query][dataset]:
-              tpch_runtimes[query][dataset][jobid] = {}
-           if rorc == 'R':
-              tpch_runtimes[query][dataset][jobid]['remote'] = runtime
-           elif rorc == 'C': 
-              tpch_runtimes[query][dataset][jobid]['cached'] = runtime
-   return tpch_runtimes, tpcds_runtimes

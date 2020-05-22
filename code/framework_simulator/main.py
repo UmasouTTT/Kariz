@@ -5,7 +5,7 @@ Created on Sep 16, 2019
 @author: mania
 '''
 
-import workloadgenerator as wkl
+import workload.generic as wkl
 
 def test_misestimation():
     workload = wkl.Workload()
@@ -31,10 +31,17 @@ def test_d3n():
 def test_bw_allocation():
     workload = wkl.Workload()
     workload.bw_allocation_workload()
+
+def test_multidag_scalability():
+    workload = wkl.Workload()
+    workload.run()
+
+
     
 #test_d3n()
 #test_sequential()
 #test_concurrent()
 #test_misestimation()
-test_bw_allocation()
+#test_bw_allocation()
 #test_vshistory()
+test_multidag_scalability();
