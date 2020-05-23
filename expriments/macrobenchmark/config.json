@@ -1,0 +1,9 @@
+{
+	"type": "sequential",
+	"graph_src": "file",
+	"graph_skeleton_path": "/local0/Kariz/expriments/macrobenchmark/tpch_pig_dags.g",
+	"stat_file_path": "/local0/Kariz/expriments/macrobenchmark/pig_tpch_stats",
+	"input_dir": "s3a://data/pig-tpch/64G",
+	"output_dir" : "/tpch-64G-output",
+        "benchmark_path": "/local0/Kariz/expriments/benchmark/BenchmarkScripts/tpch/pig"	
+}
