@@ -383,7 +383,7 @@ def jsonstr_to_graph(raw_execplan):
 
 def build_input_format(inputs_str):
     res = re.search('\[(.*)\]', inputs_str)
-    return dict.fromkeys(res.group(1).split(','), 0) if res else {}
+    return dict.fromkeys(res.group(1).split('|'), 0) if res else {}
     
 
 def build_graph_skeleton(g_str):
@@ -419,6 +419,12 @@ def build_graph_skeleton(g_str):
         if el.startswith('e'):
             v_src, v_dest = el.split(',')[1:]
             e = g.add_edge(v_src, v_dest)
+
+    g.vp['inputs'] = inputs
+    g.vp['remote_runtime'] = remote_runtime
+    g.vp['cache_runtime'] = cache_runtime
+    g.vp['status'] = status
+    g.vp['ops'] = ops
     return g
             
 
@@ -433,5 +439,19 @@ def load_graph_skeleton(path):
 
     return graph_skeletons
 
+
+def build_graph_from_gt(g_gt):
+    g = Graph(g_gt.num_vertices())
+
+    for v in g_gt.vertices():
+        g.static_runtime(int(v), g_gt.vp.remote_runtime[v], g_gt.vp.cache_runtime[v])
+        g.config_inputs(int(v), g_gt.vp.inputs[v])
+
+    for e in g_gt.edges():
+        g.add_edge(e.source(), e.target(), 0)
+
+    g.name = g_gt.gp.name
+    g.id = g_gt.gp.id
+    return g
 
 

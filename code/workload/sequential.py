@@ -27,15 +27,23 @@ import random
 import threading
 from colorama import Fore, Style
 from workload.generic import Workload
-import json
 from threading import Thread
-import uuid
+
 import utils.requester as req
 import utils.graph as graphs
+import utils.jobhistory as hist
+import pandas as pd
+
 import graph_tool.all as gt
 import os
 import ast
 import re
+import uuid
+import json
+
+import d3n.metadata as md
+import utils.yarn as yarn
+import d3n.d3n_api as api
 
 
 class Sequential(Workload): 
@@ -47,7 +55,6 @@ class Sequential(Workload):
 
             self.graph_skeleton_pool = graphs.load_graph_skeleton(self.configs["graph_skeleton_path"])
             print(json.dumps(self.configs, indent=2))
-
 
     
     def select_dags_randomly(self, n_dags):

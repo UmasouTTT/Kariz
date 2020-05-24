@@ -4,7 +4,6 @@ v,1,[],SAMPLER
 v,2,[],ORDER_BY
 e,0,1
 e,1,2
-e,1,3
 #t,Q2,sequential
 v,0,[nation|region],HASH_JOIN
 v,1,[supplier],HASH_JOIN
@@ -23,7 +22,7 @@ e,5,6
 e,6,7
 #t,Q3,sequential
 v,0,[customer|orders],HASH_JOIN
-v,1,[lineiterm],HASH_JOIN
+v,1,[lineitem],HASH_JOIN
 v,2,[],GROUP_BY|COMBINER
 v,3,[],SAMPLER
 v,4,[],ORDER_BY|COMBINER
