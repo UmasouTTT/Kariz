@@ -36,7 +36,10 @@ def start_estimator():
 
 def start_kariz():
     global g_kariz
-    kariz = kz.Kariz()
+
+    config_file = "/local0/Kariz/expriments/macrobenchmark/config.json"
+
+    kariz = kz.Kariz(config_file)
     g_kariz = kariz
     g_kariz.objectstore = g_objectstore
     return kariz
@@ -54,7 +57,7 @@ def notify_planner(new_stage):
 def notify_mirab(new_dag):
     print(new_dag)
     g_kariz.new_dag_from_string(new_dag.decode("utf-8"))
-    g_collector.new_dag_from_string(new_dag.decode("utf-8"))
+    #g_collector.new_dag_from_string(new_dag.decode("utf-8"))
 
 def notify_completed(dagstr):
     g_kariz.remove_dag(dagstr.decode("utf-8"))

@@ -13,6 +13,8 @@ import utils.job as jb
 import numpy as np
 import enum
 import copy
+import graph_tool.all as gt
+import re
 from colorama import Fore, Style
 
 # creating enumerations using class 
@@ -377,3 +379,79 @@ def jsonstr_to_graph(raw_execplan):
             g.add_edge(j['id'], ch, 0)
     g.config_misestimated_jobs()     
     return g
+
+
+def build_input_format(inputs_str):
+    res = re.search('\[(.*)\]', inputs_str)
+    return dict.fromkeys(res.group(1).split('|'), 0) if res else {}
+    
+
+def build_graph_skeleton(g_str):
+    g_elements = g_str.split('\n')
+    g_name,g_type = g_elements[0].split(',')[1:]
+    g_id = 0
+    g_queuetime = 0
+    
+    g = gt.Graph(directed=True)
+    g.gp['name'] = g.new_graph_property("string", g_name)
+    g.gp['id'] = g.new_graph_property("string", str(g_id))
+    g.gp['queue_time'] = g.new_graph_property("int", g_queuetime)
+    g.gp['cur_stage'] = g.new_graph_property("int", -1)
+    status = g.new_vertex_property("int")
+    inputs = g.new_vertex_property("object")
+    cache_runtime = g.new_vertex_property("int")
+    remote_runtime = g.new_vertex_property("int")
+    ops = g.new_vertex_property("vector<string>")
+
+    # build vertices
+    for el in g_elements[1:]:
+        if el.startswith('v'):
+            vid, inputs_str, operation = el.split(',')[1:]
+            v = g.add_vertex()
+            
+            inputs[v] = build_input_format(inputs_str)
+            cache_runtime[v] = 0
+            remote_runtime[v] = 0 
+            ops[v] = operation.split('|')
+    
+    # build edges
+    for el in g_elements[1:]:
+        if el.startswith('e'):
+            v_src, v_dest = el.split(',')[1:]
+            e = g.add_edge(v_src, v_dest)
+
+    g.vp['inputs'] = inputs
+    g.vp['remote_runtime'] = remote_runtime
+    g.vp['cache_runtime'] = cache_runtime
+    g.vp['status'] = status
+    g.vp['ops'] = ops
+    return g
+            
+
+def load_graph_skeleton(path):
+    graph_skeletons = {}
+    with open(path, 'r') as fd:
+        graph_strs = fd.read().split('#')[1:]
+
+        for g_str in graph_strs:
+            g= build_graph_skeleton(g_str)
+            graph_skeletons[g.gp.name] = g
+
+    return graph_skeletons
+
+
+def build_graph_from_gt(g_gt):
+    g = Graph(g_gt.num_vertices())
+
+    for v in g_gt.vertices():
+        g.static_runtime(int(v), g_gt.vp.remote_runtime[v], g_gt.vp.cache_runtime[v])
+        g.config_inputs(int(v), g_gt.vp.inputs[v])
+
+    for e in g_gt.edges():
+        g.add_edge(e.source(), e.target(), 0)
+
+    g.name = g_gt.gp.name
+    g.id = g_gt.gp.id
+    return g
+
+
