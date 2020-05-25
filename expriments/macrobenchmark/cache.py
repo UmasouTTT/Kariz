@@ -19,14 +19,14 @@ def clear_cache(token=None):
 
 
 def fetch_object_partial(token, bucket_name, obj_name, ofs_s, ofs_e):
-    print(bucket_name, obj_name)
+#    print(bucket_name, obj_name)
 
     url = 'http://%s:%d/swift/v1/%s/%s'%(cfg.rgw_host, cfg.rgw_port, bucket_name, obj_name)
     headers = {"range":"bytes=%d-%d"%(ofs_s, ofs_e),
               "X-Auth-Token": token}
     r=requests.get(url, headers=headers)
 
-    print(len(r.content), ofs_e - ofs_s)
+#    print('prefetched', len(r.content), 'requested', ofs_e - ofs_s, 'total', ofs_e)
 
 
 def prefetch_dataset_stride(metadata, token, path, wave=-1, stride=0):
