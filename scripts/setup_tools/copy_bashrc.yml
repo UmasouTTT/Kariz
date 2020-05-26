@@ -2,5 +2,5 @@
   tasks:
     - name: Copy alluxio conf-properties.xml
       copy:
-        src: "{{lookup('env','HOME')}}/.bashrc"
-        dest: "{{lookup('env','HOME')}}/.bashrc"
+        src: "/etc/hosts"
+        dest: "/etc/hosts"
