@@ -2,5 +2,5 @@
   tasks:
     - name: Copy hadoop hdfs-site.xml
       copy:
-        src: /home/ubuntu/opt/hadoop-2.8.4/etc/hadoop/core-site.xml 
-        dest: /home/ubuntu/opt/hadoop-2.8.4/etc/hadoop/core-site.xml
+        src: "{{ lookup('env','HADOOP_CONF_DIR') }}/core-site.xml"
+        dest: "{{ lookup('env','HADOOP_CONF_DIR') }}/core-site.xml"

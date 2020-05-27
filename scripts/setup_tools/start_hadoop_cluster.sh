@@ -29,11 +29,11 @@ start-yarn.sh
 echo "${GREEN}Start History Tracker${NC}"
 $HADOOP_HOME/sbin/mr-jobhistory-daemon.sh start historyserver
 
-echo "${GREEN}Add App directory${NC}"
-hadoop fs -mkdir /apps/
+#echo "${GREEN}Add App directory${NC}"
+#hadoop fs -mkdir /apps/
 
-echo "${GREEN}Add Tez directory${NC}"
-hadoop fs -mkdir /apps/tez-0.9.0
+#echo "${GREEN}Add Tez directory${NC}"
+#hadoop fs -mkdir /apps/tez-0.9.0
 
-echo "${GREEN}Copy Tez file${NC}"
-hadoop fs -copyFromLocal /home/ubuntu/opt/apache-tez-0.9.0-src/tez-dist/target/tez-0.9.0.tar.gz /apps/tez-0.9.0/
+#echo "${GREEN}Copy Tez file${NC}"
+#hadoop fs -copyFromLocal /home/ubuntu/opt/apache-tez-0.9.0-src/tez-dist/target/tez-0.9.0.tar.gz /apps/tez-0.9.0/
