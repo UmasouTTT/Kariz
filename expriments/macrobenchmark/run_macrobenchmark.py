@@ -17,14 +17,11 @@ def run():
    metadata = swift.load_metadata();
    token = swift.get_token()
 
-   tpch_src = "/local0/Kariz/expriments/benchmark/BenchmarkScripts/tpch/pig"
+   tpch_src = "/local0/Kariz/expriments/benchmark/spark/tpch-spark"
    curdir = os.getcwd()
  
-   executable = tpch_src + "/run_tpch.sh"
-
-
    for rep in range(0, cfg.reps):
-      n_experiment = len(cfg.dpath)
+      n_experiment = len(cfg.experiment_name)
       for idx in range(0, n_experiment):
           cache.clear_cache(token=token);
           print("Start experiment --->  ", cfg.experiment_name[idx], ", rep", rep)
@@ -36,7 +33,9 @@ def run():
                   cache.prefetch_dataset_stride(metadata, token, pre_ds, stride=stride)
 
           os.chdir(tpch_src)
-          proc = subprocess.Popen([executable, "s3a://data/pig-tpch/64G", '/tpch-exp',  "1", "S3"]) 
+          print(os.getcwd())
+          proc = subprocess.Popen(["spark-submit", '--class', 'main.scala.TpchQuery', "--master", "spark://neu-3-1:7077", 
+              "target/scala-2.11/spark-tpc-h-queries_2.11-1.0.jar" , "15", "s3a://data/pig-tpch/64G/"]) 
           ret = proc.wait()
           os.chdir(curdir)
 

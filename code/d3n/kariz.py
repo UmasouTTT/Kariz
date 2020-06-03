@@ -59,7 +59,7 @@ class Kariz:
 
         #graph.load_graph_pools(tpc.load_synthetic_graphs(), tpc.build_tpc_graphpool())
 
-        self.load_graphs_skeleton(config_file)
+        #self.load_graphs_skeleton(config_file)
 
 
         # a thread to process the incoming dags
@@ -83,10 +83,12 @@ class Kariz:
         _kariz = self # mirab daemon instance 
 
     def new_dag_from_string(self, dag_string):
-        self.gq.put(dag_string)
+        print(dag_string)
+        #self.gq.put(dag_string)
 
     def notify_new_stage_from_string(self, stage_metastr):
-        self.pq.put(stage_metastr)
+        print(stage_metastr)
+        #self.pq.put(stage_metastr)
         
     def remove_dag(self, dagstr):
         self.dq.put(dagstr)
