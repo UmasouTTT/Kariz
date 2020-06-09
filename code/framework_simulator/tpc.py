@@ -165,7 +165,7 @@ def build_tpc_graphpool():
     q2h1.config_inputs(2, {'tpch_1G_partsupp': inputs['tpch_1G_partsupp']})
     q2h1.config_inputs(3, {'tpch_1G_part': inputs['tpch_1G_part']})
     graphs.append(q2h1)
-    graphs_dict['HQ2-1'] = q2h1
+    graphs_dict['HQ2'] = q2h1
     
     q2h2 = gr.Graph(7, type=gr.Type.sequential)
     q2h2.add_edge(0, 1, 0)
@@ -223,7 +223,7 @@ def build_tpc_graphpool():
     q3h1.config_inputs(0, {'tpch_1G_orders': inputs['tpch_1G_orders']})
     q3h1.config_inputs(1, {'tpch_1G_lineitem': inputs['tpch_1G_lineitem']})
     graphs.append(q3h1)
-    graphs_dict['HQ3-1'] = q3h1
+    graphs_dict['HQ3'] = q3h1
     
     q3h2 = gr.Graph(5,type=gr.Type.sequential)
     q3h2.add_edge(0, 1, 0)
@@ -1343,9 +1343,20 @@ def load_synthetic_graphs():
         print(len(graphs_pool), "loaded successfully")
         return graphs_pool
     
-    
+ls = {0 : 'tiny', 1: 'sequential', 2: 'aggregate', 3: 'broadcast', 4: 'complex'}
+
+
 
 if __name__ == '__main__':
     graphs_pool = build_tpc_graphpool();
-    convert_to_graphtool(graphs_pool)
-    graphs_pool = load_synthetic_graphs();
+     
+    print('{')
+    for gid in graphs_pool:
+        _type =  ls[graphs_pool[gid].category]
+        if 'HQ' in gid and '-' not in gid:
+            print('"' + gid.replace('H', '') + '" : "' + ls[graphs_pool[gid].category] + '",')
+
+    print('}')
+#    convert_to_graphtool(graphs_pool)
+#    graphs_pool = load_synthetic_graphs();
+

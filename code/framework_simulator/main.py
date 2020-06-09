@@ -6,6 +6,7 @@ Created on Sep 16, 2019
 '''
 
 import workload.generic as wkl
+import workload.fixedsequential as fseq
 
 def test_misestimation():
     workload = wkl.Workload()
@@ -29,8 +30,8 @@ def test_d3n():
     workload.d3n_sequential_workload()
 
 def test_bw_allocation():
-    workload = wkl.Workload()
-    workload.bw_allocation_workload()
+    workload = fseq.Workload()
+    workload.run()
 
 def test_multidag_scalability():
     workload = wkl.Workload()
@@ -44,4 +45,5 @@ def test_multidag_scalability():
 #test_misestimation()
 #test_bw_allocation()
 #test_vshistory()
+
 test_multidag_scalability();

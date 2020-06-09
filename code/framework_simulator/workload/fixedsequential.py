@@ -1,29 +1,4 @@
-#!/usr/bin/python
-'''
-Created on Sep 7, 2019
-
-@author: mania
-'''
-
-'''
-from alibaba traces we figure it out that average # of DAGs
-submitted per 30 is L. The maxumum is Y and the minimum is Z
-
-we generate DAGs for 1 hour every 30 seconds using poisson distribution 
-with average time interval of L
-
-For alibaba traces should I randomly 
-lets independently apply size and identity 
-
-generate set of N filenames 
-Usibg exponential propablity to assign sizes for filenames use zipf distribution 
-I use zipf to select from a list of file names
-
-for ali baba traces just randomly assign inputs to nodes. 
-
-
-'''
-import random 
+import random
 import pigsimulator as pigsim
 import threading
 import tpc
@@ -34,48 +9,44 @@ import uuid
 import utils.requester as req
 
 
-class Workload: 
+class Workload:
     def __init__(self):
         self.n_intervals = cfg.simulation_period//cfg.submission_interval
-        self.dags = tpc.load_synthetic_graphs()
+        self.dags_pool = tpc.load_synthetic_graphs()
         self.pendings = []
 
-        self.create_fixed_workload()
+    def load_fixed_workload(self):
+        with open(cfg.fixed_workload_path, 'r') as fd:
+            return fd.read().split(',')
 
     def create_fixed_workload(self):
         with open(cfg.fixed_workload_path, 'w') as fd:
             fd.write(','.join(random.choices(list(self.dags.keys()), k=cfg.fixed_workload_count)))
-    
-    def select_dags_randomly(self, n_dags):
-        return random.choices(list(self.dags.keys()), k = n_dags)
-    
-    def submit_dag(self, dag_name):
-        dag = self.dags[dag_name].copy()
-        dag.gp.id = str(uuid.uuid1())
-        pigsim.start_pig_simulator(dag)
 
-        self.pendings.remove(threading.current_thread())
-        
-    def select_and_submit(self, n_dags):
-        
-        dags = self.select_dags_randomly(n_dags)
-        
+    def submit_dag(self, dag_name):
+        dags = self.dags_in_ex
+
         for dag_name in dags:
-            t = Thread(target=self.submit_dag, args=(dag_name, ))
+            t = Thread(target=self.submit_dag, args=(dag_name,))
             t.start()
             self.pendings.append(t)
-        
-    
+
     def run(self):
         elapsed_time = 0;
-         
+
+        self.load_fixed_workload();
+
+        dags_in_ex = self.load_fixed_workload();
+        for g_name in dags_in_ex:
+
+
         # initialize a timer that issues submit DAG every two seconds
         ticker = threading.Event()
         while elapsed_time < cfg.simulation_period:
             ticker.wait(cfg.submission_interval)
-            
+
             self.select_and_submit(cfg.n_dags_per_interval)
-               
+
             elapsed_time += cfg.submission_interval;
             print(Fore.LIGHTRED_EX, 'Number of pending tasks', len(self.pendings), Style.RESET_ALL)
 
@@ -87,5 +58,3 @@ class Workload:
         # join all DAGs to finish
         for t in self.pendings:
             t.join()
-
-        req.send_experiment_completion_rpc()
