@@ -46,7 +46,7 @@ def prefetch_dataset_stride(metadata, token, path, wave=-1, stride=0):
         n_cache_blocks = meta_ptr[obj]['size']//cfg.cache_block_size
 
 
-        ofs_s = (n_cache_blocks - stride)*cfg.cache_block_size if (stride) else 0
+        ofs_s = (n_cache_blocks - stride)*cfg.cache_block_size if (stride!= -1) else 0
         ofs_e = meta_ptr[obj]['size']
 
         fetch_object_partial(token=token, bucket_name='data', obj_name=path+'/'+obj, ofs_s = ofs_s, ofs_e = ofs_e)
