@@ -2,24 +2,27 @@
 import datetime
 
 from utils.graph import *
-import plans.kariz.dagplanner as dp
 import utils.requester as requester
 import utils.status as status
-import plans.kariz.scoreboard as sb
-from prwlock import RWLock
+import plans.scoreboard as sb
 import pandas as pd
 from colorama import Fore, Style
 
-class Mirab:
+
+import controller.config as cfg
+from controller.plans.multidag.planner import Planner
+
+
+class Mirab(Planner):
     def __init__(self):
+        Planner.__init__(self);
+
         self.fairness_factor = 0.2
         self.fairness_scores = {}
         self.share_scores = {}
-        self.dag_planners = {}
         self.alpha = 0.5
-        self.available_bandwidth = 1200  # 10Gbps = 1.2 GBps = 1200 MBps = 1200
+        self.available_bandwidth = cfg.bandwidth  # 10Gbps = 1.2 GBps = 1200 MBps = 1200
         self.cache_block_size = 1  # 1MBype
-        self.dag_planners_mutex = RWLock()
 
         self.stats = []
 
@@ -27,7 +30,7 @@ class Mirab:
         self.bw_sb = sb.ScoreBoard(score_board_time, self.available_bandwidth)
 
     def add_dag(self, g):
-        new_dp = dp.DAGPlanner(g)
+        new_dp = Planner.initialize_signle_dag_planner(g);
 
         with self.dag_planners_mutex.writer_lock():
             self.dag_planners[g.dag_id] = new_dp
