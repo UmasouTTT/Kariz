@@ -1,6 +1,6 @@
 - hosts: hadoop
   tasks:
-    - name: Copy hadoop slaves
+    - name: Copy hadoop yarn-site.xml
       copy:
-        src: "{{ lookup('env','HADOOP_HOME') }}/etc/hadoop/slaves"    #/home/ubuntu/opt/hadoop-2.8.4/etc/hadoop/slaves 
-        dest: "{{ lookup('env','HADOOP_HOME') }}/etc/hadoop/slaves"   # /home/ubuntu/opt/hadoop-2.8.4/etc/hadoop/slaves
+        src: "{{ lookup('env','HADOOP_CONF_DIR') }}/slaves" 
+        dest: "{{ lookup('env','HADOOP_CONF_DIR') }}/slaves"
