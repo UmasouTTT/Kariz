@@ -23,6 +23,9 @@ workload_config=${root_dir}/conf/workloads/micro/terasort.conf
 enter_bench HadoopPrepareTerasort ${workload_config} ${current_dir}
 show_bannar start
 
+
+echo ${DATASIZE}
+
 rmr_hdfs $INPUT_HDFS || true
 START_TIME=`timestamp`
 run_hadoop_job ${HADOOP_EXAMPLES_JAR} teragen \

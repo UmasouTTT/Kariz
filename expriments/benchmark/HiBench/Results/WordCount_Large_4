@@ -1,0 +1,88 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hadoop-2.8.4/share/hadoop/common/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop-2.8.4/share/hadoop/common/lib/alluxio-1.8.0-client.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/alluxio-1.8.0-hadoop-2.8/client/alluxio-1.8.0-client.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+19/09/17 14:33:53 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/09/17 14:33:54 INFO client.RMProxy: Connecting to ResourceManager at neu-5-1/10.255.5.1:8032
+19/09/17 14:33:55 INFO input.FileInputFormat: Total input files to process : 8
+19/09/17 14:33:55 INFO mapreduce.JobSubmitter: number of splits:24
+19/09/17 14:33:55 INFO Configuration.deprecation: mapreduce.outputformat.class is deprecated. Instead, use mapreduce.job.outputformat.class
+19/09/17 14:33:55 INFO Configuration.deprecation: mapreduce.inputformat.class is deprecated. Instead, use mapreduce.job.inputformat.class
+19/09/17 14:33:55 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1568736482867_0018
+19/09/17 14:33:55 INFO impl.YarnClientImpl: Submitted application application_1568736482867_0018
+19/09/17 14:33:55 INFO mapreduce.Job: The url to track the job: http://neu-5-1:8088/proxy/application_1568736482867_0018/
+19/09/17 14:33:55 INFO mapreduce.Job: Running job: job_1568736482867_0018
+19/09/17 14:34:01 INFO mapreduce.Job: Job job_1568736482867_0018 running in uber mode : false
+19/09/17 14:34:01 INFO mapreduce.Job:  map 0% reduce 0%
+19/09/17 14:34:20 INFO mapreduce.Job:  map 2% reduce 0%
+19/09/17 14:34:21 INFO mapreduce.Job:  map 30% reduce 0%
+19/09/17 14:34:26 INFO mapreduce.Job:  map 31% reduce 0%
+19/09/17 14:34:28 INFO mapreduce.Job:  map 43% reduce 0%
+19/09/17 14:34:33 INFO mapreduce.Job:  map 44% reduce 0%
+19/09/17 14:34:34 INFO mapreduce.Job:  map 57% reduce 0%
+19/09/17 14:34:38 INFO mapreduce.Job:  map 59% reduce 0%
+19/09/17 14:34:39 INFO mapreduce.Job:  map 69% reduce 0%
+19/09/17 14:34:40 INFO mapreduce.Job:  map 89% reduce 0%
+19/09/17 14:34:41 INFO mapreduce.Job:  map 99% reduce 0%
+19/09/17 14:34:42 INFO mapreduce.Job:  map 100% reduce 0%
+19/09/17 14:34:44 INFO mapreduce.Job:  map 100% reduce 13%
+19/09/17 14:34:45 INFO mapreduce.Job:  map 100% reduce 100%
+19/09/17 14:34:45 INFO mapreduce.Job: Job job_1568736482867_0018 completed successfully
+19/09/17 14:34:45 INFO mapreduce.Job: Counters: 49
+	File System Counters
+		FILE: Number of bytes read=3623768
+		FILE: Number of bytes written=7631630
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=3284945906
+		HDFS: Number of bytes written=23495
+		HDFS: Number of read operations=120
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=16
+	Job Counters
+		Launched map tasks=24
+		Launched reduce tasks=8
+		Data-local map tasks=24
+		Total time spent by all maps in occupied slots (ms)=879111
+		Total time spent by all reduces in occupied slots (ms)=26384
+		Total time spent by all map tasks (ms)=879111
+		Total time spent by all reduce tasks (ms)=26384
+		Total vcore-milliseconds taken by all map tasks=879111
+		Total vcore-milliseconds taken by all reduce tasks=26384
+		Total megabyte-milliseconds taken by all map tasks=900209664
+		Total megabyte-milliseconds taken by all reduce tasks=27017216
+	Map-Reduce Framework
+		Map input records=4882515
+		Map output records=266149592
+		Map output bytes=3900409544
+		Map output materialized bytes=400872
+		Input split bytes=2904
+		Combine input records=266253592
+		Combine output records=128000
+		Reduce input groups=1000
+		Reduce shuffle bytes=400872
+		Reduce input records=24000
+		Reduce output records=1000
+		Spilled Records=152000
+		Shuffled Maps =192
+		Failed Shuffles=0
+		Merged Map outputs=192
+		GC time elapsed (ms)=18606
+		CPU time spent (ms)=864100
+		Physical memory (bytes) snapshot=8648933376
+		Virtual memory (bytes) snapshot=66288279552
+		Total committed heap usage (bytes)=6079643648
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters
+		Bytes Read=3284943002
+	File Output Format Counters
+		Bytes Written=23495
