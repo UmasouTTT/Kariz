@@ -48,7 +48,7 @@ def prepare_tpc_metadata_wh(fpath):
 def prepare_tpc_metadata():
     metadata = {}
     
-    with open('/home/mania/Northeastern/MoC/Kariz/code/utils/inputs.csv', 'r') as fd:
+    with open('/local0/Kariz/code/utils/inputs.csv', 'r') as fd:
         lines = fd.readlines()[1:];
         for ln in lines:
             name, size = ln.replace('\n', '').split(',')
@@ -1334,7 +1334,7 @@ def build_dag_from_str(g_str):
     
     
 def load_synthetic_graphs():
-    with open('/home/mania/Northeastern/MoC/Kariz/code/framework_simulator/synthetic_dags.g', 'r') as fd:
+    with open('/local0/Kariz/code/framework_simulator/synthetic_dags.g', 'r') as fd:
         graph_strs = fd.read().split('#')[1:]
         graphs_pool = {}
         for g_str in graph_strs: # for each graph 
