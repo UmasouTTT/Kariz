@@ -1,4 +1,4 @@
-rgw_host='192.168.35.41'
+rgw_host='192.168.37.41'
 rgw_port=80
 swift_user = 'testuser:swift'
 swift_key = '7Xqb6gdsCE5Vu0clmk2qL0yjjy1NCNiFuaPlGQvJ'

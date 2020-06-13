@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-src="10.255.3.1"
-dest="192.168.35.1"
+src=$1
+dest=$2
 
 
 echo "Enable Hadoop cluster webui"

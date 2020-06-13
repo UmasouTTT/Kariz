@@ -151,7 +151,7 @@ class Mirab:
             w_p = 0
             for ds in p.data:
                 if files[ds]['n_dags'] > 1:
-                    w_p += (1/files[ds]['min'])
+                    w_p += (1/len(files[ds]['n_dags']))
             p.sscore = 1 - w_p/p.size
 
 

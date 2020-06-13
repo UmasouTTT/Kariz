@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export rgw_host="192.168.35.41"
+export rgw_host="192.168.37.41"
 export rgw_port=80
 export swift_user="testuser:swift"
 export swift_key="7Xqb6gdsCE5Vu0clmk2qL0yjjy1NCNiFuaPlGQvJ"

@@ -79,9 +79,19 @@ class Graph:
         self.n_vertices+= 1
     
     def set_misestimated_jobs(self, mse_jobs):
+        i = 0
+        for x in mse_jobs:
+            if x == 1:
+                i+= 1
+
         for i in range(0, self.n_vertices):
             self.jobs[i].set_misestimation(mse_jobs[i], mse_jobs[i + self.n_vertices])
-            
+
+        return i, len(mse_jobs)
+
+    def get_misestimated_jobs(self):
+        pass
+
     def config_misestimated_jobs(self): # mse_factor: miss estimation factor
         for i in range(0, self.n_vertices):
             self.jobs[i].config_misestimated_runtimes(self.mse_factor)
