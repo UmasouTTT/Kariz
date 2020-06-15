@@ -14,5 +14,3 @@ report/
 .classpath
 .project
 .settings/
-conf/hadoop.conf
-conf/spark.conf
