@@ -1,0 +1,6 @@
+- hosts: hadoop
+  tasks:
+    - name: Copy Spark configuration
+      copy:
+        src: "{{ lookup('env','SPARK_HOME') }}/conf/spark-defaults.conf" 
+        dest: "{{ lookup('env','SPARK_HOME') }}/conf/spark-defaults.conf"

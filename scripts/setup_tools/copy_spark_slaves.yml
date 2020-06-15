@@ -1,0 +1,6 @@
+- hosts: hadoop
+  tasks:
+    - name: Copy Spark slaves
+      copy:
+        src: "{{ lookup('env','SPARK_HOME') }}/conf/slaves" 
+        dest: "{{ lookup('env','SPARK_HOME') }}/conf/slaves"
