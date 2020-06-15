@@ -23,18 +23,25 @@ workload_config=${root_dir}/conf/workloads/micro/wordcount.conf
 enter_bench HadoopWordcount ${workload_config} ${current_dir}
 show_bannar start
 
-rmr_hdfs $OUTPUT_HDFS || true
+echo "HEELLLLOOOOOOOOOOOOOO $0 $1 $2" 
 
-SIZE=`dir_size $INPUT_HDFS`
+ARG_INPUT_HDFS=$1
+ARG_OUTPUT_HDFS=$2
+ARG_MAPSIZE=$3
+echo "${ARG_INPUT_HDFS}, ${ARG_OUTPUT_HDFS}, ${ARG_MAPSIZE}"
+
+rmr_hdfs $ARG_OUTPUT_HDFS || true
+
+SIZE=`dir_size $ARG_INPUT_HDFS`
 START_TIME=`timestamp`
-run_hadoop_job ${HADOOP_EXAMPLES_JAR} wordcount  -D mapred.min.split.size=1102234211 \
+run_hadoop_job ${HADOOP_EXAMPLES_JAR} wordcount -D mapred.min.split.size=${ARG_MAPSIZE} \
     -D mapreduce.job.maps=${NUM_MAPS} \
     -D mapreduce.job.reduces=${NUM_REDS} \
     -D mapreduce.inputformat.class=org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat \
     -D mapreduce.outputformat.class=org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat \
     -D mapreduce.job.inputformat.class=org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat \
     -D mapreduce.job.outputformat.class=org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat \
-    ${INPUT_HDFS} ${OUTPUT_HDFS} 
+    ${ARG_INPUT_HDFS} ${ARG_OUTPUT_HDFS} 
 END_TIME=`timestamp`
 
 gen_report ${START_TIME} ${END_TIME} ${SIZE}
