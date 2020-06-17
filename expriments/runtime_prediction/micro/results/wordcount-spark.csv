@@ -1,0 +1,11 @@
+app_id,app_name,stage_id,input_sz,output_sz,rdds,n_tasks,runtime,name,bw,dataset,stride,rep
+app-20200617165846-0043,name:wordcount-bw:40Gbps-ds:1G-stride:0-rep:0-pismadzf,40Gbps,1G,0,64,wordcount,26655,"[6, 5]",0,7.0,1,0
+app-20200617165846-0043,name:wordcount-bw:40Gbps-ds:1G-stride:0-rep:0-pismadzf,40Gbps,1G,1102238868,8,wordcount,0,"[4, 2, 0, 3, 1]",0,8.0,0,0
+app-20200617175135-0044,name:wordcount-bw:40Gbps-ds:1G-stride:0-rep:0-golcidhu,40Gbps,1G,0,64,wordcount,26655,"[6, 5]",0,8.0,1,0
+app-20200617175135-0044,name:wordcount-bw:40Gbps-ds:1G-stride:0-rep:0-golcidhu,40Gbps,1G,1102238868,8,wordcount,0,"[4, 2, 3, 1, 0]",0,9.0,0,0
+app-20200617175613-0046,name:wordcount-bw:40Gbps-ds:1G-stride:0-rep:0-nwkomsjh,40Gbps,1G,0,64,wordcount,26655,"[6, 5]",0,10.0,1,0
+app-20200617175613-0046,name:wordcount-bw:40Gbps-ds:1G-stride:0-rep:0-nwkomsjh,40Gbps,1G,1102238868,8,wordcount,0,"[4, 3, 1, 0, 2]",0,9.0,0,0
+app-20200617175857-0048,name:wordcount-bw:40Gbps-ds:1G-stride:0-rep:0-nfwyvuoi,40Gbps,1G,0,64,wordcount,26655,"[6, 5]",0,7.0,1,0
+app-20200617175857-0048,name:wordcount-bw:40Gbps-ds:1G-stride:0-rep:0-nfwyvuoi,40Gbps,1G,1102238868,8,wordcount,0,"[4, 2, 0, 3, 1]",0,10.0,0,0
+app-20200617180249-0051,name:wordcount-bw:40Gbps-ds:1G-stride:0-rep:0-orcikjyg,40Gbps,1G,0,64,wordcount,26655,"[6, 5]",0,8.0,1,0
+app-20200617180249-0051,name:wordcount-bw:40Gbps-ds:1G-stride:0-rep:0-orcikjyg,40Gbps,1G,1102238868,8,wordcount,0,"[4, 1, 0, 3, 2]",0,10.0,0,0

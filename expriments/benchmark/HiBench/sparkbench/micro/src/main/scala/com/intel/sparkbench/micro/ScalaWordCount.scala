@@ -27,11 +27,15 @@ object ScalaWordCount{
   def main(args: Array[String]){
     if (args.length < 2){
       System.err.println(
-        s"Usage: $ScalaWordCount <INPUT_HDFS> <OUTPUT_HDFS>"
+        s"Usage: $ScalaWordCount <INPUT_HDFS> <OUTPUT_HDFS> <APP_NAME>"
       )
       System.exit(1)
     }
-    val sparkConf = new SparkConf().setAppName("ScalaWordCount")
+    var app_name = "ScalaWordCount"
+    if (args.length == 3)
+      app_name=args(2)
+
+    val sparkConf = new SparkConf().setAppName(app_name)
     val sc = new SparkContext(sparkConf)
 
     val io = new IOCommon(sc)

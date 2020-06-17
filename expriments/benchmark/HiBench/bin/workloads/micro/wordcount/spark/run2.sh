@@ -25,14 +25,14 @@ show_bannar start
 
 ARG_INPUT_HDFS=$1
 ARG_OUTPUT_HDFS=$2
-ARG_MAPSIZE=$3
-echo "${ARG_INPUT_HDFS}, ${ARG_OUTPUT_HDFS}, ${ARG_MAPSIZE}"
+ARG_APP_NAME=$3
+echo "${ARG_APP_NAME}, ${ARG_INPUT_HDFS}, ${ARG_OUTPUT_HDFS}"
 
 rmr_hdfs $ARG_OUTPUT_HDFS || true
 
 SIZE=`dir_size $ARG_INPUT_HDFS`
 START_TIME=`timestamp`
-run_spark_job com.intel.hibench.sparkbench.micro.ScalaWordCount $ARG_INPUT_HDFS $ARG_OUTPUT_HDFS
+run_spark_job com.intel.hibench.sparkbench.micro.ScalaWordCount $ARG_INPUT_HDFS $ARG_OUTPUT_HDFS ${ARG_APP_NAME}
 END_TIME=`timestamp`
 
 gen_report ${START_TIME} ${END_TIME} ${SIZE}

@@ -22,7 +22,6 @@ class ObjectStore():
 
    def get_token(self):
        token = self.conn.get_auth()[1]
-       print('RGW token:', token)
        return token;
    
    
@@ -35,6 +34,7 @@ class ObjectStore():
            meta_ptr[element]['size'] += size
            meta_ptr = meta_ptr[element]['objs']
    
+
    def load_metadata(self):
        metadata = {}
        metadata_swift =  self.conn.get_container(cfg.bucket_name)[1]
@@ -46,14 +46,15 @@ class ObjectStore():
        self.metadata = metadata
        return metadata
 
+
    def clear_cache(self):
        token = self.get_token()
+       print('Clear the cache')
        url = 'http://%s:%d/swift/v1/'%(cfg.rgw_host, cfg.rgw_port)
        headers = {"KARIZ_FLUSH_CACHE":"1",
                  "X-Auth-Token": token}
    
        r=requests.delete(url, headers=headers)
-       print(r)
    
    
    def fetch_object_partial(self, bucket_name, obj_name, ofs_s, ofs_e):
@@ -76,6 +77,30 @@ class ObjectStore():
            ofs_s = (n_cache_blocks - stride)*cfg.cache_block_size if (stride!= -1) else 0
            ofs_e = meta_ptr[obj]['size']
            self.fetch_object_partial(bucket_name=cfg.bucket_name, obj_name=path+'/'+obj, ofs_s = ofs_s, ofs_e = ofs_e)
+
+
+   def prefetch_dataset_map_stride(self, path, yarn_map_byte, stride=0):
+       cache_block_size = 4194304 # 4 MB
+       path_element = path.split('/')
+       meta_ptr = self.metadata
+       for element in path_element:
+           if element not in meta_ptr:
+               return -1; # means could not prefetch this input
+           meta_ptr = meta_ptr[element]['objs']
+       for obj in meta_ptr:
+           n_maps = math.ceil(meta_ptr[obj]['size']/yarn_map_byte) if meta_ptr[obj]['size'] > yarn_map_byte else 1
+
+           map_byte = yarn_map_byte if meta_ptr[obj]['size'] > yarn_map_byte else meta_ptr[obj]['size']
+
+           for i in range(0, n_maps):
+               n_cache_blocks = map_byte//cfg.cache_block_size
+               if n_cache_blocks < stride:
+                   n_cache_blocks = stride
+
+               ofs_s = i*map_byte + (n_cache_blocks - stride)*cfg.cache_block_size if (stride!= -1) else i*map_byte
+               ofs_e = (i+1)*map_byte if ((i+1)*map_byte <  meta_ptr[obj]['size']) else meta_ptr[obj]['size']
+               self.fetch_object_partial(bucket_name=cfg.bucket_name, obj_name=path+'/'+obj, ofs_s = ofs_s, ofs_e = ofs_e)
+
    
    
    def get_dataset_metadata(self,path, wave=-1, stride=0):

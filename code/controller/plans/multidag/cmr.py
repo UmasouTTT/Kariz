@@ -4,7 +4,7 @@ import datetime
 from utils.graph import *
 import utils.requester as requester
 import utils.status as status
-import plans.scoreboard as sb
+#import plans.scoreboard as sb
 import pandas as pd
 from colorama import Fore, Style
 
@@ -26,8 +26,8 @@ class Mirab(Planner):
 
         self.stats = []
 
-        score_board_time = 60000 # 600 second
-        self.bw_sb = sb.ScoreBoard(score_board_time, self.available_bandwidth)
+ #       score_board_time = 60000 # 600 second
+ #       self.bw_sb = sb.ScoreBoard(score_board_time, self.available_bandwidth)
 
     def add_dag(self, g):
         new_dp = Planner.initialize_signle_dag_planner(g);
