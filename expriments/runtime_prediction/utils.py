@@ -27,18 +27,18 @@ def get_spark_apps():
 
 def get_spark_stages(app_id):
     URL = "http://%s:%d/api/v1/applications/%s/stages"%(spark_hists_host, spark_hists_port, app_id)
-    print(URL)
-    r = 0
     count = 0
-    while r != '<Response [200]>':
-        r = requests.get(url = URL)
-        print(r)
+    while True:
+        response = requests.get(url = URL)
+        if response.status_code == 200:
+            return response.json()
+        
+        print(response.text)
         time.sleep(5)
         count += 1
         if count == 10:
             raise NameError("History server is not accessible")
 
-    return r.json()
 
 
 def pull_spark_app_stages_stats(app_id,app_name):

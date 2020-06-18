@@ -1,0 +1,18 @@
+- hosts: hadoop
+
+  tasks:
+  - name: Delete Spark work directory
+    file:
+      path: "{{ lookup('env','SPARK_HOME') }}/work"
+      state: absent
+
+  - name: Create a directory if it does not exist
+    file:
+      path: /etc/some_directory
+      state: directory
+      mode: '0755'
+
+  - name: Recreate Spark work directory
+    file:
+      path: "{{ lookup('env','SPARK_HOME') }}/work"
+      state: absent
