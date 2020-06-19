@@ -4,6 +4,8 @@ import swiftclient
 import json
 import d3n.config as cfg
 import math
+from colorama import Fore, Style
+
 
 class ObjectStore():
     def __init__(self):
@@ -53,11 +55,13 @@ class ObjectStore():
         r = requests.delete(url, headers=headers)
 
     def fetch_object_partial(self, bucket_name, obj_name, ofs_s, ofs_e):
-        print('bucket_name', bucket_name, 'obj_name', obj_name, ', start offset', ofs_s, 'end offset', ofs_e)
         url = 'http://%s:%d/swift/v1/%s/%s' % (cfg.rgw_host, cfg.rgw_port, bucket_name, obj_name)
         headers = {"range": "bytes=%d-%d" % (ofs_s, ofs_e),
                    "X-Auth-Token": self.token}
         r = requests.get(url, headers=headers)
+
+        if r.status_code not in [200, 201, 204, 206]:
+            raise NameError(Fore.LIGHTRED_EX + '\t\tPrefetch %s/%s  %d-%d, failed with statuscode: %d'%(bucket_name, obj_name, ofs_s, ofs_e, r.status_code) + Style.RESET_ALL )
 
     def prefetch_dataset_stride(self, path, wave=-1, stride=0):
         cache_block_size = 4194304  # 4 MB
@@ -76,23 +80,21 @@ class ObjectStore():
     def prefetch_s3_dataset(self, path, yarn_map_byte, stride=0):
         if not path.startswith('s3a'):
             raise NameError('%s is not a valid s3 path'%(path))
-        self.prefetch_dataset_map_stride(path.split(cfg.bucket_name, 1)[1], yarn_map_byte, stride)
+        print(Fore.YELLOW, '\tPrefetch %s, stride %d'%(path, stride), Style.RESET_ALL)
+        self.prefetch_dataset_map_stride(path.split(cfg.bucket_name+'/', 1)[1], yarn_map_byte, stride)
 
     def prefetch_dataset_map_stride(self, path, yarn_map_byte, stride=0):
         cache_block_size = 4194304  # 4 MB
-        path_element = path.split('/')[1:]
+        path_element = path.split('/')
         meta_ptr = self.metadata
         for element in path_element:
             if element not in meta_ptr:
                 return -1;  # means could not prefetch this input
             meta_ptr = meta_ptr[element]['objs']
-        print('Metaptr', meta_ptr)
         for obj in meta_ptr:
             n_maps = math.ceil(meta_ptr[obj]['size'] / yarn_map_byte) if meta_ptr[obj]['size'] > yarn_map_byte else 1
 
             map_byte = yarn_map_byte if meta_ptr[obj]['size'] > yarn_map_byte else meta_ptr[obj]['size']
-
-            print('n_maps for this block is', n_maps, ', bytes per mapper', map_byte)
 
             for i in range(0, n_maps):
                 n_cache_blocks = map_byte // cfg.cache_block_size

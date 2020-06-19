@@ -39,7 +39,7 @@ def get_spark_stages(app_id):
 
 
 
-def pull_spark_app_stages_stats(app_id,app_name):
+def pull_spark_app_stages_stats(app_id,app_name, app_runtime):
     app_stats = []
     stages = get_spark_stages(app_id)
     name = app_name.split('-')[0].split(':')[1]
@@ -59,7 +59,7 @@ def pull_spark_app_stages_stats(app_id,app_name):
         app_stats.append({'app_id': app_id, 'app_name': app_name, 'stage_id': s['stageId'], 
             'input_sz': s['inputBytes'], 'output_sz': s['outputBytes'], 
             'rdds': s['rddIds'], 'n_tasks': s['numTasks'], 'runtime': completion_time - submit_time,
-            'name': name, 'bw': bw, 'dataset': dataset, 'stride': stride, 'rep': rep})
+            'name': name, 'bw': bw, 'dataset': dataset, 'stride': stride, 'rep': rep, 'app_time': app_runtime})
     return app_stats
 
 
@@ -68,10 +68,11 @@ def pull_spark_app_stats(app_name, statfile):
     
     for app in applications:
         if app['name'] == app_name:
-            stats = pull_spark_app_stages_stats(app['id'], app_name)
+            app_runtime = app['attempts'][0]['duration']
+            stats = pull_spark_app_stages_stats(app['id'], app_name, app_runtime)
             #with open(statfile, 'a+') as fd:
             df = pd.DataFrame(stats);
-            df.to_csv(statfile, mode='a', header=False, index=False, columns=['app_id','app_name','stage_id','input_sz','output_sz','rdds','n_tasks','runtime','name','bw','dataset','stride','rep'])
+            df.to_csv(statfile, mode='a', header=False, index=False, columns=['app_id','app_name','stage_id','input_sz','output_sz','rdds','n_tasks','runtime','name','bw','dataset','stride','rep', 'app_time'])
 
 def clear_spark_tmp_directory(playbook):
     process = subprocess.Popen(['ansible-playbook', playbook])

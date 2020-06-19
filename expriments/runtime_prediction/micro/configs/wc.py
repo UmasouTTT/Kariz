@@ -4,8 +4,7 @@ playbook = "/local0/Kariz/scripts/setup_tools/config_ceph_bw.yml"
 clear_spark_playbook = "/local0/Kariz/scripts/setup_tools/delete_spark_folder.yml"
 
 rgw_nic='ens2f1'
-#rgw_rates=['20Gbps', '10Gbps', '5Gbps', '1Gbps', '500Mbps', '100Mbps', '40Gbps']
-rgw_rates=['1Gbps']
+rgw_rates=['1Gbps', '5Gbps', '10Gbps', '20Gbps', '500Mbps', '100Mbps', '40Gbps']
 
 
 rgw_host='192.168.37.41'
@@ -21,16 +20,14 @@ prefered_map_size=512*1024*1024
 
 output_path="/HiBench/Wordcount/Output"
 input_path='s3a://%s/HiBench/Wordcount/Input-'%(bucket_name)
-#datasets = ['32G', '64G', '16G', '4G', '1G']
-#strides=[0, 4, 8, 16, 32, 48, 64, 80, 96, 128]
+datasets = ['32G', '64G', '16G', '4G', '1G']
+strides=[128, 64, 8, 16, 32, 48, 4, 80, 96, 0]
 
-datasets=['64G']
-strides=[128,64,0]
+#datasets=['64G']
+#strides=[128,64,0]
 
 framework='spark'
 app_name="wordcount"
-
-
 
 benchmark_root="/local0/Kariz/expriments/benchmark/HiBench"
 executable="%s/bin/workloads/micro/%s/%s/run2.sh"%(benchmark_root, app_name, framework)
