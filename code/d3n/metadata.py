@@ -103,6 +103,9 @@ class ObjectStore():
 
                 ofs_s = i * map_byte + (n_cache_blocks - stride) * cfg.cache_block_size if (
                             stride != -1) else i * map_byte
+                if ofs_s > meta_ptr[obj]['size']:
+                    ofs_s = i * map_byte
+
                 ofs_e = (i + 1) * map_byte if ((i + 1) * map_byte < meta_ptr[obj]['size']) else meta_ptr[obj]['size']
                 self.fetch_object_partial(bucket_name=cfg.bucket_name, obj_name=path + '/' + obj, ofs_s=ofs_s,
                                           ofs_e=ofs_e)

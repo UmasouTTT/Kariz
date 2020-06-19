@@ -21,10 +21,10 @@ prefered_map_size=512*1024*1024
 output_path="/HiBench/Wordcount/Output"
 input_path='s3a://%s/HiBench/Wordcount/Input-'%(bucket_name)
 datasets = ['32G', '64G', '16G', '4G', '1G']
-strides=[128, 64, 8, 16, 32, 48, 4, 80, 96, 0]
+strides=[64, 128, 8, 16, 32, 48, 4, 80, 96, 0]
 
 #datasets=['64G']
-#strides=[128,64,0]
+#strides=[64,128,0]
 
 framework='spark'
 app_name="wordcount"

@@ -37,13 +37,13 @@ def run_wrepeats_all_strides(dataset, app_name=''):
 
 def run_runtime_prediction_benchmark():
     for bandwidth in cfg.rgw_rates:
-        common.configure_ceph_bw(cfg.playbook, cfg.rgw_nic, bandwidth)
+      #  common.configure_ceph_bw(cfg.playbook, cfg.rgw_nic, bandwidth)
 
         for ds in cfg.datasets:
             print(Fore.LIGHTGREEN_EX, 'Run %s for bandwidth %s, dataset %s'%(cfg.app_name, bandwidth, ds), Style.RESET_ALL)
             app_name='name:%s-bw:%s-ds:%s'%(cfg.app_name, bandwidth, ds)
             run_wrepeats_all_strides(cfg.input_path+ds, app_name=app_name)
-            common.clear_spark_tmp_directory(cfg.clear_spark_playbook)
+       #     common.clear_spark_tmp_directory(cfg.clear_spark_playbook)
 
 
 obj_store = md.ObjectStore();
