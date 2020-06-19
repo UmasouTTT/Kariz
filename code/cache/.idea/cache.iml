@@ -6,6 +6,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="framework_simulator" />
     <orderEntry type="module" module-name="kariz" />
+    <orderEntry type="module" module-name="micro" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />

@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/cache.iml" filepath="$PROJECT_DIR$/.idea/cache.iml" />
       <module fileurl="file://$PROJECT_DIR$/../framework_simulator/.idea/framework_simulator.iml" filepath="$PROJECT_DIR$/../framework_simulator/.idea/framework_simulator.iml" />
       <module fileurl="file://$PROJECT_DIR$/../plans/kariz/.idea/kariz.iml" filepath="$PROJECT_DIR$/../plans/kariz/.idea/kariz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../expriments/runtime_prediction/micro/.idea/micro.iml" filepath="$PROJECT_DIR$/../../expriments/runtime_prediction/micro/.idea/micro.iml" />
     </modules>
   </component>
 </project>
