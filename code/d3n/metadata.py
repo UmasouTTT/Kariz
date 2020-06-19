@@ -58,6 +58,7 @@ class ObjectStore():
    
    
    def fetch_object_partial(self, bucket_name, obj_name, ofs_s, ofs_e):
+       print('bucket_name', bucket_name, 'obj_name', obj_name, ', start offset', ofs_s, 'end offset', ofs_e)
        url = 'http://%s:%d/swift/v1/%s/%s'%(cfg.rgw_host, cfg.rgw_port, bucket_name, obj_name)
        headers = {"range":"bytes=%d-%d"%(ofs_s, ofs_e),
                  "X-Auth-Token": self.token}
@@ -87,10 +88,15 @@ class ObjectStore():
            if element not in meta_ptr:
                return -1; # means could not prefetch this input
            meta_ptr = meta_ptr[element]['objs']
+       print('Metaptr', meta_ptr)
        for obj in meta_ptr:
            n_maps = math.ceil(meta_ptr[obj]['size']/yarn_map_byte) if meta_ptr[obj]['size'] > yarn_map_byte else 1
 
+
            map_byte = yarn_map_byte if meta_ptr[obj]['size'] > yarn_map_byte else meta_ptr[obj]['size']
+
+
+           print('n_maps for this block is', n_maps, ', bytes per mapper', map_byte)
 
            for i in range(0, n_maps):
                n_cache_blocks = map_byte//cfg.cache_block_size

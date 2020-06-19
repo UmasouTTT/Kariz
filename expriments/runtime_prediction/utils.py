@@ -32,12 +32,10 @@ def get_spark_stages(app_id):
         response = requests.get(url = URL)
         if response.status_code == 200:
             return response.json()
-        
-        print(response.text)
         time.sleep(5)
         count += 1
         if count == 10:
-            raise NameError("History server is not accessible")
+            raise NameError(response.text)
 
 
 
@@ -71,9 +69,13 @@ def pull_spark_app_stats(app_name, statfile):
     for app in applications:
         if app['name'] == app_name:
             stats = pull_spark_app_stages_stats(app['id'], app_name)
-            with open(statfile, 'a+') as fd:
-                df = pd.DataFrame(stats);
-                df.to_csv(fd, header=False, index=False)
+            #with open(statfile, 'a+') as fd:
+            df = pd.DataFrame(stats);
+            df.to_csv(statfile, mode='a', header=False, index=False, columns=['app_id','app_name','stage_id','input_sz','output_sz','rdds','n_tasks','runtime','name','bw','dataset','stride','rep'])
+
+def clear_spark_tmp_directory(playbook):
+    process = subprocess.Popen(['ansible-playbook', playbook])
+    process.wait()
 
 
 
