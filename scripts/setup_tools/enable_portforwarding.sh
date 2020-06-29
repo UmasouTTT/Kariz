@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ "$#" -ne 3 ]; then
+    echo "Usage: enable_portforwarding.sh <public_ip> <private_ip> <port>"
+    exit
+fi
+
+
 ip_forward=`cat /proc/sys/net/ipv4/ip_forward`
 
 if [ "${ip_forward}" -eq "0" ]; then
