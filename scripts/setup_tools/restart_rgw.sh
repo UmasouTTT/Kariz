@@ -15,15 +15,15 @@ fi
 
 # Delete _2* from tmp directory
 echo "Delete all ${rgw_data_path}/*_2"
-rm -rf "${rgw_data_path}/*_2"
+rm -rf ${rgw_data_path}/*_2*
 
 # Delete _1* from tmp directory
 echo "Delete all ${rgw_data_path}/*_1"
-rm -rf "${rgw_data_path}/*_1"
+rm -rf ${rgw_data_path}/*_1*
 
 # Delete everything in tmp directory
 echo "Delete all files in ${rgw_data_path}"
-rm -rf "${rgw_data_path}/*"
+rm -rf ${rgw_data_path}/*
 
 cd ${rgw_path}
 
