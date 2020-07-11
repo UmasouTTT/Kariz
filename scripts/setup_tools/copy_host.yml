@@ -1,6 +1,7 @@
 - hosts: hadoop
   tasks:
     - name: Copy alluxio conf-properties.xml
+      become: true
       copy:
         src: "/etc/hosts"
         dest: "/etc/hosts"
