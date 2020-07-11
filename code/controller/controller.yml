@@ -5,8 +5,10 @@ info:
   title: Swagger Rest Article
 consumes:
   - text/plain
+  - application/json
 produces:
   - text/plain
+  - application/json
 
 basePath: /api
 
@@ -33,6 +35,24 @@ paths:
   /newdag:
     post:
       operationId: api.notify_dag_submission
+      tags:
+        - DAG
+      summary: Create a person and add it to the people list
+      description: Create a new person in the people list
+      parameters:
+        - name: new_dag
+          in: body
+          description: Stage in execution
+          required: True
+          schema:
+            type: string
+      responses:
+        201:
+          description: Successfully created person in list
+
+  /newdag2:
+    post:
+      operationId: api.notify_dag_submission2
       tags:
         - DAG
       summary: Create a person and add it to the people list

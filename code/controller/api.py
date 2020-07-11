@@ -23,22 +23,22 @@ g_objectstore = None
 
 def start_objectstore():
     global g_objectstore;
-    objectstore = objs.ObjectStore()
-    g_objectstore = objectstore
+#    objectstore = objs.ObjectStore()
+#    g_objectstore = objectstore
     return g_objectstore
 
 def start_estimator():
     global g_collector
-    collector = col.Collector() 
-    g_collector = collector;
-    g_collector.objectstore = g_objectstore
-    return collector
+#    collector = col.Collector() 
+#    g_collector = collector;
+#    g_collector.objectstore = g_objectstore
+    return g_collector
 
 def start_controller():
     global g_controller
-    controller = kz.Kariz()
-    g_controller = controller
-    return controller
+#    controller = kz.Kariz()
+#    g_controller = controller
+    return g_controller
 
 def get_timestamp():
     return datetime.now().strftime(("%Y-%m-%d %H:%M:%S"))
@@ -52,6 +52,11 @@ def notify_stage_submission(new_stage):
 def notify_dag_submission(new_dag):
     g_controller.new_dag_from_string(new_dag.decode("utf-8"))
     #g_collector.new_dag_from_string(new_dag.decode("utf-8"))
+
+def notify_dag_submission2(new_dag):
+    #g_controller.new_dag_from_string(new_dag.decode("utf-8"))
+    #g_collector.new_dag_from_string(new_dag.decode("utf-8"))
+    print(new_dag)
 
 def notify_dag_completion(dagstr):
     g_controller.remove_dag(dagstr.decode("utf-8"))
