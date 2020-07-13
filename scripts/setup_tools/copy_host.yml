@@ -1,6 +1,7 @@
 - hosts: hadoop
   tasks:
     - name: Copy /etc/hosts file to all workers
+      become: true
       copy:
         src: "/etc/hosts"
         dest: "/etc/hosts"

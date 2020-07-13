@@ -1,0 +1,6 @@
+- hosts: hadoop
+  tasks:
+    - name: Copy hadoop slaves
+      copy:
+        src: "{{ lookup('env','HADOOP_HOME') }}/etc/hadoop/workers"    #/home/ubuntu/opt/hadoop-2.8.4/etc/hadoop/slaves 
+        dest: "{{ lookup('env','HADOOP_HOME') }}/etc/hadoop/workers"   # /home/ubuntu/opt/hadoop-2.8.4/etc/hadoop/slaves

@@ -1,0 +1,6 @@
+- hosts: hadoop
+  tasks:
+    - name: Copy ~/.bashrc
+      copy:
+        src: "{{ lookup('env','HOME') }}/.bashrc"
+        dest: "{{ lookup('env','HOME') }}/.bashrc"
