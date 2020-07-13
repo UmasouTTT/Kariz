@@ -42,13 +42,6 @@ for ((  i = 7 ;  i <= 7;  i++  )) # FIXME: it should be 22, I changed it for pre
 do
     declare pig_times=0
     
-    # Prepare the run
-    if [ "$READ_TYPE" == "HDFS" ]; then
-        echo "Clear buffer cache on HDFS cluster"
-        ansible-playbook ~/drop_cache_allnodes.yml
-        #ansible-playbook /mnt/volume/papers/KARIZ/scripts/setup_tools/drop_cache_allnodes.yml
-    fi
-    
     echo "Running Pig Query Q$i"
     ${HADOOP_HOME}/bin/hadoop fs -rmr "$OUTPUT_DIR/Q${i}out"
     cmd="${PIG_HOME}/bin/pig $HADOOP_OPTS -param input=$INPUT_DIR -param output=$OUTPUT_DIR -param reducers=$REDUCERS -f queries/Q$i.pig"
