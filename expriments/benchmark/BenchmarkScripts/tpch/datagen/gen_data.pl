@@ -128,10 +128,10 @@ if ($num_hosts <= 0)
 
 # Create all the HDFS directories
 #if (`$hadoop_home/bin/hadoop fs -stat $HDFS_DIR 2>&1` !~ /cannot stat/) {
-if (`$hadoop_home/bin/hadoop fs -test -d $HDFS_DIR`) {
-   println qq(ERROR: The directory '$HDFS_DIR' already exists);
-   exit(-1);
-}
+#if (`$hadoop_home/bin/hadoop fs -test -d $HDFS_DIR`) {
+#   println qq(ERROR: The directory '$HDFS_DIR' already exists);
+#   exit(-1);
+#}
 println qq(Creating all the HDFS directories);
 system qq($hadoop_home/bin/hadoop fs -mkdir $HDFS_DIR);
 system qq($hadoop_home/bin/hadoop fs -mkdir $HDFS_DIR/lineitem);

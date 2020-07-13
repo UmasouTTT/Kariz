@@ -14,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 current_dir=`dirname "$0"`
 current_dir=`cd "$current_dir"; pwd`
 root_dir=${current_dir}/../../../../../
@@ -23,18 +24,14 @@ workload_config=${root_dir}/conf/workloads/micro/wordcount.conf
 enter_bench ScalaSparkWordcount ${workload_config} ${current_dir}
 show_bannar start
 
-ARG_INPUT_HDFS=$1
-ARG_OUTPUT_HDFS=$2
-ARG_MAPSIZE=$3
-echo "${ARG_INPUT_HDFS}, ${ARG_OUTPUT_HDFS}, ${ARG_MAPSIZE}"
+rmr_hdfs $OUTPUT_HDFS || true
 
-rmr_hdfs $ARG_OUTPUT_HDFS || true
-
-SIZE=`dir_size $ARG_INPUT_HDFS`
+SIZE=`dir_size $INPUT_HDFS`
 START_TIME=`timestamp`
-run_spark_job com.intel.hibench.sparkbench.micro.ScalaWordCount $ARG_INPUT_HDFS $ARG_OUTPUT_HDFS
+run_spark_job com.intel.hibench.sparkbench.micro.ScalaWordCount $INPUT_HDFS $OUTPUT_HDFS
 END_TIME=`timestamp`
 
 gen_report ${START_TIME} ${END_TIME} ${SIZE}
 show_bannar finish
 leave_bench
+

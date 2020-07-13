@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ "$#" -ne 2 ]; then
+    echo "Usage: enable_portforwarding.sh <public_ip> <private_ip>"
+    exit
+fi
 
 src=$1
 dest=$2
