@@ -98,6 +98,7 @@ v,0,HASH_JOIN,lineitem:part
 v,1,GROUP_BY:COMBINER,
 e,0,1
 #t	TPCH_Q6
+v,0,HASH_JOIN,lineitem
 #t	TPCH_Q3
 v,0,HASH_JOIN,orders:customer
 v,1,HASH_JOIN,lineitem
