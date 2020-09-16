@@ -1,0 +1,1 @@
+/local0/Kariz/expriments/simulator/multidag/config/synthetic_worload.g
