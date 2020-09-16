@@ -1,0 +1,4 @@
+How to setup tools:
+	- To setup cache environment: 
+		- start hadoop cluster with: start_hadoop_cluster.sh
+		- start alluxio cluster with: start_alluxio_cluster.sh 

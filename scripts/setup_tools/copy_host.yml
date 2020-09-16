@@ -1,0 +1,15 @@
+- hosts: hadoop
+  tasks:
+<<<<<<< HEAD
+<<<<<<< HEAD
+    - name: Copy alluxio conf-properties.xml
+=======
+    - name: Copy /etc/hosts file to all workers
+>>>>>>> 3a5da70887c0df4d4d829c49dc5c864e5218999f
+      become: true
+=======
+    - name: Copy /etc/hosts file to all workers
+>>>>>>> update
+      copy:
+        src: "/etc/hosts"
+        dest: "/etc/hosts"

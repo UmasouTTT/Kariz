@@ -1,0 +1,6 @@
+- hosts: hadoop
+  tasks:
+    - name: Copy alluxio alluxio-env.sh
+      copy:
+        src: "{{ lookup('env','ALLUXIO_HOME')  }}/conf/alluxio-env.sh"
+        dest: "{{ lookup('env','ALLUXIO_HOME') }}/conf/alluxio-env.sh"

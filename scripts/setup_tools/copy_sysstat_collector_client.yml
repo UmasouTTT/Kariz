@@ -1,0 +1,6 @@
+- hosts: hadoop
+  tasks:
+    - name: Copy hadoop hdfs-site.xml
+      copy:
+        src: /mnt/volume/papers/KARIZ/scripts/sysstat_collector/client.py
+        dest: /root/sysstst_collector_client.py

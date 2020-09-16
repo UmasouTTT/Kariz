@@ -1,0 +1,36 @@
+Each part should be 2G
+What is the filter 
+It hsould 
+Play with alluxio configuration
+
+--> can 
+
+We need to know the figure in my phone for the DAG of tpcds
+We will have per operator per host node analysis based on input and out put 
+
+What ever the entity does it generates another pig script which contains the prefetching commands.
+
+
+
+
+-----------> for next week:
+			-> finish up hadoop experiments: fix the prfobmel
+				-> run with 2GB
+			-> IF we can use pig load to prefetch into alluxio cache 
+			-> make pig script execution pretty ()
+			-> draw three figures and add them to the paper : 1. exection plan, (2,3) time series exectution w/wo prefetch 
+			-> write an algorithm that figure out when to prefetch from a dag (to the paper repo)
+------------> for future
+			-> new o1
+
+
+
+ 1927  git clone https://github.com/hortonworks/hive-testbench.git
+
+git clone ; git clone https://github.com/hortonworks/hive-testbench.git
+
+git submodule add -b master https://github.com/ssavvides/tpcds-pig.git; git submodule init;
+git submodule add -b master https://github.com/ssavvides/tpch-pig.git; git submodule init;
+
+
+------------------------------------------

@@ -1,0 +1,10 @@
+- hosts: rgw
+  tasks:
+    - name: Restart Radosgw
+      command: /local0/Kariz/scripts/setup_tools/restart_rgw.sh
+      ignore_errors: no
+      register: cat
+      changed_when: False
+
+    - name: Print Radosgw restart results
+      debug: var=cat.stdout

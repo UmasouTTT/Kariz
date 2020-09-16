@@ -1,0 +1,8 @@
+- hosts: hadoop
+
+  tasks:
+  - name: Delete tpch data folder
+    file:
+      path: /local0/tpch_data/
+      state: absent
+

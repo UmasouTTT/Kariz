@@ -1,0 +1,8 @@
+#t	TPCH_Q12
+v,0,HASH_JOIN,orders:lineitem
+v,1,GROUP_BY,
+v,2,SAMPLER,
+v,3,ORDER_BY,
+e,0,1
+e,1,2
+e,2,3

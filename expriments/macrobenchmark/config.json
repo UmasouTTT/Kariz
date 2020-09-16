@@ -1,0 +1,14 @@
+{
+	"type": "sequential",
+	"graph_src": "file",
+	"graph_skeleton_path": "/local0/Kariz/expriments/macrobenchmark/tpch_pig_dags.g",
+	"stat_file_path": "/local0/Kariz/expriments/macrobenchmark/pig_tpch_stats",
+	"input_dir": "s3a://data/pig-tpch/64G",
+	"output_dir" : "/tpch-64G-output",
+    "benchmark_path": "/local0/Kariz/expriments/benchmark/BenchmarkScripts/tpch/pig",
+    "rgw_host": "192.168.35.41", 
+    "rgw_port": 80,
+    "swift_user": "testuser:swift",
+    "swift_key":"7Xqb6gdsCE5Vu0clmk2qL0yjjy1NCNiFuaPlGQvJ",
+    "bucket_name": "data"
+}

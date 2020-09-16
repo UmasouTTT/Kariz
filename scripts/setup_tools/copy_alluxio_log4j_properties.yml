@@ -1,0 +1,6 @@
+- hosts: hadoop
+  tasks:
+    - name: Copy alluxio conf-properties.xml
+      copy:
+        src: /home/ubuntu/alluxio-1.8.0-hadoop-2.8/conf/log4j.properties 
+        dest: /home/ubuntu/alluxio-1.8.0-hadoop-2.8/conf/log4j.properties

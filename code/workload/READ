@@ -1,0 +1,44 @@
+To create a workload, we create a pool of 19 tpc-ds~\cite{PIG-TPCDS} and 
+22 tpc-h~\cite{PIG-TPCH} benchmarks written in PIG. 
+
+We generate datasets of size 1GB, 4GB, 8GB, 10GB, 16GB, 32GB, 48GB, 64GB, and 80GB
+for both TPCH and TPCDS benchmarks, using the dataset generator in
+~\cite{datasetgen}. Our pool in total has 328 queries. We use the same set of 
+queries on the same datasets for Spark experiment.
+
+
+To build a runtime prediction model, we build a pool of queries with 
+different setup when there is a cluster of size 2 nodes, 
+8 nodes and 16 nodes with the bandwidth equal to 40Gbps, 20Gbps, 
+10Gbps and 5Gbps and 1Gbps, and with different datasets of sizes 
+of 1GB, 4GB, 8GB, 10GB, 16GB, 32GB, 48GB, 64GBe, and 80GB and 
+with 0%, 10%, 20% ... 90% and 100% of data in the cache. In 
+total, we captured 50 data points to train the Pig and 50 data
+points to train the Spark runtime prediction models.
+
+At each point of time, we submit 10 queries in batch and wait
+for all of them to be finished. To select queries, we select
+queries with similarites and we test the following senarios
+-----1. 10 queries, 2, 1 queries with on the same input and the size is selected randomly --> select 8 datasets
+-----2. 10 queries, 4, 1 the same as above
+-----3. 10 queries, 6, 1 the same as above
+4. 10 queries, 2, 2 which means we would have two sets of two queries with the same input
+5. 10 queries, 2, 3 which means we would have two sets of 3 queries with the same input 
+6. 10 queries, 3, 3 which means we would have 3 set of queries with 3 inputs
+7. 10 queries, 2, 4 
+8. 10 queries, 4, 2 which means 
+-----9. 10 queries, no sharing
+10.10 queries, 3, 2 which means we would have 3 sets of queries with two inputs 
+
+To do this, first select the datasets and then select 
+the queries.
+
+Use these 150 queries to compute the runtime predicion
+model.
+
+
+# Step 1 run all of tpch queries and build their operation sets
+and their DAG on dataset of 20GB with Bandwidth 40 Gbps. Among
+those selec unique queries and from unique operations and then
+select unique queries.
+ 

@@ -1,0 +1,20 @@
+- hosts: rgw
+  vars:
+      rgw_rate: "{{ rate }}"
+  tasks:
+    - name: Delete existing configuration
+      command: /usr/bin/tcdel {{ nic }} --all
+      ignore_errors: yes
+
+    - name: Setup network throttle
+      command: /usr/bin/tcset {{ nic }} --rate {{rate}} --direction incoming
+      when: rgw_rate != '40Gbps'
+
+    - name: Show tc-configurations
+      command: /usr/bin/tcshow {{ nic }}
+      register: cat
+      changed_when: False
+
+    - name: Print network configuration
+      debug: var=cat.stdout
+

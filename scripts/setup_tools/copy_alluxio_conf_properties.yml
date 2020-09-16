@@ -1,0 +1,6 @@
+- hosts: hadoop
+  tasks:
+    - name: Copy alluxio conf-properties.xml
+      copy:
+        src: "{{lookup('env','ALLUXIO_HOME')}}/conf/alluxio-site.properties"
+        dest: "{{lookup('env','ALLUXIO_HOME')}}/conf/alluxio-site.properties"

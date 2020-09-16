@@ -1,0 +1,6 @@
+- hosts: hadoop
+  tasks:
+   - name: "Install python3 on all nodes"
+     command: /usr/bin/apt install python3-pip -y
+     become: true
+     become_user: root 

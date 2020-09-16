@@ -1,0 +1,22 @@
+- hosts: hadoop
+
+  tasks:
+  - name: Delete namenode folder
+    file:
+      path: "{{ lookup('env','HADOOP_DATA_DIR') }}/data/dataNode"
+      state: absent
+
+  - name: Delete namenode folder
+    file:
+      path: "{{ lookup('env','HADOOP_DATA_DIR') }}/data/nameNode"
+      state: absent
+
+  - name: Delete namenode folder
+    file:
+      path: "{{ lookup('env','HADOOP_DATA_DIR') }}/nm-local-dir"
+      state: absent
+
+  - name: Delete dfs folder
+    file:
+      path: "{{ lookup('env','HADOOP_DATA_DIR') }}/dfs"
+      state: absent

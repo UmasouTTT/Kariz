@@ -1,0 +1,823 @@
+# Auther Amin Mosayyebzadeh
+# Cluster: 2 KARIZ vms, 1GB data 
+Q03:
+DAG 0:
+                                    Name: PigLatin:q03.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0005                                                                              
+                      TotalLaunchedTasks: 16                                                                                                  
+                           FileBytesRead: 530506331                                                                                           
+                        FileBytesWritten: 689599828                                                                                           
+                           HdfsBytesRead: 403822938                                                                                           
+                        HdfsBytesWritten: 1717                                                                                                
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+DAG Plan:
+Tez vertex scope-2684    ->    Tez vertex scope-2686,
+Tez vertex scope-2685    ->    Tez vertex scope-2686,
+Tez vertex scope-2686    ->    Tez vertex scope-2688,
+Tez vertex scope-2687    ->    Tez vertex scope-2688,
+Tez vertex scope-2688    ->    Tez vertex scope-2689,
+Tez vertex scope-2689    ->    Tez vertex scope-2700,Tez vertex scope-2712,
+Tez vertex scope-2700    ->    Tez vertex scope-2712,
+Tez vertex scope-2712    ->    Tez vertex scope-2714,
+Tez vertex scope-2714    ->    Tez vertex scope-2725,
+Tez vertex scope-2725
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-2684         1          1          73049                    0           6200            208          1376714       10317438                0 D,FD,J1        
+scope-2685         3          3        2880404                    0         467751            624         89343114      388453601                0 FSS,J1,SS        
+scope-2686         4          1              0               473951         467751      283275059        445214928              0                0 J1,J2    HASH_JOIN    
+scope-2687         1          1          18000                    0             19           1984             8093        5051899                0 FI,I,J2        
+scope-2688        41          3              0               467770            417      247120106        153639112              0                0 F1,G1,J2    HASH_JOIN    
+scope-2689        -1          1              0                   38             76          99134             6411              0                0 F1,O1    GROUP_BY,SAMPLER    
+scope-2700         1          1              0                   38              1           2689             2844              0                0         
+scope-2712        -1          1             39                    0             38           2253             2189              0                0 O1        
+scope-2714        -1          1              0                   38             38           2157             4306              0                0     ORDER_BY    
+scope-2725         1          1              0                   38             38           2117             2117              0             1717     LIMIT    /tpcds/output/Q03,
+
+(edited)
+Amin 6:47 PM
+Q07
+DAG 0:
+                                    Name: PigLatin:q07.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0006                                                                              
+                      TotalLaunchedTasks: 18                                                                                                  
+                           FileBytesRead: 1895958662                                                                                          
+                        FileBytesWritten: 2202971942                                                                                          
+                           HdfsBytesRead: 484520267                                                                                           
+                        HdfsBytesWritten: 4227                                                                                                
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-421    ->    Tez vertex scope-423,
+Tez vertex scope-422    ->    Tez vertex scope-423,
+Tez vertex scope-423    ->    Tez vertex scope-425,
+Tez vertex scope-424    ->    Tez vertex scope-425,
+Tez vertex scope-425    ->    Tez vertex scope-427,
+Tez vertex scope-426    ->    Tez vertex scope-427,
+Tez vertex scope-427    ->    Tez vertex scope-429,
+Tez vertex scope-428    ->    Tez vertex scope-429,
+Tez vertex scope-429    ->    Tez vertex scope-430,
+Tez vertex scope-430    ->    Tez vertex scope-439,Tez vertex scope-449,
+Tez vertex scope-439    ->    Tez vertex scope-449,
+Tez vertex scope-449    ->    Tez vertex scope-451,
+Tez vertex scope-451    ->    Tez vertex scope-462,
+Tez vertex scope-462
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-421          3          3        2880404                    0         550596            624        105183810      388453601                0 FSS,J1,SS        
+scope-422          1          1          73049                    0            365            208            81211       10317438                0 D,FD,J1        
+scope-423          4          1              0               550961         550596      331556412        482649927              0                0 J1,J2    HASH_JOIN    
+scope-424          1          1          18000                    0          18000           1984          6161249        5051899                0 I,J2        
+scope-425         41          3              0               568596         550596      712744400        991436790              0                0 J2,J3    HASH_JOIN    
+scope-426          1          1        1920800                    0          27440          19744          1891466       80660096                0 CD,FCD,J3        
+scope-427        411          1              0               578036           7821      816522410        603365640              0                0 J3,J4    HASH_JOIN    
+scope-428          1          1            300                    0            299          47968            78860          37233                0 FP,J4,P        
+scope-429        999          1              0                 8120           7702       33343296         11158785              0                0 F1,G1,J4    HASH_JOIN    
+scope-430         -1          1              0                 5135           5235        1106600           656144              0                0 F1,O1    GROUP_BY,SAMPLER    
+scope-439          1          1              0                  100              1           5144              146              0                0         
+scope-449         -1          1           5136                    0           5135         301958           301748              0                0 O1        
+scope-451         -1          1              0                  100            100         301748             6166              0                0     ORDER_BY    
+scope-462          1          1              0                  100            100           6166                0              0             4227     LIMIT    /tpcds/output/Q07,
+Amin 6:53 PM
+Q19
+DAG 0:
+                                    Name: PigLatin:q19.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0007                                                                              
+                      TotalLaunchedTasks: 18                                                                                                  
+                           FileBytesRead: 216847593                                                                                           
+                        FileBytesWritten: 199772450                                                                                           
+                           HdfsBytesRead: 422537630                                                                                           
+                        HdfsBytesWritten: 5382                                                                                                
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-531    ->    Tez vertex scope-533,
+Tez vertex scope-532    ->    Tez vertex scope-533,
+Tez vertex scope-533    ->    Tez vertex scope-535,
+Tez vertex scope-534    ->    Tez vertex scope-535,
+Tez vertex scope-535    ->    Tez vertex scope-537,
+Tez vertex scope-536    ->    Tez vertex scope-537,
+Tez vertex scope-537    ->    Tez vertex scope-539,
+Tez vertex scope-538    ->    Tez vertex scope-539,
+Tez vertex scope-539    ->    Tez vertex scope-541,
+Tez vertex scope-540    ->    Tez vertex scope-541,
+Tez vertex scope-541    ->    Tez vertex scope-542,
+Tez vertex scope-542    ->    Tez vertex scope-555,Tez vertex scope-569,
+Tez vertex scope-555    ->    Tez vertex scope-569,
+Tez vertex scope-569    ->    Tez vertex scope-571,
+Tez vertex scope-571    ->    Tez vertex scope-582,
+Tez vertex scope-582
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-531          3          3        2880404                    0          86281            624         16474097      388453601                0 FSS,J1,SS        
+scope-532          1          1          73049                    0             30            208             6828       10317438                0 D,FD,J1        
+scope-533          4          1              0                86311          86281       52140207         76548186              0                0 J1,J2    HASH_JOIN    
+scope-534          1          1          18000                    0            327           1984           113169        5051899                0 FI,I,J2        
+scope-535         41          1              0                86608           1638       65796078         31316696              0                0 J2,J3    HASH_JOIN    
+scope-536          1          1         100000                    0         100000          19744         18295145       13209372                0 C,J3        
+scope-537        411          1              0               101638           1616       64447439         37372400              0                0 J3,J4    HASH_JOIN    
+scope-538          1          1          50000                    0          50000          47968          7441635        5502165                0 CA,J4        
+scope-539        999          1              0                51616           1616       31817713         12108620              0                0 J4,J5    HASH_JOIN    
+scope-540          1          1             12                    0             12          47968            28180           3155                0 J5,S        
+scope-541        999          1              0                 1628           1545        2220359            14399              0                0 F1,FJ5,G1,J5    HASH_JOIN    
+scope-542         -1          1              0                  168            268         263744            34664              0                0 F1,O1    GROUP_BY,SAMPLER    
+scope-555          1          1              0                  100              1          13536              185              0                0         
+scope-569         -1          1            169                    0            168          11775            11526              0                0 O1        
+scope-571         -1          1              0                  100            100          11526             6720              0                0     ORDER_BY    
+scope-582          1          1              0                  100            100           6720                0              0             5382     LIMIT    /tpcds/output/Q19,
+Q27
+DAG 0:
+                                    Name: PigLatin:q27.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0008                                                                              
+                      TotalLaunchedTasks: 1016                                                                                                
+                           FileBytesRead: 388278933                                                                                           
+                        FileBytesWritten: 349826308                                                                                           
+                           HdfsBytesRead: 484486189                                                                                           
+                        HdfsBytesWritten: 4492                                                                                                
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-329    ->    Tez vertex scope-331,
+Tez vertex scope-330    ->    Tez vertex scope-331,
+Tez vertex scope-331    ->    Tez vertex scope-333,
+Tez vertex scope-332    ->    Tez vertex scope-333,
+Tez vertex scope-333    ->    Tez vertex scope-335,
+Tez vertex scope-334    ->    Tez vertex scope-335,
+Tez vertex scope-335    ->    Tez vertex scope-337,
+Tez vertex scope-336    ->    Tez vertex scope-337,
+Tez vertex scope-337    ->    Tez vertex scope-341,Tez vertex scope-344,Tez vertex scope-347,
+Tez vertex scope-341    ->    Tez vertex group scope-505,Tez vertex group scope-506,
+Tez vertex scope-344    ->    Tez vertex group scope-505,Tez vertex group scope-506,
+Tez vertex scope-347    ->    Tez vertex group scope-505,Tez vertex group scope-506,
+Tez vertex group scope-506    ->    Tez vertex scope-362,
+Tez vertex scope-362    ->    Tez vertex scope-373,
+Tez vertex group scope-505    ->    Tez vertex scope-373,
+Tez vertex scope-373    ->    Tez vertex scope-375,
+Tez vertex scope-375    ->    Tez vertex scope-386,
+Tez vertex scope-386
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-329          3          3        2880404                    0         553861            624         33185351      388453601                0 FSS,J1,SS        
+scope-330          1          1          73049                    0            366            208             6732       10317438                0 D,FD,J1        
+scope-331          4          1              0               554227         553861       62142457         79167564              0                0 J1,J2    HASH_JOIN    
+scope-332          1          1          18000                    0          18000           1984           620296        5051899                0 I,J2        
+scope-333         41          1              0               571861         553861       90704208         97448155              0                0 J2,J3    HASH_JOIN    
+scope-334          1          1             12                    0             12          19744            10199           3155                0 FS,J3,S        
+scope-335        411          1              0               553873         540754       74248852         67206827              0                0 J3,J4    HASH_JOIN    
+scope-336          1          1        1920800                    0          27440          47968           512018       80660096                0 CD,FCD,J4        
+scope-337        999          1              0               568194          22728      126931635         68146045              0                0 GR1,GR2,GR3,J4,RES1,RES2,RES3,RESULTS    HASH_JOIN,MULTI_QUERY    
+scope-341         -1          1              0                 5085           5185        1125164           768260              0                0 O1,RES1    GROUP_BY,SAMPLER    
+scope-344         -1          1              0                 5084           5184        1079010           709019              0                0 O1,RES2    GROUP_BY,SAMPLER    
+scope-347          1          1              0                    1              2            143            24210              0                0 O1,RES3    GROUP_BY,SAMPLER    
+scope-362          1          1              0                  201              1          11716              179              0                0         
+scope-373        999        999          10172                    0          10170       30338124           710404              0                0 O1        
+scope-375         -1          1              0                  100            100        1620700          1304653              0                0     ORDER_BY    
+scope-386          1          1              0                  100            100           6396             6396              0             4492     LIMIT    /tpcds/output/Q27,
+
+Mania 6:59 PM
+ application_1564404443351_0008    ubuntu    PigLatin:q27.pig    TEZ    default    0    Tue Jul 30 18:55:35 -0400 2019    Tue Jul 30 18:57:16 -0400 2019    FINISHED    SUCCEEDED    N/A    N/A    N/A    0.0    0.0    
+    History    0
+application_1564404443351_0007    ubuntu    PigLatin:q19.pig    TEZ    default    0    Tue Jul 30 18:50:58 -0400 2019    Tue Jul 30 18:51:49 -0400 2019    FINISHED    SUCCEEDED    N/A    N/A    N/A    0.0    0.0    
+    History    0
+application_1564404443351_0006    ubuntu    PigLatin:q07.pig    TEZ    default    0    Tue Jul 30 18:45:14 -0400 2019    Tue Jul 30 18:47:16 -0400 2019    FINISHED    SUCCEEDED    N/A    N/A    N/A    0.0    0.0    
+    History    0
+application_1564404443351_0005    ubuntu    PigLatin:q03.pig    TEZ    default    0    Tue Jul 30 18:32:17 -0400 2019    Tue Jul 30 18:34:02 -0400 2019    FINISHED    SUCCEEDED    N/A    N/A    N/A    0.0    0.0
+Amin 7:01 PM
+Q34
+DAG 0:
+                                    Name: PigLatin:q34.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0009                                                                              
+                      TotalLaunchedTasks: 25                                                                                                  
+                           FileBytesRead: 1778080023                                                                                          
+                        FileBytesWritten: 2072289511                                                                                          
+                           HdfsBytesRead: 412135219                                                                                           
+                        HdfsBytesWritten: 8859                                                                                                
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-454    ->    Tez vertex scope-456,
+Tez vertex scope-455    ->    Tez vertex scope-456,
+Tez vertex scope-456    ->    Tez vertex scope-458,
+Tez vertex scope-457    ->    Tez vertex scope-458,
+Tez vertex scope-458    ->    Tez vertex scope-460,
+Tez vertex scope-459    ->    Tez vertex scope-460,
+Tez vertex scope-460    ->    Tez vertex scope-461,
+Tez vertex scope-461    ->    Tez vertex scope-463,
+Tez vertex scope-462    ->    Tez vertex scope-463,
+Tez vertex scope-463    ->    Tez vertex scope-475,Tez vertex scope-488,
+Tez vertex scope-475    ->    Tez vertex scope-488,
+Tez vertex scope-488    ->    Tez vertex scope-490,
+Tez vertex scope-490
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-454          3          3        2880404                    0        1648598      315006927        629877464      388453601                0 FSS,J1,SS        
+scope-455          1          1          73049                    0            252            208            56079       10317438                0 D,FD,J1        
+scope-456          4          4              0              1648850         376231      469719656        466602248              0                0 J1,J2    HASH_JOIN    
+scope-457          1          1             12                    0             12           1984             5188           3155                0 FS,J2,S        
+scope-458         41          3              0               376243         367263      454958740        641376995              0                0 J2,J3    HASH_JOIN    
+scope-459          1          1           7200                    0            800          19744            45912         151653                0 FHD,HD,J3        
+scope-460        411          3              0               368063          40854      514106770        321502431              0                0 F1,G1,J3    HASH_JOIN    
+scope-461         -1          1              0                 3885            303        4226235           263409              0                0 F1,FF1,JFF1    GROUP_BY    
+scope-462          1          1         100000                    0         100000          23584          4342228       13209372                0 C,JFF1        
+scope-463        491          1              0               100303            403       19980721          8182017              0                0 FJFF1,JFF1,O1    HASH_JOIN,SAMPLER    
+scope-475          1          1              0                  100              1           6904             7054              0                0         
+scope-488        491          1            304                    0            303          14323            14259              0                0 O1        
+scope-490         -1          1              0                  303            303          14227            14227              0             8859     ORDER_BY    /tpcds/output/Q34,
+
+Q42
+DAG 0:
+                                    Name: PigLatin:q42.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0010                                                                              
+                      TotalLaunchedTasks: 13                                                                                                  
+                           FileBytesRead: 128333148                                                                                           
+                        FileBytesWritten: 134083227                                                                                           
+                           HdfsBytesRead: 403822938                                                                                           
+                        HdfsBytesWritten: 310                                                                                                 
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-303    ->    Tez vertex scope-305,
+Tez vertex scope-304    ->    Tez vertex scope-305,
+Tez vertex scope-305    ->    Tez vertex scope-307,
+Tez vertex scope-306    ->    Tez vertex scope-307,
+Tez vertex scope-307    ->    Tez vertex scope-308,
+Tez vertex scope-308    ->    Tez vertex scope-320,Tez vertex scope-333,
+Tez vertex scope-320    ->    Tez vertex scope-333,
+Tez vertex scope-333    ->    Tez vertex scope-335,
+Tez vertex scope-335    ->    Tez vertex scope-346,
+Tez vertex scope-346
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-303          3          3        2880404                    0          94051            624         17964301      388453601                0 FSS,J1,SS        
+scope-304          1          1          73049                    0             31            208             7055       10317438                0 D,FD,J1        
+scope-305          4          1              0                94082          94051       56834116         83203208              0                0 J1,J2    HASH_JOIN    
+scope-306          1          1          18000                    0            321           1984           111432        5051899                0 FI,I,J2        
+scope-307         41          1              0                94372           1606       71472517         32794986              0                0 F1,G1,J2    HASH_JOIN    
+scope-308         -1          1              0                   10             20          21390             1235              0                0 F1,O1    GROUP_BY,SAMPLER    
+scope-320          1          1              0                   10              1            803              158              0                0         
+scope-333         -1          1             11                    0             10            654              432              0                0 O1        
+scope-335         -1          1              0                   10             10            432              420              0                0     ORDER_BY    
+scope-346          1          1              0                   10             10            420                0              0              310     LIMIT    /tpcds/output/Q42,
+
+Q43
+DAG 0:
+                                    Name: PigLatin:q43.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0011                                                                              
+                      TotalLaunchedTasks: 13                                                                                                  
+                           FileBytesRead: 22584694                                                                                            
+                        FileBytesWritten: 29368216                                                                                            
+                           HdfsBytesRead: 398774194                                                                                           
+                        HdfsBytesWritten: 898                                                                                                 
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-227    ->    Tez vertex scope-229,
+Tez vertex scope-228    ->    Tez vertex scope-229,
+Tez vertex scope-229    ->    Tez vertex scope-231,
+Tez vertex scope-230    ->    Tez vertex scope-231,
+Tez vertex scope-231    ->    Tez vertex scope-232,
+Tez vertex scope-232    ->    Tez vertex scope-249,Tez vertex scope-267,
+Tez vertex scope-249    ->    Tez vertex scope-267,
+Tez vertex scope-267    ->    Tez vertex scope-269,
+Tez vertex scope-269    ->    Tez vertex scope-280,
+Tez vertex scope-280
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-227          3          3        2880404                    0         550596            624          9862618      388453601                0 FSS,J1,SS        
+scope-228          1          1          73049                    0            365            208            10417       10317438                0 D,FD,J1        
+scope-229          4          1              0               550961         550596        9877959         19481182              0                0 J1,J2    HASH_JOIN    
+scope-230          1          1             12                    0             12           1984             1574           3155                0 FS,J2,S        
+scope-231         41          1              0               550608         537716       12686975             9142              0                0 F1,F2,G1,J2    HASH_JOIN    
+scope-232         -1          1              0                    6             12          13597             1825              0                0 F2,O1    GROUP_BY,SAMPLER    
+scope-249          1          1              0                    6              1           1201              218              0                0         
+scope-267         -1          1              7                    0              6            906              624              0                0 O1        
+scope-269         -1          1              0                    6              6            624              616              0                0     ORDER_BY    
+scope-280          1          1              0                    6              6            616                0              0              898     LIMIT    /tpcds/output/Q43,
+Q46
+DAG 0:
+                                    Name: PigLatin:q46.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0012                                                                              
+                      TotalLaunchedTasks: 23                                                                                                  
+                           FileBytesRead: 1169764498                                                                                          
+                        FileBytesWritten: 1408582781                                                                                          
+                           HdfsBytesRead: 417637384                                                                                           
+                        HdfsBytesWritten: 6124                                                                                                
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-526    ->    Tez vertex scope-528,
+Tez vertex scope-527    ->    Tez vertex scope-528,
+Tez vertex scope-528    ->    Tez vertex scope-530,
+Tez vertex scope-529    ->    Tez vertex scope-530,
+Tez vertex scope-530    ->    Tez vertex scope-532,
+Tez vertex scope-531    ->    Tez vertex scope-532,
+Tez vertex scope-532    ->    Tez vertex scope-537,
+Tez vertex scope-533    ->    Tez vertex scope-537,Tez vertex scope-543,
+Tez vertex scope-537    ->    Tez vertex scope-538,
+Tez vertex scope-538    ->    Tez vertex scope-540,
+Tez vertex scope-539    ->    Tez vertex scope-540,
+Tez vertex scope-540    ->    Tez vertex scope-543,
+Tez vertex scope-543    ->    Tez vertex scope-556,Tez vertex scope-570,
+Tez vertex scope-556    ->    Tez vertex scope-570,
+Tez vertex scope-570    ->    Tez vertex scope-572,
+Tez vertex scope-572    ->    Tez vertex scope-583,
+Tez vertex scope-583
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-526          3          3        2880404                    0         475932            624         90899005      388453601                0 FSS,J1,SS        
+scope-527          1          1          73049                    0            314            208            69838       10317438                0 D,FD,J1        
+scope-528          4          1              0               476246         475932      286715026        422929379              0                0 J1,J2    HASH_JOIN    
+scope-529          1          1             12                    0              9           1984             4100           3155                0 FS,J2,S        
+scope-530         41          3              0               475941         387336      488813707        569511096              0                0 J2,J3    HASH_JOIN    
+scope-531          1          1           7200                    0            120          19744            15998         151653                0 FHD,HD,J3        
+scope-532        411          1              0               387456           6784      284592374        289819237              0                0 J3,J4    HASH_JOIN    
+scope-533          1          1          50000                    0         100000          95936          8845030        5502165                0 CA,J2F,J4    MULTI_QUERY    
+scope-537        999          1              0                56784           6784       52342951         14863775              0                0 F1,G1,J4    HASH_JOIN    
+scope-538         -1          1              0                  673            673         520460           100382              0                0 F1,J1F    GROUP_BY    
+scope-539          1          1         100000                    0         100000          33664          4231228       13209372                0 C,J1F        
+scope-540        701          1              0               100673            641       12668619          4346621              0                0 J1F,J2F    HASH_JOIN    
+scope-543        999          1              0                50641            717       43844547          2891780              0                0 FFJ2F,FJ2F,J2F,O1    HASH_JOIN,SAMPLER    
+scope-556          1          1              0                  100              1          11610              176              0                0         
+scope-570        999          1            618                    0            617          47908            47668              0                0 O1        
+scope-572         -1          1              0                  100            100          47668             7468              0                0     ORDER_BY    
+scope-583          1          1              0                  100            100           7468                0              0             6124     LIMIT    /tpcds/output/Q46,
+Q52
+DAG 0:
+                                    Name: PigLatin:q52.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0013                                                                              
+                      TotalLaunchedTasks: 12                                                                                                  
+                           FileBytesRead: 128601622                                                                                           
+                        FileBytesWritten: 140113025                                                                                           
+                           HdfsBytesRead: 403822938                                                                                           
+                        HdfsBytesWritten: 4461                                                                                                
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-302    ->    Tez vertex scope-304,
+Tez vertex scope-303    ->    Tez vertex scope-304,
+Tez vertex scope-304    ->    Tez vertex scope-306,
+Tez vertex scope-305    ->    Tez vertex scope-306,
+Tez vertex scope-306    ->    Tez vertex scope-307,
+Tez vertex scope-307    ->    Tez vertex scope-318,Tez vertex scope-330,
+Tez vertex scope-318    ->    Tez vertex scope-330,
+Tez vertex scope-330    ->    Tez vertex scope-332,
+Tez vertex scope-332    ->    Tez vertex scope-343,
+Tez vertex scope-343
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-302          3          3        2880404                    0          94051            624         17964301      388453601                0 FSS,J1,SS        
+scope-303          1          1          73049                    0             31            208             7055       10317438                0 D,FD,J1        
+scope-304          4          1              0                94082          94051       56828483         89199931              0                0 J1,J2    HASH_JOIN    
+scope-305          1          1          18000                    0            321           1984           111432        5051899                0 FI,I,J2        
+scope-306         41          1              0                94372           1606       71472517         32800941              0                0 F1,G1,J2    HASH_JOIN    
+scope-307         -1          1              0                  104            204         273367            17882              0                0 F1,O1    GROUP_BY,SAMPLER    
+scope-318          1          1              0                  100              1           7069              155              0                0         
+scope-330         -1          1            105                    0            104           6042             5823              0                0 O1        
+scope-332         -1          1              0                  100            100           5823             5505              0                0     ORDER_BY    
+scope-343          1          1              0                  100            100           5505                0              0             4461     LIMIT    /tpcds/output/Q52,
+Q53
+DAG 0:
+                                    Name: PigLatin:q53.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0014                                                                              
+                      TotalLaunchedTasks: 20                                                                                                  
+                           FileBytesRead: 618320116                                                                                           
+                        FileBytesWritten: 803462698                                                                                           
+                           HdfsBytesRead: 403826093                                                                                           
+                        HdfsBytesWritten: 560                                                                                                 
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-458    ->    Tez vertex scope-460,
+Tez vertex scope-459    ->    Tez vertex scope-460,
+Tez vertex scope-460    ->    Tez vertex scope-462,
+Tez vertex scope-461    ->    Tez vertex scope-462,
+Tez vertex scope-462    ->    Tez vertex scope-464,
+Tez vertex scope-463    ->    Tez vertex scope-464,
+Tez vertex scope-464    ->    Tez vertex scope-468,Tez vertex scope-471,
+Tez vertex scope-468    ->    Tez vertex scope-471,
+Tez vertex scope-471    ->    Tez vertex scope-472,
+Tez vertex scope-472    ->    Tez vertex scope-483,Tez vertex scope-495,
+Tez vertex scope-483    ->    Tez vertex scope-495,
+Tez vertex scope-495    ->    Tez vertex scope-497,
+Tez vertex scope-497    ->    Tez vertex scope-508,
+Tez vertex scope-508
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-458          3          3        2880404                    0         546310            624        104365833      388453601                0 FSS,J1,SS        
+scope-459          1          1          73049                    0            365            208            81209       10317438                0 D,FD,J1        
+scope-460          4          1              0               546675         546310      328918770        518933710              0                0 J1,J2    HASH_JOIN    
+scope-461          1          1          18000                    0            934           1984           323070        5051899                0 FI,I,J2        
+scope-462         41          3              0               547244            234      288611073        179382025              0                0 J2,J3    HASH_JOIN    
+scope-463          1          1             12                    0             12          19744            14068           3155                0 J3,S        
+scope-464        411          1              0                  246            456         420082           352804              0                0 FW,GW,J3,JFW    HASH_JOIN,MULTI_QUERY    
+scope-468         -1          1              0                    4              4          15652             4076              0                0 FW,JFW    GROUP_BY    
+scope-471         -1          1              0                  232            228         291868             2688              0                0 F1,G1,JFW    HASH_JOIN    
+scope-472         -1          1              0                   16             32          37136             1941              0                0 F1,FF1,O1    GROUP_BY,SAMPLER    
+scope-483          1          1              0                   16              1           1067              152              0                0         
+scope-495         -1          1             17                    0             16            786              570              0                0 O1        
+scope-497         -1          1              0                   16             16            570              552              0                0     ORDER_BY    
+scope-508          1          1              0                   16             16            552                0              0              560     LIMIT    /tpcds/output/Q53,
+Q55
+DAG 0:
+                                    Name: PigLatin:q55.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0015                                                                              
+                      TotalLaunchedTasks: 13                                                                                                  
+                           FileBytesRead: 118922643                                                                                           
+                        FileBytesWritten: 124137474                                                                                           
+                           HdfsBytesRead: 403822938                                                                                           
+                        HdfsBytesWritten: 2731                                                                                                
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-297    ->    Tez vertex scope-299,
+Tez vertex scope-298    ->    Tez vertex scope-299,
+Tez vertex scope-299    ->    Tez vertex scope-301,
+Tez vertex scope-300    ->    Tez vertex scope-301,
+Tez vertex scope-301    ->    Tez vertex scope-302,
+Tez vertex scope-302    ->    Tez vertex scope-312,Tez vertex scope-323,
+Tez vertex scope-312    ->    Tez vertex scope-323,
+Tez vertex scope-323    ->    Tez vertex scope-325,
+Tez vertex scope-325    ->    Tez vertex scope-336,
+Tez vertex scope-336
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-297          3          3        2880404                    0          86893            624         16598905      388453601                0 FSS,J1,SS        
+scope-298          1          1          73049                    0             30            208             6829       10317438                0 D,FD,J1        
+scope-299          4          1              0                86923          86893       52523247         77193963              0                0 J1,J2    HASH_JOIN    
+scope-300          1          1          18000                    0            179           1984            63638        5051899                0 FI,I,J2        
+scope-301         41          1              0                87072            962       66184830         30257161              0                0 F1,G1,J2    HASH_JOIN    
+scope-302         -1          1              0                   72            144         197353            10027              0                0 F1,O1    GROUP_BY,SAMPLER    
+scope-312          1          1              0                   72              1           3943              147              0                0         
+scope-323         -1          1             73                    0             72           3650             3439              0                0 O1        
+scope-325         -1          1              0                   72             72           3439             3365              0                0     ORDER_BY    
+scope-336          1          1              0                   72             72           3365                0              0             2731     LIMIT    /tpcds/output/Q55,
+Q59
+DAG 0:
+                                    Name: PigLatin:q59.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0016                                                                              
+                      TotalLaunchedTasks: 15                                                                                                  
+                           FileBytesRead: 63920320                                                                                            
+                        FileBytesWritten: 95127167                                                                                            
+                           HdfsBytesRead: 398774194                                                                                           
+                        HdfsBytesWritten: 15951                                                                                               
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-461    ->    Tez vertex scope-466,
+Tez vertex scope-462    ->    Tez vertex scope-466,Tez vertex scope-472,
+Tez vertex scope-466    ->    Tez vertex scope-467,
+Tez vertex scope-467    ->    Tez vertex scope-469,
+Tez vertex scope-468    ->    Tez vertex scope-469,
+Tez vertex scope-469    ->    Tez vertex scope-472,
+Tez vertex scope-472    ->    Tez vertex scope-478,
+Tez vertex scope-478    ->    Tez vertex scope-489,Tez vertex scope-501,
+Tez vertex scope-489    ->    Tez vertex scope-501,
+Tez vertex scope-501    ->    Tez vertex scope-503,
+Tez vertex scope-503    ->    Tez vertex scope-514,
+Tez vertex scope-514
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-461          3          3        2880404                    0        2880404            624         50837251      388453601                0 J1,SS        
+scope-462          1          1          73049                    0         146098          10352          3620641       10317438                0 D,J1,JWSS    MULTI_QUERY    
+scope-466          4          1              0              2953453        2750311       53929391         35497220              0                0 F1,GF1,J1,WSS    HASH_JOIN    
+scope-467         -1          2              0                 1834           1834         178573           138846              0                0 JWSS1,WSS    GROUP_BY    
+scope-468          1          1             12                    0             12           1024             1094           3155                0 JWSS1,S        
+scope-469         21          1              0                 1846           1572         233812           206136              0                0 JWSS,JWSS1    HASH_JOIN    
+scope-472        211          1              0                74621           4572        6501011          2159040              0                0 FJWSS1,FJWSS2,JWSS,X,XY,Y    HASH_JOIN,MULTI_QUERY    
+scope-478         -1          1              0                 4572          15424         398530          1616767              0                0 FFXY,FXY,O1,XY    HASH_JOIN,SAMPLER    
+scope-489          1          1              0                  100              1           7705              162              0                0         
+scope-501         -1          1          15325                    0          15324        1609288          1039470              0                0 O1        
+scope-503         -1          1              0                  100            100        1039470            10540              0                0     ORDER_BY    
+scope-514          1          1              0                  100            100          10540                0              0            15951     LIMIT    /tpcds/output/Q59,
+Q63
+DAG 0:
+                                    Name: PigLatin:q63.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0017                                                                              
+                      TotalLaunchedTasks: 19                                                                                                  
+                           FileBytesRead: 637905788                                                                                           
+                        FileBytesWritten: 785479774                                                                                           
+                           HdfsBytesRead: 403826093                                                                                           
+                        HdfsBytesWritten: 3141                                                                                                
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-458    ->    Tez vertex scope-460,
+Tez vertex scope-459    ->    Tez vertex scope-460,
+Tez vertex scope-460    ->    Tez vertex scope-462,
+Tez vertex scope-461    ->    Tez vertex scope-462,
+Tez vertex scope-462    ->    Tez vertex scope-464,
+Tez vertex scope-463    ->    Tez vertex scope-464,
+Tez vertex scope-464    ->    Tez vertex scope-468,Tez vertex scope-471,
+Tez vertex scope-468    ->    Tez vertex scope-471,
+Tez vertex scope-471    ->    Tez vertex scope-472,
+Tez vertex scope-472    ->    Tez vertex scope-483,Tez vertex scope-495,
+Tez vertex scope-483    ->    Tez vertex scope-495,
+Tez vertex scope-495    ->    Tez vertex scope-497,
+Tez vertex scope-497    ->    Tez vertex scope-508,
+Tez vertex scope-508
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-458          3          3        2880404                    0         547523            624        104591971      388453601                0 FSS,J1,SS        
+scope-459          1          1          73049                    0            365            208            81212       10317438                0 D,FD,J1        
+scope-460          4          1              0               547888         547523      329664647        480082109              0                0 J1,J2    HASH_JOIN    
+scope-461          1          1          18000                    0            934           1984           323070        5051899                0 FI,I,J2        
+scope-462         41          3              0               548457           6513      289188695        184445228              0                0 J2,J3    HASH_JOIN    
+scope-463          1          1             12                    0             12          19744            14068           3155                0 J3,S        
+scope-464        411          1              0                 6525          12754        5065787          9291945              0                0 FW,GW,J3,JFW    HASH_JOIN,MULTI_QUERY    
+scope-468         -1          1              0                   85             85           9845             8613              0                0 FW,JFW    GROUP_BY    
+scope-471         -1          1              0                 6462           6377       13881161          6539697              0                0 F1,G1,JFW    HASH_JOIN    
+scope-472         -1          1              0                  608            708          24938            50542              0                0 F1,FF1,O1    GROUP_BY,SAMPLER    
+scope-483          1          1              0                  100              1           6194             6345              0                0         
+scope-495         -1          1            609                    0            608          19506            19442              0                0 O1        
+scope-497         -1          1              0                  100            100          19410            22487              0                0     ORDER_BY    
+scope-508          1          1              0                  100            100           3045             3045              0             3141     LIMIT    /tpcds/output/Q63,
+
+Q65
+DAG 0:
+                                    Name: PigLatin:q65.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0018                                                                              
+                      TotalLaunchedTasks: 16                                                                                                  
+                           FileBytesRead: 112265194                                                                                           
+                        FileBytesWritten: 149817534                                                                                           
+                           HdfsBytesRead: 403826093                                                                                           
+                        HdfsBytesWritten: 13980                                                                                               
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-334    ->    Tez vertex scope-336,
+Tez vertex scope-335    ->    Tez vertex scope-336,
+Tez vertex scope-336    ->    Tez vertex scope-337,
+Tez vertex scope-337    ->    Tez vertex scope-341,Tez vertex scope-344,
+Tez vertex scope-341    ->    Tez vertex scope-344,
+Tez vertex scope-344    ->    Tez vertex scope-346,
+Tez vertex scope-345    ->    Tez vertex scope-346,
+Tez vertex scope-346    ->    Tez vertex scope-348,
+Tez vertex scope-347    ->    Tez vertex scope-348,
+Tez vertex scope-348    ->    Tez vertex scope-358,Tez vertex scope-369,
+Tez vertex scope-358    ->    Tez vertex scope-369,
+Tez vertex scope-369    ->    Tez vertex scope-371,
+Tez vertex scope-371    ->    Tez vertex scope-382,
+Tez vertex scope-382
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-334          3          3        2880404                    0         546310            624        104365833      388453601                0 FSS,J1,SS        
+scope-335          1          1          73049                    0            365            208            81209       10317438                0 D,FD,J1        
+scope-336          4          1              0               546675         546310      104464458         37886949              0                0 F1,G1,J1    HASH_JOIN    
+scope-337         -1          1              0                60836         121672        2300020          1686608              0                0 F1,FGF1,GF1,J1F    GROUP_BY,MULTI_QUERY    
+scope-341         -1          1              0                    7              7           1289              393              0                0 FGF1,J1F    GROUP_BY    
+scope-344         -1          1              0                60843            132        1298788             9956              0                0 FJ1F,J1F,JFJ1F    HASH_JOIN    
+scope-345          1          1          18000                    0          18000          10144          2819243        5051899                0 I,JFJ1F        
+scope-346        211          1              0                18132            132        3595986          2859965              0                0 JFJ1F,JJFJ1F    HASH_JOIN    
+scope-347          1          1             12                    0             12          47968            24338           3155                0 JJFJ1F,S        
+scope-348        999          1              0                  144            232         462671            45236              0                0 FFJ2F,JJFJ1F,O1    HASH_JOIN,SAMPLER    
+scope-358          1          1              0                  100              1          23916              339              0                0         
+scope-369        999          1            133                    0            132          21657            21254              0                0 O1        
+scope-371         -1          1              0                  100            100          21254            16211              0                0     ORDER_BY    
+scope-382          1          1              0                  100            100          16211                0              0            13980     LIMIT    /tpcds/output/Q65,
+Q68
+DAG 0:
+                                    Name: PigLatin:q68.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0019                                                                              
+                      TotalLaunchedTasks: 19                                                                                                  
+                           FileBytesRead: 188622118                                                                                           
+                        FileBytesWritten: 139860013                                                                                           
+                           HdfsBytesRead: 417637384                                                                                           
+                        HdfsBytesWritten: 2870                                                                                                
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-533    ->    Tez vertex scope-535,
+Tez vertex scope-534    ->    Tez vertex scope-535,
+Tez vertex scope-535    ->    Tez vertex scope-537,
+Tez vertex scope-536    ->    Tez vertex scope-537,
+Tez vertex scope-537    ->    Tez vertex scope-539,
+Tez vertex scope-538    ->    Tez vertex scope-539,
+Tez vertex scope-539    ->    Tez vertex scope-544,
+Tez vertex scope-540    ->    Tez vertex scope-544,Tez vertex scope-550,
+Tez vertex scope-544    ->    Tez vertex scope-545,
+Tez vertex scope-545    ->    Tez vertex scope-547,
+Tez vertex scope-546    ->    Tez vertex scope-547,
+Tez vertex scope-547    ->    Tez vertex scope-550,
+Tez vertex scope-550    ->    Tez vertex scope-560,Tez vertex scope-571,
+Tez vertex scope-560    ->    Tez vertex scope-571,
+Tez vertex scope-571    ->    Tez vertex scope-573,
+Tez vertex scope-573    ->    Tez vertex scope-584,
+Tez vertex scope-584
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-533          3          3        2880404                    0         108678            624         20763427      388453601                0 FSS,J1,SS        
+scope-534          1          1          73049                    0            313            208            69460       10317438                0 D,FD,J1        
+scope-535          4          1              0               108991          24692       20862924         16603070              0                0 J1,J2    HASH_JOIN    
+scope-536          1          1             12                    0             12           1984             5188           3155                0 FS,J2,S        
+scope-537         41          1              0                24704          24121       29202084         35816589              0                0 J2,J3    HASH_JOIN    
+scope-538          1          1           7200                    0            120          19744            15998         151653                0 FHD,HD,J3        
+scope-539        411          1              0                24241            421       54163695         31676867              0                0 J3,J4    HASH_JOIN    
+scope-540          1          1          50000                    0         100000          95936          8845030        5502165                0 CA,J2F,J4    MULTI_QUERY    
+scope-544        999          1              0                50421            421       47448417         14821449              0                0 F1,G1,J4    HASH_JOIN    
+scope-545         -1          1              0                   37             37         146153            21460              0                0 F1,J1F    GROUP_BY    
+scope-546          1          1         100000                    0         100000          33664          4231228       13209372                0 C,J1F        
+scope-547        701          1              0               100037             37        4894086          4236540              0                0 J1F,J2F    HASH_JOIN    
+scope-550        999          1              0                50037             72       31741182          2747350              0                0 FFJ2F,FJ2F,J2F,O1    HASH_JOIN,SAMPLER    
+scope-560          1          1              0                   36              1           1871              145              0                0         
+scope-571        999          1             37                    0             36           3334             3125              0                0 O1        
+scope-573         -1          1              0                   36             36           3125             3087              0                0     ORDER_BY    
+scope-584          1          1              0                   36             36           3087                0              0             2870     LIMIT    /tpcds/output/Q68,
+Q73
+DAG 0:
+                                    Name: PigLatin:q73.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0020                                                                              
+                      TotalLaunchedTasks: 15                                                                                                  
+                           FileBytesRead: 40091131                                                                                            
+                        FileBytesWritten: 45134816                                                                                            
+                           HdfsBytesRead: 412135219                                                                                           
+                        HdfsBytesWritten: 0                                                                                                   
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-424    ->    Tez vertex scope-426,
+Tez vertex scope-425    ->    Tez vertex scope-426,
+Tez vertex scope-426    ->    Tez vertex scope-428,
+Tez vertex scope-427    ->    Tez vertex scope-428,
+Tez vertex scope-428    ->    Tez vertex scope-430,
+Tez vertex scope-429    ->    Tez vertex scope-430,
+Tez vertex scope-430    ->    Tez vertex scope-431,
+Tez vertex scope-431    ->    Tez vertex scope-433,
+Tez vertex scope-432    ->    Tez vertex scope-433,
+Tez vertex scope-433    ->    Tez vertex scope-442,Tez vertex scope-452,
+Tez vertex scope-442    ->    Tez vertex scope-452,
+Tez vertex scope-452    ->    Tez vertex scope-454,
+Tez vertex scope-454
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-424          3          3        2880404                    0         105935            624         20239779      388453601                0 FSS,J1,SS        
+scope-425          1          1          73049                    0            312            208            69238       10317438                0 D,FD,J1        
+scope-426          4          1              0               106247          23388       20320978         15999512              0                0 J1,J2    HASH_JOIN    
+scope-427          1          1             12                    0              0           1984              992           3155                0 FS,J2,S        
+scope-428         41          1              0                23388              0        9624878             9872              0                0 J2,J3    HASH_JOIN    
+scope-429          1          1           7200                    0           1040          19744            55634         151653                0 FHD,HD,J3        
+scope-430        411          1              0                 1040              0        5749883            80085              0                0 F1,G1,J3    HASH_JOIN    
+scope-431         -1          1              0                    0              0          23584            11792              0                0 F1,FJ1F,J1F    GROUP_BY    
+scope-432          1          1         100000                    0         100000          23584          4342228       13209372                0 C,J1F        
+scope-433        491          1              0               100000              0        4325600          4325610              0                0 FFJ1F,J1F,O1    HASH_JOIN,SAMPLER    
+scope-442          1          1              0                    0              0              0               42              0                0         
+scope-452        491          1              0                    0              0             64               32              0                0 O1        
+scope-454         -1          1              0                    0              0              0                0              0                0     ORDER_BY    /tpcds/output/Q73,
+
+Q79
+DAG 0:
+                                    Name: PigLatin:q79.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0021                                                                              
+                      TotalLaunchedTasks: 21                                                                                                  
+                           FileBytesRead: 1273885390                                                                                          
+                        FileBytesWritten: 1477474690                                                                                          
+                           HdfsBytesRead: 412135219                                                                                           
+                        HdfsBytesWritten: 3962                                                                                                
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-422    ->    Tez vertex scope-424,
+Tez vertex scope-423    ->    Tez vertex scope-424,
+Tez vertex scope-424    ->    Tez vertex scope-426,
+Tez vertex scope-425    ->    Tez vertex scope-426,
+Tez vertex scope-426    ->    Tez vertex scope-428,
+Tez vertex scope-427    ->    Tez vertex scope-428,
+Tez vertex scope-428    ->    Tez vertex scope-429,
+Tez vertex scope-429    ->    Tez vertex scope-431,
+Tez vertex scope-430    ->    Tez vertex scope-431,
+Tez vertex scope-431    ->    Tez vertex scope-443,Tez vertex scope-456,
+Tez vertex scope-443    ->    Tez vertex scope-456,
+Tez vertex scope-456    ->    Tez vertex scope-458,
+Tez vertex scope-458    ->    Tez vertex scope-469,
+Tez vertex scope-469
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-422          3          3        2880404                    0        1627555      310981018        621840262      388453601                0 FSS,J1,SS        
+scope-423          1          1          73049                    0            156            208            34613       10317438                0 D,FD,J1        
+scope-424          4          4              0              1627711         230910      405744155        321171293              0                0 J1,J2    HASH_JOIN    
+scope-425          1          1             12                    0             11           1984             4891           3155                0 FS,J2,S        
+scope-426         41          1              0               230921         187412      278600114        344207990              0                0 J2,J3    HASH_JOIN    
+scope-427          1          1           7200                    0           5040          19744           220954         151653                0 FHD,HD,J3        
+scope-428        411          3              0               192452         128948      256311364        178232454              0                0 F1,G1,J3    HASH_JOIN    
+scope-429         -1          1              0                12701          12701        2211826          1609484              0                0 F1,J1F    GROUP_BY    
+scope-430          1          1         100000                    0         100000          33664          3353376       13209372                0 C,J1F        
+scope-431        701          1              0               112701          12090       19223615          5292806              0                0 FFJ1F,J1F,O1    HASH_JOIN,SAMPLER    
+scope-443          1          1              0                  100              1           8600             8765              0                0         
+scope-456        701          1          11991                    0          11990            229           744279              0                0 O1        
+scope-458         -1          1              0                  100            100         744247           748901              0                0     ORDER_BY    
+scope-469          1          1              0                  100            100           4622             4622              0             3962     LIMIT    /tpcds/output/Q79,
+Q89
+DAG 0:
+                                    Name: PigLatin:q89.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0022                                                                              
+                      TotalLaunchedTasks: 19                                                                                                  
+                           FileBytesRead: 770862087                                                                                           
+                        FileBytesWritten: 969225449                                                                                           
+                           HdfsBytesRead: 403826093                                                                                           
+                        HdfsBytesWritten: 7803                                                                                                
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-520    ->    Tez vertex scope-522,
+Tez vertex scope-521    ->    Tez vertex scope-522,
+Tez vertex scope-522    ->    Tez vertex scope-524,
+Tez vertex scope-523    ->    Tez vertex scope-524,
+Tez vertex scope-524    ->    Tez vertex scope-526,
+Tez vertex scope-525    ->    Tez vertex scope-526,
+Tez vertex scope-526    ->    Tez vertex scope-530,Tez vertex scope-533,
+Tez vertex scope-530    ->    Tez vertex scope-533,
+Tez vertex scope-533    ->    Tez vertex scope-534,
+Tez vertex scope-534    ->    Tez vertex scope-544,Tez vertex scope-555,
+Tez vertex scope-544    ->    Tez vertex scope-555,
+Tez vertex scope-555    ->    Tez vertex scope-557,
+Tez vertex scope-557    ->    Tez vertex scope-568,
+Tez vertex scope-568
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-520          3          3        2880404                    0         553861            624        105793105      388453601                0 FSS,J1,SS        
+scope-521          1          1          73049                    0            366            208            81432       10317438                0 D,FD,J1        
+scope-522          4          1              0               554227         553861      333437600        521994915              0                0 J1,J2    HASH_JOIN    
+scope-523          1          1          18000                    0           1306           1984           444222        5051899                0 FI,I,J2        
+scope-524         41          3              0               555167          38855      292691167        210856437              0                0 J2,J3    HASH_JOIN    
+scope-525          1          1             12                    0             12          19744            14068           3155                0 J3,S        
+scope-526        411          1              0                38867          75958       68973336         93673710              0                0 FW,GW,J3,JFW    HASH_JOIN,MULTI_QUERY    
+scope-530         -1          1              0                  258            258          24199            37598              0                0 FW,JFW    GROUP_BY    
+scope-533         -1          1              0                38237          37977       75129603         35209733              0                0 F1,G1,JFW    HASH_JOIN    
+scope-534         -1          1              0                 2743           2833         308222           574269              0                0 F1,FF1,O1    GROUP_BY,SAMPLER    
+scope-544          1          1              0                  100              1           4632             4776              0                0         
+scope-555         -1          1           2734                    0           2733            208           261447              0                0 O1        
+scope-557         -1          1              0                  100            100         261415           270592              0                0     ORDER_BY    
+scope-568          1          1              0                  100            100           9145             9145              0             7803 FO1    LIMIT    /tpcds/output/Q89,
+Q98
+DAG 0:
+                                    Name: PigLatin:q98.pig-0_scope-0                                                                          
+                           ApplicationId: job_1564404443351_0023                                                                              
+                      TotalLaunchedTasks: 13                                                                                                  
+                           FileBytesRead: 33849302                                                                                            
+                        FileBytesWritten: 38093486                                                                                            
+                           HdfsBytesRead: 403822938                                                                                           
+                        HdfsBytesWritten: 377869                                                                                              
+      SpillableMemoryManager spill count: 0                                                                                                   
+                Bags proactively spilled: 0                                                                                                   
+             Records proactively spilled: 0                                                                                                   
+
+DAG Plan:
+Tez vertex scope-368    ->    Tez vertex scope-370,
+Tez vertex scope-369    ->    Tez vertex scope-370,
+Tez vertex scope-370    ->    Tez vertex scope-372,
+Tez vertex scope-371    ->    Tez vertex scope-372,
+Tez vertex scope-372    ->    Tez vertex scope-373,
+Tez vertex scope-373    ->    Tez vertex scope-377,Tez vertex scope-380,
+Tez vertex scope-377    ->    Tez vertex scope-380,
+Tez vertex scope-380    ->    Tez vertex scope-393,Tez vertex scope-407,
+Tez vertex scope-393    ->    Tez vertex scope-407,
+Tez vertex scope-407    ->    Tez vertex scope-409,
+Tez vertex scope-409
+Vertex Stats:
+VertexId Parallelism TotalTasks   InputRecords   ReduceInputRecords  OutputRecords  FileBytesRead FileBytesWritten  HdfsBytesRead HdfsBytesWritten Alias    Feature    Outputs
+scope-368          3          3        2880404                    0          29757            624          5685212      388453601                0 FSS,J1,SS        
+scope-369          1          1          73049                    0             31            208             7022       10317438                0 D,FD,J1        
+scope-370          4          1              0                29788          29757        5707065         16191848              0                0 J1,J2    HASH_JOIN    
+scope-371          1          1          18000                    0           5256           1984          1783938        5051899                0 FI,I,J2        
+scope-372         41          1              0                35013           8678       26096875         12264059              0                0 F1,G1,J2    HASH_JOIN    
+scope-373         -1          1              0                 2505           5010        1157011           795985              0                0 F1,FW,GW,JFW    GROUP_BY,MULTI_QUERY    
+scope-377         -1          1              0                   49             49           4021             1489              0                0 FW,JFW    GROUP_BY    
+scope-380         -1          1              0                 2554           2602         405985           475497              0                0 FJFW,JFW,O1    HASH_JOIN,SAMPLER    
+scope-393          1          1              0                  100              1          31376              226              0                0         
+scope-407         -1          1           2503                    0           2502             64           444121              0                0 O1        
+scope-409         -1          1              0                 2502           2502         444089           444089              0           377869 FO1    ORDER_BY    /tpcds/output/Q98,

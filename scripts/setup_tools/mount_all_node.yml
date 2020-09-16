@@ -1,0 +1,6 @@
+- hosts: hadoop
+  tasks:
+   - name: "delete cache from all nodes"
+     command: mount /dev/vdb1 /mnt/temp
+     become: true
+     become_user: root 

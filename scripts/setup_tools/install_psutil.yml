@@ -1,0 +1,6 @@
+- hosts: hadoop
+  tasks:
+   - name: "Install  on all nodes"
+     command: /usr/bin/pip3 install psutil
+     become: true
+     become_user: root

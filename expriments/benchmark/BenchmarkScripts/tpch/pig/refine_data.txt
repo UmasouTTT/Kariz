@@ -1,0 +1,23 @@
+#!/usr/bin/python3
+
+import os
+import subprocess
+import sys
+import csv
+import pandas as pd
+
+n_files = len(sys.argv) - 1;
+
+#with open('S3_HDFS_4wrk.log', 'r') as f:
+#    for line in f:
+#        line = line.rstrip() # remove trailing whitespace such as '\n'
+process = subprocess.Popen(['/bin/grep', "^Q", 'S3_HDFS_4wrk.log'], stdout=subprocess.PIPE)
+stdout, stderr = process.communicate()
+
+df = pd.DataFrame(data=stdout.decode('ascii').replace("times (sec):\t","").splitlines())
+#reader = csv.DictReader(stdout.decode('ascii').replace("times (sec):\t","").splitlines(),
+#        delimiter=' ', skipinitialspace=True,
+#                        fieldnames=['Query', 'times'])
+
+for row in reader:
+    print(row[)

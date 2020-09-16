@@ -1,0 +1,6 @@
+- hosts: hadoop
+  tasks:
+    - name: Copy hadoop hdfs-site.xml
+      copy:
+        src: "{{ lookup('env','HADOOP_CONF_DIR') }}/hdfs-site.xml"
+        dest: "{{ lookup('env','HADOOP_CONF_DIR') }}/hdfs-site.xml"

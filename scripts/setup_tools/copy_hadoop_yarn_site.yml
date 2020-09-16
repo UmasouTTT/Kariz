@@ -1,0 +1,6 @@
+- hosts: hadoop
+  tasks:
+    - name: Copy hadoop yarn-site.xml
+      copy:
+        src: "{{ lookup('env','HADOOP_CONF_DIR') }}/yarn-site.xml"
+        dest: "{{ lookup('env','HADOOP_CONF_DIR') }}/yarn-site.xml"

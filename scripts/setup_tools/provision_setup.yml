@@ -1,0 +1,26 @@
+- hosts: hadoop
+  tasks:
+  - name: Copy hosts
+    become: true
+    copy:
+      src: "/etc/hosts"
+      dest: "/etc/host"
+
+
+- hosts: hadoop-new
+  tasks:
+  - name: Update APT package manager repositories cache
+    apt:
+      update_cache: yes
+  - name: Install OpenJDK Java
+    become: yes
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+     openjdk-8-jdk
+  - name: Copy hadoop directory to new nodes
+    copy:
+      src: "{{ lookup('env','HADOOP_HOME') }}"
+      dest: "/opt/"
+

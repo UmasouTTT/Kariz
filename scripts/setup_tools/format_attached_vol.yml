@@ -1,0 +1,15 @@
+- hosts: hadoop
+  tasks:
+    - name: Create a ext4 filesystem on /dev/vdb1 and check disk blocks
+      sudo: true
+      filesystem:
+        fstype: ext4
+        force: yes
+        dev: /dev/vdb1
+        opts: -cc
+
+    - name: "delete cache from all nodes"
+      command: mount /dev/vdb1 /mnt/
+      become: true
+      become_user: root
+

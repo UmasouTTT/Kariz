@@ -1,0 +1,6 @@
+- hosts: hadoop
+  tasks:
+    - name: Copy alluxio workers
+      copy:
+        src: "{{lookup('env','ALLUXIO_HOME')}}/conf/workers" 
+        dest: "{{lookup('env','ALLUXIO_HOME')}}/conf/workers"

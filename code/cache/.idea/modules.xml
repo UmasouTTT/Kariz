@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/cache.iml" filepath="$PROJECT_DIR$/.idea/cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../controller/.idea/controller.iml" filepath="$PROJECT_DIR$/../controller/.idea/controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../framework_simulator/.idea/framework_simulator.iml" filepath="$PROJECT_DIR$/../framework_simulator/.idea/framework_simulator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../plans/kariz/.idea/kariz.iml" filepath="$PROJECT_DIR$/../plans/kariz/.idea/kariz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../expriments/runtime_prediction/micro/.idea/micro.iml" filepath="$PROJECT_DIR$/../../expriments/runtime_prediction/micro/.idea/micro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../expriments/simulator/multidag/.idea/multidag.iml" filepath="$PROJECT_DIR$/../../expriments/simulator/multidag/.idea/multidag.iml" />
+    </modules>
+  </component>
+</project>

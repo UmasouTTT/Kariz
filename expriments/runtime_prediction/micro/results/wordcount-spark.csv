@@ -1,0 +1,579 @@
+app_id,app_name,stage_id,input_sz,output_sz,rdds,n_tasks,runtime,name,bw,dataset,stride,rep,app_runtime
+app-20200629141853-0012,name:wordcount-bw:1Gbps-ds:32G-stride:64-rep:0-lenvdiqv,1,0,28655,"[6, 5]",64,7.0,wordcount,1Gbps,32G,64,0,178304
+app-20200629141853-0012,name:wordcount-bw:1Gbps-ds:32G-stride:64-rep:0-lenvdiqv,0,35271691558,0,"[4, 0, 1, 2, 3]",64,161.0,wordcount,1Gbps,32G,64,0,178304
+app-20200629142707-0013,name:wordcount-bw:1Gbps-ds:32G-stride:128-rep:0-nvbxmmxl,1,0,28655,"[6, 5]",64,6.0,wordcount,1Gbps,32G,128,0,0
+app-20200629142707-0013,name:wordcount-bw:1Gbps-ds:32G-stride:128-rep:0-nvbxmmxl,0,35271691558,0,"[4, 3, 2, 1, 0]",64,30.0,wordcount,1Gbps,32G,128,0,0
+app-20200629142836-0014,name:wordcount-bw:1Gbps-ds:32G-stride:8-rep:0-fmbfouua,1,0,28655,"[6, 5]",64,6.0,wordcount,1Gbps,32G,8,0,0
+app-20200629142836-0014,name:wordcount-bw:1Gbps-ds:32G-stride:8-rep:0-fmbfouua,0,35271691558,0,"[4, 3, 0, 2, 1]",64,281.0,wordcount,1Gbps,32G,8,0,0
+app-20200629143433-0015,name:wordcount-bw:1Gbps-ds:32G-stride:16-rep:0-bamvqqbw,1,0,28655,"[6, 5]",64,9.0,wordcount,1Gbps,32G,16,0,0
+app-20200629143433-0015,name:wordcount-bw:1Gbps-ds:32G-stride:16-rep:0-bamvqqbw,0,35271691558,0,"[4, 0, 1, 3, 2]",64,263.0,wordcount,1Gbps,32G,16,0,0
+app-20200629144052-0016,name:wordcount-bw:1Gbps-ds:32G-stride:32-rep:0-kwheeynp,1,0,28655,"[6, 5]",64,6.0,wordcount,1Gbps,32G,32,0,243675
+app-20200629144052-0016,name:wordcount-bw:1Gbps-ds:32G-stride:32-rep:0-kwheeynp,0,35271691558,0,"[4, 2, 3, 1, 0]",64,231.0,wordcount,1Gbps,32G,32,0,243675
+app-20200629144707-0017,name:wordcount-bw:1Gbps-ds:32G-stride:48-rep:0-xyaofiwh,1,0,28655,"[6, 5]",64,9.0,wordcount,1Gbps,32G,48,0,211978
+app-20200629144707-0017,name:wordcount-bw:1Gbps-ds:32G-stride:48-rep:0-xyaofiwh,0,35271691558,0,"[4, 0, 1, 2, 3]",64,196.0,wordcount,1Gbps,32G,48,0,211978
+app-20200629145111-0018,name:wordcount-bw:1Gbps-ds:32G-stride:4-rep:0-dcsqxwny,1,0,28655,"[6, 5]",64,5.0,wordcount,1Gbps,32G,4,0,0
+app-20200629145111-0018,name:wordcount-bw:1Gbps-ds:32G-stride:4-rep:0-dcsqxwny,0,35271691558,0,"[4, 1, 0, 3, 2]",64,291.0,wordcount,1Gbps,32G,4,0,0
+app-20200629145941-0019,name:wordcount-bw:1Gbps-ds:32G-stride:80-rep:0-qivnhnhg,1,0,28655,"[6, 5]",64,6.0,wordcount,1Gbps,32G,80,0,141296
+app-20200629145941-0019,name:wordcount-bw:1Gbps-ds:32G-stride:80-rep:0-qivnhnhg,0,35271691558,0,"[4, 3, 2, 1, 0]",64,128.0,wordcount,1Gbps,32G,80,0,141296
+app-20200629150607-0020,name:wordcount-bw:1Gbps-ds:32G-stride:96-rep:0-viaunxbg,1,0,28655,"[6, 5]",64,6.0,wordcount,1Gbps,32G,96,0,106993
+app-20200629150607-0020,name:wordcount-bw:1Gbps-ds:32G-stride:96-rep:0-viaunxbg,0,35271691558,0,"[4, 0, 3, 1, 2]",64,94.0,wordcount,1Gbps,32G,96,0,106993
+app-20200629150810-0021,name:wordcount-bw:1Gbps-ds:32G-stride:0-rep:0-frbodfyq,1,0,28655,"[6, 5]",64,6.0,wordcount,1Gbps,32G,0,0,0
+app-20200629150810-0021,name:wordcount-bw:1Gbps-ds:32G-stride:0-rep:0-frbodfyq,0,35271691558,0,"[4, 3, 1, 2, 0]",64,306.0,wordcount,1Gbps,32G,0,0,0
+app-20200629151919-0022,name:wordcount-bw:1Gbps-ds:64G-stride:64-rep:0-twplttmq,1,0,28655,"[6, 5]",64,1.0,wordcount,1Gbps,64G,64,0,324045
+app-20200629151919-0022,name:wordcount-bw:1Gbps-ds:64G-stride:64-rep:0-twplttmq,0,70542980067,0,"[4, 3, 2, 0, 1]",128,316.0,wordcount,1Gbps,64G,64,0,324045
+app-20200629153452-0023,name:wordcount-bw:1Gbps-ds:64G-stride:128-rep:0-whbbzfay,1,0,28655,"[6, 5]",64,5.0,wordcount,1Gbps,64G,128,0,61945
+app-20200629153452-0023,name:wordcount-bw:1Gbps-ds:64G-stride:128-rep:0-whbbzfay,0,70542980067,0,"[4, 1, 2, 3, 0]",128,50.0,wordcount,1Gbps,64G,128,0,61945
+app-20200629153707-0024,name:wordcount-bw:1Gbps-ds:64G-stride:8-rep:0-nhqjjrco,1,0,28655,"[6, 5]",64,1.0,wordcount,1Gbps,64G,8,0,0
+app-20200629153707-0024,name:wordcount-bw:1Gbps-ds:64G-stride:8-rep:0-nhqjjrco,0,70542980067,0,"[4, 2, 3, 1, 0]",128,559.0,wordcount,1Gbps,64G,8,0,0
+app-20200629154824-0025,name:wordcount-bw:1Gbps-ds:64G-stride:16-rep:0-gdlecgtk,1,0,28655,"[6, 5]",64,1.0,wordcount,1Gbps,64G,16,0,0
+app-20200629154824-0025,name:wordcount-bw:1Gbps-ds:64G-stride:16-rep:0-gdlecgtk,0,70542980067,0,"[4, 0, 1, 2, 3]",128,525.0,wordcount,1Gbps,64G,16,0,0
+app-20200629160018-0026,name:wordcount-bw:1Gbps-ds:64G-stride:32-rep:0-tddlpqqb,1,0,28655,"[6, 5]",64,1.0,wordcount,1Gbps,64G,32,0,0
+app-20200629160018-0026,name:wordcount-bw:1Gbps-ds:64G-stride:32-rep:0-tddlpqqb,0,70542980067,0,"[4, 3, 2, 0, 1]",128,453.0,wordcount,1Gbps,64G,32,0,0
+app-20200629161213-0027,name:wordcount-bw:1Gbps-ds:64G-stride:48-rep:0-wdojbmqv,1,0,28655,"[6, 5]",64,1.0,wordcount,1Gbps,64G,48,0,392374
+app-20200629161213-0027,name:wordcount-bw:1Gbps-ds:64G-stride:48-rep:0-wdojbmqv,0,70542980067,0,"[4, 2, 1, 0, 3]",128,384.0,wordcount,1Gbps,64G,48,0,392374
+app-20200629161936-0028,name:wordcount-bw:1Gbps-ds:64G-stride:4-rep:0-ckwxkulu,1,0,28655,"[6, 5]",64,1.0,wordcount,1Gbps,64G,4,0,0
+app-20200629161936-0028,name:wordcount-bw:1Gbps-ds:64G-stride:4-rep:0-ckwxkulu,0,70542980067,0,"[4, 2, 1, 0, 3]",128,579.0,wordcount,1Gbps,64G,4,0,0
+app-20200629163601-0029,name:wordcount-bw:1Gbps-ds:64G-stride:80-rep:0-pfbwflgd,1,0,28655,"[6, 5]",64,1.0,wordcount,1Gbps,64G,80,0,0
+app-20200629163601-0029,name:wordcount-bw:1Gbps-ds:64G-stride:80-rep:0-pfbwflgd,0,70542980067,0,"[4, 2, 1, 3, 0]",128,248.0,wordcount,1Gbps,64G,80,0,0
+app-20200629164807-0030,name:wordcount-bw:1Gbps-ds:64G-stride:96-rep:0-ntljwiae,1,0,28655,"[6, 5]",64,1.0,wordcount,1Gbps,64G,96,0,187091
+app-20200629164807-0030,name:wordcount-bw:1Gbps-ds:64G-stride:96-rep:0-ntljwiae,0,70542980067,0,"[4, 2, 3, 0, 1]",128,179.0,wordcount,1Gbps,64G,96,0,187091
+app-20200629165132-0031,name:wordcount-bw:1Gbps-ds:64G-stride:0-rep:0-oxrdbfwq,1,0,28655,"[6, 5]",64,1.0,wordcount,1Gbps,64G,0,0,0
+app-20200629165132-0031,name:wordcount-bw:1Gbps-ds:64G-stride:0-rep:0-oxrdbfwq,0,70542980067,0,"[4, 1, 2, 3, 0]",128,608.0,wordcount,1Gbps,64G,0,0,0
+app-20200629170353-0032,name:wordcount-bw:1Gbps-ds:16G-stride:64-rep:0-exkvercm,1,0,28655,"[6, 5]",64,14.0,wordcount,1Gbps,16G,64,0,105561
+app-20200629170353-0032,name:wordcount-bw:1Gbps-ds:16G-stride:64-rep:0-exkvercm,0,17635772327,0,"[4, 2, 3, 1, 0]",32,85.0,wordcount,1Gbps,16G,64,0,105561
+app-20200629170820-0033,name:wordcount-bw:1Gbps-ds:16G-stride:128-rep:0-dqmblmbl,1,0,28655,"[6, 5]",64,7.0,wordcount,1Gbps,16G,128,0,37792
+app-20200629170820-0033,name:wordcount-bw:1Gbps-ds:16G-stride:128-rep:0-dqmblmbl,0,17635772327,0,"[4, 2, 3, 1, 0]",32,24.0,wordcount,1Gbps,16G,128,0,37792
+app-20200629170939-0034,name:wordcount-bw:1Gbps-ds:16G-stride:8-rep:0-mweeooaw,1,0,28655,"[6, 5]",64,8.0,wordcount,1Gbps,16G,8,0,159301
+app-20200629170939-0034,name:wordcount-bw:1Gbps-ds:16G-stride:8-rep:0-mweeooaw,0,17635772327,0,"[4, 0, 3, 2, 1]",32,145.0,wordcount,1Gbps,16G,8,0,159301
+app-20200629171254-0035,name:wordcount-bw:1Gbps-ds:16G-stride:16-rep:0-dlldevcb,1,0,28655,"[6, 5]",64,8.0,wordcount,1Gbps,16G,16,0,0
+app-20200629171254-0035,name:wordcount-bw:1Gbps-ds:16G-stride:16-rep:0-dlldevcb,0,17635772327,0,"[4, 0, 1, 2, 3]",32,135.0,wordcount,1Gbps,16G,16,0,0
+app-20200629171622-0036,name:wordcount-bw:1Gbps-ds:16G-stride:32-rep:0-lqxyogma,1,0,28655,"[6, 5]",64,8.0,wordcount,1Gbps,16G,32,0,133637
+app-20200629171622-0036,name:wordcount-bw:1Gbps-ds:16G-stride:32-rep:0-lqxyogma,0,17635772327,0,"[4, 2, 1, 3, 0]",32,119.0,wordcount,1Gbps,16G,32,0,133637
+app-20200629171948-0037,name:wordcount-bw:1Gbps-ds:16G-stride:48-rep:0-ewzhsarp,1,0,28655,"[6, 5]",64,9.0,wordcount,1Gbps,16G,48,0,0
+app-20200629171948-0037,name:wordcount-bw:1Gbps-ds:16G-stride:48-rep:0-ewzhsarp,0,17635772327,0,"[4, 2, 3, 1, 0]",32,102.0,wordcount,1Gbps,16G,48,0,0
+app-20200629172212-0038,name:wordcount-bw:1Gbps-ds:16G-stride:4-rep:0-jncxsveo,1,0,28655,"[6, 5]",64,7.0,wordcount,1Gbps,16G,4,0,0
+app-20200629172212-0038,name:wordcount-bw:1Gbps-ds:16G-stride:4-rep:0-jncxsveo,0,17635772327,0,"[4, 1, 2, 3, 0]",32,148.0,wordcount,1Gbps,16G,4,0,0
+app-20200629172646-0039,name:wordcount-bw:1Gbps-ds:16G-stride:80-rep:0-czfqlyvd,1,0,28655,"[6, 5]",64,8.0,wordcount,1Gbps,16G,80,0,0
+app-20200629172646-0039,name:wordcount-bw:1Gbps-ds:16G-stride:80-rep:0-czfqlyvd,0,17635772327,0,"[4, 0, 3, 1, 2]",32,72.0,wordcount,1Gbps,16G,80,0,0
+app-20200629173024-0040,name:wordcount-bw:1Gbps-ds:16G-stride:96-rep:0-ezokjour,1,0,28655,"[6, 5]",64,9.0,wordcount,1Gbps,16G,96,0,0
+app-20200629173024-0040,name:wordcount-bw:1Gbps-ds:16G-stride:96-rep:0-ezokjour,0,17635772327,0,"[4, 0, 3, 2, 1]",32,55.0,wordcount,1Gbps,16G,96,0,0
+app-20200629173154-0041,name:wordcount-bw:1Gbps-ds:16G-stride:0-rep:0-izynbfhp,1,0,28655,"[6, 5]",64,7.0,wordcount,1Gbps,16G,0,0,168497
+app-20200629173154-0041,name:wordcount-bw:1Gbps-ds:16G-stride:0-rep:0-izynbfhp,0,17635772327,0,"[4, 3, 2, 0, 1]",32,154.0,wordcount,1Gbps,16G,0,0,168497
+app-20200629173546-0042,name:wordcount-bw:1Gbps-ds:4G-stride:64-rep:0-fbizuseg,1,0,27655,"[6, 5]",64,9.0,wordcount,1Gbps,4G,64,0,0
+app-20200629173546-0042,name:wordcount-bw:1Gbps-ds:4G-stride:64-rep:0-fbizuseg,0,4408948978,0,"[4, 2, 0, 3, 1]",8,27.0,wordcount,1Gbps,4G,64,0,0
+app-20200629173724-0043,name:wordcount-bw:1Gbps-ds:4G-stride:128-rep:0-jsbktexr,1,0,27655,"[6, 5]",64,27.0,wordcount,1Gbps,4G,128,0,0
+app-20200629173724-0043,name:wordcount-bw:1Gbps-ds:4G-stride:128-rep:0-jsbktexr,0,4408948978,0,"[4, 3, 1, 0, 2]",8,21.0,wordcount,1Gbps,4G,128,0,0
+app-20200629173840-0044,name:wordcount-bw:1Gbps-ds:4G-stride:8-rep:0-yrkpgqpv,1,0,27655,"[6, 5]",64,10.0,wordcount,1Gbps,4G,8,0,55166
+app-20200629173840-0044,name:wordcount-bw:1Gbps-ds:4G-stride:8-rep:0-yrkpgqpv,0,4408948978,0,"[4, 2, 3, 1, 0]",8,39.0,wordcount,1Gbps,4G,8,0,55166
+app-20200629173956-0045,name:wordcount-bw:1Gbps-ds:4G-stride:16-rep:0-yfbabrwg,1,0,27655,"[6, 5]",64,17.0,wordcount,1Gbps,4G,16,0,60712
+app-20200629173956-0045,name:wordcount-bw:1Gbps-ds:4G-stride:16-rep:0-yfbabrwg,0,4408948978,0,"[4, 2, 1, 3, 0]",8,37.0,wordcount,1Gbps,4G,16,0,60712
+app-20200629174119-0046,name:wordcount-bw:1Gbps-ds:4G-stride:32-rep:0-hqyahwmh,1,0,27655,"[6, 5]",64,8.0,wordcount,1Gbps,4G,32,0,0
+app-20200629174119-0046,name:wordcount-bw:1Gbps-ds:4G-stride:32-rep:0-hqyahwmh,0,4408948978,0,"[4, 3, 1, 0, 2]",8,34.0,wordcount,1Gbps,4G,32,0,0
+app-20200629174239-0047,name:wordcount-bw:1Gbps-ds:4G-stride:48-rep:0-bwkwemmj,1,0,27655,"[6, 5]",64,9.0,wordcount,1Gbps,4G,48,0,45854
+app-20200629174239-0047,name:wordcount-bw:1Gbps-ds:4G-stride:48-rep:0-bwkwemmj,0,4408948978,0,"[4, 2, 1, 3, 0]",8,30.0,wordcount,1Gbps,4G,48,0,45854
+app-20200629174340-0048,name:wordcount-bw:1Gbps-ds:4G-stride:4-rep:0-bgsiqfjv,1,0,27655,"[6, 5]",64,8.0,wordcount,1Gbps,4G,4,0,54729
+app-20200629174340-0048,name:wordcount-bw:1Gbps-ds:4G-stride:4-rep:0-bgsiqfjv,0,4408948978,0,"[4, 0, 1, 3, 2]",8,40.0,wordcount,1Gbps,4G,4,0,54729
+app-20200629174510-0049,name:wordcount-bw:1Gbps-ds:4G-stride:80-rep:0-bsgduvpc,1,0,27655,"[6, 5]",64,9.0,wordcount,1Gbps,4G,80,0,0
+app-20200629174510-0049,name:wordcount-bw:1Gbps-ds:4G-stride:80-rep:0-bsgduvpc,0,4408948978,0,"[4, 0, 1, 2, 3]",8,25.0,wordcount,1Gbps,4G,80,0,0
+app-20200629174638-0050,name:wordcount-bw:1Gbps-ds:4G-stride:96-rep:0-wxjmkrzk,1,0,27655,"[6, 5]",64,9.0,wordcount,1Gbps,4G,96,0,0
+app-20200629174638-0050,name:wordcount-bw:1Gbps-ds:4G-stride:96-rep:0-wxjmkrzk,0,4408948978,0,"[4, 1, 2, 0, 3]",8,25.0,wordcount,1Gbps,4G,96,0,0
+app-20200629174737-0051,name:wordcount-bw:1Gbps-ds:4G-stride:0-rep:0-rqyegtqh,1,0,27655,"[6, 5]",64,10.0,wordcount,1Gbps,4G,0,0,57043
+app-20200629174737-0051,name:wordcount-bw:1Gbps-ds:4G-stride:0-rep:0-rqyegtqh,0,4408948978,0,"[4, 3, 2, 0, 1]",8,40.0,wordcount,1Gbps,4G,0,0,57043
+app-20200629174921-0052,name:wordcount-bw:1Gbps-ds:1G-stride:64-rep:0-lszsiera,1,0,26655,"[6, 5]",64,9.0,wordcount,1Gbps,1G,64,0,23618
+app-20200629174921-0052,name:wordcount-bw:1Gbps-ds:1G-stride:64-rep:0-lszsiera,0,1102238868,0,"[4, 3, 2, 1, 0]",8,8.0,wordcount,1Gbps,1G,64,0,23618
+app-20200629175006-0053,name:wordcount-bw:1Gbps-ds:1G-stride:128-rep:0-gizfakxc,1,0,26655,"[6, 5]",64,10.0,wordcount,1Gbps,1G,128,0,0
+app-20200629175006-0053,name:wordcount-bw:1Gbps-ds:1G-stride:128-rep:0-gizfakxc,0,1102238868,0,"[4, 3, 0, 2, 1]",8,8.0,wordcount,1Gbps,1G,128,0,0
+app-20200629175055-0054,name:wordcount-bw:1Gbps-ds:1G-stride:8-rep:0-sxssotyx,1,0,26655,"[6, 5]",64,10.0,wordcount,1Gbps,1G,8,0,0
+app-20200629175055-0054,name:wordcount-bw:1Gbps-ds:1G-stride:8-rep:0-sxssotyx,0,1102238868,0,"[4, 3, 0, 2, 1]",8,10.0,wordcount,1Gbps,1G,8,0,0
+app-20200629175155-0055,name:wordcount-bw:1Gbps-ds:1G-stride:16-rep:0-lgpbnbfd,1,0,26655,"[6, 5]",64,11.0,wordcount,1Gbps,1G,16,0,25805
+app-20200629175155-0055,name:wordcount-bw:1Gbps-ds:1G-stride:16-rep:0-lgpbnbfd,0,1102238868,0,"[4, 3, 1, 2, 0]",8,8.0,wordcount,1Gbps,1G,16,0,25805
+app-20200629175242-0056,name:wordcount-bw:1Gbps-ds:1G-stride:32-rep:0-ubzfjqve,1,0,26655,"[6, 5]",64,9.0,wordcount,1Gbps,1G,32,0,0
+app-20200629175242-0056,name:wordcount-bw:1Gbps-ds:1G-stride:32-rep:0-ubzfjqve,0,1102238868,0,"[4, 2, 0, 3, 1]",8,8.0,wordcount,1Gbps,1G,32,0,0
+app-20200629175332-0057,name:wordcount-bw:1Gbps-ds:1G-stride:48-rep:0-mtswsorq,1,0,26655,"[6, 5]",64,9.0,wordcount,1Gbps,1G,48,0,0
+app-20200629175332-0057,name:wordcount-bw:1Gbps-ds:1G-stride:48-rep:0-mtswsorq,0,1102238868,0,"[4, 1, 3, 0, 2]",8,8.0,wordcount,1Gbps,1G,48,0,0
+app-20200629175415-0058,name:wordcount-bw:1Gbps-ds:1G-stride:4-rep:0-bcsknoru,1,0,26655,"[6, 5]",64,10.0,wordcount,1Gbps,1G,4,0,0
+app-20200629175415-0058,name:wordcount-bw:1Gbps-ds:1G-stride:4-rep:0-bcsknoru,0,1102238868,0,"[4, 1, 0, 3, 2]",8,11.0,wordcount,1Gbps,1G,4,0,0
+app-20200629175509-0059,name:wordcount-bw:1Gbps-ds:1G-stride:80-rep:0-lurtglat,1,0,26655,"[6, 5]",64,11.0,wordcount,1Gbps,1G,80,0,0
+app-20200629175509-0059,name:wordcount-bw:1Gbps-ds:1G-stride:80-rep:0-lurtglat,0,1102238868,0,"[4, 1, 0, 2, 3]",8,9.0,wordcount,1Gbps,1G,80,0,0
+app-20200629175604-0060,name:wordcount-bw:1Gbps-ds:1G-stride:96-rep:0-zrpaazlh,1,0,26655,"[6, 5]",64,8.0,wordcount,1Gbps,1G,96,0,0
+app-20200629175604-0060,name:wordcount-bw:1Gbps-ds:1G-stride:96-rep:0-zrpaazlh,0,1102238868,0,"[4, 0, 2, 1, 3]",8,8.0,wordcount,1Gbps,1G,96,0,0
+app-20200629175652-0061,name:wordcount-bw:1Gbps-ds:1G-stride:0-rep:0-jfrukpog,1,0,26655,"[6, 5]",64,10.0,wordcount,1Gbps,1G,0,0,29926
+app-20200629175652-0061,name:wordcount-bw:1Gbps-ds:1G-stride:0-rep:0-jfrukpog,0,1102238868,0,"[4, 3, 1, 2, 0]",8,12.0,wordcount,1Gbps,1G,0,0,29926
+app-20200629175956-0062,name:wordcount-bw:5Gbps-ds:32G-stride:64-rep:0-cbkwhqjz,1,0,28655,"[6, 5]",64,9.0,wordcount,5Gbps,32G,64,0,63325
+app-20200629175956-0062,name:wordcount-bw:5Gbps-ds:32G-stride:64-rep:0-cbkwhqjz,0,35271691558,0,"[4, 3, 2, 1, 0]",64,47.0,wordcount,5Gbps,32G,64,0,63325
+app-20200629180424-0063,name:wordcount-bw:5Gbps-ds:32G-stride:128-rep:0-llvsbxto,1,0,28655,"[6, 5]",64,28.0,wordcount,5Gbps,32G,128,0,65035
+app-20200629180424-0063,name:wordcount-bw:5Gbps-ds:32G-stride:128-rep:0-llvsbxto,0,35271691558,0,"[4, 2, 0, 3, 1]",64,30.0,wordcount,5Gbps,32G,128,0,65035
+app-20200629180618-0064,name:wordcount-bw:5Gbps-ds:32G-stride:8-rep:0-yeqofkno,1,0,28655,"[6, 5]",64,5.0,wordcount,5Gbps,32G,8,0,77048
+app-20200629180618-0064,name:wordcount-bw:5Gbps-ds:32G-stride:8-rep:0-yeqofkno,0,35271691558,0,"[4, 2, 1, 0, 3]",64,65.0,wordcount,5Gbps,32G,8,0,77048
+app-20200629180824-0065,name:wordcount-bw:5Gbps-ds:32G-stride:16-rep:0-gqmvpfsm,1,0,28655,"[6, 5]",64,5.0,wordcount,5Gbps,32G,16,0,71235
+app-20200629180824-0065,name:wordcount-bw:5Gbps-ds:32G-stride:16-rep:0-gqmvpfsm,0,35271691558,0,"[4, 3, 1, 2, 0]",64,59.0,wordcount,5Gbps,32G,16,0,71235
+app-20200629181045-0066,name:wordcount-bw:5Gbps-ds:32G-stride:32-rep:0-wqhwvmfx,1,0,28655,"[6, 5]",64,8.0,wordcount,5Gbps,32G,32,0,0
+app-20200629181045-0066,name:wordcount-bw:5Gbps-ds:32G-stride:32-rep:0-wqhwvmfx,0,35271691558,0,"[4, 3, 1, 0, 2]",64,55.0,wordcount,5Gbps,32G,32,0,0
+app-20200629181327-0067,name:wordcount-bw:5Gbps-ds:32G-stride:48-rep:0-zxczlhqs,1,0,28655,"[6, 5]",64,5.0,wordcount,5Gbps,32G,48,0,61056
+app-20200629181327-0067,name:wordcount-bw:5Gbps-ds:32G-stride:48-rep:0-zxczlhqs,0,35271691558,0,"[4, 2, 3, 1, 0]",64,49.0,wordcount,5Gbps,32G,48,0,61056
+app-20200629181458-0068,name:wordcount-bw:5Gbps-ds:32G-stride:4-rep:0-jyakwpgw,1,0,28655,"[6, 5]",64,6.0,wordcount,5Gbps,32G,4,0,0
+app-20200629181458-0068,name:wordcount-bw:5Gbps-ds:32G-stride:4-rep:0-jyakwpgw,0,35271691558,0,"[4, 2, 3, 1, 0]",64,63.0,wordcount,5Gbps,32G,4,0,0
+app-20200629181829-0069,name:wordcount-bw:5Gbps-ds:32G-stride:80-rep:0-ipdbrxup,1,0,28655,"[6, 5]",64,8.0,wordcount,5Gbps,32G,80,0,53627
+app-20200629181829-0069,name:wordcount-bw:5Gbps-ds:32G-stride:80-rep:0-ipdbrxup,0,35271691558,0,"[4, 2, 1, 3, 0]",64,39.0,wordcount,5Gbps,32G,80,0,53627
+app-20200629182152-0070,name:wordcount-bw:5Gbps-ds:32G-stride:96-rep:0-jymykumf,1,0,28655,"[6, 5]",64,7.0,wordcount,5Gbps,32G,96,0,49410
+app-20200629182152-0070,name:wordcount-bw:5Gbps-ds:32G-stride:96-rep:0-jymykumf,0,35271691558,0,"[4, 1, 0, 2, 3]",64,35.0,wordcount,5Gbps,32G,96,0,49410
+app-20200629182302-0071,name:wordcount-bw:5Gbps-ds:32G-stride:0-rep:0-wnnverid,1,0,28655,"[6, 5]",64,6.0,wordcount,5Gbps,32G,0,0,78332
+app-20200629182302-0071,name:wordcount-bw:5Gbps-ds:32G-stride:0-rep:0-wnnverid,0,35271691558,0,"[4, 3, 2, 0, 1]",64,65.0,wordcount,5Gbps,32G,0,0,78332
+app-20200629182822-0072,name:wordcount-bw:5Gbps-ds:64G-stride:64-rep:0-qdcwmjlp,1,0,28655,"[6, 5]",64,1.0,wordcount,5Gbps,64G,64,0,91088
+app-20200629182822-0072,name:wordcount-bw:5Gbps-ds:64G-stride:64-rep:0-qdcwmjlp,0,70542980067,0,"[4, 1, 2, 0, 3]",128,83.0,wordcount,5Gbps,64G,64,0,91088
+app-20200629183618-0073,name:wordcount-bw:5Gbps-ds:64G-stride:128-rep:0-cfzufmdy,1,0,28655,"[6, 5]",64,3.0,wordcount,5Gbps,64G,128,0,58668
+app-20200629183618-0073,name:wordcount-bw:5Gbps-ds:64G-stride:128-rep:0-cfzufmdy,0,70542980067,0,"[4, 3, 1, 2, 0]",128,49.0,wordcount,5Gbps,64G,128,0,58668
+app-20200629183810-0074,name:wordcount-bw:5Gbps-ds:64G-stride:8-rep:0-clgyxvoa,1,0,28655,"[6, 5]",64,2.0,wordcount,5Gbps,64G,8,0,127069
+app-20200629183810-0074,name:wordcount-bw:5Gbps-ds:64G-stride:8-rep:0-clgyxvoa,0,70542980067,0,"[4, 2, 0, 3, 1]",128,119.0,wordcount,5Gbps,64G,8,0,127069
+app-20200629184135-0075,name:wordcount-bw:5Gbps-ds:64G-stride:16-rep:0-mmbwcaxq,1,0,28655,"[6, 5]",64,2.0,wordcount,5Gbps,64G,16,0,120755
+app-20200629184135-0075,name:wordcount-bw:5Gbps-ds:64G-stride:16-rep:0-mmbwcaxq,0,70542980067,0,"[4, 3, 1, 0, 2]",128,112.0,wordcount,5Gbps,64G,16,0,120755
+app-20200629184537-0076,name:wordcount-bw:5Gbps-ds:64G-stride:32-rep:0-plwvrndu,1,0,28655,"[6, 5]",64,1.0,wordcount,5Gbps,64G,32,0,110025
+app-20200629184537-0076,name:wordcount-bw:5Gbps-ds:64G-stride:32-rep:0-plwvrndu,0,70542980067,0,"[4, 2, 1, 3, 0]",128,102.0,wordcount,5Gbps,64G,32,0,110025
+app-20200629185013-0077,name:wordcount-bw:5Gbps-ds:64G-stride:48-rep:0-ovdscnwx,1,0,28655,"[6, 5]",64,1.0,wordcount,5Gbps,64G,48,0,99600
+app-20200629185013-0077,name:wordcount-bw:5Gbps-ds:64G-stride:48-rep:0-ovdscnwx,0,70542980067,0,"[4, 1, 3, 0, 2]",128,92.0,wordcount,5Gbps,64G,48,0,99600
+app-20200629185235-0078,name:wordcount-bw:5Gbps-ds:64G-stride:4-rep:0-ztcshycf,1,0,28655,"[6, 5]",64,1.0,wordcount,5Gbps,64G,4,0,129381
+app-20200629185235-0078,name:wordcount-bw:5Gbps-ds:64G-stride:4-rep:0-ztcshycf,0,70542980067,0,"[4, 2, 1, 0, 3]",128,121.0,wordcount,5Gbps,64G,4,0,129381
+app-20200629185853-0079,name:wordcount-bw:5Gbps-ds:64G-stride:80-rep:0-tgjyfqhm,1,0,28655,"[6, 5]",64,2.0,wordcount,5Gbps,64G,80,0,0
+app-20200629185853-0079,name:wordcount-bw:5Gbps-ds:64G-stride:80-rep:0-tgjyfqhm,0,70542980067,0,"[4, 0, 1, 3, 2]",128,69.0,wordcount,5Gbps,64G,80,0,0
+app-20200629190511-0080,name:wordcount-bw:5Gbps-ds:64G-stride:96-rep:0-hzqfanuo,1,0,28655,"[6, 5]",64,1.0,wordcount,5Gbps,64G,96,0,0
+app-20200629190511-0080,name:wordcount-bw:5Gbps-ds:64G-stride:96-rep:0-hzqfanuo,0,70542980067,0,"[4, 2, 1, 3, 0]",128,60.0,wordcount,5Gbps,64G,96,0,0
+app-20200629190643-0081,name:wordcount-bw:5Gbps-ds:64G-stride:0-rep:0-anwrqyec,1,0,28655,"[6, 5]",64,1.0,wordcount,5Gbps,64G,0,0,135558
+app-20200629190643-0081,name:wordcount-bw:5Gbps-ds:64G-stride:0-rep:0-anwrqyec,0,70542980067,0,"[4, 0, 3, 2, 1]",128,128.0,wordcount,5Gbps,64G,0,0,135558
+app-20200629191038-0082,name:wordcount-bw:5Gbps-ds:16G-stride:64-rep:0-vcekvpsy,1,0,28655,"[6, 5]",64,9.0,wordcount,5Gbps,16G,64,0,42164
+app-20200629191038-0082,name:wordcount-bw:5Gbps-ds:16G-stride:64-rep:0-vcekvpsy,0,17635772327,0,"[4, 3, 2, 0, 1]",32,26.0,wordcount,5Gbps,16G,64,0,42164
+app-20200629191314-0083,name:wordcount-bw:5Gbps-ds:16G-stride:128-rep:0-cndeikbm,1,0,28655,"[6, 5]",64,8.0,wordcount,5Gbps,16G,128,0,38376
+app-20200629191314-0083,name:wordcount-bw:5Gbps-ds:16G-stride:128-rep:0-cndeikbm,0,17635772327,0,"[4, 1, 3, 0, 2]",32,24.0,wordcount,5Gbps,16G,128,0,38376
+app-20200629191415-0084,name:wordcount-bw:5Gbps-ds:16G-stride:8-rep:0-uvmrqnnd,1,0,28655,"[6, 5]",64,7.0,wordcount,5Gbps,16G,8,0,46880
+app-20200629191415-0084,name:wordcount-bw:5Gbps-ds:16G-stride:8-rep:0-uvmrqnnd,0,17635772327,0,"[4, 2, 0, 3, 1]",32,33.0,wordcount,5Gbps,16G,8,0,46880
+app-20200629191536-0085,name:wordcount-bw:5Gbps-ds:16G-stride:16-rep:0-qgklwakf,1,0,28655,"[6, 5]",64,7.0,wordcount,5Gbps,16G,16,0,46437
+app-20200629191536-0085,name:wordcount-bw:5Gbps-ds:16G-stride:16-rep:0-qgklwakf,0,17635772327,0,"[4, 0, 2, 1, 3]",32,33.0,wordcount,5Gbps,16G,16,0,46437
+app-20200629191703-0086,name:wordcount-bw:5Gbps-ds:16G-stride:32-rep:0-slukscwx,1,0,28655,"[6, 5]",64,10.0,wordcount,5Gbps,16G,32,0,46948
+app-20200629191703-0086,name:wordcount-bw:5Gbps-ds:16G-stride:32-rep:0-slukscwx,0,17635772327,0,"[4, 2, 3, 1, 0]",32,30.0,wordcount,5Gbps,16G,32,0,46948
+app-20200629191841-0087,name:wordcount-bw:5Gbps-ds:16G-stride:48-rep:0-ubtydjml,1,0,28655,"[6, 5]",64,7.0,wordcount,5Gbps,16G,48,0,42991
+app-20200629191841-0087,name:wordcount-bw:5Gbps-ds:16G-stride:48-rep:0-ubtydjml,0,17635772327,0,"[4, 0, 2, 3, 1]",32,30.0,wordcount,5Gbps,16G,48,0,42991
+app-20200629191945-0088,name:wordcount-bw:5Gbps-ds:16G-stride:4-rep:0-xaflbaks,1,0,28655,"[6, 5]",64,8.0,wordcount,5Gbps,16G,4,0,51851
+app-20200629191945-0088,name:wordcount-bw:5Gbps-ds:16G-stride:4-rep:0-xaflbaks,0,17635772327,0,"[4, 3, 1, 0, 2]",32,37.0,wordcount,5Gbps,16G,4,0,51851
+app-20200629192153-0089,name:wordcount-bw:5Gbps-ds:16G-stride:80-rep:0-udzacxov,1,0,28655,"[6, 5]",64,7.0,wordcount,5Gbps,16G,80,0,39713
+app-20200629192153-0089,name:wordcount-bw:5Gbps-ds:16G-stride:80-rep:0-udzacxov,0,17635772327,0,"[4, 0, 3, 2, 1]",32,26.0,wordcount,5Gbps,16G,80,0,39713
+app-20200629192358-0090,name:wordcount-bw:5Gbps-ds:16G-stride:96-rep:0-wrudugdh,1,0,28655,"[6, 5]",64,7.0,wordcount,5Gbps,16G,96,0,0
+app-20200629192358-0090,name:wordcount-bw:5Gbps-ds:16G-stride:96-rep:0-wrudugdh,0,17635772327,0,"[4, 2, 3, 1, 0]",32,28.0,wordcount,5Gbps,16G,96,0,0
+app-20200629192459-0091,name:wordcount-bw:5Gbps-ds:16G-stride:0-rep:0-ncujypkn,1,0,28655,"[6, 5]",64,8.0,wordcount,5Gbps,16G,0,0,0
+app-20200629192459-0091,name:wordcount-bw:5Gbps-ds:16G-stride:0-rep:0-ncujypkn,0,17635772327,0,"[4, 3, 2, 0, 1]",32,36.0,wordcount,5Gbps,16G,0,0,0
+app-20200629192648-0092,name:wordcount-bw:5Gbps-ds:4G-stride:64-rep:0-dtyxyvnr,1,0,27655,"[6, 5]",64,8.0,wordcount,5Gbps,4G,64,0,35556
+app-20200629192648-0092,name:wordcount-bw:5Gbps-ds:4G-stride:64-rep:0-dtyxyvnr,0,4408948978,0,"[4, 1, 2, 3, 0]",8,21.0,wordcount,5Gbps,4G,64,0,35556
+app-20200629192759-0093,name:wordcount-bw:5Gbps-ds:4G-stride:128-rep:0-ufrkzyly,1,0,27655,"[6, 5]",64,11.0,wordcount,5Gbps,4G,128,0,0
+app-20200629192759-0093,name:wordcount-bw:5Gbps-ds:4G-stride:128-rep:0-ufrkzyly,0,4408948978,0,"[4, 0, 2, 1, 3]",8,22.0,wordcount,5Gbps,4G,128,0,0
+app-20200629192859-0094,name:wordcount-bw:5Gbps-ds:4G-stride:8-rep:0-uvugnlmm,1,0,27655,"[6, 5]",64,9.0,wordcount,5Gbps,4G,8,0,0
+app-20200629192859-0094,name:wordcount-bw:5Gbps-ds:4G-stride:8-rep:0-uvugnlmm,0,4408948978,0,"[4, 1, 2, 0, 3]",8,17.0,wordcount,5Gbps,4G,8,0,0
+app-20200629192953-0095,name:wordcount-bw:5Gbps-ds:4G-stride:16-rep:0-wefmosdi,1,0,27655,"[6, 5]",64,15.0,wordcount,5Gbps,4G,16,0,42264
+app-20200629192953-0095,name:wordcount-bw:5Gbps-ds:4G-stride:16-rep:0-wefmosdi,0,4408948978,0,"[4, 1, 2, 3, 0]",8,21.0,wordcount,5Gbps,4G,16,0,42264
+app-20200629193056-0096,name:wordcount-bw:5Gbps-ds:4G-stride:32-rep:0-uztgdwwd,1,0,27655,"[6, 5]",64,9.0,wordcount,5Gbps,4G,32,0,32296
+app-20200629193056-0096,name:wordcount-bw:5Gbps-ds:4G-stride:32-rep:0-uztgdwwd,0,4408948978,0,"[4, 3, 1, 0, 2]",8,17.0,wordcount,5Gbps,4G,32,0,32296
+app-20200629193156-0097,name:wordcount-bw:5Gbps-ds:4G-stride:48-rep:0-jyrenvwp,1,0,27655,"[6, 5]",64,9.0,wordcount,5Gbps,4G,48,0,0
+app-20200629193156-0097,name:wordcount-bw:5Gbps-ds:4G-stride:48-rep:0-jyrenvwp,0,4408948978,0,"[4, 3, 0, 2, 1]",8,22.0,wordcount,5Gbps,4G,48,0,0
+app-20200629193254-0098,name:wordcount-bw:5Gbps-ds:4G-stride:4-rep:0-txaidimc,1,0,27655,"[6, 5]",64,8.0,wordcount,5Gbps,4G,4,0,34820
+app-20200629193254-0098,name:wordcount-bw:5Gbps-ds:4G-stride:4-rep:0-txaidimc,0,4408948978,0,"[4, 0, 1, 2, 3]",8,20.0,wordcount,5Gbps,4G,4,0,34820
+app-20200629193356-0099,name:wordcount-bw:5Gbps-ds:4G-stride:80-rep:0-kzvlblcu,1,0,27655,"[6, 5]",64,13.0,wordcount,5Gbps,4G,80,0,40816
+app-20200629193356-0099,name:wordcount-bw:5Gbps-ds:4G-stride:80-rep:0-kzvlblcu,0,4408948978,0,"[4, 3, 0, 1, 2]",8,21.0,wordcount,5Gbps,4G,80,0,40816
+app-20200629193508-0100,name:wordcount-bw:5Gbps-ds:4G-stride:96-rep:0-jiffacit,1,0,27655,"[6, 5]",64,8.0,wordcount,5Gbps,4G,96,0,0
+app-20200629193508-0100,name:wordcount-bw:5Gbps-ds:4G-stride:96-rep:0-jiffacit,0,4408948978,0,"[4, 2, 1, 0, 3]",8,21.0,wordcount,5Gbps,4G,96,0,0
+app-20200629193602-0101,name:wordcount-bw:5Gbps-ds:4G-stride:0-rep:0-ysukcjgh,1,0,27655,"[6, 5]",64,10.0,wordcount,5Gbps,4G,0,0,37264
+app-20200629193602-0101,name:wordcount-bw:5Gbps-ds:4G-stride:0-rep:0-ysukcjgh,0,4408948978,0,"[4, 2, 3, 1, 0]",8,21.0,wordcount,5Gbps,4G,0,0,37264
+app-20200629193732-0102,name:wordcount-bw:5Gbps-ds:1G-stride:64-rep:0-vvgoqspd,1,0,26655,"[6, 5]",64,12.0,wordcount,5Gbps,1G,64,0,27695
+app-20200629193732-0102,name:wordcount-bw:5Gbps-ds:1G-stride:64-rep:0-vvgoqspd,0,1102238868,0,"[4, 0, 3, 2, 1]",8,9.0,wordcount,5Gbps,1G,64,0,27695
+app-20200629193818-0103,name:wordcount-bw:5Gbps-ds:1G-stride:128-rep:0-agwsaxtp,1,0,26655,"[6, 5]",64,8.0,wordcount,5Gbps,1G,128,0,22949
+app-20200629193818-0103,name:wordcount-bw:5Gbps-ds:1G-stride:128-rep:0-agwsaxtp,0,1102238868,0,"[4, 3, 2, 0, 1]",8,8.0,wordcount,5Gbps,1G,128,0,22949
+app-20200629193856-0104,name:wordcount-bw:5Gbps-ds:1G-stride:8-rep:0-jnurelcg,1,0,26655,"[6, 5]",64,13.0,wordcount,5Gbps,1G,8,0,0
+app-20200629193856-0104,name:wordcount-bw:5Gbps-ds:1G-stride:8-rep:0-jnurelcg,0,1102238868,0,"[4, 2, 0, 3, 1]",8,9.0,wordcount,5Gbps,1G,8,0,0
+app-20200629193945-0105,name:wordcount-bw:5Gbps-ds:1G-stride:16-rep:0-ntqufhld,1,0,26655,"[6, 5]",64,8.0,wordcount,5Gbps,1G,16,0,23237
+app-20200629193945-0105,name:wordcount-bw:5Gbps-ds:1G-stride:16-rep:0-ntqufhld,0,1102238868,0,"[4, 3, 2, 0, 1]",8,9.0,wordcount,5Gbps,1G,16,0,23237
+app-20200629194028-0106,name:wordcount-bw:5Gbps-ds:1G-stride:32-rep:0-jubxywzs,1,0,26655,"[6, 5]",64,10.0,wordcount,5Gbps,1G,32,0,25513
+app-20200629194028-0106,name:wordcount-bw:5Gbps-ds:1G-stride:32-rep:0-jubxywzs,0,1102238868,0,"[4, 1, 2, 0, 3]",8,9.0,wordcount,5Gbps,1G,32,0,25513
+app-20200629194117-0107,name:wordcount-bw:5Gbps-ds:1G-stride:48-rep:0-cmdfnixi,1,0,26655,"[6, 5]",64,7.0,wordcount,5Gbps,1G,48,0,0
+app-20200629194117-0107,name:wordcount-bw:5Gbps-ds:1G-stride:48-rep:0-cmdfnixi,0,1102238868,0,"[4, 2, 0, 3, 1]",8,7.0,wordcount,5Gbps,1G,48,0,0
+app-20200629194158-0108,name:wordcount-bw:5Gbps-ds:1G-stride:4-rep:0-cmoilafv,1,0,26655,"[6, 5]",64,16.0,wordcount,5Gbps,1G,4,0,31147
+app-20200629194158-0108,name:wordcount-bw:5Gbps-ds:1G-stride:4-rep:0-cmoilafv,0,1102238868,0,"[4, 2, 3, 1, 0]",8,9.0,wordcount,5Gbps,1G,4,0,31147
+app-20200629194253-0109,name:wordcount-bw:5Gbps-ds:1G-stride:80-rep:0-ipycvrwi,1,0,26655,"[6, 5]",64,9.0,wordcount,5Gbps,1G,80,0,0
+app-20200629194253-0109,name:wordcount-bw:5Gbps-ds:1G-stride:80-rep:0-ipycvrwi,0,1102238868,0,"[4, 2, 3, 0, 1]",8,8.0,wordcount,5Gbps,1G,80,0,0
+app-20200629194342-0110,name:wordcount-bw:5Gbps-ds:1G-stride:96-rep:0-oonnxniy,1,0,26655,"[6, 5]",64,7.0,wordcount,5Gbps,1G,96,0,22845
+app-20200629194342-0110,name:wordcount-bw:5Gbps-ds:1G-stride:96-rep:0-oonnxniy,0,1102238868,0,"[4, 3, 2, 1, 0]",8,9.0,wordcount,5Gbps,1G,96,0,22845
+app-20200629194417-0111,name:wordcount-bw:5Gbps-ds:1G-stride:0-rep:0-qsyuhxsj,1,0,26655,"[6, 5]",64,10.0,wordcount,5Gbps,1G,0,0,26861
+app-20200629194417-0111,name:wordcount-bw:5Gbps-ds:1G-stride:0-rep:0-qsyuhxsj,0,1102238868,0,"[4, 1, 2, 3, 0]",8,10.0,wordcount,5Gbps,1G,0,0,26861
+app-20200629194722-0112,name:wordcount-bw:10Gbps-ds:32G-stride:64-rep:0-jdqhncrg,1,0,28655,"[6, 5]",64,5.0,wordcount,10Gbps,32G,64,0,0
+app-20200629194722-0112,name:wordcount-bw:10Gbps-ds:32G-stride:64-rep:0-jdqhncrg,0,35271691558,0,"[4, 3, 1, 0, 2]",64,36.0,wordcount,10Gbps,32G,64,0,0
+app-20200629195126-0113,name:wordcount-bw:10Gbps-ds:32G-stride:128-rep:0-viffwekp,1,0,28655,"[6, 5]",64,6.0,wordcount,10Gbps,32G,128,0,39889
+app-20200629195126-0113,name:wordcount-bw:10Gbps-ds:32G-stride:128-rep:0-viffwekp,0,35271691558,0,"[4, 0, 2, 3, 1]",64,27.0,wordcount,10Gbps,32G,128,0,39889
+app-20200629195240-0114,name:wordcount-bw:10Gbps-ds:32G-stride:8-rep:0-ijybwfch,1,0,28655,"[6, 5]",64,7.0,wordcount,10Gbps,32G,8,0,65347
+app-20200629195240-0114,name:wordcount-bw:10Gbps-ds:32G-stride:8-rep:0-ijybwfch,0,35271691558,0,"[4, 1, 2, 3, 0]",64,52.0,wordcount,10Gbps,32G,8,0,65347
+app-20200629195432-0115,name:wordcount-bw:10Gbps-ds:32G-stride:16-rep:0-yflmnrgm,1,0,28655,"[6, 5]",64,5.0,wordcount,10Gbps,32G,16,0,55293
+app-20200629195432-0115,name:wordcount-bw:10Gbps-ds:32G-stride:16-rep:0-yflmnrgm,0,35271691558,0,"[4, 0, 3, 2, 1]",64,43.0,wordcount,10Gbps,32G,16,0,55293
+app-20200629195636-0116,name:wordcount-bw:10Gbps-ds:32G-stride:32-rep:0-nxwgxpkv,1,0,28655,"[6, 5]",64,5.0,wordcount,10Gbps,32G,32,0,51906
+app-20200629195636-0116,name:wordcount-bw:10Gbps-ds:32G-stride:32-rep:0-nxwgxpkv,0,35271691558,0,"[4, 3, 0, 1, 2]",64,40.0,wordcount,10Gbps,32G,32,0,51906
+app-20200629195855-0117,name:wordcount-bw:10Gbps-ds:32G-stride:48-rep:0-sjjhulsr,1,0,28655,"[6, 5]",64,5.0,wordcount,10Gbps,32G,48,0,0
+app-20200629195855-0117,name:wordcount-bw:10Gbps-ds:32G-stride:48-rep:0-sjjhulsr,0,35271691558,0,"[4, 3, 2, 1, 0]",64,38.0,wordcount,10Gbps,32G,48,0,0
+app-20200629200019-0118,name:wordcount-bw:10Gbps-ds:32G-stride:4-rep:0-zfwhwvcy,1,0,28655,"[6, 5]",64,16.0,wordcount,10Gbps,32G,4,0,0
+app-20200629200019-0118,name:wordcount-bw:10Gbps-ds:32G-stride:4-rep:0-zfwhwvcy,0,35271691558,0,"[4, 2, 1, 3, 0]",64,47.0,wordcount,10Gbps,32G,4,0,0
+app-20200629200339-0119,name:wordcount-bw:10Gbps-ds:32G-stride:80-rep:0-vejvtplf,1,0,28655,"[6, 5]",64,6.0,wordcount,10Gbps,32G,80,0,0
+app-20200629200339-0119,name:wordcount-bw:10Gbps-ds:32G-stride:80-rep:0-vejvtplf,0,35271691558,0,"[4, 3, 1, 0, 2]",64,34.0,wordcount,10Gbps,32G,80,0,0
+app-20200629200658-0120,name:wordcount-bw:10Gbps-ds:32G-stride:96-rep:0-yptyequx,1,0,28655,"[6, 5]",64,5.0,wordcount,10Gbps,32G,96,0,45460
+app-20200629200658-0120,name:wordcount-bw:10Gbps-ds:32G-stride:96-rep:0-yptyequx,0,35271691558,0,"[4, 2, 1, 3, 0]",64,34.0,wordcount,10Gbps,32G,96,0,45460
+app-20200629200800-0121,name:wordcount-bw:10Gbps-ds:32G-stride:0-rep:0-ncwbwlgm,1,0,28655,"[6, 5]",64,8.0,wordcount,10Gbps,32G,0,0,0
+app-20200629200800-0121,name:wordcount-bw:10Gbps-ds:32G-stride:0-rep:0-ncwbwlgm,0,35271691558,0,"[4, 3, 1, 2, 0]",64,44.0,wordcount,10Gbps,32G,0,0,0
+app-20200629201305-0122,name:wordcount-bw:10Gbps-ds:64G-stride:64-rep:0-zeblgvqf,1,0,28655,"[6, 5]",64,2.0,wordcount,10Gbps,64G,64,0,0
+app-20200629201305-0122,name:wordcount-bw:10Gbps-ds:64G-stride:64-rep:0-zeblgvqf,0,70542980067,0,"[4, 1, 0, 3, 2]",128,68.0,wordcount,10Gbps,64G,64,0,0
+app-20200629202047-0123,name:wordcount-bw:10Gbps-ds:64G-stride:128-rep:0-cjatiblj,1,0,28655,"[6, 5]",64,2.0,wordcount,10Gbps,64G,128,0,0
+app-20200629202047-0123,name:wordcount-bw:10Gbps-ds:64G-stride:128-rep:0-cjatiblj,0,70542980067,0,"[4, 2, 3, 1, 0]",128,50.0,wordcount,10Gbps,64G,128,0,0
+app-20200629202245-0124,name:wordcount-bw:10Gbps-ds:64G-stride:8-rep:0-nmdovrih,1,0,28655,"[6, 5]",64,1.0,wordcount,10Gbps,64G,8,0,0
+app-20200629202245-0124,name:wordcount-bw:10Gbps-ds:64G-stride:8-rep:0-nmdovrih,0,70542980067,0,"[4, 2, 1, 3, 0]",128,82.0,wordcount,10Gbps,64G,8,0,0
+app-20200629202538-0125,name:wordcount-bw:10Gbps-ds:64G-stride:16-rep:0-iddxuztl,1,0,28655,"[6, 5]",64,1.0,wordcount,10Gbps,64G,16,0,91250
+app-20200629202538-0125,name:wordcount-bw:10Gbps-ds:64G-stride:16-rep:0-iddxuztl,0,70542980067,0,"[4, 1, 0, 3, 2]",128,83.0,wordcount,10Gbps,64G,16,0,91250
+app-20200629202911-0126,name:wordcount-bw:10Gbps-ds:64G-stride:32-rep:0-ojljpeuy,1,0,28655,"[6, 5]",64,1.0,wordcount,10Gbps,64G,32,0,83461
+app-20200629202911-0126,name:wordcount-bw:10Gbps-ds:64G-stride:32-rep:0-ojljpeuy,0,70542980067,0,"[4, 2, 1, 0, 3]",128,75.0,wordcount,10Gbps,64G,32,0,83461
+app-20200629203319-0127,name:wordcount-bw:10Gbps-ds:64G-stride:48-rep:0-myhncqka,1,0,28655,"[6, 5]",64,1.0,wordcount,10Gbps,64G,48,0,77296
+app-20200629203319-0127,name:wordcount-bw:10Gbps-ds:64G-stride:48-rep:0-myhncqka,0,70542980067,0,"[4, 2, 0, 1, 3]",128,69.0,wordcount,10Gbps,64G,48,0,77296
+app-20200629203520-0128,name:wordcount-bw:10Gbps-ds:64G-stride:4-rep:0-kjhovqaa,1,0,28655,"[6, 5]",64,2.0,wordcount,10Gbps,64G,4,0,0
+app-20200629203520-0128,name:wordcount-bw:10Gbps-ds:64G-stride:4-rep:0-kjhovqaa,0,70542980067,0,"[4, 3, 1, 0, 2]",128,85.0,wordcount,10Gbps,64G,4,0,0
+app-20200629204106-0129,name:wordcount-bw:10Gbps-ds:64G-stride:80-rep:0-rxyprivl,1,0,28655,"[6, 5]",64,1.0,wordcount,10Gbps,64G,80,0,0
+app-20200629204106-0129,name:wordcount-bw:10Gbps-ds:64G-stride:80-rep:0-rxyprivl,0,70542980067,0,"[4, 3, 2, 1, 0]",128,62.0,wordcount,10Gbps,64G,80,0,0
+app-20200629204714-0130,name:wordcount-bw:10Gbps-ds:64G-stride:96-rep:0-fuzacbvk,1,0,28655,"[6, 5]",64,2.0,wordcount,10Gbps,64G,96,0,0
+app-20200629204714-0130,name:wordcount-bw:10Gbps-ds:64G-stride:96-rep:0-fuzacbvk,0,70542980067,0,"[4, 1, 2, 3, 0]",128,54.0,wordcount,10Gbps,64G,96,0,0
+app-20200629204840-0131,name:wordcount-bw:10Gbps-ds:64G-stride:0-rep:0-zbocyhxi,1,0,28655,"[6, 5]",64,2.0,wordcount,10Gbps,64G,0,0,93645
+app-20200629204840-0131,name:wordcount-bw:10Gbps-ds:64G-stride:0-rep:0-zbocyhxi,0,70542980067,0,"[4, 3, 2, 0, 1]",128,85.0,wordcount,10Gbps,64G,0,0,93645
+app-20200629205149-0132,name:wordcount-bw:10Gbps-ds:16G-stride:64-rep:0-vgwvaotv,1,0,28655,"[6, 5]",64,9.0,wordcount,10Gbps,16G,64,0,0
+app-20200629205149-0132,name:wordcount-bw:10Gbps-ds:16G-stride:64-rep:0-vgwvaotv,0,17635772327,0,"[4, 1, 3, 0, 2]",32,24.0,wordcount,10Gbps,16G,64,0,0
+app-20200629205415-0133,name:wordcount-bw:10Gbps-ds:16G-stride:128-rep:0-yhkmxcpa,1,0,28655,"[6, 5]",64,9.0,wordcount,10Gbps,16G,128,0,39621
+app-20200629205415-0133,name:wordcount-bw:10Gbps-ds:16G-stride:128-rep:0-yhkmxcpa,0,17635772327,0,"[4, 2, 1, 0, 3]",32,24.0,wordcount,10Gbps,16G,128,0,39621
+app-20200629205521-0134,name:wordcount-bw:10Gbps-ds:16G-stride:8-rep:0-diuirhqo,1,0,28655,"[6, 5]",64,8.0,wordcount,10Gbps,16G,8,0,0
+app-20200629205521-0134,name:wordcount-bw:10Gbps-ds:16G-stride:8-rep:0-diuirhqo,0,17635772327,0,"[4, 3, 2, 1, 0]",32,25.0,wordcount,10Gbps,16G,8,0,0
+app-20200629205636-0135,name:wordcount-bw:10Gbps-ds:16G-stride:16-rep:0-lhycnfiv,1,0,28655,"[6, 5]",64,7.0,wordcount,10Gbps,16G,16,0,39699
+app-20200629205636-0135,name:wordcount-bw:10Gbps-ds:16G-stride:16-rep:0-lhycnfiv,0,17635772327,0,"[4, 2, 1, 0, 3]",32,26.0,wordcount,10Gbps,16G,16,0,39699
+app-20200629205756-0136,name:wordcount-bw:10Gbps-ds:16G-stride:32-rep:0-qopmnwkk,1,0,28655,"[6, 5]",64,7.0,wordcount,10Gbps,16G,32,0,0
+app-20200629205756-0136,name:wordcount-bw:10Gbps-ds:16G-stride:32-rep:0-qopmnwkk,0,17635772327,0,"[4, 0, 3, 2, 1]",32,25.0,wordcount,10Gbps,16G,32,0,0
+app-20200629205931-0137,name:wordcount-bw:10Gbps-ds:16G-stride:48-rep:0-bnkxkuzs,1,0,28655,"[6, 5]",64,8.0,wordcount,10Gbps,16G,48,0,38896
+app-20200629205931-0137,name:wordcount-bw:10Gbps-ds:16G-stride:48-rep:0-bnkxkuzs,0,17635772327,0,"[4, 3, 2, 0, 1]",32,24.0,wordcount,10Gbps,16G,48,0,38896
+app-20200629210032-0138,name:wordcount-bw:10Gbps-ds:16G-stride:4-rep:0-kaewklan,1,0,28655,"[6, 5]",64,15.0,wordcount,10Gbps,16G,4,0,50018
+app-20200629210032-0138,name:wordcount-bw:10Gbps-ds:16G-stride:4-rep:0-kaewklan,0,17635772327,0,"[4, 2, 3, 1, 0]",32,28.0,wordcount,10Gbps,16G,4,0,50018
+app-20200629210235-0139,name:wordcount-bw:10Gbps-ds:16G-stride:80-rep:0-ehjqgqkb,1,0,28655,"[6, 5]",64,9.0,wordcount,10Gbps,16G,80,0,0
+app-20200629210235-0139,name:wordcount-bw:10Gbps-ds:16G-stride:80-rep:0-ehjqgqkb,0,17635772327,0,"[4, 0, 1, 2, 3]",32,26.0,wordcount,10Gbps,16G,80,0,0
+app-20200629210444-0140,name:wordcount-bw:10Gbps-ds:16G-stride:96-rep:0-zcuxngfu,1,0,28655,"[6, 5]",64,8.0,wordcount,10Gbps,16G,96,0,38439
+app-20200629210444-0140,name:wordcount-bw:10Gbps-ds:16G-stride:96-rep:0-zcuxngfu,0,17635772327,0,"[4, 1, 3, 0, 2]",32,24.0,wordcount,10Gbps,16G,96,0,38439
+app-20200629210537-0141,name:wordcount-bw:10Gbps-ds:16G-stride:0-rep:0-dtlusuez,1,0,28655,"[6, 5]",64,7.0,wordcount,10Gbps,16G,0,0,0
+app-20200629210537-0141,name:wordcount-bw:10Gbps-ds:16G-stride:0-rep:0-dtlusuez,0,17635772327,0,"[4, 3, 1, 2, 0]",32,28.0,wordcount,10Gbps,16G,0,0,0
+app-20200629210722-0142,name:wordcount-bw:10Gbps-ds:4G-stride:64-rep:0-ermyyuod,1,0,27655,"[6, 5]",64,9.0,wordcount,10Gbps,4G,64,0,32175
+app-20200629210722-0142,name:wordcount-bw:10Gbps-ds:4G-stride:64-rep:0-ermyyuod,0,4408948978,0,"[4, 3, 2, 0, 1]",8,16.0,wordcount,10Gbps,4G,64,0,32175
+app-20200629210835-0143,name:wordcount-bw:10Gbps-ds:4G-stride:128-rep:0-dzwcrmfw,1,0,27655,"[6, 5]",64,9.0,wordcount,10Gbps,4G,128,0,0
+app-20200629210835-0143,name:wordcount-bw:10Gbps-ds:4G-stride:128-rep:0-dzwcrmfw,0,4408948978,0,"[4, 3, 2, 0, 1]",8,20.0,wordcount,10Gbps,4G,128,0,0
+app-20200629210933-0144,name:wordcount-bw:10Gbps-ds:4G-stride:8-rep:0-agkjxdyf,1,0,27655,"[6, 5]",64,17.0,wordcount,10Gbps,4G,8,0,44766
+app-20200629210933-0144,name:wordcount-bw:10Gbps-ds:4G-stride:8-rep:0-agkjxdyf,0,4408948978,0,"[4, 1, 0, 3, 2]",8,21.0,wordcount,10Gbps,4G,8,0,44766
+app-20200629211036-0145,name:wordcount-bw:10Gbps-ds:4G-stride:16-rep:0-myanbrpt,1,0,27655,"[6, 5]",64,11.0,wordcount,10Gbps,4G,16,0,41450
+app-20200629211036-0145,name:wordcount-bw:10Gbps-ds:4G-stride:16-rep:0-myanbrpt,0,4408948978,0,"[4, 3, 1, 2, 0]",8,24.0,wordcount,10Gbps,4G,16,0,41450
+app-20200629211147-0146,name:wordcount-bw:10Gbps-ds:4G-stride:32-rep:0-royatdmj,1,0,27655,"[6, 5]",64,11.0,wordcount,10Gbps,4G,32,0,39343
+app-20200629211147-0146,name:wordcount-bw:10Gbps-ds:4G-stride:32-rep:0-royatdmj,0,4408948978,0,"[4, 1, 3, 2, 0]",8,22.0,wordcount,10Gbps,4G,32,0,39343
+app-20200629211255-0147,name:wordcount-bw:10Gbps-ds:4G-stride:48-rep:0-kbxhorbe,1,0,27655,"[6, 5]",64,10.0,wordcount,10Gbps,4G,48,0,0
+app-20200629211255-0147,name:wordcount-bw:10Gbps-ds:4G-stride:48-rep:0-kbxhorbe,0,4408948978,0,"[4, 3, 0, 2, 1]",8,21.0,wordcount,10Gbps,4G,48,0,0
+app-20200629211353-0148,name:wordcount-bw:10Gbps-ds:4G-stride:4-rep:0-jeiytfrr,1,0,27655,"[6, 5]",64,9.0,wordcount,10Gbps,4G,4,0,36081
+app-20200629211353-0148,name:wordcount-bw:10Gbps-ds:4G-stride:4-rep:0-jeiytfrr,0,4408948978,0,"[4, 3, 2, 1, 0]",8,20.0,wordcount,10Gbps,4G,4,0,36081
+app-20200629211506-0149,name:wordcount-bw:10Gbps-ds:4G-stride:80-rep:0-cgkxdhhd,1,0,27655,"[6, 5]",64,16.0,wordcount,10Gbps,4G,80,0,42977
+app-20200629211506-0149,name:wordcount-bw:10Gbps-ds:4G-stride:80-rep:0-cgkxdhhd,0,4408948978,0,"[4, 3, 1, 2, 0]",8,20.0,wordcount,10Gbps,4G,80,0,42977
+app-20200629211620-0150,name:wordcount-bw:10Gbps-ds:4G-stride:96-rep:0-nuhacmfr,1,0,27655,"[6, 5]",64,9.0,wordcount,10Gbps,4G,96,0,0
+app-20200629211620-0150,name:wordcount-bw:10Gbps-ds:4G-stride:96-rep:0-nuhacmfr,0,4408948978,0,"[4, 3, 2, 0, 1]",8,21.0,wordcount,10Gbps,4G,96,0,0
+app-20200629211716-0151,name:wordcount-bw:10Gbps-ds:4G-stride:0-rep:0-btihrucj,1,0,27655,"[6, 5]",64,8.0,wordcount,10Gbps,4G,0,0,36815
+app-20200629211716-0151,name:wordcount-bw:10Gbps-ds:4G-stride:0-rep:0-btihrucj,0,4408948978,0,"[4, 1, 3, 0, 2]",8,22.0,wordcount,10Gbps,4G,0,0,36815
+app-20200629211843-0152,name:wordcount-bw:10Gbps-ds:1G-stride:64-rep:0-cmqjtfvf,1,0,26655,"[6, 5]",64,11.0,wordcount,10Gbps,1G,64,0,0
+app-20200629211843-0152,name:wordcount-bw:10Gbps-ds:1G-stride:64-rep:0-cmqjtfvf,0,1102238868,0,"[4, 3, 1, 2, 0]",8,8.0,wordcount,10Gbps,1G,64,0,0
+app-20200629211933-0153,name:wordcount-bw:10Gbps-ds:1G-stride:128-rep:0-wcwbxqze,1,0,26655,"[6, 5]",64,9.0,wordcount,10Gbps,1G,128,0,0
+app-20200629211933-0153,name:wordcount-bw:10Gbps-ds:1G-stride:128-rep:0-wcwbxqze,0,1102238868,0,"[4, 0, 2, 3, 1]",8,9.0,wordcount,10Gbps,1G,128,0,0
+app-20200629212018-0154,name:wordcount-bw:10Gbps-ds:1G-stride:8-rep:0-nmfneyew,1,0,26655,"[6, 5]",64,44.0,wordcount,10Gbps,1G,8,0,57540
+app-20200629212018-0154,name:wordcount-bw:10Gbps-ds:1G-stride:8-rep:0-nmfneyew,0,1102238868,0,"[4, 1, 0, 3, 2]",8,7.0,wordcount,10Gbps,1G,8,0,57540
+app-20200629212137-0155,name:wordcount-bw:10Gbps-ds:1G-stride:16-rep:0-ifoiiguv,1,0,26655,"[6, 5]",64,8.0,wordcount,10Gbps,1G,16,0,0
+app-20200629212137-0155,name:wordcount-bw:10Gbps-ds:1G-stride:16-rep:0-ifoiiguv,0,1102238868,0,"[4, 3, 1, 2, 0]",8,8.0,wordcount,10Gbps,1G,16,0,0
+app-20200629212224-0156,name:wordcount-bw:10Gbps-ds:1G-stride:32-rep:0-dfglpyft,1,0,26655,"[6, 5]",64,10.0,wordcount,10Gbps,1G,32,0,0
+app-20200629212224-0156,name:wordcount-bw:10Gbps-ds:1G-stride:32-rep:0-dfglpyft,0,1102238868,0,"[4, 1, 2, 3, 0]",8,8.0,wordcount,10Gbps,1G,32,0,0
+app-20200629212314-0157,name:wordcount-bw:10Gbps-ds:1G-stride:48-rep:0-hmkxcoco,1,0,26655,"[6, 5]",64,14.0,wordcount,10Gbps,1G,48,0,29107
+app-20200629212314-0157,name:wordcount-bw:10Gbps-ds:1G-stride:48-rep:0-hmkxcoco,0,1102238868,0,"[4, 1, 2, 3, 0]",8,8.0,wordcount,10Gbps,1G,48,0,29107
+app-20200629212403-0158,name:wordcount-bw:10Gbps-ds:1G-stride:4-rep:0-juenojtw,1,0,26655,"[6, 5]",64,12.0,wordcount,10Gbps,1G,4,0,0
+app-20200629212403-0158,name:wordcount-bw:10Gbps-ds:1G-stride:4-rep:0-juenojtw,0,1102238868,0,"[4, 2, 1, 0, 3]",8,8.0,wordcount,10Gbps,1G,4,0,0
+app-20200629212454-0159,name:wordcount-bw:10Gbps-ds:1G-stride:80-rep:0-qwbnsdsf,1,0,26655,"[6, 5]",64,9.0,wordcount,10Gbps,1G,80,0,22817
+app-20200629212454-0159,name:wordcount-bw:10Gbps-ds:1G-stride:80-rep:0-qwbnsdsf,0,1102238868,0,"[4, 3, 2, 0, 1]",8,7.0,wordcount,10Gbps,1G,80,0,22817
+app-20200629212538-0160,name:wordcount-bw:10Gbps-ds:1G-stride:96-rep:0-ocvtknuz,1,0,26655,"[6, 5]",64,16.0,wordcount,10Gbps,1G,96,0,0
+app-20200629212538-0160,name:wordcount-bw:10Gbps-ds:1G-stride:96-rep:0-ocvtknuz,0,1102238868,0,"[4, 1, 3, 0, 2]",8,11.0,wordcount,10Gbps,1G,96,0,0
+app-20200629212630-0161,name:wordcount-bw:10Gbps-ds:1G-stride:0-rep:0-gvkxffdl,1,0,26655,"[6, 5]",64,10.0,wordcount,10Gbps,1G,0,0,0
+app-20200629212630-0161,name:wordcount-bw:10Gbps-ds:1G-stride:0-rep:0-gvkxffdl,0,1102238868,0,"[4, 1, 2, 3, 0]",8,8.0,wordcount,10Gbps,1G,0,0,0
+app-20200629212936-0162,name:wordcount-bw:20Gbps-ds:32G-stride:64-rep:0-zxaslmxw,1,0,28655,"[6, 5]",64,8.0,wordcount,20Gbps,32G,64,0,0
+app-20200629212936-0162,name:wordcount-bw:20Gbps-ds:32G-stride:64-rep:0-zxaslmxw,0,35271691558,0,"[4, 1, 2, 3, 0]",64,33.0,wordcount,20Gbps,32G,64,0,0
+app-20200629213356-0163,name:wordcount-bw:20Gbps-ds:32G-stride:128-rep:0-pgponbly,1,0,28655,"[6, 5]",64,14.0,wordcount,20Gbps,32G,128,0,0
+app-20200629213356-0163,name:wordcount-bw:20Gbps-ds:32G-stride:128-rep:0-pgponbly,0,35271691558,0,"[4, 3, 2, 0, 1]",64,28.0,wordcount,20Gbps,32G,128,0,0
+app-20200629213523-0164,name:wordcount-bw:20Gbps-ds:32G-stride:8-rep:0-uqxsdrcn,1,0,28655,"[6, 5]",64,6.0,wordcount,20Gbps,32G,8,0,59805
+app-20200629213523-0164,name:wordcount-bw:20Gbps-ds:32G-stride:8-rep:0-uqxsdrcn,0,35271691558,0,"[4, 3, 2, 0, 1]",64,46.0,wordcount,20Gbps,32G,8,0,59805
+app-20200629213709-0165,name:wordcount-bw:20Gbps-ds:32G-stride:16-rep:0-kmqxjgly,1,0,28655,"[6, 5]",64,6.0,wordcount,20Gbps,32G,16,0,54247
+app-20200629213709-0165,name:wordcount-bw:20Gbps-ds:32G-stride:16-rep:0-kmqxjgly,0,35271691558,0,"[4, 0, 2, 3, 1]",64,41.0,wordcount,20Gbps,32G,16,0,54247
+app-20200629213910-0166,name:wordcount-bw:20Gbps-ds:32G-stride:32-rep:0-kcfpdneo,1,0,28655,"[6, 5]",64,7.0,wordcount,20Gbps,32G,32,0,54084
+app-20200629213910-0166,name:wordcount-bw:20Gbps-ds:32G-stride:32-rep:0-kcfpdneo,0,35271691558,0,"[4, 3, 1, 0, 2]",64,40.0,wordcount,20Gbps,32G,32,0,54084
+app-20200629214251-0168,name:wordcount-bw:20Gbps-ds:32G-stride:4-rep:0-hglujyqd,1,0,28655,"[6, 5]",64,5.0,wordcount,20Gbps,32G,4,0,55075
+app-20200629214251-0168,name:wordcount-bw:20Gbps-ds:32G-stride:4-rep:0-hglujyqd,0,35271691558,0,"[4, 0, 2, 3, 1]",64,43.0,wordcount,20Gbps,32G,4,0,55075
+app-20200629214556-0169,name:wordcount-bw:20Gbps-ds:32G-stride:80-rep:0-ervtsfry,1,0,28655,"[6, 5]",64,7.0,wordcount,20Gbps,32G,80,0,0
+app-20200629214556-0169,name:wordcount-bw:20Gbps-ds:32G-stride:80-rep:0-ervtsfry,0,35271691558,0,"[4, 3, 1, 2, 0]",64,37.0,wordcount,20Gbps,32G,80,0,0
+app-20200629214920-0170,name:wordcount-bw:20Gbps-ds:32G-stride:96-rep:0-wvzioijj,1,0,28655,"[6, 5]",64,6.0,wordcount,20Gbps,32G,96,0,43746
+app-20200629214920-0170,name:wordcount-bw:20Gbps-ds:32G-stride:96-rep:0-wvzioijj,0,35271691558,0,"[4, 3, 1, 0, 2]",64,31.0,wordcount,20Gbps,32G,96,0,43746
+app-20200629215020-0171,name:wordcount-bw:20Gbps-ds:32G-stride:0-rep:0-mvpbuets,1,0,28655,"[6, 5]",64,7.0,wordcount,20Gbps,32G,0,0,61147
+app-20200629215020-0171,name:wordcount-bw:20Gbps-ds:32G-stride:0-rep:0-mvpbuets,0,35271691558,0,"[4, 0, 2, 3, 1]",64,47.0,wordcount,20Gbps,32G,0,0,61147
+app-20200629215534-0172,name:wordcount-bw:20Gbps-ds:64G-stride:64-rep:0-yajhewbj,1,0,28655,"[6, 5]",64,1.0,wordcount,20Gbps,64G,64,0,74407
+app-20200629215534-0172,name:wordcount-bw:20Gbps-ds:64G-stride:64-rep:0-yajhewbj,0,70542980067,0,"[4, 3, 0, 1, 2]",128,66.0,wordcount,20Gbps,64G,64,0,74407
+app-20200629220311-0173,name:wordcount-bw:20Gbps-ds:64G-stride:128-rep:0-qufvudqa,1,0,28655,"[6, 5]",64,3.0,wordcount,20Gbps,64G,128,0,0
+app-20200629220311-0173,name:wordcount-bw:20Gbps-ds:64G-stride:128-rep:0-qufvudqa,0,70542980067,0,"[4, 0, 3, 2, 1]",128,49.0,wordcount,20Gbps,64G,128,0,0
+app-20200629220509-0174,name:wordcount-bw:20Gbps-ds:64G-stride:8-rep:0-cpkoqzjk,1,0,28655,"[6, 5]",64,1.0,wordcount,20Gbps,64G,8,0,91830
+app-20200629220509-0174,name:wordcount-bw:20Gbps-ds:64G-stride:8-rep:0-cpkoqzjk,0,70542980067,0,"[4, 0, 1, 2, 3]",128,83.0,wordcount,20Gbps,64G,8,0,91830
+app-20200629220802-0175,name:wordcount-bw:20Gbps-ds:64G-stride:16-rep:0-fmqvwnmz,1,0,28655,"[6, 5]",64,1.0,wordcount,20Gbps,64G,16,0,85691
+app-20200629220802-0175,name:wordcount-bw:20Gbps-ds:64G-stride:16-rep:0-fmqvwnmz,0,70542980067,0,"[4, 3, 1, 2, 0]",128,78.0,wordcount,20Gbps,64G,16,0,85691
+app-20200629221132-0176,name:wordcount-bw:20Gbps-ds:64G-stride:32-rep:0-kpswlazn,1,0,28655,"[6, 5]",64,1.0,wordcount,20Gbps,64G,32,0,0
+app-20200629221132-0176,name:wordcount-bw:20Gbps-ds:64G-stride:32-rep:0-kpswlazn,0,70542980067,0,"[4, 3, 2, 0, 1]",128,76.0,wordcount,20Gbps,64G,32,0,0
+app-20200629221553-0177,name:wordcount-bw:20Gbps-ds:64G-stride:48-rep:0-soxklsmc,1,0,28655,"[6, 5]",64,1.0,wordcount,20Gbps,64G,48,0,0
+app-20200629221553-0177,name:wordcount-bw:20Gbps-ds:64G-stride:48-rep:0-soxklsmc,0,70542980067,0,"[4, 3, 1, 2, 0]",128,73.0,wordcount,20Gbps,64G,48,0,0
+app-20200629221805-0178,name:wordcount-bw:20Gbps-ds:64G-stride:4-rep:0-lyygizqz,1,0,28655,"[6, 5]",64,1.0,wordcount,20Gbps,64G,4,0,92855
+app-20200629221805-0178,name:wordcount-bw:20Gbps-ds:64G-stride:4-rep:0-lyygizqz,0,70542980067,0,"[4, 2, 3, 1, 0]",128,85.0,wordcount,20Gbps,64G,4,0,92855
+app-20200629222346-0179,name:wordcount-bw:20Gbps-ds:64G-stride:80-rep:0-jdqzhagk,1,0,28655,"[6, 5]",64,2.0,wordcount,20Gbps,64G,80,0,78100
+app-20200629222346-0179,name:wordcount-bw:20Gbps-ds:64G-stride:80-rep:0-jdqzhagk,0,70542980067,0,"[4, 0, 1, 3, 2]",128,70.0,wordcount,20Gbps,64G,80,0,78100
+app-20200629222959-0180,name:wordcount-bw:20Gbps-ds:64G-stride:96-rep:0-reyaykci,1,0,28655,"[6, 5]",64,2.0,wordcount,20Gbps,64G,96,0,66610
+app-20200629222959-0180,name:wordcount-bw:20Gbps-ds:64G-stride:96-rep:0-reyaykci,0,70542980067,0,"[4, 3, 2, 1, 0]",128,58.0,wordcount,20Gbps,64G,96,0,66610
+app-20200629223125-0181,name:wordcount-bw:20Gbps-ds:64G-stride:0-rep:0-txpkebcc,1,0,28655,"[6, 5]",64,2.0,wordcount,20Gbps,64G,0,0,0
+app-20200629223125-0181,name:wordcount-bw:20Gbps-ds:64G-stride:0-rep:0-txpkebcc,0,70542980067,0,"[4, 1, 0, 3, 2]",128,87.0,wordcount,20Gbps,64G,0,0,0
+app-20200629223441-0182,name:wordcount-bw:20Gbps-ds:16G-stride:64-rep:0-ikovxbqt,1,0,28655,"[6, 5]",64,7.0,wordcount,20Gbps,16G,64,0,38370
+app-20200629223441-0182,name:wordcount-bw:20Gbps-ds:16G-stride:64-rep:0-ikovxbqt,0,17635772327,0,"[4, 3, 1, 2, 0]",32,24.0,wordcount,20Gbps,16G,64,0,38370
+app-20200629223710-0183,name:wordcount-bw:20Gbps-ds:16G-stride:128-rep:0-wmtmzgpz,1,0,28655,"[6, 5]",64,10.0,wordcount,20Gbps,16G,128,0,40741
+app-20200629223710-0183,name:wordcount-bw:20Gbps-ds:16G-stride:128-rep:0-wmtmzgpz,0,17635772327,0,"[4, 3, 2, 0, 1]",32,24.0,wordcount,20Gbps,16G,128,0,40741
+app-20200629223821-0184,name:wordcount-bw:20Gbps-ds:16G-stride:8-rep:0-yfjxooak,1,0,28655,"[6, 5]",64,9.0,wordcount,20Gbps,16G,8,0,0
+app-20200629223821-0184,name:wordcount-bw:20Gbps-ds:16G-stride:8-rep:0-yfjxooak,0,17635772327,0,"[4, 3, 2, 0, 1]",32,26.0,wordcount,20Gbps,16G,8,0,0
+app-20200629223937-0185,name:wordcount-bw:20Gbps-ds:16G-stride:16-rep:0-jvrijkci,1,0,28655,"[6, 5]",64,8.0,wordcount,20Gbps,16G,16,0,0
+app-20200629223937-0185,name:wordcount-bw:20Gbps-ds:16G-stride:16-rep:0-jvrijkci,0,17635772327,0,"[4, 3, 2, 1, 0]",32,24.0,wordcount,20Gbps,16G,16,0,0
+app-20200629224104-0186,name:wordcount-bw:20Gbps-ds:16G-stride:32-rep:0-klleqaxr,1,0,28655,"[6, 5]",64,29.0,wordcount,20Gbps,16G,32,0,60304
+app-20200629224104-0186,name:wordcount-bw:20Gbps-ds:16G-stride:32-rep:0-klleqaxr,0,17635772327,0,"[4, 1, 0, 2, 3]",32,25.0,wordcount,20Gbps,16G,32,0,60304
+app-20200629224255-0187,name:wordcount-bw:20Gbps-ds:16G-stride:48-rep:0-couzggfo,1,0,28655,"[6, 5]",64,7.0,wordcount,20Gbps,16G,48,0,0
+app-20200629224255-0187,name:wordcount-bw:20Gbps-ds:16G-stride:48-rep:0-couzggfo,0,17635772327,0,"[4, 2, 1, 3, 0]",32,25.0,wordcount,20Gbps,16G,48,0,0
+app-20200629224407-0188,name:wordcount-bw:20Gbps-ds:16G-stride:4-rep:0-nqjqjpqj,1,0,28655,"[6, 5]",64,8.0,wordcount,20Gbps,16G,4,0,41828
+app-20200629224407-0188,name:wordcount-bw:20Gbps-ds:16G-stride:4-rep:0-nqjqjpqj,0,17635772327,0,"[4, 3, 2, 0, 1]",32,27.0,wordcount,20Gbps,16G,4,0,41828
+app-20200629224601-0189,name:wordcount-bw:20Gbps-ds:16G-stride:80-rep:0-dvlwdhid,1,0,28655,"[6, 5]",64,8.0,wordcount,20Gbps,16G,80,0,39377
+app-20200629224601-0189,name:wordcount-bw:20Gbps-ds:16G-stride:80-rep:0-dvlwdhid,0,17635772327,0,"[4, 2, 3, 1, 0]",32,25.0,wordcount,20Gbps,16G,80,0,39377
+app-20200629224815-0190,name:wordcount-bw:20Gbps-ds:16G-stride:96-rep:0-evlwwcuk,1,0,28655,"[6, 5]",64,12.0,wordcount,20Gbps,16G,96,0,43812
+app-20200629224815-0190,name:wordcount-bw:20Gbps-ds:16G-stride:96-rep:0-evlwwcuk,0,17635772327,0,"[4, 2, 1, 3, 0]",32,25.0,wordcount,20Gbps,16G,96,0,43812
+app-20200629224913-0191,name:wordcount-bw:20Gbps-ds:16G-stride:0-rep:0-eewtcgqp,1,0,28655,"[6, 5]",64,13.0,wordcount,20Gbps,16G,0,0,48520
+app-20200629224913-0191,name:wordcount-bw:20Gbps-ds:16G-stride:0-rep:0-eewtcgqp,0,17635772327,0,"[4, 1, 0, 2, 3]",32,29.0,wordcount,20Gbps,16G,0,0,48520
+app-20200629225057-0192,name:wordcount-bw:20Gbps-ds:4G-stride:64-rep:0-jrzjbrqc,1,0,27655,"[6, 5]",64,16.0,wordcount,20Gbps,4G,64,0,47563
+app-20200629225057-0192,name:wordcount-bw:20Gbps-ds:4G-stride:64-rep:0-jrzjbrqc,0,4408948978,0,"[4, 3, 2, 0, 1]",8,24.0,wordcount,20Gbps,4G,64,0,47563
+app-20200629225223-0193,name:wordcount-bw:20Gbps-ds:4G-stride:128-rep:0-ktahqvfa,1,0,27655,"[6, 5]",64,22.0,wordcount,20Gbps,4G,128,0,44731
+app-20200629225223-0193,name:wordcount-bw:20Gbps-ds:4G-stride:128-rep:0-ktahqvfa,0,4408948978,0,"[4, 3, 1, 2, 0]",8,16.0,wordcount,20Gbps,4G,128,0,44731
+app-20200629225323-0194,name:wordcount-bw:20Gbps-ds:4G-stride:8-rep:0-khatqwca,1,0,27655,"[6, 5]",64,10.0,wordcount,20Gbps,4G,8,0,34613
+app-20200629225323-0194,name:wordcount-bw:20Gbps-ds:4G-stride:8-rep:0-khatqwca,0,4408948978,0,"[4, 2, 3, 1, 0]",8,18.0,wordcount,20Gbps,4G,8,0,34613
+app-20200629225418-0195,name:wordcount-bw:20Gbps-ds:4G-stride:16-rep:0-oqjqswkz,1,0,27655,"[6, 5]",64,15.0,wordcount,20Gbps,4G,16,0,42791
+app-20200629225418-0195,name:wordcount-bw:20Gbps-ds:4G-stride:16-rep:0-oqjqswkz,0,4408948978,0,"[4, 1, 0, 3, 2]",8,21.0,wordcount,20Gbps,4G,16,0,42791
+app-20200629225521-0196,name:wordcount-bw:20Gbps-ds:4G-stride:32-rep:0-uugzykfp,1,0,27655,"[6, 5]",64,23.0,wordcount,20Gbps,4G,32,0,50282
+app-20200629225521-0196,name:wordcount-bw:20Gbps-ds:4G-stride:32-rep:0-uugzykfp,0,4408948978,0,"[4, 2, 1, 3, 0]",8,21.0,wordcount,20Gbps,4G,32,0,50282
+app-20200629225635-0197,name:wordcount-bw:20Gbps-ds:4G-stride:48-rep:0-uxwdmext,1,0,27655,"[6, 5]",64,9.0,wordcount,20Gbps,4G,48,0,37348
+app-20200629225635-0197,name:wordcount-bw:20Gbps-ds:4G-stride:48-rep:0-uxwdmext,0,4408948978,0,"[4, 3, 2, 0, 1]",8,22.0,wordcount,20Gbps,4G,48,0,37348
+app-20200629225729-0198,name:wordcount-bw:20Gbps-ds:4G-stride:4-rep:0-jrrjczvi,1,0,27655,"[6, 5]",64,13.0,wordcount,20Gbps,4G,4,0,37856
+app-20200629225729-0198,name:wordcount-bw:20Gbps-ds:4G-stride:4-rep:0-jrrjczvi,0,4408948978,0,"[4, 2, 0, 1, 3]",8,17.0,wordcount,20Gbps,4G,4,0,37856
+app-20200629225837-0199,name:wordcount-bw:20Gbps-ds:4G-stride:80-rep:0-nvvccnuk,1,0,27655,"[6, 5]",64,8.0,wordcount,20Gbps,4G,80,0,0
+app-20200629225837-0199,name:wordcount-bw:20Gbps-ds:4G-stride:80-rep:0-nvvccnuk,0,4408948978,0,"[4, 1, 2, 3, 0]",8,22.0,wordcount,20Gbps,4G,80,0,0
+app-20200629225949-0200,name:wordcount-bw:20Gbps-ds:4G-stride:96-rep:0-rvgvqhyu,1,0,27655,"[6, 5]",64,20.0,wordcount,20Gbps,4G,96,0,47853
+app-20200629225949-0200,name:wordcount-bw:20Gbps-ds:4G-stride:96-rep:0-rvgvqhyu,0,4408948978,0,"[4, 1, 3, 0, 2]",8,21.0,wordcount,20Gbps,4G,96,0,47853
+app-20200629230107-0201,name:wordcount-bw:20Gbps-ds:4G-stride:0-rep:0-uhgnhyky,1,0,27655,"[6, 5]",64,11.0,wordcount,20Gbps,4G,0,0,0
+app-20200629230107-0201,name:wordcount-bw:20Gbps-ds:4G-stride:0-rep:0-uhgnhyky,0,4408948978,0,"[4, 3, 2, 0, 1]",8,22.0,wordcount,20Gbps,4G,0,0,0
+app-20200629230248-0202,name:wordcount-bw:20Gbps-ds:1G-stride:64-rep:0-gdbdiras,1,0,26655,"[6, 5]",64,10.0,wordcount,20Gbps,1G,64,0,0
+app-20200629230248-0202,name:wordcount-bw:20Gbps-ds:1G-stride:64-rep:0-gdbdiras,0,1102238868,0,"[4, 1, 2, 3, 0]",8,13.0,wordcount,20Gbps,1G,64,0,0
+app-20200629230342-0203,name:wordcount-bw:20Gbps-ds:1G-stride:128-rep:0-jsggvidx,1,0,26655,"[6, 5]",64,9.0,wordcount,20Gbps,1G,128,0,0
+app-20200629230342-0203,name:wordcount-bw:20Gbps-ds:1G-stride:128-rep:0-jsggvidx,0,1102238868,0,"[4, 1, 2, 0, 3]",8,11.0,wordcount,20Gbps,1G,128,0,0
+app-20200629230429-0204,name:wordcount-bw:20Gbps-ds:1G-stride:8-rep:0-khtfbvxs,1,0,26655,"[6, 5]",64,9.0,wordcount,20Gbps,1G,8,0,22971
+app-20200629230429-0204,name:wordcount-bw:20Gbps-ds:1G-stride:8-rep:0-khtfbvxs,0,1102238868,0,"[4, 0, 2, 1, 3]",8,7.0,wordcount,20Gbps,1G,8,0,22971
+app-20200629230508-0205,name:wordcount-bw:20Gbps-ds:1G-stride:16-rep:0-uxfcaaoc,1,0,26655,"[6, 5]",64,14.0,wordcount,20Gbps,1G,16,0,27994
+app-20200629230508-0205,name:wordcount-bw:20Gbps-ds:1G-stride:16-rep:0-uxfcaaoc,0,1102238868,0,"[4, 3, 0, 2, 1]",8,7.0,wordcount,20Gbps,1G,16,0,27994
+app-20200629230600-0206,name:wordcount-bw:20Gbps-ds:1G-stride:32-rep:0-hcwcheji,1,0,26655,"[6, 5]",64,12.0,wordcount,20Gbps,1G,32,0,26906
+app-20200629230600-0206,name:wordcount-bw:20Gbps-ds:1G-stride:32-rep:0-hcwcheji,0,1102238868,0,"[4, 2, 0, 3, 1]",8,8.0,wordcount,20Gbps,1G,32,0,26906
+app-20200629230653-0207,name:wordcount-bw:20Gbps-ds:1G-stride:48-rep:0-ddbxcnyi,1,0,26655,"[6, 5]",64,9.0,wordcount,20Gbps,1G,48,0,24391
+app-20200629230653-0207,name:wordcount-bw:20Gbps-ds:1G-stride:48-rep:0-ddbxcnyi,0,1102238868,0,"[4, 1, 2, 0, 3]",8,9.0,wordcount,20Gbps,1G,48,0,24391
+app-20200629230739-0208,name:wordcount-bw:20Gbps-ds:1G-stride:4-rep:0-sjbxsjai,1,0,26655,"[6, 5]",64,12.0,wordcount,20Gbps,1G,4,0,27803
+app-20200629230739-0208,name:wordcount-bw:20Gbps-ds:1G-stride:4-rep:0-sjbxsjai,0,1102238868,0,"[4, 2, 0, 3, 1]",8,9.0,wordcount,20Gbps,1G,4,0,27803
+app-20200629230829-0209,name:wordcount-bw:20Gbps-ds:1G-stride:80-rep:0-muzvinmk,1,0,26655,"[6, 5]",64,11.0,wordcount,20Gbps,1G,80,0,25617
+app-20200629230829-0209,name:wordcount-bw:20Gbps-ds:1G-stride:80-rep:0-muzvinmk,0,1102238868,0,"[4, 3, 2, 0, 1]",8,8.0,wordcount,20Gbps,1G,80,0,25617
+app-20200629230924-0210,name:wordcount-bw:20Gbps-ds:1G-stride:96-rep:0-cjesxjoz,1,0,26655,"[6, 5]",64,8.0,wordcount,20Gbps,1G,96,0,0
+app-20200629230924-0210,name:wordcount-bw:20Gbps-ds:1G-stride:96-rep:0-cjesxjoz,0,1102238868,0,"[4, 3, 0, 2, 1]",8,9.0,wordcount,20Gbps,1G,96,0,0
+app-20200629231006-0211,name:wordcount-bw:20Gbps-ds:1G-stride:0-rep:0-zoruyvmz,1,0,26655,"[6, 5]",64,11.0,wordcount,20Gbps,1G,0,0,26088
+app-20200629231006-0211,name:wordcount-bw:20Gbps-ds:1G-stride:0-rep:0-zoruyvmz,0,1102238868,0,"[4, 0, 1, 2, 3]",8,8.0,wordcount,20Gbps,1G,0,0,26088
+app-20200629231642-0212,name:wordcount-bw:500Mbps-ds:32G-stride:64-rep:0-kqjfdyap,1,0,28655,"[6, 5]",64,6.0,wordcount,500Mbps,32G,64,0,0
+app-20200629231642-0212,name:wordcount-bw:500Mbps-ds:32G-stride:64-rep:0-kqjfdyap,0,35271691558,0,"[4, 3, 1, 2, 0]",64,313.0,wordcount,500Mbps,32G,64,0,0
+app-20200629233218-0213,name:wordcount-bw:500Mbps-ds:32G-stride:128-rep:0-lbvebexi,1,0,28655,"[6, 5]",64,7.0,wordcount,500Mbps,32G,128,0,41055
+app-20200629233218-0213,name:wordcount-bw:500Mbps-ds:32G-stride:128-rep:0-lbvebexi,0,35271691558,0,"[4, 3, 1, 0, 2]",64,27.0,wordcount,500Mbps,32G,128,0,41055
+app-20200629233406-0214,name:wordcount-bw:500Mbps-ds:32G-stride:8-rep:0-zubxxqcy,1,0,28655,"[6, 5]",64,7.0,wordcount,500Mbps,32G,8,0,573989
+app-20200629233406-0214,name:wordcount-bw:500Mbps-ds:32G-stride:8-rep:0-zubxxqcy,0,35271691558,0,"[4, 3, 1, 2, 0]",64,559.0,wordcount,500Mbps,32G,8,0,573989
+app-20200629234523-0215,name:wordcount-bw:500Mbps-ds:32G-stride:16-rep:0-sgctenqm,1,0,28655,"[6, 5]",64,10.0,wordcount,500Mbps,32G,16,0,540975
+app-20200629234523-0215,name:wordcount-bw:500Mbps-ds:32G-stride:16-rep:0-sgctenqm,0,35271691558,0,"[4, 3, 2, 0, 1]",64,524.0,wordcount,500Mbps,32G,16,0,540975
+app-20200629235719-0216,name:wordcount-bw:500Mbps-ds:32G-stride:32-rep:0-zozspvxw,1,0,28655,"[6, 5]",64,8.0,wordcount,500Mbps,32G,32,0,0
+app-20200629235719-0216,name:wordcount-bw:500Mbps-ds:32G-stride:32-rep:0-zozspvxw,0,35271691558,0,"[4, 3, 2, 1, 0]",64,451.0,wordcount,500Mbps,32G,32,0,0
+app-20200630000916-0217,name:wordcount-bw:500Mbps-ds:32G-stride:48-rep:0-wlgcvzdr,1,0,28655,"[6, 5]",64,10.0,wordcount,500Mbps,32G,48,0,0
+app-20200630000916-0217,name:wordcount-bw:500Mbps-ds:32G-stride:48-rep:0-wlgcvzdr,0,35271691558,0,"[4, 2, 1, 0, 3]",64,383.0,wordcount,500Mbps,32G,48,0,0
+app-20200630001652-0218,name:wordcount-bw:500Mbps-ds:32G-stride:4-rep:0-mrhujvqq,1,0,28655,"[6, 5]",64,13.0,wordcount,500Mbps,32G,4,0,0
+app-20200630001652-0218,name:wordcount-bw:500Mbps-ds:32G-stride:4-rep:0-mrhujvqq,0,35271691558,0,"[4, 3, 2, 1, 0]",64,577.0,wordcount,500Mbps,32G,4,0,0
+app-20200630003329-0219,name:wordcount-bw:500Mbps-ds:32G-stride:80-rep:0-qcfwiedt,1,0,28655,"[6, 5]",64,13.0,wordcount,500Mbps,32G,80,0,0
+app-20200630003329-0219,name:wordcount-bw:500Mbps-ds:32G-stride:80-rep:0-qcfwiedt,0,35271691558,0,"[4, 2, 3, 1, 0]",64,241.0,wordcount,500Mbps,32G,80,0,0
+app-20200630004538-0220,name:wordcount-bw:500Mbps-ds:32G-stride:96-rep:0-ypdbzxfd,1,0,28655,"[6, 5]",64,16.0,wordcount,500Mbps,32G,96,0,200784
+app-20200630004538-0220,name:wordcount-bw:500Mbps-ds:32G-stride:96-rep:0-ypdbzxfd,0,35271691558,0,"[4, 1, 2, 3, 0]",64,178.0,wordcount,500Mbps,32G,96,0,200784
+app-20200630004916-0221,name:wordcount-bw:500Mbps-ds:32G-stride:0-rep:0-dzyajqsu,1,0,28655,"[6, 5]",64,12.0,wordcount,500Mbps,32G,0,0,0
+app-20200630004916-0221,name:wordcount-bw:500Mbps-ds:32G-stride:0-rep:0-dzyajqsu,0,35271691558,0,"[4, 2, 0, 1, 3]",64,607.0,wordcount,500Mbps,32G,0,0,0
+app-20200630011056-0222,name:wordcount-bw:500Mbps-ds:64G-stride:64-rep:0-zrdlztbc,1,0,28655,"[6, 5]",64,2.0,wordcount,500Mbps,64G,64,0,0
+app-20200630011056-0222,name:wordcount-bw:500Mbps-ds:64G-stride:64-rep:0-zrdlztbc,0,70542980067,0,"[4, 2, 3, 1, 0]",128,620.0,wordcount,500Mbps,64G,64,0,0
+app-20200630014130-0223,name:wordcount-bw:500Mbps-ds:64G-stride:128-rep:0-pseyjsyy,1,0,28655,"[6, 5]",64,10.0,wordcount,500Mbps,64G,128,0,71783
+app-20200630014130-0223,name:wordcount-bw:500Mbps-ds:64G-stride:128-rep:0-pseyjsyy,0,70542980067,0,"[4, 2, 1, 3, 0]",128,54.0,wordcount,500Mbps,64G,128,0,71783
+app-20200630014443-0224,name:wordcount-bw:500Mbps-ds:64G-stride:8-rep:0-vqynshph,1,0,28655,"[6, 5]",64,1.0,wordcount,500Mbps,64G,8,0,1119101
+app-20200630014443-0224,name:wordcount-bw:500Mbps-ds:64G-stride:8-rep:0-vqynshph,0,70542980067,0,"[4, 1, 2, 3, 0]",128,1111.0,wordcount,500Mbps,64G,8,0,1119101
+app-20200630020635-0225,name:wordcount-bw:500Mbps-ds:64G-stride:16-rep:0-gnbrjpbn,1,0,28655,"[6, 5]",64,2.0,wordcount,500Mbps,64G,16,0,1046725
+app-20200630020635-0225,name:wordcount-bw:500Mbps-ds:64G-stride:16-rep:0-gnbrjpbn,0,70542980067,0,"[4, 3, 1, 0, 2]",128,1038.0,wordcount,500Mbps,64G,16,0,1046725
+app-20200630022938-0226,name:wordcount-bw:500Mbps-ds:64G-stride:32-rep:0-njumqpgm,1,0,28655,"[6, 5]",64,1.0,wordcount,500Mbps,64G,32,0,0
+app-20200630022938-0226,name:wordcount-bw:500Mbps-ds:64G-stride:32-rep:0-njumqpgm,0,70542980067,0,"[4, 1, 3, 0, 2]",128,898.0,wordcount,500Mbps,64G,32,0,0
+app-20200630025249-0227,name:wordcount-bw:500Mbps-ds:64G-stride:48-rep:0-bavprnkz,1,0,28655,"[6, 5]",64,1.0,wordcount,500Mbps,64G,48,0,766405
+app-20200630025249-0227,name:wordcount-bw:500Mbps-ds:64G-stride:48-rep:0-bavprnkz,0,70542980067,0,"[4, 0, 2, 3, 1]",128,758.0,wordcount,500Mbps,64G,48,0,766405
+app-20200630030700-0228,name:wordcount-bw:500Mbps-ds:64G-stride:4-rep:0-rjunbsaw,1,0,28655,"[6, 5]",64,1.0,wordcount,500Mbps,64G,4,0,1153788
+app-20200630030700-0228,name:wordcount-bw:500Mbps-ds:64G-stride:4-rep:0-rjunbsaw,0,70542980067,0,"[4, 3, 1, 2, 0]",128,1146.0,wordcount,500Mbps,64G,4,0,1153788
+app-20200630033902-0229,name:wordcount-bw:500Mbps-ds:64G-stride:80-rep:0-fkortqrd,1,0,28655,"[6, 5]",64,1.0,wordcount,500Mbps,64G,80,0,480698
+app-20200630033902-0229,name:wordcount-bw:500Mbps-ds:64G-stride:80-rep:0-fkortqrd,0,70542980067,0,"[4, 1, 3, 0, 2]",128,473.0,wordcount,500Mbps,64G,80,0,480698
+app-20200630040215-0230,name:wordcount-bw:500Mbps-ds:64G-stride:96-rep:0-snoxwuqj,1,0,28655,"[6, 5]",64,1.0,wordcount,500Mbps,64G,96,0,341373
+app-20200630040215-0230,name:wordcount-bw:500Mbps-ds:64G-stride:96-rep:0-snoxwuqj,0,70542980067,0,"[4, 3, 1, 2, 0]",128,333.0,wordcount,500Mbps,64G,96,0,341373
+app-20200630094424-0232,name:wordcount-bw:500Mbps-ds:32G-stride:64-rep:0-jeadgoxt,1,0,28655,"[6, 5]",64,6.0,wordcount,500Mbps,32G,64,0,0
+app-20200630094424-0232,name:wordcount-bw:500Mbps-ds:32G-stride:64-rep:0-jeadgoxt,0,35271691558,0,"[4, 0, 1, 2, 3]",64,313.0,wordcount,500Mbps,32G,64,0,0
+app-20200630100001-0233,name:wordcount-bw:500Mbps-ds:32G-stride:128-rep:0-drhemhhz,1,0,28655,"[6, 5]",64,7.0,wordcount,500Mbps,32G,128,0,40107
+app-20200630100001-0233,name:wordcount-bw:500Mbps-ds:32G-stride:128-rep:0-drhemhhz,0,35271691558,0,"[4, 0, 2, 3, 1]",64,26.0,wordcount,500Mbps,32G,128,0,40107
+app-20200630100149-0234,name:wordcount-bw:500Mbps-ds:32G-stride:8-rep:0-xwiytlqc,1,0,28655,"[6, 5]",64,9.0,wordcount,500Mbps,32G,8,0,574266
+app-20200630100149-0234,name:wordcount-bw:500Mbps-ds:32G-stride:8-rep:0-xwiytlqc,0,35271691558,0,"[4, 0, 1, 3, 2]",64,558.0,wordcount,500Mbps,32G,8,0,574266
+app-20200630101308-0235,name:wordcount-bw:500Mbps-ds:32G-stride:16-rep:0-lycbhgfx,1,0,28655,"[6, 5]",64,8.0,wordcount,500Mbps,32G,16,0,537229
+app-20200630101308-0235,name:wordcount-bw:500Mbps-ds:32G-stride:16-rep:0-lycbhgfx,0,35271691558,0,"[4, 0, 1, 2, 3]",64,522.0,wordcount,500Mbps,32G,16,0,537229
+app-20200630102459-0236,name:wordcount-bw:500Mbps-ds:32G-stride:32-rep:0-xrsqlioq,1,0,28655,"[6, 5]",64,5.0,wordcount,500Mbps,32G,32,0,0
+app-20200630102459-0236,name:wordcount-bw:500Mbps-ds:32G-stride:32-rep:0-xrsqlioq,0,35271691558,0,"[4, 3, 0, 2, 1]",64,451.0,wordcount,500Mbps,32G,32,0,0
+app-20200630103654-0237,name:wordcount-bw:500Mbps-ds:32G-stride:48-rep:0-jyjkkvxx,1,0,28655,"[6, 5]",64,5.0,wordcount,500Mbps,32G,48,0,0
+app-20200630103654-0237,name:wordcount-bw:500Mbps-ds:32G-stride:48-rep:0-jyjkkvxx,0,35271691558,0,"[4, 0, 2, 3, 1]",64,381.0,wordcount,500Mbps,32G,48,0,0
+app-20200630151053-0239,name:wordcount-bw:500Mbps-ds:32G-stride:64-rep:0-jyaczfix,1,0,28655,"[6, 5]",64,13.0,wordcount,500Mbps,32G,64,0,332288
+app-20200630151053-0239,name:wordcount-bw:500Mbps-ds:32G-stride:64-rep:0-jyaczfix,0,35271691558,0,"[4, 3, 2, 0, 1]",64,313.0,wordcount,500Mbps,32G,64,0,332288
+app-20200630152632-0240,name:wordcount-bw:500Mbps-ds:32G-stride:128-rep:0-jnmozosv,1,0,28655,"[6, 5]",64,7.0,wordcount,500Mbps,32G,128,0,40832
+app-20200630152632-0240,name:wordcount-bw:500Mbps-ds:32G-stride:128-rep:0-jnmozosv,0,35271691558,0,"[4, 3, 1, 2, 0]",64,28.0,wordcount,500Mbps,32G,128,0,40832
+app-20200630152820-0241,name:wordcount-bw:500Mbps-ds:32G-stride:8-rep:0-nowbirgp,1,0,28655,"[6, 5]",64,5.0,wordcount,500Mbps,32G,8,0,0
+app-20200630152820-0241,name:wordcount-bw:500Mbps-ds:32G-stride:8-rep:0-nowbirgp,0,35271691558,0,"[4, 1, 3, 0, 2]",64,558.0,wordcount,500Mbps,32G,8,0,0
+app-20200630153937-0242,name:wordcount-bw:500Mbps-ds:32G-stride:16-rep:0-gvdroxdk,1,0,28655,"[6, 5]",64,5.0,wordcount,500Mbps,32G,16,0,533673
+app-20200630153937-0242,name:wordcount-bw:500Mbps-ds:32G-stride:16-rep:0-gvdroxdk,0,35271691558,0,"[4, 3, 0, 2, 1]",64,522.0,wordcount,500Mbps,32G,16,0,533673
+app-20200630155127-0243,name:wordcount-bw:500Mbps-ds:32G-stride:32-rep:0-dsajxpfb,1,0,28655,"[6, 5]",64,6.0,wordcount,500Mbps,32G,32,0,0
+app-20200630155127-0243,name:wordcount-bw:500Mbps-ds:32G-stride:32-rep:0-dsajxpfb,0,35271691558,0,"[4, 3, 2, 1, 0]",64,453.0,wordcount,500Mbps,32G,32,0,0
+app-20200630160323-0244,name:wordcount-bw:500Mbps-ds:32G-stride:48-rep:0-fgsuvmqm,1,0,28655,"[6, 5]",64,6.0,wordcount,500Mbps,32G,48,0,393304
+app-20200630160323-0244,name:wordcount-bw:500Mbps-ds:32G-stride:48-rep:0-fgsuvmqm,0,35271691558,0,"[4, 2, 0, 3, 1]",64,380.0,wordcount,500Mbps,32G,48,0,393304
+app-20200630161045-0245,name:wordcount-bw:500Mbps-ds:32G-stride:4-rep:0-abvtxmdi,1,0,28655,"[6, 5]",64,8.0,wordcount,500Mbps,32G,4,0,0
+app-20200630161045-0245,name:wordcount-bw:500Mbps-ds:32G-stride:4-rep:0-abvtxmdi,0,35271691558,0,"[4, 1, 3, 0, 2]",64,575.0,wordcount,500Mbps,32G,4,0,0
+app-20200630162709-0246,name:wordcount-bw:500Mbps-ds:32G-stride:80-rep:0-hcauoqlx,1,0,28655,"[6, 5]",64,8.0,wordcount,500Mbps,32G,80,0,255468
+app-20200630162709-0246,name:wordcount-bw:500Mbps-ds:32G-stride:80-rep:0-hcauoqlx,0,35271691558,0,"[4, 1, 2, 3, 0]",64,241.0,wordcount,500Mbps,32G,80,0,255468
+app-20200630163910-0247,name:wordcount-bw:500Mbps-ds:32G-stride:96-rep:0-gkmgvqbf,1,0,28655,"[6, 5]",64,7.0,wordcount,500Mbps,32G,96,0,0
+app-20200630163910-0247,name:wordcount-bw:500Mbps-ds:32G-stride:96-rep:0-gkmgvqbf,0,35271691558,0,"[4, 0, 1, 3, 2]",64,171.0,wordcount,500Mbps,32G,96,0,0
+app-20200630164235-0248,name:wordcount-bw:500Mbps-ds:32G-stride:0-rep:0-ptnpltsf,1,0,28655,"[6, 5]",64,7.0,wordcount,500Mbps,32G,0,0,0
+app-20200630164235-0248,name:wordcount-bw:500Mbps-ds:32G-stride:0-rep:0-ptnpltsf,0,35271691558,0,"[4, 3, 0, 1, 2]",64,606.0,wordcount,500Mbps,32G,0,0,0
+app-20200630170348-0249,name:wordcount-bw:500Mbps-ds:64G-stride:64-rep:0-zztsenzw,1,0,28655,"[6, 5]",64,2.0,wordcount,500Mbps,64G,64,0,621408
+app-20200630170348-0249,name:wordcount-bw:500Mbps-ds:64G-stride:64-rep:0-zztsenzw,0,70542980067,0,"[4, 3, 2, 0, 1]",128,613.0,wordcount,500Mbps,64G,64,0,621408
+app-20200630173408-0250,name:wordcount-bw:500Mbps-ds:64G-stride:128-rep:0-scoxpdqo,1,0,28655,"[6, 5]",64,1.0,wordcount,500Mbps,64G,128,0,0
+app-20200630173408-0250,name:wordcount-bw:500Mbps-ds:64G-stride:128-rep:0-scoxpdqo,0,70542980067,0,"[4, 3, 2, 1, 0]",128,51.0,wordcount,500Mbps,64G,128,0,0
+app-20200630173713-0251,name:wordcount-bw:500Mbps-ds:64G-stride:8-rep:0-sgiydinp,1,0,28655,"[6, 5]",64,1.0,wordcount,500Mbps,64G,8,0,1120391
+app-20200630173713-0251,name:wordcount-bw:500Mbps-ds:64G-stride:8-rep:0-sgiydinp,0,70542980067,0,"[4, 2, 1, 3, 0]",128,1113.0,wordcount,500Mbps,64G,8,0,1120391
+app-20200630175905-0252,name:wordcount-bw:500Mbps-ds:64G-stride:16-rep:0-dlrbjjzg,1,0,28655,"[6, 5]",64,6.0,wordcount,500Mbps,64G,16,0,0
+app-20200630175905-0252,name:wordcount-bw:500Mbps-ds:64G-stride:16-rep:0-dlrbjjzg,0,70542980067,0,"[4, 3, 1, 2, 0]",128,1040.0,wordcount,500Mbps,64G,16,0,0
+app-20200630182218-0253,name:wordcount-bw:500Mbps-ds:64G-stride:32-rep:0-zpeymuug,1,0,28655,"[6, 5]",64,2.0,wordcount,500Mbps,64G,32,0,912242
+app-20200630182218-0253,name:wordcount-bw:500Mbps-ds:64G-stride:32-rep:0-zpeymuug,0,70542980067,0,"[4, 0, 1, 3, 2]",128,902.0,wordcount,500Mbps,64G,32,0,912242
+app-20200630184530-0254,name:wordcount-bw:500Mbps-ds:64G-stride:48-rep:0-ohwpvffm,1,0,28655,"[6, 5]",64,1.0,wordcount,500Mbps,64G,48,0,764327
+app-20200630184530-0254,name:wordcount-bw:500Mbps-ds:64G-stride:48-rep:0-ohwpvffm,0,70542980067,0,"[4, 3, 1, 0, 2]",128,756.0,wordcount,500Mbps,64G,48,0,764327
+app-20200630185938-0255,name:wordcount-bw:500Mbps-ds:64G-stride:4-rep:0-ydkpreah,1,0,28655,"[6, 5]",64,2.0,wordcount,500Mbps,64G,4,0,0
+app-20200630185938-0255,name:wordcount-bw:500Mbps-ds:64G-stride:4-rep:0-ydkpreah,0,70542980067,0,"[4, 1, 2, 3, 0]",128,1147.0,wordcount,500Mbps,64G,4,0,0
+app-20200630193147-0256,name:wordcount-bw:500Mbps-ds:64G-stride:80-rep:0-vuswclad,1,0,28655,"[6, 5]",64,1.0,wordcount,500Mbps,64G,80,0,484781
+app-20200630193147-0256,name:wordcount-bw:500Mbps-ds:64G-stride:80-rep:0-vuswclad,0,70542980067,0,"[4, 2, 1, 0, 3]",128,477.0,wordcount,500Mbps,64G,80,0,484781
+app-20200630195503-0257,name:wordcount-bw:500Mbps-ds:64G-stride:96-rep:0-wecloplo,1,0,28655,"[6, 5]",64,4.0,wordcount,500Mbps,64G,96,0,0
+app-20200630195503-0257,name:wordcount-bw:500Mbps-ds:64G-stride:96-rep:0-wecloplo,0,70542980067,0,"[4, 1, 2, 3, 0]",128,330.0,wordcount,500Mbps,64G,96,0,0
+app-20200630200114-0258,name:wordcount-bw:500Mbps-ds:64G-stride:0-rep:0-rofdicox,1,0,28655,"[6, 5]",64,2.0,wordcount,500Mbps,64G,0,0,0
+app-20200630200114-0258,name:wordcount-bw:500Mbps-ds:64G-stride:0-rep:0-rofdicox,0,70542980067,0,"[4, 1, 3, 0, 2]",128,1212.0,wordcount,500Mbps,64G,0,0,0
+app-20200630202455-0259,name:wordcount-bw:500Mbps-ds:16G-stride:64-rep:0-zefixmmy,1,0,28655,"[6, 5]",64,9.0,wordcount,500Mbps,16G,64,0,176997
+app-20200630202455-0259,name:wordcount-bw:500Mbps-ds:16G-stride:64-rep:0-zefixmmy,0,17635772327,0,"[4, 0, 2, 3, 1]",32,161.0,wordcount,500Mbps,16G,64,0,176997
+app-20200630203303-0260,name:wordcount-bw:500Mbps-ds:16G-stride:128-rep:0-rwsjxhcs,1,0,28655,"[6, 5]",64,7.0,wordcount,500Mbps,16G,128,0,0
+app-20200630203303-0260,name:wordcount-bw:500Mbps-ds:16G-stride:128-rep:0-rwsjxhcs,0,17635772327,0,"[4, 0, 1, 3, 2]",32,24.0,wordcount,500Mbps,16G,128,0,0
+app-20200630203445-0261,name:wordcount-bw:500Mbps-ds:16G-stride:8-rep:0-fqzpbetc,1,0,28655,"[6, 5]",64,9.0,wordcount,500Mbps,16G,8,0,297580
+app-20200630203445-0261,name:wordcount-bw:500Mbps-ds:16G-stride:8-rep:0-fqzpbetc,0,17635772327,0,"[4, 1, 0, 2, 3]",32,282.0,wordcount,500Mbps,16G,8,0,297580
+app-20200630204046-0262,name:wordcount-bw:500Mbps-ds:16G-stride:16-rep:0-ishvyilx,1,0,28655,"[6, 5]",64,11.0,wordcount,500Mbps,16G,16,0,283627
+app-20200630204046-0262,name:wordcount-bw:500Mbps-ds:16G-stride:16-rep:0-ishvyilx,0,17635772327,0,"[4, 3, 1, 0, 2]",32,266.0,wordcount,500Mbps,16G,16,0,283627
+app-20200630204705-0263,name:wordcount-bw:500Mbps-ds:16G-stride:32-rep:0-cwpnoiil,1,0,28655,"[6, 5]",64,18.0,wordcount,500Mbps,16G,32,0,0
+app-20200630204705-0263,name:wordcount-bw:500Mbps-ds:16G-stride:32-rep:0-cwpnoiil,0,17635772327,0,"[4, 0, 1, 3, 2]",32,230.0,wordcount,500Mbps,16G,32,0,0
+app-20200630205336-0264,name:wordcount-bw:500Mbps-ds:16G-stride:48-rep:0-bujgqqxo,1,0,28655,"[6, 5]",64,9.0,wordcount,500Mbps,16G,48,0,0
+app-20200630205336-0264,name:wordcount-bw:500Mbps-ds:16G-stride:48-rep:0-bujgqqxo,0,17635772327,0,"[4, 2, 3, 1, 0]",32,196.0,wordcount,500Mbps,16G,48,0,0
+app-20200630205743-0265,name:wordcount-bw:500Mbps-ds:16G-stride:4-rep:0-kbtecwpb,1,0,28655,"[6, 5]",64,7.0,wordcount,500Mbps,16G,4,0,304717
+app-20200630205743-0265,name:wordcount-bw:500Mbps-ds:16G-stride:4-rep:0-kbtecwpb,0,17635772327,0,"[4, 1, 0, 3, 2]",32,291.0,wordcount,500Mbps,16G,4,0,304717
+app-20200630210614-0266,name:wordcount-bw:500Mbps-ds:16G-stride:80-rep:0-jnrwbmis,1,0,28655,"[6, 5]",64,15.0,wordcount,500Mbps,16G,80,0,149550
+app-20200630210614-0266,name:wordcount-bw:500Mbps-ds:16G-stride:80-rep:0-jnrwbmis,0,17635772327,0,"[4, 2, 0, 3, 1]",32,128.0,wordcount,500Mbps,16G,80,0,149550
+app-20200630211241-0267,name:wordcount-bw:500Mbps-ds:16G-stride:96-rep:0-iigahzng,1,0,28655,"[6, 5]",64,11.0,wordcount,500Mbps,16G,96,0,0
+app-20200630211241-0267,name:wordcount-bw:500Mbps-ds:16G-stride:96-rep:0-iigahzng,0,17635772327,0,"[4, 1, 2, 3, 0]",32,91.0,wordcount,500Mbps,16G,96,0,0
+app-20200630211450-0268,name:wordcount-bw:500Mbps-ds:16G-stride:0-rep:0-lozidopf,1,0,28655,"[6, 5]",64,9.0,wordcount,500Mbps,16G,0,0,322039
+app-20200630211450-0268,name:wordcount-bw:500Mbps-ds:16G-stride:0-rep:0-lozidopf,0,17635772327,0,"[4, 3, 2, 0, 1]",32,307.0,wordcount,500Mbps,16G,0,0,322039
+app-20200630212131-0269,name:wordcount-bw:500Mbps-ds:4G-stride:64-rep:0-fplclzrm,1,0,27655,"[6, 5]",64,9.0,wordcount,500Mbps,4G,64,0,63828
+app-20200630212131-0269,name:wordcount-bw:500Mbps-ds:4G-stride:64-rep:0-fplclzrm,0,4408948978,0,"[4, 3, 1, 2, 0]",8,48.0,wordcount,500Mbps,4G,64,0,63828
+app-20200630212402-0270,name:wordcount-bw:500Mbps-ds:4G-stride:128-rep:0-vsrrjbry,1,0,27655,"[6, 5]",64,11.0,wordcount,500Mbps,4G,128,0,0
+app-20200630212402-0270,name:wordcount-bw:500Mbps-ds:4G-stride:128-rep:0-vsrrjbry,0,4408948978,0,"[4, 0, 2, 3, 1]",8,21.0,wordcount,500Mbps,4G,128,0,0
+app-20200630212505-0271,name:wordcount-bw:500Mbps-ds:4G-stride:8-rep:0-rzprtunk,1,0,27655,"[6, 5]",64,18.0,wordcount,500Mbps,4G,8,0,98475
+app-20200630212505-0271,name:wordcount-bw:500Mbps-ds:4G-stride:8-rep:0-rzprtunk,0,4408948978,0,"[4, 3, 1, 0, 2]",8,74.0,wordcount,500Mbps,4G,8,0,98475
+app-20200630212713-0272,name:wordcount-bw:500Mbps-ds:4G-stride:16-rep:0-emuztlje,1,0,27655,"[6, 5]",64,12.0,wordcount,500Mbps,4G,16,0,0
+app-20200630212713-0272,name:wordcount-bw:500Mbps-ds:4G-stride:16-rep:0-emuztlje,0,4408948978,0,"[4, 1, 3, 2, 0]",8,71.0,wordcount,500Mbps,4G,16,0,0
+app-20200630212921-0273,name:wordcount-bw:500Mbps-ds:4G-stride:32-rep:0-lqzbdwtn,1,0,27655,"[6, 5]",64,15.0,wordcount,500Mbps,4G,32,0,0
+app-20200630212921-0273,name:wordcount-bw:500Mbps-ds:4G-stride:32-rep:0-lqzbdwtn,0,4408948978,0,"[4, 1, 3, 0, 2]",8,61.0,wordcount,500Mbps,4G,32,0,0
+app-20200630213131-0274,name:wordcount-bw:500Mbps-ds:4G-stride:48-rep:0-qvuqgwzd,1,0,27655,"[6, 5]",64,11.0,wordcount,500Mbps,4G,48,0,70731
+app-20200630213131-0274,name:wordcount-bw:500Mbps-ds:4G-stride:48-rep:0-qvuqgwzd,0,4408948978,0,"[4, 0, 2, 3, 1]",8,53.0,wordcount,500Mbps,4G,48,0,70731
+app-20200630213307-0275,name:wordcount-bw:500Mbps-ds:4G-stride:4-rep:0-enzyelzs,1,0,27655,"[6, 5]",64,8.0,wordcount,500Mbps,4G,4,0,0
+app-20200630213307-0275,name:wordcount-bw:500Mbps-ds:4G-stride:4-rep:0-enzyelzs,0,4408948978,0,"[4, 0, 2, 3, 1]",8,77.0,wordcount,500Mbps,4G,4,0,0
+app-20200630213544-0276,name:wordcount-bw:500Mbps-ds:4G-stride:80-rep:0-eakfcgzr,1,0,27655,"[6, 5]",64,13.0,wordcount,500Mbps,4G,80,0,0
+app-20200630213544-0276,name:wordcount-bw:500Mbps-ds:4G-stride:80-rep:0-eakfcgzr,0,4408948978,0,"[4, 1, 0, 3, 2]",8,40.0,wordcount,500Mbps,4G,80,0,0
+app-20200630213757-0277,name:wordcount-bw:500Mbps-ds:4G-stride:96-rep:0-uzpxjhel,1,0,27655,"[6, 5]",64,9.0,wordcount,500Mbps,4G,96,0,0
+app-20200630213757-0277,name:wordcount-bw:500Mbps-ds:4G-stride:96-rep:0-uzpxjhel,0,4408948978,0,"[4, 0, 2, 3, 1]",8,33.0,wordcount,500Mbps,4G,96,0,0
+app-20200630213905-0278,name:wordcount-bw:500Mbps-ds:4G-stride:0-rep:0-zrjxzcmy,1,0,27655,"[6, 5]",64,18.0,wordcount,500Mbps,4G,0,0,103227
+app-20200630213905-0278,name:wordcount-bw:500Mbps-ds:4G-stride:0-rep:0-zrjxzcmy,0,4408948978,0,"[4, 3, 0, 2, 1]",8,79.0,wordcount,500Mbps,4G,0,0,103227
+app-20200630214147-0279,name:wordcount-bw:500Mbps-ds:1G-stride:64-rep:0-zvailrzi,1,0,26655,"[6, 5]",64,10.0,wordcount,500Mbps,1G,64,0,23639
+app-20200630214147-0279,name:wordcount-bw:500Mbps-ds:1G-stride:64-rep:0-zvailrzi,0,1102238868,0,"[4, 1, 0, 3, 2]",8,7.0,wordcount,500Mbps,1G,64,0,23639
+app-20200630214241-0280,name:wordcount-bw:500Mbps-ds:1G-stride:128-rep:0-ajjrxkvu,1,0,26655,"[6, 5]",64,16.0,wordcount,500Mbps,1G,128,0,0
+app-20200630214241-0280,name:wordcount-bw:500Mbps-ds:1G-stride:128-rep:0-ajjrxkvu,0,1102238868,0,"[4, 3, 0, 2, 1]",8,8.0,wordcount,500Mbps,1G,128,0,0
+app-20200630214335-0281,name:wordcount-bw:500Mbps-ds:1G-stride:8-rep:0-yhjyzoyl,1,0,26655,"[6, 5]",64,10.0,wordcount,500Mbps,1G,8,0,34122
+app-20200630214335-0281,name:wordcount-bw:500Mbps-ds:1G-stride:8-rep:0-yhjyzoyl,0,1102238868,0,"[4, 2, 0, 3, 1]",8,17.0,wordcount,500Mbps,1G,8,0,34122
+app-20200630214434-0282,name:wordcount-bw:500Mbps-ds:1G-stride:16-rep:0-stamiwai,1,0,26655,"[6, 5]",64,8.0,wordcount,500Mbps,1G,16,0,0
+app-20200630214434-0282,name:wordcount-bw:500Mbps-ds:1G-stride:16-rep:0-stamiwai,0,1102238868,0,"[4, 0, 2, 3, 1]",8,14.0,wordcount,500Mbps,1G,16,0,0
+app-20200630214546-0283,name:wordcount-bw:500Mbps-ds:1G-stride:32-rep:0-aatxykfs,1,0,26655,"[6, 5]",64,9.0,wordcount,500Mbps,1G,32,0,24700
+app-20200630214546-0283,name:wordcount-bw:500Mbps-ds:1G-stride:32-rep:0-aatxykfs,0,1102238868,0,"[4, 0, 2, 1, 3]",8,9.0,wordcount,500Mbps,1G,32,0,24700
+app-20200630214642-0284,name:wordcount-bw:500Mbps-ds:1G-stride:48-rep:0-nrepdmxv,1,0,26655,"[6, 5]",64,13.0,wordcount,500Mbps,1G,48,0,0
+app-20200630214642-0284,name:wordcount-bw:500Mbps-ds:1G-stride:48-rep:0-nrepdmxv,0,1102238868,0,"[4, 0, 2, 1, 3]",8,8.0,wordcount,500Mbps,1G,48,0,0
+app-20200630214730-0285,name:wordcount-bw:500Mbps-ds:1G-stride:4-rep:0-qdqhjahh,1,0,26655,"[6, 5]",64,18.0,wordcount,500Mbps,1G,4,0,44661
+app-20200630214730-0285,name:wordcount-bw:500Mbps-ds:1G-stride:4-rep:0-qdqhjahh,0,1102238868,0,"[4, 1, 0, 3, 2]",8,20.0,wordcount,500Mbps,1G,4,0,44661
+app-20200630214845-0286,name:wordcount-bw:500Mbps-ds:1G-stride:80-rep:0-rgwwpduu,1,0,26655,"[6, 5]",64,12.0,wordcount,500Mbps,1G,80,0,0
+app-20200630214845-0286,name:wordcount-bw:500Mbps-ds:1G-stride:80-rep:0-rgwwpduu,0,1102238868,0,"[4, 3, 0, 2, 1]",8,8.0,wordcount,500Mbps,1G,80,0,0
+app-20200630214946-0287,name:wordcount-bw:500Mbps-ds:1G-stride:96-rep:0-gfovvlft,1,0,26655,"[6, 5]",64,12.0,wordcount,500Mbps,1G,96,0,28080
+app-20200630214946-0287,name:wordcount-bw:500Mbps-ds:1G-stride:96-rep:0-gfovvlft,0,1102238868,0,"[4, 0, 1, 3, 2]",8,9.0,wordcount,500Mbps,1G,96,0,28080
+app-20200630215034-0288,name:wordcount-bw:500Mbps-ds:1G-stride:0-rep:0-yntwssji,1,0,26655,"[6, 5]",64,8.0,wordcount,500Mbps,1G,0,0,0
+app-20200630215034-0288,name:wordcount-bw:500Mbps-ds:1G-stride:0-rep:0-yntwssji,0,1102238868,0,"[4, 2, 0, 3, 1]",8,21.0,wordcount,500Mbps,1G,0,0,0
+app-20200630221728-0289,name:wordcount-bw:100Mbps-ds:32G-stride:64-rep:0-epdgstfi,1,0,28655,"[6, 5]",64,6.0,wordcount,100Mbps,32G,64,0,0
+app-20200630221728-0289,name:wordcount-bw:100Mbps-ds:32G-stride:64-rep:0-epdgstfi,0,35271691558,0,"[4, 3, 0, 2, 1]",64,1516.0,wordcount,100Mbps,32G,64,0,0
+app-20200630233234-0290,name:wordcount-bw:100Mbps-ds:32G-stride:128-rep:0-qqoimbme,1,0,28655,"[6, 5]",64,8.0,wordcount,100Mbps,32G,128,0,0
+app-20200630233234-0290,name:wordcount-bw:100Mbps-ds:32G-stride:128-rep:0-qqoimbme,0,35271691558,0,"[4, 1, 2, 3, 0]",64,48.0,wordcount,100Mbps,32G,128,0,0
+app-20200630233814-0291,name:wordcount-bw:100Mbps-ds:32G-stride:8-rep:0-kwkervgq,1,0,28655,"[6, 5]",64,9.0,wordcount,100Mbps,32G,8,0,0
+app-20200630233814-0291,name:wordcount-bw:100Mbps-ds:32G-stride:8-rep:0-kwkervgq,0,35271691558,0,"[4, 1, 2, 0, 3]",64,2775.0,wordcount,100Mbps,32G,8,0,0
+app-20200701003221-0292,name:wordcount-bw:100Mbps-ds:32G-stride:16-rep:0-faxlxjzb,1,0,28655,"[6, 5]",64,11.0,wordcount,100Mbps,32G,16,0,0
+app-20200701003221-0292,name:wordcount-bw:100Mbps-ds:32G-stride:16-rep:0-faxlxjzb,0,35271691558,0,"[4, 3, 1, 2, 0]",64,2596.0,wordcount,100Mbps,32G,16,0,0
+app-20200701012932-0293,name:wordcount-bw:100Mbps-ds:32G-stride:32-rep:0-ylbtrdoi,1,0,28655,"[6, 5]",64,6.0,wordcount,100Mbps,32G,32,0,0
+app-20200701012932-0293,name:wordcount-bw:100Mbps-ds:32G-stride:32-rep:0-ylbtrdoi,0,35271691558,0,"[4, 1, 2, 3, 0]",64,2241.0,wordcount,100Mbps,32G,32,0,0
+app-20200701022642-0294,name:wordcount-bw:100Mbps-ds:32G-stride:48-rep:0-crpsjuds,1,0,28655,"[6, 5]",64,6.0,wordcount,100Mbps,32G,48,0,0
+app-20200701022642-0294,name:wordcount-bw:100Mbps-ds:32G-stride:48-rep:0-crpsjuds,0,35271691558,0,"[4, 3, 1, 0, 2]",64,1880.0,wordcount,100Mbps,32G,48,0,0
+app-20200701030122-0295,name:wordcount-bw:100Mbps-ds:32G-stride:4-rep:0-dwrbgceg,1,0,28655,"[6, 5]",64,6.0,wordcount,100Mbps,32G,4,0,2879065
+app-20200701030122-0295,name:wordcount-bw:100Mbps-ds:32G-stride:4-rep:0-dwrbgceg,0,35271691558,0,"[4, 2, 0, 3, 1]",64,2866.0,wordcount,100Mbps,32G,4,0,2879065
+app-20200701042053-0296,name:wordcount-bw:100Mbps-ds:32G-stride:80-rep:0-jqkgcskx,1,0,28655,"[6, 5]",64,8.0,wordcount,100Mbps,32G,80,0,1188426
+app-20200701042053-0296,name:wordcount-bw:100Mbps-ds:32G-stride:80-rep:0-jqkgcskx,0,35271691558,0,"[4, 2, 3, 1, 0]",64,1174.0,wordcount,100Mbps,32G,80,0,1188426
+app-20200701051816-0297,name:wordcount-bw:100Mbps-ds:32G-stride:96-rep:0-cjvyanmz,1,0,28655,"[6, 5]",64,5.0,wordcount,100Mbps,32G,96,0,0
+app-20200701051816-0297,name:wordcount-bw:100Mbps-ds:32G-stride:96-rep:0-cjvyanmz,0,35271691558,0,"[4, 2, 1, 0, 3]",64,796.0,wordcount,100Mbps,32G,96,0,0
+app-20200701053206-0298,name:wordcount-bw:100Mbps-ds:32G-stride:0-rep:0-dvjpbfhd,1,0,28655,"[6, 5]",64,6.0,wordcount,100Mbps,32G,0,0,3047871
+app-20200701053206-0298,name:wordcount-bw:100Mbps-ds:32G-stride:0-rep:0-dvjpbfhd,0,35271691558,0,"[4, 3, 2, 1, 0]",64,3030.0,wordcount,100Mbps,32G,0,0,3047871
+app-20200701075758-0299,name:wordcount-bw:100Mbps-ds:64G-stride:64-rep:0-irsmnnhx,1,0,28655,"[6, 5]",64,1.0,wordcount,100Mbps,64G,64,0,3038689
+app-20200701075758-0299,name:wordcount-bw:100Mbps-ds:64G-stride:64-rep:0-irsmnnhx,0,70542980067,0,"[4, 3, 0, 1, 2]",128,3031.0,wordcount,100Mbps,64G,64,0,3038689
+app-20200701102727-0300,name:wordcount-bw:100Mbps-ds:64G-stride:128-rep:0-xcwmyhiz,1,0,28655,"[6, 5]",64,1.0,wordcount,100Mbps,64G,128,0,0
+app-20200701102727-0300,name:wordcount-bw:100Mbps-ds:64G-stride:128-rep:0-xcwmyhiz,0,70542980067,0,"[4, 1, 2, 3, 0]",128,89.0,wordcount,100Mbps,64G,128,0,0
+app-20200701103800-0301,name:wordcount-bw:100Mbps-ds:64G-stride:8-rep:0-fuxshvlg,1,0,28655,"[6, 5]",64,1.0,wordcount,100Mbps,64G,8,0,0
+app-20200701103800-0301,name:wordcount-bw:100Mbps-ds:64G-stride:8-rep:0-fuxshvlg,0,70542980067,0,"[4, 0, 2, 3, 1]",128,5560.0,wordcount,100Mbps,64G,8,0,0
+app-20200701122544-0302,name:wordcount-bw:100Mbps-ds:64G-stride:16-rep:0-vqyvutwz,1,0,28655,"[6, 5]",64,1.0,wordcount,100Mbps,64G,16,0,0
+app-20200701122544-0302,name:wordcount-bw:100Mbps-ds:64G-stride:16-rep:0-vqyvutwz,0,70542980067,0,"[4, 1, 2, 3, 0]",128,5190.0,wordcount,100Mbps,64G,16,0,0
+app-20200701141918-0303,name:wordcount-bw:100Mbps-ds:64G-stride:32-rep:0-heofsfzn,1,0,28655,"[6, 5]",64,1.0,wordcount,100Mbps,64G,32,0,0
+app-20200701141918-0303,name:wordcount-bw:100Mbps-ds:64G-stride:32-rep:0-heofsfzn,0,70542980067,0,"[4, 3, 2, 0, 1]",128,4471.0,wordcount,100Mbps,64G,32,0,0

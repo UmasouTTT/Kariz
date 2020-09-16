@@ -1,0 +1,6 @@
+target/
+tpcds-gen/*
+tpcds_kit.zip
+tpch_kit.zip
+*.sql.log
+derby.log
