@@ -77,6 +77,7 @@ class Workload:
     def start_experiment(self):
         elapsed_time = 0;
         # initialize a timer that issues submit DAG every two seconds
+        self.pendings = []
         start_time = datetime.datetime.now()  
         for gid in self.dags:
             t = Thread(target=self.run, args=(gid,))
@@ -93,3 +94,4 @@ class Workload:
 
         with open('multidag_run.json', 'a+') as fd:
             fd.write(json.dumps(self.dags_stats))
+            fd.write(',\n')
