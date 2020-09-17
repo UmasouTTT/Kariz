@@ -125,8 +125,16 @@ class Job:
     def initialize(self, inputs_str, t_compute, compute_ratio, object_store):
         for iobj in ' '.join(inputs_str.split(':')).split() :
             self.inputs[iobj] = object_store[iobj]
-            self.t_compute = t_compute
-            self.t_compute_ratio = compute_ratio
+        self.t_compute = t_compute
+        self.t_compute_ratio = compute_ratio
+
+    def initialize_tpch(self, inputs_str, feature, t_compute, compute_ratio, object_store):
+        for iobj in ' '.join(inputs_str.split(':')).split() :
+            self.inputs[iobj] = object_store[iobj]
+        self.op = feature
+        self.t_compute = t_compute
+        self.t_compute_ratio = compute_ratio
+
 
     def predict_runtime(self, remote_bw, cache_bw):
         self.runtime_remote = math.ceil(sum(self.inputs.values()) / remote_bw) + self.t_compute

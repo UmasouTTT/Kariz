@@ -4,6 +4,7 @@ import ast
 import time
 import utils.requester as req
 import utils.plan as plan
+from colorama import Fore, Style
 
 inputdir = ast.literal_eval(sys.argv[1])
 cached_size = 0
@@ -29,11 +30,11 @@ cache_runtime = float(sys.argv[3])
 # Compute the runtime
 runtime_reduction = cached_size*(remote_runtime - cache_runtime)//total_size if total_size else 0
 execution_time = remote_runtime - runtime_reduction
-print("Cached data size:", cached_size, "Cache runtime:", cache_runtime,
+print(Fore.LIGHTYELLOW_EX, "\t Cached data size:", cached_size, "Cache runtime:", cache_runtime,
       "Total data size:", total_size, "Remote runtime:", remote_runtime,
-      "execution time:", execution_time)
+      "execution time:", execution_time, Style.RESET_ALL)
 
 
 # Sleep for the execution time
-print("Sleep for ", execution_time)
+print(Fore.LIGHTBLUE_EX, "Sleep for ", execution_time, Style.RESET_ALL)
 time.sleep(execution_time)

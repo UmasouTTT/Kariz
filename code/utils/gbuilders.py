@@ -320,6 +320,59 @@ def build_synthetic_dag_from_string(g_str, object_store):
     return g
 
 
+def build_tpc_dags_from_string(g_str, object_store):
+    g_id = int(g_str.split('\n')[0].split(',')[1])
+    g_elements = g_str.split('\n')[1:]
+    g = gt.Graph(directed=True)
+    g.gp['id'] = g.new_graph_property("int", g_id)
+    g.gp['uuid'] = g.new_graph_property("string")
+    g.gp['queue_time'] = g.new_graph_property("int", 10)
+    g.gp['candidates'] = g.new_graph_property('object')
+    g.gp['stages'] = g.new_graph_property('object', {})
+    g.gp['schedule'] = g.new_graph_property('object', {})
+    g.gp['plans_container'] = g.new_graph_property('object')
+    g.gp['cur_stage'] = g.new_graph_property('int', -1)
+    g.vp['compute_runtime'] = g.new_vertex_property("int")
+    g.vp['reduction_ratio'] = g.new_vertex_property("float")
+    g.vp['inputs'] = g.new_vertex_property("string")
+    g.vp['job'] = g.new_vertex_property("object")
+    g.vp['vid'] = g.new_vertex_property("int")
+    g.vp['color'] = g.new_vertex_property("string")
+    g.vp['status'] = g.new_vertex_property("int")
+    g.vp['stage_id'] = g.new_vertex_property("int")
+    g.vp['slevel'] = g.new_vertex_property("int")
+    
+    vid_to_v = {}
+    for el in g_elements:
+        if el.startswith('v'):
+            vid, ops, vin, t_compute, t_ratio = el.split(',')[1:]
+            if vid in vid_to_v:
+                raise NameError('vertex id must be unique: line: %s'%(el))
+            v = g.add_vertex()
+            vid_to_v[int(vid)] = v
+            g.vp.vid[v] = int(vid)
+            g.vp.job[v] = job.Job()
+            g.vp.job[v].initialize_tpch(vin, ops, int(t_compute), float(t_ratio), object_store)
+            g.vp.color[v] = '#fb8072' if len(g.vp.inputs[v]) > 0 else '#bdbdbd'
+
+    for el in g_elements:
+        if el.startswith('e'):
+            src, dst = el.split(',')[1:]
+            g.add_edge(vid_to_v[int(src)], vid_to_v[int(dst)])
+    #gt.graph_draw(g, vertex_text=g.vp.inputs, vertex_color=g.vp.color,
+    #        vertex_fill_color=g.vp.color, size=(700, 700), output='graph%d.png'%(g.gp.id))
+    return g
+
+
+def load_tpc_dags_from_string(g_strs, object_store):
+    graphs_pool = {}
+    raw_g_str = g_strs.split('#')[1:]
+    for g_str in raw_g_str:
+        g = build_tpc_dags_from_string(g_str, object_store)
+        print(g.gp.id, g)
+        graphs_pool[g.gp.id] = g
+    return graphs_pool
+
 def load_synthetic_dags(fpath, object_store):
     graphs_pool = {}
     with open(fpath, 'r') as fd:

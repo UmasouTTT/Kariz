@@ -45,6 +45,10 @@ class Workload:
         self.dags = gbuilder.load_synthetic_dags(fpath, self.object_store)
         pass
 
+    def load_graphs_fromstring(self, g_str):
+        self.dags = gbuilder.load_tpc_dags_from_string(g_str, self.object_store)
+        pass
+
     def select_dags_randomly(self, n_dags):
         return random.choices(list(self.dags.keys()), k = n_dags)
     
@@ -60,7 +64,7 @@ class Workload:
         start_time = datetime.datetime.now()
         self.submit_dag(dag_name)
         self.pendings.remove(threading.current_thread())
-        print(Fore.LIGHTBLUE_EX, 'DAG', dag_name, ' was finished in', (datetime.datetime.now() - start_time).total_seconds(), Style.RESET_ALL)
+        print(Fore.LIGHTRED_EX, 'DAG', dag_name, ' was finished in', (datetime.datetime.now() - start_time).total_seconds(), Style.RESET_ALL)
         return
 
     def start_experiment(self):
@@ -70,16 +74,14 @@ class Workload:
         for gid in self.dags:
             t = Thread(target=self.run, args=(gid,))
             self.pendings.append(t)
-            break
-            
-        for t in self.pendings:
             t.start()
-        
+
         print(Fore.LIGHTRED_EX, 'Number of pending DAGs', len(self.pendings), Style.RESET_ALL)
         for t in self.pendings:
             print('join', t)
             t.join()
         
-        #print('Experiment was running for %d'%((datetime.datetime.now() - start_time).total_seconds()))
+        print(Fore.YELLOW, 'Experiment was running for %d'%((datetime.datetime.now() - start_time).total_seconds()), 
+                Fore.LIGHTRED_EX, 'Number of pending DAGs', len(self.pendings), Style.RESET_ALL)
         #req.send_experiment_completion_rpc()
 
