@@ -78,7 +78,6 @@ class Workload:
 
         print(Fore.LIGHTRED_EX, 'Number of pending DAGs', len(self.pendings), Style.RESET_ALL)
         for t in self.pendings:
-            print('join', t)
             t.join()
         
         print(Fore.YELLOW, 'Experiment was running for %d'%((datetime.datetime.now() - start_time).total_seconds()), 

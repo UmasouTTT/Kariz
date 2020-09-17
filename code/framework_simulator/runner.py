@@ -25,16 +25,23 @@ remote_runtime = float(sys.argv[2])
 
 cache_runtime = float(sys.argv[3])
 
+dag_name = sys.argv[4]
+stage_name = sys.argv[5]
 
 # Check if data is in the cache or how much data is in the cache
 # Compute the runtime
 runtime_reduction = cached_size*(remote_runtime - cache_runtime)//total_size if total_size else 0
 execution_time = remote_runtime - runtime_reduction
-print(Fore.LIGHTYELLOW_EX, "\t Cached data size:", cached_size, "Cache runtime:", cache_runtime,
-      "Total data size:", total_size, "Remote runtime:", remote_runtime,
-      "execution time:", execution_time, Style.RESET_ALL)
+
+if total_size:
+    print(Fore.LIGHTYELLOW_EX, "DAG", dag_name, "for stage", stage_name, "Cached data size:", cached_size, "Cache runtime:", cache_runtime,
+            "Total data size:", total_size, "Remote runtime:", remote_runtime,
+            "execution time:", execution_time, Fore.LIGHTBLUE_EX, "Sleep for ", execution_time, Style.RESET_ALL)
+else:
+    print(Fore.WHITE, "DAG", dag_name, "for stage", stage_name, "Cached data size:", cached_size, "Cache runtime:", cache_runtime,
+            "Total data size:", total_size, "Remote runtime:", remote_runtime,
+            "execution time:", execution_time, Fore.LIGHTBLUE_EX, "Sleep for ", execution_time, Style.RESET_ALL)
 
 
 # Sleep for the execution time
-print(Fore.LIGHTBLUE_EX, "Sleep for ", execution_time, Style.RESET_ALL)
 time.sleep(execution_time)

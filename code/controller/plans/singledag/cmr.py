@@ -124,6 +124,7 @@ class CMR:
                          
     def get_next_plans(self, bandwidth=1200):
         if self.current_running_stage + 1 <= len(self.g.gp.stages) - 1:
+            '''This means if next running stage is not the last stage'''
             return self.get_plans(self.current_running_stage + 1, bandwidth)
         return []
         

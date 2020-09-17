@@ -12,8 +12,6 @@ from colorama import Fore, Style
 Bulk Synchroneous parallel scheduling which is followed by spark PIG and hive 
 '''
 
-
-
 def submit_and_execute_stage(g, ready=[]):
     if not len(ready): return;
     g.gp.cur_stage = g.vp.stage_id[ready[0]]
@@ -31,7 +29,7 @@ def submit_and_execute_stage(g, ready=[]):
         cache_runtime = g.vp.job[v].runtime_cache
         remote_runtime = g.vp.job[v].runtime_remote
         executable = '%s/%s'%(frameworksim,program)
-        processes.append(subprocess.Popen([executable, str(inputdir), str(remote_runtime), str(cache_runtime)]))
+        processes.append(subprocess.Popen([executable, str(inputdir), str(remote_runtime), str(cache_runtime), str(g.gp.id), str(g.gp.cur_stage)]))
 
     jobs_status = dict(zip(ready, [p.wait()  for p in processes]))
     
