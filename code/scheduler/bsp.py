@@ -6,13 +6,14 @@ import os
 import time
 import subprocess
 import utils.requester as req
+import json
 from colorama import Fore, Style
 
 '''
 Bulk Synchroneous parallel scheduling which is followed by spark PIG and hive 
 '''
 
-def submit_and_execute_stage(g, ready=[]):
+def submit_and_execute_stage(g, ready=[], stats=[]):
     if not len(ready): return;
     g.gp.cur_stage = g.vp.stage_id[ready[0]]
 
@@ -29,13 +30,19 @@ def submit_and_execute_stage(g, ready=[]):
         cache_runtime = g.vp.job[v].runtime_cache
         remote_runtime = g.vp.job[v].runtime_remote
         executable = '%s/%s'%(frameworksim,program)
-        processes.append(subprocess.Popen([executable, str(inputdir), str(remote_runtime), str(cache_runtime), str(g.gp.id), str(g.gp.cur_stage)]))
+        processes.append(subprocess.Popen([executable, str(inputdir), str(remote_runtime),
+                                           str(cache_runtime), str(g.gp.id), str(g.gp.cur_stage),
+                                           str(g.vp.vid[v])], stderr=subprocess.PIPE))
 
     jobs_status = dict(zip(ready, [p.wait()  for p in processes]))
-    
+
+    for p in processes:
+        stdout, stderr = p.communicate()
+        stats.append(json.loads(stderr.decode()))
+
     for v in jobs_status:
         g.vp['status'][v] = 1 if not jobs_status[v] else jobs_status[v]
-
+    pass
 
 def schedule(g):
     sort = gt.topological_sort(g)
@@ -56,11 +63,13 @@ def schedule(g):
     return to_be_executed
 
 def execute_dag(g):
+    stats = []
     while True:
         to_be_executed = schedule(g)
         if not len(to_be_executed):
             break
-        submit_and_execute_stage(g, to_be_executed)
+        submit_and_execute_stage(g, to_be_executed, stats)
+    return stats
 
 
 def assign_stages(g):

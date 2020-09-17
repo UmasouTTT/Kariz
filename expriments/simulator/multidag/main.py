@@ -16,7 +16,6 @@ def load_synthetic_stream_graphs(fpath):
         for wstr in workload_strs:
             workload.load_graphs_fromstring(wstr)
             workload.start_experiment()
-            break
 
 
 #synthetic_worload.g
