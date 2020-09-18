@@ -9,6 +9,7 @@ import utils.pig as pig
 import time
 import scheduler.bsp as bsp
 
+
 # write a class to build schedule dag in pig
 NOCACHE = 0
 KARIZ = 1
@@ -28,9 +29,10 @@ def start_pig_simulator(g):
     req.send_stage_start_rpc(req.serialize_stage(g))
 
     time.sleep(g.gp.queue_time)
-    bsp.execute_dag(g)
+    stats = bsp.execute_dag(g)
 
     req.send_dag_completion_rpc(req.serialize_dag_complete(g))
+    return stats
     # build cache plans
     '''
     req.submit_new_dag(g)

@@ -4,6 +4,7 @@ Created on Sep 7, 2019
 
 @author: mania
 '''
+import json
 
 '''
 from alibaba traces we figure it out that average # of DAGs
@@ -32,6 +33,7 @@ import utils.requester as req
 import utils.gbuilders as gbuilder
 import utils.objectstore as objs
 import datetime
+from prwlock import RWLock
 
 class Workload: 
     def __init__(self):
@@ -39,6 +41,8 @@ class Workload:
         self.dags = {}
         self.pendings = []
         self.object_store = objs.load_object_meta('./config/inputs.csv')
+        self.pendings_mutex = RWLock()
+        self.dags_stats = {}
         pass
 
     def load_graphs(self, fpath):
@@ -56,24 +60,29 @@ class Workload:
         dag = self.dags[dag_name].copy()
         dag.gp.uuid = str(uuid.uuid1())
         print('submit %d'%(dag_name))
-        pigsim.start_pig_simulator(dag)
-        pass
+        return pigsim.start_pig_simulator(dag)
 
 
     def run(self, dag_name):
         start_time = datetime.datetime.now()
-        self.submit_dag(dag_name)
-        self.pendings.remove(threading.current_thread())
-        print(Fore.LIGHTRED_EX, 'DAG', dag_name, ' was finished in', (datetime.datetime.now() - start_time).total_seconds(), Style.RESET_ALL)
+        stats = self.submit_dag(dag_name)
+        runtime = (datetime.datetime.now() - start_time).total_seconds()
+        with self.pendings_mutex.writer_lock():
+          #  self.pendings.remove(threading.current_thread())
+            self.dags_stats[dag_name] = {
+                'stats': stats, 'name': dag_name, 'runtime': runtime}
+        print(Fore.LIGHTRED_EX, 'DAG', dag_name, ' was finished in', runtime, Style.RESET_ALL)
         return
 
     def start_experiment(self):
         elapsed_time = 0;
         # initialize a timer that issues submit DAG every two seconds
+        self.pendings = []
         start_time = datetime.datetime.now()  
         for gid in self.dags:
             t = Thread(target=self.run, args=(gid,))
-            self.pendings.append(t)
+            with self.pendings_mutex.writer_lock():
+                self.pendings.append(t)
             t.start()
 
         print(Fore.LIGHTRED_EX, 'Number of pending DAGs', len(self.pendings), Style.RESET_ALL)
@@ -82,5 +91,3 @@ class Workload:
         
         print(Fore.YELLOW, 'Experiment was running for %d'%((datetime.datetime.now() - start_time).total_seconds()), 
                 Fore.LIGHTRED_EX, 'Number of pending DAGs', len(self.pendings), Style.RESET_ALL)
-        #req.send_experiment_completion_rpc()
-
