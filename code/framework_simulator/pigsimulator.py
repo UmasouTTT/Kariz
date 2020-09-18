@@ -9,6 +9,7 @@ import utils.pig as pig
 import time
 import scheduler.bsp as bsp
 
+
 # write a class to build schedule dag in pig
 NOCACHE = 0
 KARIZ = 1

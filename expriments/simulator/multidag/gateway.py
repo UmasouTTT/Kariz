@@ -91,7 +91,3 @@ class Workload:
         
         print(Fore.YELLOW, 'Experiment was running for %d'%((datetime.datetime.now() - start_time).total_seconds()), 
                 Fore.LIGHTRED_EX, 'Number of pending DAGs', len(self.pendings), Style.RESET_ALL)
-
-        with open('multidag_run.json', 'a+') as fd:
-            fd.write(json.dumps(self.dags_stats))
-            fd.write(',\n')

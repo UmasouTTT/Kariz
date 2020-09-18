@@ -369,7 +369,6 @@ def load_tpc_dags_from_string(g_strs, object_store):
     raw_g_str = g_strs.split('#')[1:]
     for g_str in raw_g_str:
         g = build_tpc_dags_from_string(g_str, object_store)
-        print(g.gp.id, g)
         graphs_pool[g.gp.id] = g
     return graphs_pool
 
