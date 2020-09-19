@@ -59,7 +59,7 @@ class Kariz:
 
     def __init__(self):
         global _kariz
-        fpath = '/home/mania/Northeastern/MoC/Kariz/expriments/simulator/multidag/config/inputs.csv'
+        fpath = '/local0/Kariz/expriments/simulator/multidag/config/inputs.csv'
         self.object_store = objst.load_object_meta(fpath)
 
         # a thread to process the incoming dags

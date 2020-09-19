@@ -35,14 +35,21 @@ job_name = sys.argv[6]
 runtime_reduction = cached_size*(remote_runtime - cache_runtime)//total_size if total_size else 0
 execution_time = remote_runtime - runtime_reduction
 
+if execution_time < 10:
+    sleep_time = execution_time
+elif execution_time//10 < 10:
+    sleep_time = 10
+else:
+    sleep_time = execution_time//10
+
 if total_size:
     print(Fore.LIGHTYELLOW_EX, "DAG", dag_name, "for stage", stage_name, "Cached data size:", cached_size, "Cache runtime:", cache_runtime,
             "Total data size:", total_size, "Remote runtime:", remote_runtime,
-            "execution time:", execution_time, Fore.LIGHTBLUE_EX, "Sleep for ", execution_time, Style.RESET_ALL)
+            "execution time:", execution_time, Fore.LIGHTBLUE_EX, "Sleep for ", sleep_time, Style.RESET_ALL)
 else:
     print(Fore.WHITE, "DAG", dag_name, "for stage", stage_name, "Cached data size:", cached_size, "Cache runtime:", cache_runtime,
             "Total data size:", total_size, "Remote runtime:", remote_runtime,
-            "execution time:", execution_time, Fore.LIGHTBLUE_EX, "Sleep for ", execution_time, Style.RESET_ALL)
+            "execution time:", execution_time, Fore.LIGHTBLUE_EX, "Sleep for ", sleep_time, Style.RESET_ALL)
 
 print(json.dumps({'cached_size': cached_size, 'total_size': total_size,
             'runtime': execution_time, 'improvement': remote_runtime - execution_time,
@@ -52,4 +59,4 @@ print(json.dumps({'cached_size': cached_size, 'total_size': total_size,
 
 
 # Sleep for the execution time
-time.sleep(execution_time)
+time.sleep(sleep_time)

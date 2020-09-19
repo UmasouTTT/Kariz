@@ -65,8 +65,7 @@ class Workload:
 
     def run(self, dag_name):
         start_time = datetime.datetime.now()
-        stats = self.submit_dag(dag_name)
-        runtime = (datetime.datetime.now() - start_time).total_seconds()
+        stats, runtime = self.submit_dag(dag_name)
         with self.pendings_mutex.writer_lock():
           #  self.pendings.remove(threading.current_thread())
             self.dags_stats[dag_name] = {
@@ -76,8 +75,10 @@ class Workload:
 
     def start_experiment(self):
         elapsed_time = 0;
+        req.clear_cache()
         # initialize a timer that issues submit DAG every two seconds
         self.pendings = []
+        self.dags_stats = {}
         start_time = datetime.datetime.now()  
         for gid in self.dags:
             t = Thread(target=self.run, args=(gid,))
@@ -91,3 +92,4 @@ class Workload:
         
         print(Fore.YELLOW, 'Experiment was running for %d'%((datetime.datetime.now() - start_time).total_seconds()), 
                 Fore.LIGHTRED_EX, 'Number of pending DAGs', len(self.pendings), Style.RESET_ALL)
+        return self.dags_stats

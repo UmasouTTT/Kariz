@@ -29,10 +29,10 @@ def start_pig_simulator(g):
     req.send_stage_start_rpc(req.serialize_stage(g))
 
     time.sleep(g.gp.queue_time)
-    stats = bsp.execute_dag(g)
+    stats, dag_runtime = bsp.execute_dag(g)
 
     req.send_dag_completion_rpc(req.serialize_dag_complete(g))
-    return stats
+    return stats, dag_runtime
     # build cache plans
     '''
     req.submit_new_dag(g)

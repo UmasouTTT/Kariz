@@ -23,9 +23,9 @@ def submit_and_execute_stage(g, ready=[], stats=[]):
     req.send_stage_start_rpc(req.serialize_stage(g))
     processes = []
     for v in ready:
-        frameworksim = '/home/mania/Northeastern/MoC/Kariz/code/framework_simulator'
+        frameworksim = '/local0/Kariz/code/framework_simulator'
         program = 'runner.py'
-        g.vp.job[v].predict_runtime(10, 100)
+        g.vp.job[v].predict_runtime(4, 10)
         inputdir = g.vp.job[v].inputs
         cache_runtime = g.vp.job[v].runtime_cache
         remote_runtime = g.vp.job[v].runtime_remote
@@ -35,14 +35,19 @@ def submit_and_execute_stage(g, ready=[], stats=[]):
                                            str(g.vp.vid[v])], stderr=subprocess.PIPE))
 
     jobs_status = dict(zip(ready, [p.wait()  for p in processes]))
-
+    
+    stage_runtime = 0
     for p in processes:
         stdout, stderr = p.communicate()
-        stats.append(json.loads(stderr.decode()))
+        stat = json.loads(stderr.decode())
+        if stage_runtime < stat['runtime']:
+            stage_runtime = stat['runtime']
+        stats.append(stat)
+
 
     for v in jobs_status:
         g.vp['status'][v] = 1 if not jobs_status[v] else jobs_status[v]
-    pass
+    return stage_runtime
 
 def schedule(g):
     sort = gt.topological_sort(g)
@@ -64,12 +69,14 @@ def schedule(g):
 
 def execute_dag(g):
     stats = []
+    dag_runtime = 0
     while True:
         to_be_executed = schedule(g)
         if not len(to_be_executed):
             break
-        submit_and_execute_stage(g, to_be_executed, stats)
-    return stats
+        stage_runtime = submit_and_execute_stage(g, to_be_executed, stats)
+        dag_runtime += stage_runtime
+    return stats, dag_runtime
 
 
 def assign_stages(g):
