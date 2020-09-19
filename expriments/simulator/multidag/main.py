@@ -22,11 +22,11 @@ def load_synthetic_stream_graphs(fpath):
             workload.load_graphs_fromstring(wstr)
             runtime_stats[index] = workload.start_experiment()
     print(Fore.RED, 'End-to-end experiment runtime %d'%((datetime.datetime.now() - start_time).total_seconds()), Style.RESET_ALL)
-    with open('multidag_run_md_8_cmr.json', 'w') as fd:
+    with open('multidag_run_md_6_cmr.json', 'w') as fd:
         fd.write(json.dumps(runtime_stats))
 
 
 #synthetic_worload.g
-load_synthetic_stream_graphs('./config/synthetic_worload_md_8.g')
+load_synthetic_stream_graphs('./config/synthetic_worload_md_6.g')
 
 
