@@ -43,6 +43,7 @@ class Workload:
         self.object_store = objs.load_object_meta('./config/inputs.csv')
         self.pendings_mutex = RWLock()
         self.dags_stats = {}
+        self.next_start = 0
         pass
 
     def load_graphs(self, fpath):
@@ -67,9 +68,10 @@ class Workload:
         start_time = datetime.datetime.now()
         stats, runtime = self.submit_dag(dag_name)
         with self.pendings_mutex.writer_lock():
-          #  self.pendings.remove(threading.current_thread())
+            self.pendings.remove(threading.current_thread())
             self.dags_stats[dag_name] = {
                 'stats': stats, 'name': dag_name, 'runtime': runtime}
+            self.next_start = runtime
         print(Fore.LIGHTRED_EX, 'DAG', dag_name, ' was finished in', runtime, Style.RESET_ALL)
         return
 
@@ -78,18 +80,33 @@ class Workload:
         req.clear_cache()
         # initialize a timer that issues submit DAG every two seconds
         self.pendings = []
+        pendings = []
         self.dags_stats = {}
+        start_times = {}
         start_time = datetime.datetime.now()  
-        for gid in self.dags:
+        for _id, gid in enumerate(self.dags):
             t = Thread(target=self.run, args=(gid,))
             with self.pendings_mutex.writer_lock():
                 self.pendings.append(t)
+                start_times[gid] = self.next_start
+            pendings.append(t)
             t.start()
 
-        print(Fore.LIGHTRED_EX, 'Number of pending DAGs', len(self.pendings), Style.RESET_ALL)
-        for t in self.pendings:
+            print(Fore.LIGHTRED_EX, 'Number of pending DAGs', len(self.pendings), Style.RESET_ALL)
+            while True:
+                with self.pendings_mutex.reader_lock():
+                    if len(self.pendings) < 10:
+                        print('break')
+                        break
+                
+
+
+        for t in pendings:
             t.join()
         
         print(Fore.YELLOW, 'Experiment was running for %d'%((datetime.datetime.now() - start_time).total_seconds()), 
                 Fore.LIGHTRED_EX, 'Number of pending DAGs', len(self.pendings), Style.RESET_ALL)
-        return self.dags_stats
+
+        results = {'statistics': self.dags_stats,
+                'start_time': start_times}
+        return results
