@@ -35,7 +35,7 @@ job_name = sys.argv[6]
 runtime_reduction = cached_size*(remote_runtime - cache_runtime)//total_size if total_size else 0
 execution_time = remote_runtime - runtime_reduction
 
-if execution_time >= 0:
+if execution_time <= 10:
     sleep_time = execution_time
 elif execution_time//10 < 10:
     sleep_time = 10

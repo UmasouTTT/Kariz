@@ -32,7 +32,7 @@ def start_pig_simulator(g):
     stats, dag_runtime = bsp.execute_dag(g)
 
     req.send_dag_completion_rpc(req.serialize_dag_complete(g))
-    return stats, dag_runtime
+    return stats, dag_runtime, g.gp.start_time + dag_runtime
     # build cache plans
     '''
     req.submit_new_dag(g)

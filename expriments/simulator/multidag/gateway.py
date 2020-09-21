@@ -60,18 +60,20 @@ class Workload:
     def submit_dag(self, dag_name):
         dag = self.dags[dag_name].copy()
         dag.gp.uuid = str(uuid.uuid1())
+        dag.gp.start_time = self.next_start
         print('submit %d'%(dag_name))
         return pigsim.start_pig_simulator(dag)
 
 
     def run(self, dag_name):
         start_time = datetime.datetime.now()
-        stats, runtime = self.submit_dag(dag_name)
+        stats, runtime, finish_time = self.submit_dag(dag_name)
         with self.pendings_mutex.writer_lock():
             self.pendings.remove(threading.current_thread())
             self.dags_stats[dag_name] = {
                 'stats': stats, 'name': dag_name, 'runtime': runtime}
-            self.next_start = runtime
+            if finish_time > self.next_start:
+                self.next_start = finish_time
         print(Fore.LIGHTRED_EX, 'DAG', dag_name, ' was finished in', runtime, Style.RESET_ALL)
         return
 
