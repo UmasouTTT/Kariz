@@ -111,4 +111,4 @@ class Workload:
 
         results = {'statistics': self.dags_stats,
                 'start_time': start_times}
-        return results
+        return results, self.next_start

@@ -19,9 +19,9 @@ def load_synthetic_stream_graphs(fpath):
         workload = gateway.Workload()
         start_time = datetime.datetime.now()
         workload.load_graphs_fromstring(wstr)
-        runtime_stats = workload.start_experiment()
-        runtime_stats['exec_time'] = (datetime.datetime.now() - start_time).total_seconds()
-    print(Fore.RED, 'End-to-end experiment runtime %d'%((datetime.datetime.now() - start_time).total_seconds()), Style.RESET_ALL)
+        runtime_stats, finish_time = workload.start_experiment()
+        runtime_stats['exec_time'] = finish_time
+    print(Fore.RED, 'End-to-end experiment runtime %d, simultation time %d'%(finish_time, (datetime.datetime.now() - start_time).total_seconds()), Style.RESET_ALL)
     with open('md_sw_zipf_pig_80p_sjf.json', 'w') as fd:
         fd.write(json.dumps(runtime_stats))
 
