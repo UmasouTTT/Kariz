@@ -137,7 +137,7 @@ class Job:
 
 
     def predict_runtime(self, remote_bw, cache_bw):
-        self.runtime_remote = math.ceil(sum(self.inputs.values()) / remote_bw) + self.t_compute
-        self.runtime_cache = math.ceil(sum(self.inputs.values()) / cache_bw) + self.t_compute*self.t_compute_ratio
+        self.runtime_remote = math.ceil(8*sum(self.inputs.values()) / remote_bw) + self.t_compute
+        self.runtime_cache = math.ceil(8*sum(self.inputs.values()) / cache_bw) + self.t_compute*self.t_compute_ratio
         self.runtime_partial_cached = self.runtime_remote
         pass
