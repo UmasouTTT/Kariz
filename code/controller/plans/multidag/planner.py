@@ -17,25 +17,29 @@ class Planner:
 
 
     def initialize_signle_dag_planner(self, g):
-        if cfg.single_dag_replacement == 'cmr': # 
-            import controller.plans.singledag.cmr as sdag
-            return sdag.CMR(g, self.remote_bw, self.cache_bw)
-        elif cfg.single_dag_replacement == 'mrd': # minimum reference distance 
-            import controller.plans.singledag.mrd as sdag
-            return sdag.MRD(g)
-        elif cfg.single_dag_replacement == 'cp': # crtitical path
-            import controller.plans.singledag.cp as sdag
-            return sdag.CP(g)
-        elif cfg.single_dag_replacement == 'rcp': # recursive critical path
-            import controller.plans.singledag.rcp as sdag
-            return sdag.RCP(g)
-        elif cfg.single_dag_replacement == 'prcp': # partial recursive critical path
-            import controller.plans.singledag.prcp as sdag
-            return sdag.prcp(g)
-        elif cfg.single_dag_replacement == 'nocache': # partial recursive critical path
-            import controller.plans.singledag.nocache as sdag
-            return sdag.NoCache(g)
-        raise NameError("Please specify single DAG planner")
+        with self.dag_planners_mutex.reader_lock():
+            if cfg.single_dag_replacement == 'cmr': # 
+                import controller.plans.singledag.cmr as sdag
+                if len(self.dag_planners) > 0:
+                    return sdag.CMR(g, self.remote_bw/len(self.dag_planners), self.cache_bw/len(self.dag_planners))
+                else:
+                    return sdag.CMR(g, self.remote_bw, self.cache_bw)
+            elif cfg.single_dag_replacement == 'mrd': # minimum reference distance 
+                import controller.plans.singledag.mrd as sdag
+                return sdag.MRD(g)
+            elif cfg.single_dag_replacement == 'cp': # crtitical path
+                import controller.plans.singledag.cp as sdag
+                return sdag.CP(g)
+            elif cfg.single_dag_replacement == 'rcp': # recursive critical path
+                import controller.plans.singledag.rcp as sdag
+                return sdag.RCP(g)
+            elif cfg.single_dag_replacement == 'prcp': # partial recursive critical path
+                import controller.plans.singledag.prcp as sdag
+                return sdag.prcp(g)
+            elif cfg.single_dag_replacement == 'nocache': # partial recursive critical path
+                import controller.plans.singledag.nocache as sdag
+                return sdag.NoCache(g)
+            raise NameError("Please specify single DAG planner")
 
 
     def add_dag(self, g):
