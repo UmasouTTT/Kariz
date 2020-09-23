@@ -25,7 +25,7 @@ def submit_and_execute_stage(g, ready=[], stats=[]):
     for v in ready:
         frameworksim = '/local0/Kariz/code/framework_simulator'
         program = 'runner.py'
-        g.vp.job[v].predict_runtime(1, 10)
+        g.vp.job[v].predict_runtime(2.5, 10)
         inputdir = g.vp.job[v].inputs
         cache_runtime = g.vp.job[v].runtime_cache
         remote_runtime = g.vp.job[v].runtime_remote
