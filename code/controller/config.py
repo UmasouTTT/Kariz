@@ -1,7 +1,7 @@
 single_dag_replacement='cmr'
 multi_dag_replacement='cmr'
 #multi_dag_replacement='sjf'
-remote_bandwidth=10 # '10gbps'
+remote_bandwidth=25 # '10gbps'
 cache_bandwidth=100 #'100gbps'
 
 controller_port=3188

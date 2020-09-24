@@ -93,7 +93,6 @@ class Workload:
                 start_times[gid] = self.next_start
             pendings.append(t)
             t.start()
-
             print(Fore.LIGHTRED_EX, 'Number of pending DAGs', len(self.pendings), Style.RESET_ALL)
             while True:
                 with self.pendings_mutex.reader_lock():

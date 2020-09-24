@@ -22,11 +22,11 @@ def load_synthetic_stream_graphs(fpath):
         runtime_stats, finish_time = workload.start_experiment()
         runtime_stats['exec_time'] = finish_time
     print(Fore.RED, 'End-to-end experiment runtime %d, simultation time %d'%(finish_time, (datetime.datetime.now() - start_time).total_seconds()), Style.RESET_ALL)
-    with open('md_sw_zipf_pig_80p_sjf.json', 'w') as fd:
+    with open('md_sw_zipf_pig_20p_cmr.json', 'w') as fd:
         fd.write(json.dumps(runtime_stats))
 
 
 #synthetic_worload.g
-load_synthetic_stream_graphs('./config/zipf_synthetic_worload_md_80p_pig.g')
+load_synthetic_stream_graphs('./config/zipf_synthetic_worload_md_20p_spark.g')
 
 

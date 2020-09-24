@@ -75,7 +75,6 @@ class SJF(Planner):
         print(Fore.LIGHTGREEN_EX, "\t Number of outstanding DAGs:", len(self.dag_planners),
               "Elapsed time:", elapsed_time, Fore.GREEN, "Outstanding prefetching bytes",
               outstanding_prefetch, Style.RESET_ALL)
-
         self.stats.append({'runtime': elapsed_time.total_seconds(), 'n_dags': len(self.dag_planners),
                            'prefetch_MB': outstanding_prefetch})
 
@@ -109,6 +108,8 @@ class SJF(Planner):
                 # self.bw_sb.inject(plan.size)
                 print(Fore.LIGHTGREEN_EX, "\t plan ", plan.data, ' is ',
                       print_friendy[plan.type], 'plan score is', plan.sscore, 'status', plan.status, Style.RESET_ALL)
+                for f in plan.data:
+                    self.prefetch_count += plan.data[f]['size']
                 self.all_plan[plan.uuid].status = 1
                 plan.update_status()
             plan.type = 0
@@ -153,10 +154,10 @@ class SJF(Planner):
         return plans
 
 
-    def end_of_experiment_alert(self):
-        df = pd.DataFrame(self.stats)
-        with open("scalability_test.csv", 'a') as fd:
-            df.to_csv(fd, index=False, header=False)
-        # reset score board
-        #self.bw_sb.reset()
-        pass
+    #def end_of_experiment_alert(self):
+    #    df = pd.DataFrame(self.stats)
+    #    with open("scalability_test.csv", 'a') as fd:
+    #        df.to_csv(fd, index=False, header=False)
+    #    # reset score board
+    #    #self.bw_sb.reset()
+    #    pass

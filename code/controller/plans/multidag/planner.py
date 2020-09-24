@@ -14,6 +14,7 @@ class Planner:
         self.remote_bw = cfg.remote_bandwidth  # 10Gbps = 1.2 GBps = 1200 MBps = 1200
         self.cache_bw = cfg.cache_bandwidth  # 10Gbps = 1.2 GBps = 1200 MBps = 1200
         self.dag_planners_mutex = RWLock()
+        self.prefetch_count = 0
 
 
     def initialize_signle_dag_planner(self, g):
@@ -71,4 +72,4 @@ class Planner:
         # FIXME this should the cache
 
     def end_of_experiment_alert(self):
-        pass
+        print("---------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", self.prefetch_count)

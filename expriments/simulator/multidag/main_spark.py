@@ -8,6 +8,7 @@ import gateway
 import datetime
 import json
 from colorama import Fore, Style
+import utils.requester as req
 
 
 #workload.load_graphs('config/synthetic_dags_2_1_sharing.g')
@@ -25,11 +26,12 @@ def load_synthetic_stream_graphs(fpath):
 
 #    with open('mdmc_sw_zipf_spark_80p_512_isolated.json', 'w') as fd:
 #        fd.write(json.dumps(runtime_stats))
-    with open('mc_sw_zipf_spark_80p_512_sjf.json', 'w') as fd:
+    with open('mc_sw_zipf_spark_20p_1Tcmr.json', 'w') as fd:
         fd.write(json.dumps(runtime_stats))
+    req.send_experiment_completion_rpc()
 
 
 #synthetic_worload.g
-load_synthetic_stream_graphs('./config/zipf_sw_mdmc_spark_80p.g')
+load_synthetic_stream_graphs('./config/zipf_sw_mdmc_spark_20p.g')
 
 
