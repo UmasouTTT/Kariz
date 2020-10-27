@@ -10,7 +10,7 @@ import ast
 import utils.graph as graph
 import utils.gbuilders as gbuilder
 import controller.config as cfg
-import utils.objectstore as objst
+import d3n.metadata as objst
 from colorama import Fore, Style
 
 _kariz = None
@@ -59,9 +59,10 @@ class Kariz:
 
     def __init__(self):
         global _kariz
-        fpath = '/local0/Kariz/expriments/simulator/multidag/config/inputs.csv'
-        self.object_store = objst.load_object_meta(fpath)
-
+        #fpath = '/local0/Kariz/expriments/simulator/multidag/config/inputs.csv'
+        self.object_store =  objst.ObjectStore()
+        self.object_store.load_metadata()
+        
         # a thread to process the incoming dags
         self.gq = queue.Queue();
         self.gt = threading.Thread(target=self.gq_worker)
