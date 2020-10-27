@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# config this
 rgw_host = "192.168.35.41"
 rgw_port = 80
 swift_user = 'testuser:swift'

@@ -1,0 +1,10 @@
+Flask
+pandas
+numpy
+matplotlib
+Connexion
+boto
+boto3
+hdfs
+connexion[swagger-ui]
+swiftclient
