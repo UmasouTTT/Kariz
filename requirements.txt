@@ -6,5 +6,4 @@ Connexion
 boto
 boto3
 hdfs
-connexion[swagger-ui]
-swiftclient
+python-swiftclient
