@@ -9,7 +9,7 @@ fi
 ip_forward=`cat /proc/sys/net/ipv4/ip_forward`
 
 if [ "${ip_forward}" -eq "0" ]; then
-   echo 1 > /proc/sys/net/ipv4/ip_forward
+   sudo bash -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
 fi
 
 
