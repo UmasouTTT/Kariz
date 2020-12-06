@@ -20,7 +20,7 @@ port=$3
 echo "Enable port forwarding on ${SRC}, ${DEST}, ${port}"
 
 
-iptables -t nat -A PREROUTING -p tcp -d ${SRC} --dport ${port} -j DNAT --to ${DEST}:${port}
-iptables -A FORWARD -p tcp -d ${DEST} --dport ${port} -j ACCEPT
+sudo bash -c "iptables -t nat -A PREROUTING -p tcp -d ${SRC} --dport ${port} -j DNAT --to ${DEST}:${port}"
+sudo bash -c "iptables -A FORWARD -p tcp -d ${DEST} --dport ${port} -j ACCEPT"
 
 
