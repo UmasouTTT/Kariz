@@ -7,16 +7,11 @@ import math
 from colorama import Fore, Style
 
 class ObjectStore():
-   def __init__(self):
-        self.conn = self.connect_swift(); 
-        self.token = self.get_token();
-        self.metadata = {}
-
-class ObjectStore():
     def __init__(self):
-        self.conn = self.connect_swift();
-        self.token = self.get_token();
+        self.conn = None #self.connect_swift();
+        self.token = None #self.get_token();
         self.metadata = {}
+        pass
 
     def connect_swift(self):
         url = 'http://%s:%d/auth/1.0' % (cfg.rgw_host, cfg.rgw_port)
@@ -41,6 +36,7 @@ class ObjectStore():
 
     def load_metadata(self):
         metadata = {}
+        return metadata
         metadata_swift = self.conn.get_container(cfg.bucket_name)[1]
         for data in metadata_swift:
             full_name = data['name'];

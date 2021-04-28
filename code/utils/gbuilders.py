@@ -238,8 +238,10 @@ def serialize_synthetic_graph(g):
     return ser_graph
 
 
-def deserialize_synthetic_graph(g_str, object_store):
+def deserialize_graph(g_str, object_store):
     jgraph = json.loads(g_str)
+    print(json.dumps(jgraph, indent = 4))
+
     g = gt.Graph(directed=True)
     g.gp['id'] = g.new_graph_property("int", jgraph['id'])
     g.gp['uuid'] = g.new_graph_property("string", jgraph['uuid'])
@@ -254,7 +256,7 @@ def deserialize_synthetic_graph(g_str, object_store):
     g.vp['reduction_ratio'] = g.new_vertex_property("float")
     g.vp['inputs'] = g.new_vertex_property("string")
     g.vp['job'] = g.new_vertex_property("object")
-    g.vp['vid'] = g.new_vertex_property("int")
+    g.vp['vid'] = g.new_vertex_property("string")
     g.vp['color'] = g.new_vertex_property("string")
     g.vp['status'] = g.new_vertex_property("int")
     g.vp['stage_id'] = g.new_vertex_property("int")
@@ -263,15 +265,16 @@ def deserialize_synthetic_graph(g_str, object_store):
     vid_to_v = {}
     for vmeta in jgraph['nodes']:
         v = g.add_vertex()
-        vid_to_v[vmeta['vid']] = v
+        vid_to_v[vmeta["vid"]] = v
         g.vp.vid[v] = vmeta['vid']
         g.vp.job[v] = job.Job()
         g.vp.job[v].id = vmeta['vid']
-        g.vp.job[v].initialize(vmeta['inputs'], vmeta['compute_runtime'], vmeta['reduction_ratio'], object_store)
+        #g.vp.job[v].initialize(vmeta['inputs'], vmeta['compute_runtime'], vmeta['reduction_ratio'], object_store)
+        g.vp.job[v].initialize(vmeta['inputs'], object_store)
         g.vp.color[v] = '#fb8072' if len(g.vp.inputs[v]) > 0 else '#bdbdbd'
 
     for emeta in jgraph['edges']:
-        g.add_edge(vid_to_v[emeta['src']], vid_to_v[emeta['dst']]) 
+        g.add_edge(vid_to_v[emeta['source']], vid_to_v[emeta['target']]) 
     #gt.graph_draw(g, vertex_text=g.vp.inputs, vertex_color=g.vp.color,
     #        vertex_fill_color=g.vp.color, size=(700, 700), output='graph%d.png'%(g.gp.id))
     return g

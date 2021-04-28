@@ -23,7 +23,7 @@ class Mirab(Planner):
         self.alpha = 0.5
         self.cache_block_size = 1  # 1MBype
         self.stats = []
-        self.object_store = self.build_object_store(object_store)
+        self.object_store = {} #self.build_object_store(object_store)
         self.all_plan = {}
         score_board_time = 60000 # 600 second
         #self.bw_sb = sb.ScoreBoard(score_board_time, self.available_bandwidth)

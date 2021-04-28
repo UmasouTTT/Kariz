@@ -122,11 +122,11 @@ class Job:
     def config_inputs(self, inputs):
         self.inputs = inputs
 
-    def initialize(self, inputs_str, t_compute, compute_ratio, object_store):
-        for iobj in ' '.join(inputs_str.split(':')).split() :
-            self.inputs[iobj] = object_store[iobj]
-        self.t_compute = t_compute
-        self.t_compute_ratio = compute_ratio
+    def initialize(self, inputs, object_store):
+        for iobj in inputs:
+            self.inputs[iobj] = 0 #FIXME get obj input size from backend
+        #self.t_compute = controller.estimate_runtime()
+        #self.t_compute_ratio = compute_ratio
 
     def initialize_tpch(self, inputs_str, feature, t_compute, compute_ratio, object_store):
         for iobj in ' '.join(inputs_str.split(':')).split() :

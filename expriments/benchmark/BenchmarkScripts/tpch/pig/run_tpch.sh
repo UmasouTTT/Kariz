@@ -21,6 +21,7 @@ READ_TYPE=$4
 
 shift; shift; shift; shift;
 HADOOP_OPTS="$@"
+#HADOOP_OPTS="-Dagentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=bu-23-115:5005 $HADOOP_OPTS"
 
 # Check environment variables
 if [ "$PIG_HOME" == "" ]; then
@@ -38,11 +39,7 @@ fi
 declare cmd=""
 declare total_pig_times=0
 
-<<<<<<< HEAD
-for ((  i = 7 ;  i <= 7;  i++  )) # FIXME: it should be 22, I changed it for prediction
-=======
-for ((  i = 6 ;  i <= 6;  i++  )) # FIXME: it should be 22, I changed it for prediction
->>>>>>> 3a5da70887c0df4d4d829c49dc5c864e5218999f
+for ((  i = 1;  i <= 1;  i++  )) # FIXME: it should be 22, I changed it for prediction
 do
     declare pig_times=0
     

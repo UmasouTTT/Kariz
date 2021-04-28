@@ -20,7 +20,7 @@ class Kariz:
         while True:
             graphstr = self.gq.get(block=True, timeout=None)
             if graphstr:
-                g = gbuilder.deserialize_synthetic_graph(graphstr, self.object_store)
+                g = gbuilder.deserialize_graph(graphstr, self.object_store)
                 self.controller.add_dag(g)
                 self.gq.task_done()
 
