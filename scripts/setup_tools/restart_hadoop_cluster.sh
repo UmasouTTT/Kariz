@@ -13,9 +13,9 @@ stop-yarn.sh
 echo "${GREEN}Stop DFS${NC}"
 stop-dfs.sh
 
-
 echo "${GREEN}Delete tmp floders${NC}"
 ansible-playbook delete_hadoop_folder.yml 
+
 
 echo "${GREEN}Fortmat Namenode${NC}"
 hadoop namenode -format
