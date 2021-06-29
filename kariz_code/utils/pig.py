@@ -27,8 +27,10 @@ def build_stages(g):
             if not scheduled[j]: new_stage.add(j) 
         for j in stg_jobs:
             for ch in g.jobs[j].children.keys():
-                if scheduled[ch]: continue
-                if g.jobs[j].blevel -1 > g.jobs[ch].blevel and len(g.jobs[ch].parents) > 1 : continue 
+                if scheduled[ch]:
+                    continue
+                if g.jobs[j].blevel -1 > g.jobs[ch].blevel and len(g.jobs[ch].parents) > 1 :
+                    continue
                 new_stage.add(ch)
         for j in new_stage: 
             scheduled[j] = True
@@ -36,12 +38,12 @@ def build_stages(g):
             cur_stage.add_job(g.jobs[j])          
         stages[csi + 1] = new_stage
         cur_stage.finish_add_jobs()
-        cur_stage.stage_id = csi+1 
-        g.stages[csi+1] = cur_stage
+        cur_stage.stage_id = csi + 1
+        g.stages[csi + 1] = cur_stage
         g.total_runtime += cur_stage.get_runtime()
         
     g.schedule = stages 
-    return g;
+    return g
 
 def input_scaling(g, j, prefetch_plan):
     scale_factor = j['ctime']/(g.timeValue[j['job']] - g.cachedtimeValue[j['job']]); #csz : cache size
@@ -84,7 +86,7 @@ def build_kariz_stage_priorities_helper(g, s, plans_container): # s stands for s
     while t_imprv:
         plan, t_imprv = s.get_next_plan(priority)
         if not t_imprv:
-            break;
+            break
         plan.dag_id = g.dag_id
         plan.stage_id = s.stage_id
         plans_container.add_cache_plan(plan, s)
@@ -100,7 +102,7 @@ def build_kariz_priorities(g):
         stage = g.stages[s]
         build_kariz_stage_priorities_helper(g, stage, plans_container)
     
-    return plans_container;
+    return plans_container
 
 def build_rcp_stage_priorities_helper(g, s, plans_container): # s stands for stage
     priority = 1;

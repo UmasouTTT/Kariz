@@ -101,7 +101,7 @@ class Stage:
             if e.est_runtime_remote == e.est_runtime_cache:
                 continue
             
-            scale_factor =  (t_imprv_old + t_imprv)/(e.est_runtime_remote - e.est_runtime_cache)
+            scale_factor = (t_imprv_old + t_imprv)/(e.est_runtime_remote - e.est_runtime_cache)
             #input_scale = lambda input_size: math.ceil((input_size*(t_imprv_old + t_imprv))/(e.est_runtime_remote - e.est_runtime_cache)) 
             # FIXME: prepare inputs, this should represent the actual strides 
             for i in e.inputs:
@@ -288,7 +288,8 @@ class PlansContainer:
         cache_plan = []
         if stage in self.cp_by_stage:
             for pp in self.cp_by_stage[stage]:
-                if len(self.cp_by_stage[stage][pp].data) == 0: continue
+                if len(self.cp_by_stage[stage][pp].data) == 0:
+                    continue
                 cache_plan.append(self.cp_by_stage[stage][pp])
         return cache_plan
     

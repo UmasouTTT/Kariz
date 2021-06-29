@@ -73,7 +73,7 @@ class DAGPlanner:
         return prefetch_plans
 
     ''' O(n), max n = # of plans in the DAG, is called per stage '''
-    def get_prefetch_plans(self, bandwidth=1200, cur_stg_index = 0):
+    def get_prefetch_plans(self, bandwidth=1200, cur_stg_index=0):
         prefetch_plans = []
         f_stg_index = len(self.g.stages) - 1# get furthest stage
         
@@ -83,11 +83,12 @@ class DAGPlanner:
         current_stage = self.g.plans_container.stages[cur_stg_index]    
         
         if cur_stg_index != f_stg_index:
-            for stg in range(cur_stg_index + 1, len(self.g.stages)): # loop over future stages plans
-                if stg not in self.g.plans_container.cp_by_stage: continue
+            for stg in range(cur_stg_index + 1, len(self.g.stages)):# loop over future stages plans
+                if stg not in self.g.plans_container.cp_by_stage:
+                    continue
                 plans_in_stage = self.g.plans_container.cp_by_stage[stg]
                 feasible = 1
-                for pp in plans_in_stage: # pp stands for priority plan
+                for pp in plans_in_stage:# pp stands for priority plan
                     plan = plans_in_stage[pp] 
                     plan_est_ft = plan.stage.start_time - math.ceil(plan.size/bandwidth) # Estimated fetch time of the plan
                     
@@ -96,7 +97,7 @@ class DAGPlanner:
                         feasible = 0
                         continue
                      
-                    if plan_est_ft < self.g.plans_container.stages[cur_stg_index+1].start_time:
+                    if plan_est_ft < self.g.plans_container.stages[cur_stg_index + 1].start_time:
                         pplan = copy.deepcopy(plan)
                         pplan.type = 1 # prefetch
                         prefetch_plans.append(pplan)

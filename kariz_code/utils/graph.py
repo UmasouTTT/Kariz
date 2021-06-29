@@ -23,7 +23,7 @@ class Type(enum.IntEnum):
 
 #Class to represent a graph 
 class Graph: 
-    def __init__(self, n_vertices = 0, type = Type.complex, name='graph'):
+    def __init__(self, n_vertices=0, type=Type.complex, name='graph'):
         self.dag_id = uuid.uuid1()
         self.n_vertices = n_vertices 
         self.jobs = {}
@@ -333,14 +333,14 @@ def pigstr_to_graph(raw_execplan, objectstore):
     ls = raw_execplan.split("\n")
     start_new_job = False
     v_index = -1
-    vertices= {}
+    vertices = {}
     vertices_size = {}
     for x in ls:
         if x.startswith('DAG'):
             dag_id = x.split(':')[1].replace('\'', '')
             
         if x.startswith("#"):
-            continue;
+            continue
 
         if x.startswith("MapReduce node:"):
             v_index = v_index + 1
@@ -361,7 +361,7 @@ def pigstr_to_graph(raw_execplan, objectstore):
         if x.find("Load") != -1:
             result = x.split('(')[1].split(')')[0]
             extra = result.split(":")[-1]
-            inputs =  result.replace(":" + extra, "")
+            inputs = result.replace(":" + extra, "")
             inputs = inputs.split(',')
             if 'inputs' not in vertices[v_index]:
                 vertices[v_index]['inputs'] = {}
