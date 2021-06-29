@@ -23,11 +23,13 @@ class Mirab:
         self.fairness_scores[g.dag_id] = 1
         
     def markas_pinned_datasets(self, dag_id, plan):
-        if dag_id not in self.dag_planners: return None
+        if dag_id not in self.dag_planners:
+            return None
         self.dag_planners[dag_id].markas_pinned_datasets(plan)
             
     def unpinned_completed_stage(self, dag_id, stage_id):
-        if dag_id not in self.dag_planners: return None
+        if dag_id not in self.dag_planners:
+            return None
         self.dag_planners[dag_id].unpinned_completed_stage(stage_id)
         
     def delete_dag(self, dag_id):
@@ -82,11 +84,13 @@ class Mirab:
         
     def get_plans(self, dag_id, stage):
         plans = [] 
-        if len(self.dag_planners) <= 0: return plans
+        if len(self.dag_planners) <= 0:
+            return plans
         available_bw = self.available_bandwidth/len(self.dag_planners) # give every Job a fair share of DAG
         for gid in self.dag_planners:
                 plans.extend(self.dag_planners[gid].get_next_plans(available_bw))
-        if dag_id in self.dag_planners: self.dag_planners[dag_id].current_running_stage = stage
+        if dag_id in self.dag_planners:
+            self.dag_planners[dag_id].current_running_stage = stage
         return plans
         
     def compute_share_scores(self, plans):

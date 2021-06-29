@@ -14,7 +14,7 @@ from colorama import Fore, Style
 
 class DAGPlanner:
     def __init__(self, g):
-        self.g = g;
+        self.g = g
         self.pinned_plans = {}
         self.current_running_stage = -2
         self.current_processed_stage = -2
@@ -27,7 +27,8 @@ class DAGPlanner:
         self.pinned_plans[plan.stage_id].append(plan)
     
     def unpinned_completed_stage(self, stage_id):
-        if stage_id -1 not in self.pinned_plans: return
+        if stage_id -1 not in self.pinned_plans:
+            return
         for p in self.pinned_plans[stage_id -1]:
             print(Fore.LIGHTMAGENTA_EX, 'Mirab unpin completed stage --> DAG: ', self.g.dag_id, 
                   'stage: ' , stage_id  -1, 'data in plan:', p.data, Style.RESET_ALL) 

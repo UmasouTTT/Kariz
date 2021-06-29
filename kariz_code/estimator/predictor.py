@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import sklearn as sk
-import utils.hadoop as hadoop
+import kariz_code.utils.hadoop as hadoop
 import json
 
 class Predictor:
