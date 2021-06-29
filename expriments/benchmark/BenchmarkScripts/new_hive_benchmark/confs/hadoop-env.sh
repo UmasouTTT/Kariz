@@ -42,7 +42,7 @@ export HADOOP_LOG_DIR=/var/hadoop.benchmark/logs
 # File naming remote slave hosts.  $HADOOP_HOME/conf/slaves by default.
 # export HADOOP_SLAVES=${HADOOP_HOME}/conf/slaves
 
-# host:path where hadoop code should be rsync'd from.  Unset by default.
+# host:path where hadoop kariz_code should be rsync'd from.  Unset by default.
 # export HADOOP_MASTER=master:/home/$USER/src/hadoop
 
 # Seconds to sleep between slave commands.  Unset by default.  This

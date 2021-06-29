@@ -83,7 +83,7 @@ if [ ! -f ${HIVE_LIB}/hive-metastore-*.jar ]; then
   exit 2;
 fi
 
-# cli specific code
+# cli specific kariz_code
 if [ ! -f ${HIVE_LIB}/hive-cli-*.jar ]; then
   echo "Missing Hive CLI Jar"
   exit 3;
