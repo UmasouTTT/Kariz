@@ -58,7 +58,7 @@ class Predictor:
 
     def pig_bandwidth_regularization(row):
         if 'Gbps' in row['bw']:
-            row ['bw_i'] = float(row['bw'].replace(r'Gbps', ''))
+            row['bw_i'] = float(row['bw'].replace(r'Gbps', ''))
         elif 'Mbps' in row['bw']:
             row['bw_i'] = int(row['bw'].replace(r'Mbps', ''))/1000
         else:
