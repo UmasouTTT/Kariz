@@ -11,7 +11,7 @@ import daemon
 
 
 cache_port=3188 #FIXME: Later add it as a configuration variable
-cache_host='0.0.0.0'
+cache_host = '0.0.0.0'
 
 
 # Create the application instance
