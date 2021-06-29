@@ -24,6 +24,6 @@ def home():
 
 
 if __name__ == "__main__":
-    collector = api.start_estimator();
-    controller = api.start_controller();
+    collector = api.start_estimator()
+    controller = api.start_controller()
     app.run(debug=True, port=cfg.controller_port,host=cfg.controller_host)
