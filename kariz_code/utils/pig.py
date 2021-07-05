@@ -3,6 +3,7 @@ import math
 import kariz_code.utils.plan as plan
 
 def build_stages(g):
+    #基于依赖关系构建stage
     blevels = g.blevel()
     scheduled = [False]*g.n_vertices
     stages = {}
@@ -12,19 +13,21 @@ def build_stages(g):
     for j in stages[0]: 
         scheduled[j] = True
         g.jobs[j].slevel = 0
-        cur_stage.add_job(g.jobs[j])  
+        cur_stage.add_job(g.jobs[j])
+    #获取stage 运行时间最长和第二长的task
     cur_stage.finish_add_jobs()
     cur_stage.stage_id = 0
     g.stages[0] = cur_stage
     g.total_runtime += cur_stage.get_runtime()
     
     for blvl in range(max(blevels), 0, -1):
-        csi = max(blevels) - blvl # current stage index
+        csi = max(blevels) - blvl# current stage index
         stg_jobs = blevels[blvl]
         new_stage = set()
         cur_stage = plan.Stage(csi)
         for j in blevels[blvl - 1]:
-            if not scheduled[j]: new_stage.add(j) 
+            if not scheduled[j]:
+                new_stage.add(j)
         for j in stg_jobs:
             for ch in g.jobs[j].children.keys():
                 if scheduled[ch]:

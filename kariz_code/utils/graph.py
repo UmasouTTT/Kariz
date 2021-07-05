@@ -134,6 +134,7 @@ class Graph:
     def get_sum_static_runtime(self, v):
         return self.jobs[v]
 
+#
     def blevel(self):
         if self.blevels:
             return self.blevels
@@ -147,7 +148,8 @@ class Graph:
         
         while queue:
             s = queue.pop(0)
-            if visited[s] : continue
+            if visited[s]:
+                continue
             
             max_children_blvl = -1
             for child in self.jobs[s].children:
@@ -161,7 +163,8 @@ class Graph:
             if max_children_blvl != -1:
                 self.jobs[s].blevel = max_children_blvl + 1
                 visited[s] = True
-                if self.jobs[s].blevel not in self.blevels: self.blevels[self.jobs[s].blevel] = [] 
+                if self.jobs[s].blevel not in self.blevels:
+                    self.blevels[self.jobs[s].blevel] = []
                 self.blevels[self.jobs[s].blevel].append(s)
                 queue.extend(self.jobs[s].parents.keys())
         
@@ -416,3 +419,10 @@ def jsonstr_to_graph(raw_execplan):
             g.add_edge(j['id'], ch, 0)
     g.config_misestimated_jobs()     
     return g
+
+
+
+#test
+raw_execplan =
+sparkstr_to_graph(raw_execplan, None)
+
