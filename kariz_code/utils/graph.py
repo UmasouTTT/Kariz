@@ -423,6 +423,12 @@ def jsonstr_to_graph(raw_execplan):
 
 
 #test
-# raw_execplan =
-# sparkstr_to_graph(raw_execplan, None)
+raw_execplan = '''
+(2) ShuffledRDD[21] at reduceByKey at <console>:24 []
++-(2) MapPartitionsRDD[20] at map at <console>:24 []
+    |  MapPartitionsRDD[19] at flatMap at <console>:24 []
+    |  README.md MapPartitionsRDD[18] at textFile at <console>:24 []
+    |  README.md HadoopRDD[17] at <console>:24 []
+'''
+sparkstr_to_graph(raw_execplan, None)
 
