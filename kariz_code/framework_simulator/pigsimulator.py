@@ -19,7 +19,7 @@ INFINITE=6
 
 def start_pig_simulator(v):
     cache = KARIZ
-    pig.build_stages(v);
+    pig.build_stages(v)
     # build cache plans
     req.submit_new_dag(v)
     req.notify_stage_start(v, -1)

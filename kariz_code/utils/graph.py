@@ -423,6 +423,6 @@ def jsonstr_to_graph(raw_execplan):
 
 
 #test
-raw_execplan =
-sparkstr_to_graph(raw_execplan, None)
+# raw_execplan =
+# sparkstr_to_graph(raw_execplan, None)
 

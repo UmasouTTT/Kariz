@@ -15,7 +15,7 @@ stage_preplan = {}
 
 def preplan_stage(g, s):
 
-    priority = 1;
+    priority = 1
     preplan = []
 
     print("Stage:", s)
@@ -63,7 +63,7 @@ def preplan_stage(g, s):
             imprv = False
 
     print("Stage preplan:", preplan, "\n")
-    return preplan;
+    return preplan
 
 
 def preplan_dag(g):
@@ -83,6 +83,6 @@ def preplan_dag(g):
         ci = ci + 1
         
     sp = preplan_stage(g, cur_stage)
-    dag_preplan.append({'stage' :  max(blevels) - cur_blevel, 'preplan' : sp})
-    return dag_preplan;
+    dag_preplan.append({'stage' :  max(blevels) - cur_blevel, 'preplan': sp})
+    return dag_preplan
 
