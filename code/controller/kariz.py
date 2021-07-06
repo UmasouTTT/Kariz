@@ -8,7 +8,7 @@ import threading
 import os
 import ast
 import utils.graph as graph
-import utils.gbuilders as gbuilder
+import code.utils.gbuilders as gbuilder
 import controller.config as cfg
 import d3n.metadata as objst
 from colorama import Fore, Style
