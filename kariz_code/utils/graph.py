@@ -69,7 +69,7 @@ class Graph:
 
     def add_new_job(self, value):
         self.jobs[self.n_vertices] = jb.Job(self.n_vertices)
-        self.n_vertices+= 1
+        self.n_vertices += 1
     
     def set_misestimated_jobs(self, mse_jobs):
         for i in range(0, self.n_vertices):
@@ -430,5 +430,5 @@ raw_execplan = '''
     |  README.md MapPartitionsRDD[18] at textFile at <console>:24 []
     |  README.md HadoopRDD[17] at <console>:24 []
 '''
-sparkstr_to_graph(raw_execplan, None)
+#sparkstr_to_graph(raw_execplan, None)
 
