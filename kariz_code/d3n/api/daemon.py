@@ -13,9 +13,9 @@ from datetime import datetime
 from flask import make_response, abort
 
 
-import kariz as kz
-import estimator.collector as col
-import utils.objectstore as objs
+import kariz_code.plans.kariz as kz
+import kariz_code.estimator.collector as col
+import kariz_code.utils.objectstore as objs
 
 g_collector = None
 g_kariz = None

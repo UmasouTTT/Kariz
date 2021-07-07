@@ -45,8 +45,6 @@ class Mirab:
         del self.dag_planners[dag_id]
 
     def online_planner(self, dag_id, stage_id):
-
-
         print(dag_id, stage_id)
         # uppin files from previous stage 
         self.unpinned_completed_stage(dag_id, stage_id)
