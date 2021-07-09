@@ -39,7 +39,7 @@ class Optimal(Planner):
 
     def add_dag(self, g):
         print('G is', g)
-        new_dp = Planner.initialize_signle_dag_planner(self, g);
+        new_dp = Planner.initialize_signle_dag_planner(self, g)
         with self.dag_planners_mutex.writer_lock():
             self.dag_planners[g.gp.id] = new_dp
             self.all_plan.update(g.gp.plans_container.pc_by_uuid)

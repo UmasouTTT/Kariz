@@ -61,7 +61,7 @@ def pigstr_to_graph(raw_execplan, objectstore):
             dag_id = x.split(':')[1].replace('\'', '')
 
         if x.startswith("#"):
-            continue;
+            continue
 
         if x.startswith("MapReduce node:"):
             v_index = v_index + 1

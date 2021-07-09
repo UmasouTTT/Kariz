@@ -121,14 +121,14 @@ class DAGPlanner:
         for p in plans:
             for f in p.data:
                 if f not in stage_footprint:
-                    stage_footprint[f]= {'size': 0, 'access': 0, 'stages' : []}
+                    stage_footprint[f] = {'size': 0, 'access': 0, 'stages' : []}
                 ''' the reason is that the share data is the smallest
                  amount data that is shared with everybody'''
                 if p.data[f]['size'] < stage_footprint[f]['size']: 
                     stage_footprint[f]['size'] = p.data[f]['size']
                 if p.stage_id not in stage_footprint[f]['stages']:
                     stage_footprint[f]['stages'].append(p.stage_id)
-                stage_footprint[f]['access']+=1
+                stage_footprint[f]['access'] += 1
         
         for p in plans:
             for f in p.data:
