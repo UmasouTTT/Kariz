@@ -56,7 +56,7 @@ def prepare_tpc_metadata(fpath):
       elif query == 'tpch':
          tpch_inputs[ds_sz][input_name] = row['n_blocks']
 
-   return tpch_inputs, tpcds_inputs;
+   return tpch_inputs, tpcds_inputs
 
 
 def prepare_tpc_runtimes(fpath):

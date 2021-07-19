@@ -62,7 +62,7 @@ def input_scaling(g, j, prefetch_plan):
 
 
 def build_lru_stage_priorities_helper(g, s, plans_container): # s stands for stage
-    priority = 1;
+    priority = 1
     s.dag_id = g.dag_id
     plans_container.add_stage(s) 
     
@@ -82,7 +82,7 @@ def build_lru_stage_priorities_helper(g, s, plans_container): # s stands for sta
 
 
 def build_kariz_stage_priorities_helper(g, s, plans_container): # s stands for stage
-    priority = 1;
+    priority = 1
     t_imprv = -1
     s.dag_id = g.dag_id
     plans_container.add_stage(s)
@@ -108,7 +108,7 @@ def build_kariz_priorities(g):
     return plans_container
 
 def build_rcp_stage_priorities_helper(g, s, plans_container): # s stands for stage
-    priority = 1;
+    priority = 1
     t_imprv = -1
     s.dag_id = g.dag_id
     plans_container.add_stage(s)
@@ -162,7 +162,7 @@ def build_cp_priorities(g):
 
 
 def build_mrd_stage_priorities_helper(g, s, plans_container): # s stands for stage
-    priority = 1;
+    priority = 1
     plans_container.add_stage(s) 
     
     for j in s.jobs:
@@ -189,7 +189,7 @@ def build_mrd_priorities(g):
         stage = g.stages[s]
         build_mrd_stage_priorities_helper(g, stage, plans_container)
 
-    return plans_container;
+    return plans_container
 
 
 def build_lru_priorities(g):

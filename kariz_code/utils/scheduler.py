@@ -94,9 +94,9 @@ def gang_scheduler(g):
         for p in cache_plans:
             plan = cache_plans[p]
             if not requester.is_plan_cached(plan):
-                print(Fore.LIGHTYELLOW_EX,'\tPlan: ', plan, ' is not cached', Style.RESET_ALL)
+                print(Fore.LIGHTYELLOW_EX, '\tPlan: ', plan, ' is not cached', Style.RESET_ALL)
                 break
-            print(Fore.LIGHTGREEN_EX,'\tPlan: ', plan, ' is cached', Style.RESET_ALL)
+            print(Fore.LIGHTGREEN_EX, '\tPlan: ', plan, ' is cached', Style.RESET_ALL)
             for f in plan.data:
                 cached_inputs[f] = cached_inputs[f] if f in cached_inputs and plan.data[f]['size'] < cached_inputs[f] else plan.data[f]['size']             
             g.update_runtime(plan)

@@ -19,7 +19,7 @@ def submit_new_dag(g):
 def notify_stage_start(g, stage_id):
     path = "/newstage"
     url = base_url + path
-    data = '{"id": "'+ str(g.dag_id) + '", "stage": ' + str(stage_id) + '}'
+    data = '{"id": "' + str(g.dag_id) + '", "stage": ' + str(stage_id) + '}'
     reply = requests.post(url, data=data).text
 
 def complete(g):

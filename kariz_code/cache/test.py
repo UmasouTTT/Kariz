@@ -4,7 +4,7 @@ import utils.randoms as randoms
 
 
 if _inputs is None:
-      inputs = randoms.input_generator_alph();
+      inputs = randoms.input_generator_alph()
 _inputs = {'a': 2, 'b': 9, 'c': 9, 'd': 9, 'e': 9, 'f': 5, 'g': 2, 'h': 2, 'i': 10, 'j': 2, 'k': 10, 'l': 9, 'm': 5, 'n': 4, 'o': 7, 'p': 6, 'q': 3, 'r': 4, 's': 9, 't': 4, 'u': 1, 'v': 2, 'w': 7, 'x': 10, 'y': 4, 'z': 10}
 
 

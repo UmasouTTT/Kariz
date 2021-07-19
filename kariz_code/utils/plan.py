@@ -229,8 +229,8 @@ class Plan:
 
 class PlansContainer:
     def __init__(self, g):
-        self.dag = g;
-        self.id = 0;
+        self.dag = g
+        self.id = 0
         self.cp_by_stage = {} # cache plan by ...
         self.cp_by_priority = {}
         self.plans = []
