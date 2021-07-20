@@ -15,7 +15,7 @@ print_friendy = {0: 'cached', 1: 'prefetched'}
 
 class Optimal(Planner):
     def __init__(self, object_store):
-        Planner.__init__(self);
+        Planner.__init__(self)
         self.cache_block_size = 1  # 1MBype
         self.stats = []
         self.object_store = self.build_object_store(object_store)

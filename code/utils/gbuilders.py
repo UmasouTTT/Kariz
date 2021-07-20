@@ -16,7 +16,7 @@ def str_to_graph(raw_execplan, objectstore):
             g = graph_id_to_graph(gjson, objectstore)
         else:
             g = jsonstr_to_graph(raw_execplan)
-    return g;
+    return g
 
 
 gt_graph_pool = {}
