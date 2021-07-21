@@ -8,8 +8,8 @@ import threading
 import os
 import ast
 
-import utils.graph as graph
-import plans.mrd.min as min
+import kariz_code.utils.graph as graph
+import kariz_code.plans.mrd.min as min
 
 _mrd = None
 
@@ -42,15 +42,15 @@ class MRD:
     def __init__(self):
         global _mrd
         # a thread to process the incoming dags 
-        self.gq = queue.Queue();
+        self.gq = queue.Queue()
         self.gt = threading.Thread(target=self.gq_worker)
         self.gt.start()
         # a thread to process the incoming stage 
-        self.pq = queue.Queue();
+        self.pq = queue.Queue()
         self.pt = threading.Thread(target=self.pq_worker)
         self.pt.start()
         
-        self.dq = queue.Queue();
+        self.dq = queue.Queue()
         self.dt = threading.Thread(target=self.dq_worker)
         self.dt.start()
         

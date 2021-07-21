@@ -164,3 +164,35 @@ dag_id,name,mse_factor,data,stage_id
 0ab447d6-de2f-11eb-bb37-f01898ee79bb,AQ27,0,"{'a18': {'size': 320}, 'b16': {'size': 250}, 'd6': {'size': 277}}",1
 0ab447d6-de2f-11eb-bb37-f01898ee79bb,AQ27,0,{'d': {'size': 25}},2
 0ab447d6-de2f-11eb-bb37-f01898ee79bb,AQ27,0,"{'d20': {'size': 120}, 'd': {'size': 100}}",2
+dag_id,name,mse_factor,data,stage_id
+079fe216-e907-11eb-8d4e-f01898ee79bb,graph,0,{'b20': {'size': 48}},0
+079fe216-e907-11eb-8d4e-f01898ee79bb,graph,0,"{'a20': {'size': 80}, 'b20': {'size': 120}}",0
+079fe216-e907-11eb-8d4e-f01898ee79bb,graph,0,{'d20': {'size': 134}},1
+079fe216-e907-11eb-8d4e-f01898ee79bb,graph,0,"{'c20': {'size': 160}, 'd20': {'size': 200}}",1
+079fe216-e907-11eb-8d4e-f01898ee79bb,graph,0,{'e20': {'size': 100}},2
+079fe216-e907-11eb-8d4e-f01898ee79bb,graph,0,{'d21': {'size': 160}},1
+079fe216-e907-11eb-8d4e-f01898ee79bb,graph,0,"{'c21': {'size': 160}, 'd21': {'size': 240}}",1
+079fe216-e907-11eb-8d4e-f01898ee79bb,graph,0,{'e20': {'size': 100}},2
+079fe216-e907-11eb-8d4e-f01898ee79bb,graph,0,{'e20': {'size': 100}},2
+dag_id,name,mse_factor,data,stage_id
+079fe126-e907-11eb-8d4e-f01898ee79bb,graph,0,"{'c20': {'size': 160}, 'd20': {'size': 200}}",1
+079fe126-e907-11eb-8d4e-f01898ee79bb,graph,0,{'d21': {'size': 160}},1
+079fe126-e907-11eb-8d4e-f01898ee79bb,graph,0,"{'c21': {'size': 160}, 'd21': {'size': 240}}",1
+079fe126-e907-11eb-8d4e-f01898ee79bb,graph,0,{'d20': {'size': 134}},1
+079fe126-e907-11eb-8d4e-f01898ee79bb,graph,0,{'e20': {'size': 100}},2
+dag_id,name,mse_factor,data,stage_id
+87a75510-ea07-11eb-9bd6-f01898ee79bb,graph,0,"{'a21': {'size': 120}, 'a20': {'size': 80}}",0
+87a75510-ea07-11eb-9bd6-f01898ee79bb,graph,0,{'b20': {'size': 48}},0
+87a75510-ea07-11eb-9bd6-f01898ee79bb,graph,0,"{'a20': {'size': 80}, 'b20': {'size': 120}}",0
+87a75510-ea07-11eb-9bd6-f01898ee79bb,graph,0,{'a20': {'size': 32}},0
+87a75510-ea07-11eb-9bd6-f01898ee79bb,graph,0,{'e20': {'size': 100}},2
+87a75510-ea07-11eb-9bd6-f01898ee79bb,graph,0,{'e20': {'size': 100}},2
+dag_id,name,mse_factor,data,stage_id
+87a75132-ea07-11eb-9bd6-f01898ee79bb,graph,0,{'a20': {'size': 32}},0
+87a75132-ea07-11eb-9bd6-f01898ee79bb,graph,0,"{'a21': {'size': 120}, 'a20': {'size': 80}}",0
+87a75132-ea07-11eb-9bd6-f01898ee79bb,graph,0,{'d21': {'size': 160}},1
+87a75132-ea07-11eb-9bd6-f01898ee79bb,graph,0,{'b20': {'size': 48}},0
+87a75132-ea07-11eb-9bd6-f01898ee79bb,graph,0,"{'a20': {'size': 80}, 'b20': {'size': 120}}",0
+87a75132-ea07-11eb-9bd6-f01898ee79bb,graph,0,"{'c21': {'size': 160}, 'd21': {'size': 240}}",1
+87a75132-ea07-11eb-9bd6-f01898ee79bb,graph,0,{'e20': {'size': 100}},2
+87a75132-ea07-11eb-9bd6-f01898ee79bb,graph,0,{'e20': {'size': 100}},2

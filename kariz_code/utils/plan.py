@@ -207,13 +207,13 @@ class Plan:
         self.mrd_distance = 0
 
     def __str__(self):
-        return 'DAG id: ' + str(self.dag_id) + ', stage id: ' + str(self.orig_stage_id) + ', data' +  str(self.data)
+        return 'DAG id: ' + str(self.dag_id) + ', stage id: ' + str(self.orig_stage_id) + ', data' + str(self.data)
     
     def __lt__(self, other):
         if self.wscore != other.wscore:
             return self.wscore < other.wscore
         if self.pscore != other.pscore:
-            return self.pscore <  other.pscore
+            return self.pscore < other.pscore
         if self.sscore != other.sscore:
             return self.sscore < other.sscore
         if self.iscore != other.iscore:
@@ -238,7 +238,7 @@ class PlansContainer:
         self.cache_blocksize = 1
 
     def add_stage(self, s):
-        ps_id = s.stage_id - 1 # previous stage id
+        ps_id = s.stage_id - 1# previous stage id
         if ps_id in self.stages:
             s.start_time = self.stages[ps_id].end_time()
         self.stages[s.stage_id] = s

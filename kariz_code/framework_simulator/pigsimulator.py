@@ -6,19 +6,30 @@ import kariz_code.utils.scheduler as sched
 import kariz_code.utils.requester as req
 import kariz_code.utils.pig as pig
 import time
+import configparser
+
+# get prefetcher from config
+cf = configparser.ConfigParser()
+cf.read("../../config.ini")
 
 # write a class to build schedule dag in pig
+prefetcher = {'NOCACHE': 0,
+              'KARIZ': 1,
+              'MRD': 2,
+              'CP': 3,
+              'RCP': 4,
+              'LRU': 5,
+              'INFINITE': 6}
 NOCACHE = 0
 KARIZ = 1
 MRD = 2
-CP=3
-RCP=4
-LRU=5
-INFINITE=6
-
+CP = 3
+RCP = 4
+LRU = 5
+INFINITE = 6
 
 def start_pig_simulator(v):
-    cache = KARIZ
+    cache = prefetcher[cf.get("Simulate", "prefetcher")]
     pig.build_stages(v)
     # build cache plans
     req.submit_new_dag(v)

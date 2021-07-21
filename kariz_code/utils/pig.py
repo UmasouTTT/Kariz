@@ -115,7 +115,7 @@ def build_rcp_stage_priorities_helper(g, s, plans_container): # s stands for sta
     while t_imprv:
         plan, t_imprv = s.get_rcp_next_plan(priority)
         if not t_imprv:
-            break;
+            break
         plan.dag_id = g.dag_id
         plan.stage_id = s.stage_id
         plans_container.add_cache_plan(plan, s)
@@ -135,10 +135,10 @@ def build_rcp_priorities(g):
     for s in g.stages:
         stage = g.stages[s]
         build_rcp_stage_priorities_helper(g, stage, plans_container)
-    return plans_container;
+    return plans_container
 
 
-def build_cp_stage_priorities_helper(g, s, plans_container): # s stands for stage
+def build_cp_stage_priorities_helper(g, s, plans_container):# s stands for stage
     s.dag_id = g.dag_id
     plans_container.add_stage(s)
     plan, t_imprv = s.get_criticalpath_plan()
@@ -157,7 +157,7 @@ def build_cp_priorities(g):
         build_cp_stage_priorities_helper(g, stage, plans_container)
     
     plans_container.assing_prefetch_plan_unlimitedbw()
-    return plans_container;
+    return plans_container
 
 
 

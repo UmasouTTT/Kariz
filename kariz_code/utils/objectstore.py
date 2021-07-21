@@ -29,7 +29,8 @@ class ObjectStore:
                 calling_format = boto.s3.connection.OrdinaryCallingFormat())
         hdfs_endpoint_url = 'http://kariz-1:50070'
         hdfs_user = 'ubuntu'
-        fpath = '/Users/umasou/PycharmProjects/Kariz/kariz_code/utils/'
+        #
+        fpath = '/Users/umasou/workSpace/pyProjects/Kariz/kariz_code/utils/'
         #fpath = '/home/mania/Northeastern/MoC/Kariz/kariz_code/utils/'
         self.hdfsclient = hdfs.InsecureClient(hdfs_endpoint_url, user=hdfs_user)
         self.tpch_metadata, self.tpcds_metadata = inputs.prepare_tpc_metadata(fpath)

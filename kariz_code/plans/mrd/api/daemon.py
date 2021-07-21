@@ -6,7 +6,7 @@ KARIZ cache management project
 """
 from datetime import datetime
 
-import plans.mrd.mrd as mrd
+import kariz_code.plans.mrd.mrd as mrd
 
 g_collector = None
 g_mrd = None

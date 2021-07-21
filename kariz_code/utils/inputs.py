@@ -23,7 +23,8 @@ inputs = {'a': 326, 'b': 250, 'c': 250, 'd' : 100
           , 'a27': 240}
 
 #fix
-extern_input = pd.read_csv("/Users/umasou/PycharmProjects/Kariz/kariz_code/utils/inputs.csv").to_dict()
+#/Users/umasou/workSpace/pyProjects/Kariz/kariz_code/utils/inputs.csv
+extern_input = pd.read_csv("/Users/umasou/workSpace/pyProjects/Kariz/kariz_code/utils/inputs.csv").to_dict()
 extern_input_dict = dict()
 for key in extern_input["name"]:
     extern_input_dict[extern_input["name"][key]] = extern_input["size"][key]
@@ -82,3 +83,5 @@ def prepare_tpc_runtimes(fpath):
            elif rorc == 'C': 
               tpch_runtimes[query][dataset][jobid]['cached'] = runtime
    return tpch_runtimes, tpcds_runtimes
+
+

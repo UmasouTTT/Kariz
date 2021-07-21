@@ -118,7 +118,7 @@ def gang_scheduler(g):
     count = 1
     start = time.time()
     start_t = start
-    dataset_stats.append({'stage': stage_to_be_executed, 'inputs' : g.stages[stage_to_be_executed].stage_inputs, 'cached_inputs': cached_inputs, 'effective_cached_inputs': effective_cached_inputs})    
+    dataset_stats.append({'stage': stage_to_be_executed, 'inputs': g.stages[stage_to_be_executed].stage_inputs, 'cached_inputs': cached_inputs, 'effective_cached_inputs': effective_cached_inputs})
     timesUsed.append(stage_runtime)
     elapsed_time = stage_runtime
     print(Fore.LIGHTMAGENTA_EX, "\tSchedule stage ", stage_to_be_executed, " for execution. Estimated runtime: ", stage_runtime, ', elapsed time: ', elapsed_time, Style.RESET_ALL)

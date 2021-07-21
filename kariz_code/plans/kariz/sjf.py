@@ -47,7 +47,7 @@ class SJF:
         # while there is no cache space avaialbe or no space left in bw
         while len(plans) > 0:
             plan = plans.pop(0)
-            print(Fore.LIGHTYELLOW_EX, "Mirab, process plans of DAG", plan.dag_id, ', stage' , plan.stage_id, Style.RESET_ALL)    
+            print(Fore.LIGHTYELLOW_EX, "Mirab, process plans of DAG", plan.dag_id, ', stage', plan.stage_id, Style.RESET_ALL)
             if not plan.is_feasible():
                 continue
             if plan.type == 0:
@@ -82,11 +82,13 @@ class SJF:
         
     def get_plans(self, dag_id, stage):
         plans = [] 
-        if len(self.dag_planners) <= 0: return plans
+        if len(self.dag_planners) <= 0:
+            return plans
         available_bw = self.available_bandwidth/len(self.dag_planners) # give every Job a fair share of DAG
         for gid in self.dag_planners:
                 plans.extend(self.dag_planners[gid].get_next_plans(available_bw))
-        if dag_id in self.dag_planners: self.dag_planners[dag_id].current_running_stage = stage
+        if dag_id in self.dag_planners:
+            self.dag_planners[dag_id].current_running_stage = stage
         return plans
         
     def compute_share_scores(self, plans):

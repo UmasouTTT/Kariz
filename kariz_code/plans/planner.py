@@ -12,7 +12,7 @@ from colorama import Fore, Style
 class BWPlanner:
     def __init__(self, bandwidth=1200):
 #        self.blocks = [0]*bandwidth
-        self.index = 0;
+        self.index = 0
         self.bandwidth = bandwidth
         
     def get_room(self, n_blocks):

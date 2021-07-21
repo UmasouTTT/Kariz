@@ -9,8 +9,21 @@ import kariz_code.utils.pig as pig
 import time
 from multiprocessing.dummy import Pool as ThreadPool
 import subprocess
+import configparser
+
+# get prefetcher from config
+cf = configparser.ConfigParser()
+cf.read("../../config.ini")
 
 # write a class to build schedule dag in pig
+prefetcher = {'NOCACHE': 0,
+              'KARIZ': 1,
+              'MRD': 2,
+              'CP': 3,
+              'RCP': 4,
+              'LRU': 5,
+              'INFINITE': 6}
+
 NOCACHE = 0
 KARIZ = 1
 MRD = 2
@@ -18,7 +31,6 @@ CP=3
 RCP=4
 LRU=5
 INFINITE=6
-
 start_t = 0
 debug_sleep = 60 # second
 
@@ -57,8 +69,9 @@ def execute_dag(g):
 
 
 def start_pig_emulator(v):
-    cache = KARIZ
-    pig.build_stages(v);
+    cache = prefetcher[cf.get(["Simulate"]["prefetcher"])]
+    print("Prefetcher : {}".format(cache))
+    pig.build_stages(v)
     # build cache plans
     req.submit_new_dag(v)
     req.notify_stage_start(v, -1)

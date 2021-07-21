@@ -1,8 +1,9 @@
 #!/usr/bin/python
 
 # Author: Mania Abdi
-import utils.plan as plan
-from plans.dagplanner import *
+import kariz_code.utils.plan as plan
+import kariz_code.utils.pig as pig
+from kariz_code.plans.dagplanner import *
 import json
 
 class MRDagPlanner(DAGPlanner):
@@ -30,7 +31,7 @@ class MRDagPlanner(DAGPlanner):
         self.mrd_tables = mrd_table_by_distance
         
     def update_mrdtable(self):
-        mrd_table_by_distance =  self.mrd_tables
+        mrd_table_by_distance = self.mrd_tables
         mrd_table_by_distance_tmp = {}
     
         distance=0         
@@ -57,7 +58,8 @@ class MRDagPlanner(DAGPlanner):
     def get_next_plans(self, stage_id):
         plans = []
         keys = self.mrd_tables.keys()
-        if not len(keys): return plans;
+        if not len(keys):
+            return plans
         distance = min(keys)
         if stage_id == -1 and distance in self.mrd_tables:
             ps = copy.deepcopy(self.mrd_tables[distance])
@@ -69,7 +71,8 @@ class MRDagPlanner(DAGPlanner):
         
         # cache plans 
         keys = self.mrd_tables.keys()
-        if not len(keys): return plans;
+        if not len(keys):
+            return plans
         distance = min(keys)
         if self.mrd_tables[distance][0].stage_id == stage_id:
             ps = self.mrd_tables[distance]

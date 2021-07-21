@@ -1,11 +1,11 @@
 #!/usr/bin/python
 import json
 
-from utils.graph import *
-import plans.mrd.dagplanner as dp
-from plans.planner import *
-import utils.requester as requester
-import utils.status as status
+from kariz_code.utils.graph import *
+import kariz_code.plans.mrd.dagplanner as dp
+from kariz_code.plans.planner import *
+import kariz_code.utils.requester as requester
+import kariz_code.utils.status as status
 import csv
 import colorama
 from colorama import Fore, Style
@@ -34,7 +34,8 @@ class MinPlanner(Planner):
         plans = []
         #if len(self.min_table) > 0:
         #    dag_id = self.dags[self.min_table.pop(0)['dag_name']]
-        if dag_id not in self.dag_planners: return 
+        if dag_id not in self.dag_planners:
+            return
         plans.extend(self.dag_planners[dag_id].get_next_plans(stage_id))
     
         while len(plans) > 0:
@@ -50,7 +51,8 @@ class MinPlanner(Planner):
                 now = 0 if stage_id == -1 else self.dag_planners[dag_id].g.stages[stage_id].start_time \
                     + self.dag_planners[dag_id].g.queue_time 
                 now = now + self.dag_planners[dag_id].g.submit_time 
-                if not self.pack_bandwidth(plan, now): continue 
+                if not self.pack_bandwidth(plan, now):
+                    continue
                 if requester.prefetch_mrd_plan(plan) != status.SUCCESS:
                     # for all priority plans larger than this priority on this stage mark them as infeasible
                     self.roll_back()
